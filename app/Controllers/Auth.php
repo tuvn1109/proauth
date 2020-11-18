@@ -1,10 +1,24 @@
 <?php namespace App\Controllers;
 
 use App\Models\EmailModel;
+use App\Models\ForgetpassModel;
 use App\Models\UsersModel;
+use CodeIgniter\I18n\Time;
 
 class Auth extends BaseController
 {
+	private function generateRandomString($length = 10)
+	{
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
+
+
 	public function index()
 	{
 		echo view('signin');
@@ -14,9 +28,17 @@ class Auth extends BaseController
 	public function forgetPass()
 	{
 		$model = new EmailModel();
+		$model_users = new UsersModel();
+		$model_forget = new ForgetpassModel();
+
 		$infoEmail = $model->getInfoEmail();
 		$email = \Config\Services::email();
+
 		$toEmail = $this->request->getPost('email');
+		$infoNhan = $model_users->getUserByEmail($toEmail);
+
+		$code = $this->generateRandomString();
+		$link = base_url('/auth/resetpass/' . $code);
 
 		// setting
 		$config['protocol'] = 'smtp';
@@ -478,7 +500,7 @@ class Auth extends BaseController
             <tr>
               <td class="email-masthead">
                 <a href="https://example.com" class="f-fallback email-masthead_name">
-                [Product Name]
+                FORGET PASSWORD
               </a>
               </td>
             </tr>
@@ -490,7 +512,7 @@ class Auth extends BaseController
                   <tr>
                     <td class="content-cell">
                       <div class="f-fallback">
-                        <h1>Hi {{name}},</h1>
+                        <h1>Hi ' . $infoNhan['fullname'] . ',</h1>
                         <p>You recently requested to reset your password for your [Product Name] account. Use the button below to reset it. <strong>This password reset is only valid for the next 24 hours.</strong></p>
                         <!-- Action -->
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
@@ -501,14 +523,14 @@ class Auth extends BaseController
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                                 <tr>
                                   <td align="center">
-                                    <a href="{{action_url}}" class="f-fallback button button--green" target="_blank">Reset your password</a>
+                                    <a href="' . $link . '" class="f-fallback button button--green" target="_blank">Reset your password</a>
                                   </td>
                                 </tr>
                               </table>
                             </td>
                           </tr>
                         </table>
-                        <p>For security, this request was received from a {{operating_system}} device using {{browser_name}}. If you did not request a password reset, please ignore this email or <a href="{{support_url}}">contact support</a> if you have questions.</p>
+                        <p>If you did not request a password reset, please ignore this email or <a href="{{support_url}}">contact support</a> if you have questions.</p>
                         <p>Thanks,
                           <br>The [Product Name] Team</p>
                         <!-- Sub copy -->
@@ -516,7 +538,7 @@ class Auth extends BaseController
                           <tr>
                             <td>
                               <p class="f-fallback sub">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
-                              <p class="f-fallback sub">{{action_url}}</p>
+                              <p class="f-fallback sub">' . $link . '</p>
                             </td>
                           </tr>
                         </table>
@@ -534,7 +556,7 @@ class Auth extends BaseController
                       <p class="f-fallback sub align-center">&copy; 2019 [Product Name]. All rights reserved.</p>
                       <p class="f-fallback sub align-center">
                         [Company Name, LLC]
-                        <br>1234 Street Rd.
+                        <br>033 62 19199
                         <br>Suite 1234
                       </p>
                     </td>
@@ -555,12 +577,63 @@ class Auth extends BaseController
 		$email->setMessage($body);
 		$email->send();
 
-		echo "<pre>";
-		print_r($email);
-		echo "</pre>";
+
+		$model_forget->where('email', $toEmail)->set(['action' => 1])->update();
+
+		$timeNow = new Time('now', 'Asia/Ho_Chi_Minh', 'vi_VN');
+		$dataLOG = [
+			'email' => $toEmail,
+			'time' => $timeNow,
+			'created_at' => $timeNow,
+			'action' => 0,
+			'code' => $code,
+		];
+		$model_forget->insert($dataLOG);
 
 
 	}
+
+	public function resetpass()
+	{
+		$model_forget = new ForgetpassModel();
+
+		$url = current_url(true);
+		$code = $url->getSegment(3);
+		$infoRS = $model_forget->getInfoForget($code);
+
+		$data['data'] = $infoRS;
+		$data['data']['check'] = 1;
+		if (!$infoRS) {
+			$data['data']['check'] = 0;
+		}
+		$data['data']['code'] = $code;
+		echo view('resetpass', $data);
+
+
+	}
+
+	public function submitreset()
+	{
+		$model_forget = new ForgetpassModel();
+		$model_users = new UsersModel();
+		$email = $this->request->getPost('email');
+		$idForget = $this->request->getPost('idforget');
+		$password = $this->request->getPost('password');
+		$infoUser = $model_users->getUserByEmail($email);
+
+		$data = [
+			'password' => $password,
+		];
+		$model_users->update($infoUser['Id'], $data);
+
+
+		$dataF = [
+			'action' => 1,
+		];
+		$model_forget->update($idForget, $dataF);
+		echo json_encode(1);
+	}
+
 
 	public function submitsignin()
 	{
@@ -646,7 +719,11 @@ class Auth extends BaseController
 		}
 		echo json_encode($JSON);
 	}
-
+public function logout()
+	{
+		session()->destroy();
+		return redirect()->to('/');
+	}
 	//--------------------------------------------------------------------
 
 }

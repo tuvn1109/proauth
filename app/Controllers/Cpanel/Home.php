@@ -10,6 +10,7 @@ class Home extends CpanelController
 			//return redirect()->to('/');
 			$data['temp'] = 'cpanel/home';
 			$data['title'] = 'Home';
+			$data['user'] = session('user');
 			echo view('cpanel/layout', $data);
 
 		} else {

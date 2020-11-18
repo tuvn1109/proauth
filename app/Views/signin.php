@@ -1,16 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Bootstrap 4 HTML, React, Angular 10 & VueJS Admin Dashboard Theme
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: https://1.envato.market/EA4JP
-Renew Support: https://1.envato.market/EA4JP
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <html lang="en">
 <!--begin::Head-->
 <head>
@@ -25,7 +13,7 @@ License: You must have a valid license purchased only from themeforest(the above
         })(window, document, 'script', 'dataLayer', 'GTM-5FS8GGP');</script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8"/>
-    <title>Login Page 4 | Keenthemes</title>
+    <title>Login</title>
     <meta name="description" content="Login page example"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="canonical" href="https://keenthemes.com/metronic"/>
@@ -95,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin::Login Sign in form-->
                 <div class="login-signin">
                     <div class="mb-20">
-                        <h3>Sign In To Admin</h3>
+                        <h3>Sign In</h3>
                         <div class="text-muted font-weight-bold">Enter your details to login to your account:</div>
                     </div>
                     <form class="form" id="kt_login_signin_form" action="">

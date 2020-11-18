@@ -5,7 +5,7 @@ namespace App\Controllers\Cpanel;
 use App\Models\EmailModel;
 use App\Models\SettingsModel;
 
-class Email extends CpanelController
+class Settings extends CpanelController
 {
 	public function index()
 	{
@@ -39,6 +39,7 @@ class Email extends CpanelController
 
 		endforeach;
 		$a = $model_setting->updateBatch($data, 'filed');
+
 		echo "<pre>";
 		print_r($a);
 		echo "</pre>";

@@ -2,9 +2,9 @@
 
 use CodeIgniter\Model;
 
-class UsersModel extends Model
+class SettingsModel extends Model
 {
-	protected $table = 'users';
+	protected $table = 'settings';
 	protected $primaryKey = 'id';
 	protected $returnType = 'array';
 	protected $useSoftDeletes = false;
@@ -20,11 +20,10 @@ class UsersModel extends Model
 	protected $selectFields = ['*'];
 
 
-	public function getUserByUsername($username, $password)
+	public function getList($type)
 	{
 		$query = $this->select($this->selectFields);
-		$query = $query->where('username', $username);
-		$query = $query->Where('password', $password);
+		$query = $query->where('type', $type);
 		return $query->get()->getRowArray();
 	}
 

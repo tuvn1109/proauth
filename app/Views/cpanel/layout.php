@@ -156,7 +156,7 @@
 											</svg>
                                             <!--end::Svg Icon-->
 										</span>
-                                <span class="menu-text">YOUTUBE</span>
+                                <span class="menu-text">SETTING</span>
                                 <i class="menu-arrow"></i>
                             </a>
                             <div class="menu-submenu">
@@ -164,11 +164,11 @@
                                 <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"
                                         data-menu-toggle="hover">
-                                        <a href="/youtube" class="menu-link menu-toggle">
+                                        <a href="cpanel/email" class="menu-link menu-toggle">
                                             <i class="menu-bullet menu-bullet-line">
                                                 <span></span>
                                             </i>
-                                            <span class="menu-text">API</span>
+                                            <span class="menu-text">Email</span>
                                         </a>
 
                                     </li>
@@ -347,7 +347,7 @@
                             <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2"
                                  id="kt_quick_user_toggle">
                                 <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                                <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Sean</span>
+                                <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"><?= $user['fullname'] ?></span>
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
 											<span class="symbol-label font-size-h5 font-weight-bold">S</span>
 										</span>
@@ -410,7 +410,6 @@
     <!--begin::Header-->
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5" kt-hidden-height="40" style="">
         <h3 class="font-weight-bold m-0">User Profile
-            <small class="text-muted font-size-sm ml-2">12 messages</small></h3>
         <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
             <i class="ki ki-close icon-xs text-muted"></i>
         </a>
@@ -425,7 +424,7 @@
                 <i class="symbol-badge bg-success"></i>
             </div>
             <div class="d-flex flex-column">
-                <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">James Jones</a>
+                <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?= $user['fullname'] ?></a>
                 <div class="text-muted mt-1">Application Developer</div>
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
@@ -447,10 +446,10 @@
                                             <!--end::Svg Icon-->
 										</span>
 									</span>
-									<span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+									<span class="navi-text text-muted text-hover-primary"><?= $user['email'] ?></span>
 								</span>
                     </a>
-                    <a href="Signin/submitsignout" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign
+                    <a href="Auth/logout" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign
                         Out</a>
                 </div>
             </div>
@@ -1794,43 +1793,6 @@
 			</span>
 </div>
 <!--end::Scrolltop-->
-<!--begin::Sticky Toolbar-->
-<ul class="sticky-toolbar nav flex-column pl-2 pr-2 pt-3 pb-3 mt-4">
-    <!--begin::Item-->
-    <li class="nav-item mb-2" id="kt_demo_panel_toggle" data-toggle="tooltip" title="" data-placement="right"
-        data-original-title="Check out more demos">
-        <a class="btn btn-sm btn-icon btn-bg-light btn-icon-success btn-hover-success" href="#">
-            <i class="flaticon2-drop"></i>
-        </a>
-    </li>
-    <!--end::Item-->
-    <!--begin::Item-->
-    <li class="nav-item mb-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Layout Builder">
-        <a class="btn btn-sm btn-icon btn-bg-light btn-icon-primary btn-hover-primary"
-           href="https://preview.keenthemes.com/metronic/demo1/builder.html" target="_blank">
-            <i class="flaticon2-gear"></i>
-        </a>
-    </li>
-    <!--end::Item-->
-    <!--begin::Item-->
-    <li class="nav-item mb-2" data-toggle="tooltip" title="" data-placement="left" data-original-title="Documentation">
-        <a class="btn btn-sm btn-icon btn-bg-light btn-icon-warning btn-hover-warning"
-           href="https://keenthemes.com/metronic/?page=docs" target="_blank">
-            <i class="flaticon2-telegram-logo"></i>
-        </a>
-    </li>
-    <!--end::Item-->
-    <!--begin::Item-->
-    <li class="nav-item" id="kt_sticky_toolbar_chat_toggler" data-toggle="tooltip" title="" data-placement="left"
-        data-original-title="Chat Example">
-        <a class="btn btn-sm btn-icon btn-bg-light btn-icon-danger btn-hover-danger" href="#" data-toggle="modal"
-           data-target="#kt_chat_modal">
-            <i class="flaticon2-chat-1"></i>
-        </a>
-    </li>
-    <!--end::Item-->
-</ul>
-<!--end::Sticky Toolbar-->
 <!--begin::Demo Panel-->
 <div id="kt_demo_panel" class="offcanvas offcanvas-right p-10">
     <!--begin::Header-->
