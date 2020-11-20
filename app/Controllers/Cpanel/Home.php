@@ -14,7 +14,7 @@ class Home extends CpanelController
 			echo view('cpanel/layout', $data);
 
 		} else {
-			echo view('signin');
+			echo view('auth/signin/index');
 		}
 	}
 

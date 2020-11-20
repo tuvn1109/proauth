@@ -1446,5 +1446,7 @@ var OSC_IS_MOBILE = false;        //--><!]]>
     })
     //--><!]]>
 </script>
+<?= view($temp . '_js', $this->data) ?>
+
 </body>
 </html>

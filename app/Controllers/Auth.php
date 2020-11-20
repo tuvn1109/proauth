@@ -21,7 +21,16 @@ class Auth extends BaseController
 
 	public function index()
 	{
-		echo view('signin');
+
+
+		if (session('user')) {
+			return redirect()->to('/');
+		} else {
+			$data['temp'] = 'auth/signin/index';
+			$data['title'] = 'Signin';
+			echo view('auth/signin/index', $data);
+
+		}
 	}
 
 
@@ -719,7 +728,8 @@ class Auth extends BaseController
 		}
 		echo json_encode($JSON);
 	}
-public function logout()
+
+	public function logout()
 	{
 		session()->destroy();
 		return redirect()->to('/');
