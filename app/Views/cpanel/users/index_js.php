@@ -1,14 +1,7 @@
 <script>
-function sayHello(name, callback) {
-	var myName = name.toUpperCase() + ", Hello";
-    return callback(myName);
-}
 
-var result = sayHello("Khoa", function (arg) {
-    return arg;
-});
     var updateId = null;
-    const catTable = $('#catTbl').DataTable({
+    const catTable = $('#usersTable').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
@@ -29,7 +22,7 @@ var result = sayHello("Khoa", function (arg) {
             {"data": "role"},
             {
                 "data": "", render: function (data, type, row) {
-                    return '<button type="button" class="btn btn-icon btn-primary mr-1 mb-1 waves-effect waves-light updateCat" data-name="' + row.fullname + '" data-id="' + row.Id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light delCat" data-id="' + row.Id + '"><i class="feather icon-trash"></i></button>';
+                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateCat" data-name="' + row.fullname + '" data-id="' + row.Id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.Id + '"><i class="feather icon-trash"></i></button>';
                 }
             },
         ],
@@ -49,9 +42,10 @@ var result = sayHello("Khoa", function (arg) {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.value) {
                         $.ajax({
-                            url: "/cpanel/category/delete/" + dataId,
+                            url: "/cpanel/users/deleteuser",
                             dataType: "json",
-                            type: "GET",
+                            data: {id:dataId},
+                            type: "POST",
                             success: function (data) {
                                 Swal.fire('Success!', '', 'success');
                                 catTable.ajax.reload(null, false);
@@ -64,4 +58,5 @@ var result = sayHello("Khoa", function (arg) {
             });
         }
     });
+
 </script>

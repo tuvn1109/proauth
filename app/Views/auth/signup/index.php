@@ -78,9 +78,15 @@
                                                     <label for="inputName">Name</label>
                                                 </div>
                                                 <div class="form-label-group">
+                                                    <input type="text" id="phone" name="phone"
+                                                           class="form-control"
+                                                           placeholder="Phone" required>
+                                                    <label for="inputName">Phone</label>
+                                                </div>
+                                                <div class="form-label-group">
                                                     <input type="text" id="username" name="username"
                                                            class="form-control"
-                                                           placeholder="Full Name" required>
+                                                           placeholder="Username" required>
                                                     <label for="inputName">Username</label>
                                                 </div>
                                                 <div class="form-label-group">
@@ -115,9 +121,9 @@
                                                         </fieldset>
                                                     </div>
                                                 </div>
-                                                <a href="auth-login.html"
+                                                <a href="/auth"
                                                    class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
-                                                <button type="submit"
+                                                <button type="submit" id="kt_login_signup_submit"
                                                         class="btn btn-primary float-right btn-inline mb-50">
                                                     Register
                                                 </button>
@@ -155,32 +161,27 @@
 <script>
     $('#kt_login_signup_submit').on('click', function (e) {
         e.preventDefault();
-        validation.validate().then(function (status) {
-            if (status == 'Valid') {
-                var formData = new FormData($('#kt_login_signup_form')[0]);
-                $.ajax({
-                    type: 'post',
-                    url: '/Auth/submitsignup',
-                    data: formData,
-                    dataType: "json",
-                    async: false,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function (data) {
-                        if (data.stt == true) {
-                            window.location.assign('/');
-                        }
-                        //makeSAlert(data,5000);
-                        //$("#catlist").load(location.href + " #catlist");
-                        //$("#noti").html(data);
-                        //window.setTimeout(function(){location.reload()},1000);
-                    }
-                }); //End Ajax
-            } else {
-
+        var formData = new FormData($('#kt_login_signup_form')[0]);
+        $.ajax({
+            type: 'post',
+            url: '/Auth/submitsignup',
+            data: formData,
+            dataType: "json",
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.stt == true) {
+                    window.location.assign('/');
+                }
+                //makeSAlert(data,5000);
+                //$("#catlist").load(location.href + " #catlist");
+                //$("#noti").html(data);
+                //window.setTimeout(function(){location.reload()},1000);
             }
-        });
+        }); //End Ajax
+
     });
 </script>
 </body>

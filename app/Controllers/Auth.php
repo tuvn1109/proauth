@@ -655,17 +655,20 @@ class Auth extends BaseController
 				session()->set(['user' => $checkUser]);
 				$JSON = [
 					'stt' => true,
+					'msg' => 'Logged in successfully',
 					'error' => 0,
 				];
 			} else {
 				$JSON = [
 					'stt' => false,
+					'msg' => 'Account or password incorrect',
 					'error' => 0,
 				];
 			}
 		} else {
 			$JSON = [
 				'stt' => false,
+				'msg' => 'Error',
 				'error' => 1,
 			];
 		}
@@ -674,7 +677,7 @@ class Auth extends BaseController
 
 	public function signup()
 	{
-		echo view('signup');
+		echo view('auth/signup/index');
 	}
 
 

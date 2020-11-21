@@ -7,7 +7,8 @@ class Users extends CpanelController
 	public function index()
 	{
 		$data['title'] = 'List user';
-		$data['temp'] = 'cpanel/users';
+		$data['temp'] = 'cpanel/users/index';
+		$data['menu'] = 'users';
 		$data['user'] = session('user');
 		echo view('cpanel/layout', $data);
 	}
@@ -64,7 +65,8 @@ class Users extends CpanelController
 			$user['id'] = $id;
 		}
 		$data['title'] = 'Edit user';
-		$data['temp'] = 'cpanel/edit_user';
+		$data['menu'] = 'users';
+		$data['temp'] = 'cpanel/users/edit';
 		$data['user'] = session('user');
 		$data['data'] = $user;
 		$data['files'] = $files;
@@ -86,7 +88,10 @@ class Users extends CpanelController
 
 	public function deleteuser()
 	{
+		$model = new UsersModel();
 		$id = $this->request->getPost('id');
+		$model->delete($id);
+		echo json_encode(1);
 	}
 
 	public function submitedit()

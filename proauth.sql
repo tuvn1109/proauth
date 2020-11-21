@@ -11,34 +11,11 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 20/11/2020 18:12:02
+ Date: 21/11/2020 17:52:49
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for email
--- ----------------------------
-DROP TABLE IF EXISTS `email`;
-CREATE TABLE `email`  (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `subject` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
-  `SMTPHost` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `protocol` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `SMTPPort` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `mailType` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of email
--- ----------------------------
-INSERT INTO `email` VALUES (1, 'life.testemail1611@gmail.com', 'lifemedia2020', 'Life forgot', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for log_forgetpass
@@ -69,6 +46,26 @@ INSERT INTO `log_forgetpass` VALUES (8, 'nvtu1009@gmail.com', '2020-11-17 09:47:
 INSERT INTO `log_forgetpass` VALUES (9, 'nvtu1009@gmail.com', '2020-11-17 11:37:26', 1, 'lnOntavfkG', '2020-11-17 11:37:26', NULL);
 INSERT INTO `log_forgetpass` VALUES (10, 'nvtu1009@gmail.com', '2020-11-17 11:42:22', 1, 'loz7mwKucN', '2020-11-17 11:42:22', NULL);
 INSERT INTO `log_forgetpass` VALUES (11, 'nvtu1009@gmail.com', '2020-11-17 11:42:36', 0, '1QBrqiR6Jg', '2020-11-17 11:42:36', NULL);
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `order_cus` int NULL DEFAULT NULL,
+  `order_date` datetime(0) NULL DEFAULT NULL,
+  `order_price` decimal(10, 2) NULL DEFAULT NULL,
+  `order_status` enum('New','Transport','Done') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `order_payment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (1, 'O0001', 1, '2020-11-21 16:01:56', 1000.00, 'New', 'Done');
 
 -- ----------------------------
 -- Table structure for settings
@@ -110,7 +107,7 @@ CREATE TABLE `users`  (
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `role` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
@@ -129,12 +126,7 @@ INSERT INTO `users` VALUES (19, 'user7', '123', NULL, NULL, NULL, NULL, NULL, NU
 INSERT INTO `users` VALUES (20, 'user8', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (21, 'user9', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (22, 'user10', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `users` VALUES (23, 'user11', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `users` VALUES (24, 'user12', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (25, 'user13', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `users` VALUES (26, 'user14', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `users` VALUES (27, 'user15', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `users` VALUES (28, 'user16', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `users` VALUES (29, 'user17', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (30, 'phamtuan', '123', NULL, NULL, '22222tuan@gmail.com', NULL, 'phạm tuấn', '0987654321', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

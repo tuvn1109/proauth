@@ -18,6 +18,8 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/toastr.css">
+
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -32,6 +34,8 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/authentication.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -109,7 +113,7 @@
                                                                                class="card-link">Forgot Password?</a>
                                                     </div>
                                                 </div>
-                                                <a href="auth-register.html"
+                                                <a href="/auth/signup"
                                                    class="btn btn-outline-primary float-left btn-inline">Register</a>
                                                 <button type="submit" class="btn btn-primary float-right btn-inline"
                                                         id="kt_login_signin_submit">
@@ -150,6 +154,8 @@
 <!-- BEGIN Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->
+<script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
+
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -174,11 +180,18 @@
             contentType: false,
             processData: false,
             success: function (data) {
+                toastr.options = {
+                    "positionClass": "toast-bottom-right",
+                }
                 if (data.stt == true) {
+                    toastr.success(data.msg, 'Success');
                     window.setTimeout(function () {
                         location.reload();
-                    }, 1000)
+                    }, 1500)
                 } else {
+
+                    toastr.error(data.msg, 'Error');
+
 
                 }
                 //makeSAlert(data,5000);
@@ -188,7 +201,6 @@
             }
         }); //End Ajax
     });
-
 
 
 </script>

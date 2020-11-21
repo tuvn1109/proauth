@@ -18,13 +18,16 @@
 			?>
 
         </form>
-    </div>
-    <div class="card-footer">
+
         <div class="row">
+            <div class="col-10">
+                <hr>
+            </div>
             <div class="col-10">
                 <button type="button" class="btn btn-primary mr-2" id="btnUpdateEmail">Update</button>
             </div>
         </div>
     </div>
+
     <!--end::Body-->
 </div>
