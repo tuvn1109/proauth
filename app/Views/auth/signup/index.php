@@ -173,12 +173,13 @@
             processData: false,
             success: function (data) {
                 if (data.stt == true) {
-                    window.location.assign('/');
+                    toastr.success(data.msg, 'Success');
+                    window.setTimeout(function () {
+                        window.location.assign('/');
+                    }, 1500)
+                } else {
+                    toastr.error(data.msg, 'Error');
                 }
-                //makeSAlert(data,5000);
-                //$("#catlist").load(location.href + " #catlist");
-                //$("#noti").html(data);
-                //window.setTimeout(function(){location.reload()},1000);
             }
         }); //End Ajax
 

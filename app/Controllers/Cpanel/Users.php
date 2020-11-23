@@ -136,7 +136,21 @@ class Users extends CpanelController
 
 				}
 			}
+
+
+			$JSON = [
+				'stt' => true,
+				'msg' => 'Update successful',
+				'error' => 0,
+			];
+		} else {
+			$JSON = [
+				'stt' => false,
+				'msg' => 'Error, please try again',
+				'error' => 0,
+			];
 		}
+		echo json_encode($JSON);
 	}
 	//--------------------------------------------------------------------
 

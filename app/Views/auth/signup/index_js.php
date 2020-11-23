@@ -1,4 +1,3 @@
-
 <script>
     $('#kt_login_signup_form').on('submit', function (e) {
         e.preventDefault();
@@ -19,8 +18,14 @@
             contentType: false,
             processData: false,
             success: function (data) {
+
                 if (data.stt == true) {
-                    window.location.assign('/');
+                    toastr.success(data.msg, 'Success');
+                    window.setTimeout(function () {
+                        window.location.assign('/');
+                    }, 1500)
+                } else {
+                    toastr.error(data.msg, 'Error');
                 }
                 //makeSAlert(data,5000);
                 //$("#catlist").load(location.href + " #catlist");

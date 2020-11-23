@@ -19,12 +19,14 @@ class OrdersModel extends Model
 	protected $skipValidation = false;
 	protected $selectFields = ['*'];
 
-	function get_enum_values($table,$field)
+	function get_enum_values($table, $field)
 	{
-		//$type = $this->getFieldData($table, $field);
-		$query = $this->query("SHOW COLUMNS FROM {$table} WHERE Field = {$field} ");
-		$fields = $query->fieldData();
-		return $fields;
+		//$fields = $this->getFieldData($table, $field);
+		$query = $this->query("SHOW COLUMNS FROM {$table} WHERE Field = '{$field}'")->getResultArray();
+		$enum = $query[0]['Type'];
+		preg_match("/^enum\(\'(.*)\'\)$/", $enum, $matches);
+		$enum = explode("','", $matches[1]);
+		return $enum;
 	}
 }
 

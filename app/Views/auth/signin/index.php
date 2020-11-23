@@ -189,10 +189,7 @@
                         location.reload();
                     }, 1500)
                 } else {
-
                     toastr.error(data.msg, 'Error');
-
-
                 }
                 //makeSAlert(data,5000);
                 //$("#catlist").load(location.href + " #catlist");

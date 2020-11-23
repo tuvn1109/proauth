@@ -10,6 +10,8 @@ class Auth implements FilterInterface
 	{
 		if (!session('user')) {
 			return redirect()->to('/auth');
+		} elseif (session('user')['role'] != 'admin') {
+			return redirect()->to('/');
 		}
 	}
 

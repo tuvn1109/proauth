@@ -6,11 +6,18 @@ class Home extends CpanelController
 {
 	public function index()
 	{
-			//return redirect()->to('/');
-			$data['temp'] = 'cpanel/home/index';
-			$data['title'] = 'Home';
-			$data['menu'] = 'home';
+		//return redirect()->to('/');
+		$data['temp'] = 'cpanel/home/index';
+		$data['title'] = 'Home';
+		$data['menu'] = 'home';
+		$user = session('user');
+
+		if ($user['role'] == 'admin') {
 			echo view('cpanel/layout', $data);
+		} else {
+			return redirect()->to('/');
+		}
+
 	}
 
 	//--------------------------------------------------------------------

@@ -651,13 +651,28 @@ class Auth extends BaseController
 		$password = $this->request->getPost('password');
 		if ($username && $password) {
 			$checkUser = $model->getUserByUsername($username, $password);
+
 			if ($checkUser) {
-				session()->set(['user' => $checkUser]);
-				$JSON = [
-					'stt' => true,
-					'msg' => 'Logged in successfully',
-					'error' => 0,
-				];
+				if ($checkUser['status'] == 'active') {
+					session()->set(['user' => $checkUser]);
+					$JSON = [
+						'stt' => true,
+						'msg' => 'Logged in successfully',
+						'error' => 0,
+					];
+				} elseif ($checkUser['status'] == 'blocked') {
+					$JSON = [
+						'stt' => false,
+						'msg' => 'The account is locked, please contact the administrator',
+						'error' => 0,
+					];
+				} else {
+					$JSON = [
+						'stt' => false,
+						'msg' => 'Error, please try again or contact administrator',
+						'error' => 0,
+					];
+				}
 			} else {
 				$JSON = [
 					'stt' => false,
@@ -697,6 +712,7 @@ class Auth extends BaseController
 			if ($checkUser) {
 				$JSON = [
 					'stt' => false,
+					'msg' => 'Account already exists',
 					'error' => 1,
 				];
 			} else {
@@ -720,12 +736,14 @@ class Auth extends BaseController
 
 				$JSON = [
 					'stt' => true,
+					'msg' => 'Sign Up Success',
 					'error' => 0,
 				];
 			}
 		} else {
 			$JSON = [
 				'stt' => false,
+				'msg' => 'Unspecified error, please try again',
 				'error' => 0,
 			];
 		}

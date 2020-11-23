@@ -12,7 +12,14 @@
             contentType: false,
             processData: false,
             success: function (data) {
-
+                toastr.options = {
+                    "positionClass": "toast-top-right",
+                }
+                if (data.stt == true) {
+                    toastr.success(data.msg, 'Success');
+                } else {
+                    toastr.error(data.msg, 'Error');
+                }
                 //makeSAlert(data,5000);
                 //$("#catlist").load(location.href + " #catlist");
                 //$("#noti").html(data);

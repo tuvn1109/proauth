@@ -9,12 +9,10 @@ class Orders extends CpanelController
 	public function index()
 	{
 		$model = new OrdersModel();
-		$a = $model->get_enum_values('orders','status');
-		echo "<pre>";
-		print_r($a);
-		echo "</pre>";
+		$status = $model->get_enum_values('orders','order_status');
+		$pay = $model->get_enum_values('orders','order_payment');
 
-		//return redirect()->to('/');
+
 		$data['temp'] = 'cpanel/orders/index';
 		$data['title'] = 'Orders';
 		$data['menu'] = 'orders';

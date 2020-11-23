@@ -1,13 +1,14 @@
 <script>
 
     var updateId = null;
-    const catTable = $('#usersTable').DataTable({
+    const catTable = $('#usersTable').DataTable( {
         "processing": true,
         "serverSide": true,
         "ajax": {
             "url": "/cpanel/users/loaddata",
             "data": function (d) {
                 d.page = 1;
+
                 console.log(d);
             }
         },
@@ -28,6 +29,8 @@
         ],
         "order": [[0, "desc"]],
         "drawCallback": function () {
+            var page = this.api().page.info().page + 1;
+            console.log(page);
             $('.updateCat').on('click', function () {
                 let dataId = $(this).data("id");
                 window.location.href = 'users/edit/' + dataId;
@@ -44,7 +47,7 @@
                         $.ajax({
                             url: "/cpanel/users/deleteuser",
                             dataType: "json",
-                            data: {id:dataId},
+                            data: {id: dataId},
                             type: "POST",
                             success: function (data) {
                                 Swal.fire('Success!', '', 'success');

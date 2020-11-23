@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/tether.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/shepherd-theme-default.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/tables/datatable/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/toastr.css">
+
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/select/select2.min.css">
 
@@ -40,6 +42,7 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
@@ -487,9 +490,9 @@ $user = $_SESSION['user'];
             </li>
 
 
-             <li class="<?= $menu == 'orders' ? 'active ' : '' ?> nav-item"><a href="/cpanel/orders"><i
+            <li class="<?= $menu == 'orders' ? 'active ' : '' ?> nav-item"><a href="/cpanel/orders"><i
                             class="feather icon-clipboard"></i><span class="menu-title"
-                                                                data-i18n="order">Order management</span></a>
+                                                                     data-i18n="order">Order management</span></a>
             </li>
             <li class=" navigation-header"><span>Apps</span>
             </li>
