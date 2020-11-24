@@ -1,0 +1,309 @@
+body {
+    margin: 0;
+    background: #FFFFFF !important;
+}
+
+header {
+}
+
+img {
+    vertical-align: middle;
+}
+
+.header-container222 {
+    height: 110px;
+    width: 100%;
+    margin: 0;
+    border: 1px solid black;
+}
+
+#header-inner22 {
+    width: 100%;
+    display: inline;
+    padding: 0;
+    margin: 0;
+
+}
+
+.logo {
+    margin-left: 73px;
+    margin-top: 46px;
+    width: 86px;
+    height: 36px;
+}
+
+.logo img {
+    width: 86px;
+    height: 36px;
+}
+
+.search-icon {
+    width: 15px;
+    height: 15px;
+
+}
+
+.search-input input {
+    position: absolute;
+    top: 44px;
+    left: 412px;
+    width: 340px;
+    height: 40px;
+    border: solid 1px black;
+}
+
+.favourite-icon {
+    top: 54px;
+    left: 1423px;
+    width: 25px;
+    height: 25px;
+}
+
+.favourite-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+.cart-icon img {
+    top: 52px;
+    left: 1487px;
+    width: 25px;
+    height: 25px;
+}
+
+.cart-text {
+    top: 47px;
+    left: 1521px;
+    width: 56px;
+    height: 40px;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.avatar-user img {
+    width: 50px;
+    height: 50px;
+    left: 1625px;
+    top: 41px;
+    border-radius: 50%;
+}
+
+.name-user {
+    width: 48px;
+    height: 43px;
+    left: 1692px;
+    top: 44px;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 43px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    color: #000000;
+}
+
+
+.main-menu {
+    left: 0px;
+    background: #FFFFFF;
+    position: fixed;
+    height: 100%;
+    margin: 0px;
+}
+
+.main-menu .title-menu {
+    height: 40px;
+    width: 144px;
+    margin-left: 70px;
+    top: 1px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0px;
+    text-align: left;
+    font-family: Century Gothic;
+
+}
+
+
+.details-menu {
+    margin-top: 56px;
+}
+
+
+.details-menu li img {
+    width: 25px;
+    height: auto;
+    align-items: center;
+    display: inline-block;
+    vertical-align: center;
+}
+
+
+.details-menu li {
+    height: 40px;
+    margin-left: 73px;
+    list-style-type: none;
+    vertical-align: center;
+
+}
+
+.details-menu li span {
+    font-family: Quicksand;
+    font-size: 18px;
+    line-height: 40px;
+    margin-left: 14px;
+}
+
+.main-body {
+    top: 181px;
+    left: 30px;
+    width: auto;
+    height: auto;
+
+}
+.main-body .title-body img {
+    width: 24.99px;
+    height: auto;
+    vertical-align: bottom;
+}
+
+.main-body .title-body span {
+    font-family: Century Gothic;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-left: 20.69px;
+}
+
+
+.right-body {
+    width: 432px;
+    height: 45px;
+    border: 0.5px solid #DAD3D3;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.main-body .right-body img {
+    width: 20px;
+    height: auto;
+}
+
+
+#bestsell {
+    width: auto;
+    height: 500px;
+    border-radius: 15px;
+}
+
+.bestsell-item {
+    margin-top: 69px;
+}
+
+#name-item {
+    font-family: Quicksand;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #0E0D0D;
+    margin-top: 20px;
+}
+
+#classify-item {
+    font-family: Quicksand;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #0E0D0D;
+    margin-top: 2px;
+
+}
+
+#price-item {
+    font-family: Quicksand;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #666565 78%;
+    margin-top: 7px;
+
+}
+
+
+#bestsell-mini-right {
+    width: auto;
+    height: 240px;
+    border-radius: 15px;
+}
+
+
+#name-item-mini-right {
+    font-family: Quicksand;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #0E0D0D;
+    margin-top: 20px;
+}
+
+#classify-item-mini-right {
+    font-family: Quicksand;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #0E0D0D;
+    margin-top: 2px;
+
+}
+
+#price-item-mini-right {
+    font-family: Quicksand;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #666565 78%;
+    margin-top: 7px;
+
+}
+
+#banner-bestsell {
+    width: auto;
+    height: 240px;
+    margin-top: 30px;
+    border-radius: 15px;
+}
+
+
+
+
