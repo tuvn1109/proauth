@@ -4,7 +4,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		$data['temp'] = 'home';
+		$data['temp'] = 'home/index';
 		$data['title'] = 'Home';
 		$data['user'] = session('user');
 		echo view('layout', $data);

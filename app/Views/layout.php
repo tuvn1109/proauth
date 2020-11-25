@@ -23,76 +23,75 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
     <!-- END: Page CSS-->
-
+    <script src="/app-assets/vendors/js/vendors.min.js"></script>
+    <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
     <link href="/main.css" rel='stylesheet'>
     <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
+    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 </head>
 <body>
 <header>
+    <nav class="navbar navbar-expand-lg fixed-top navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-branch logo" href="#">
+                <img src="/logo/life-logo.png">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <div class="row">
+                        <div class="col-1">1</div>
+                        <div class="col-1">1</div>
+                        <div class="col-1">1</div>
+                        <div class="col-1">1</div>
+                    </div>
+                    <div class="search">
+                        <div class="search-icon">
+                            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
+                                 fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                                <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"
+                                      style="border: 2px solid #9A9999"></line>
+                            </svg>
+                        </div>
+                        <div class="search-input">
+                            <input type="text"
+                                   placeholder="Search for items, brands and inspiration...">
+                        </div>
+                    </div>
+                    <li class="nav-item">
+                        <div class="favourite-icon"><img
+                                    src="/logo/heart-logo.png">
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="cart-icon"
+                        ><img src="/logo/cart-logo.png">
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="cart-text">Cart: 2</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="avatar-user"><img
+                                    src="https://s3-alpha-sig.figma.com/img/a897/b22c/eb9b17bd52cfeedd5bace94f3fb287dc?Expires=1607299200&Signature=Xm7BiSGXJDBDUn9Q2~tkAzPHfynZKXK~kaKqkSZpC3O63KyRwvjTp7kJr5MilKNMUWVTBYIjuYuRPSwA0JZoeb5e6Dq8xtQz0OfcJBktASwtEAxlpw5KA6ikN7idPu1JCLIsC9pNeZMv6B15r54r9hli29Tp5lQ3of-zXWx~Im7yzqZk3LHNiX6PKtRVlUoti4UbcILNxnOnRMwPF6rOJuCZeTkYQDOeuViHFP2QjzyEXoNngGgOMziwe2YJjeJuaFsNzyZqQ3antdZZJ4q4Tsikm3hywgusKaVV8JKFOOst4qhzXrH4uH1nddoSVhOtZJABt4pnh3ul7FDYrLxx9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+                        </div>
+                        <div class="name-user">HELLE, ADMIN</div>
+                    </li>
 
-    <nav class="navbar navbar-expand-lg " style="border: 1px solid #0B0B0B">
-        <div class="navbar-brand"><img class="logo" src="/logo/life-logo.png"/></div>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+                </ul>
+            </div>
         </div>
     </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-2">
-                <div class="logo"><img src="/logo/life-logo.png"/></div>
-            </div>
-            <div class="col-2">
-                <div class="search-icon">
-                    <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                        <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" style="border: 2px solid #9A9999"></line>
-                    </svg>
-                </div>
-                <div class="search-input"><input type="text" placeholder="Search for items, brands and inspiration...">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="favourite-icon"><img
-                            src="/logo/heart-logo.png">
-                </div>
-                <div class="cart-icon"><img
-                            src="/logo/cart-logo.png">
-                </div>
-                <div class="cart-text">Cart: 2</div>
-                <div class="avatar-user"><img
-                            src="https://s3-alpha-sig.figma.com/img/a897/b22c/eb9b17bd52cfeedd5bace94f3fb287dc?Expires=1607299200&Signature=Xm7BiSGXJDBDUn9Q2~tkAzPHfynZKXK~kaKqkSZpC3O63KyRwvjTp7kJr5MilKNMUWVTBYIjuYuRPSwA0JZoeb5e6Dq8xtQz0OfcJBktASwtEAxlpw5KA6ikN7idPu1JCLIsC9pNeZMv6B15r54r9hli29Tp5lQ3of-zXWx~Im7yzqZk3LHNiX6PKtRVlUoti4UbcILNxnOnRMwPF6rOJuCZeTkYQDOeuViHFP2QjzyEXoNngGgOMziwe2YJjeJuaFsNzyZqQ3antdZZJ4q4Tsikm3hywgusKaVV8JKFOOst4qhzXrH4uH1nddoSVhOtZJABt4pnh3ul7FDYrLxx9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
-                </div>
-                <div class="name-user">HELLE, ADMIN</div>
-            </div>
-        </div>
-    </div>
 </header>
-<div class="container-fluid">
+<div class="space-navbar container-fluid">
     <div class="row">
         <div class="col-2">
             <section class="main-menu ">
@@ -128,64 +127,46 @@
 
         </div>
         <div class="col-10">
-            <section class="main-body">
+			<?= view($temp, $this->data) ?>
+
+        </div>
+    </div>
+
+    <div class="row" id="footer">
+        <div class="col-2"></div>
+        <div class="col-10">
+            <section id="photo-fr-cus">
                 <div class="row">
-                    <div class="col-3">
-                        <div class="title-body"><img src="/logo/bestselling-logo.png"><span>Best Selling</span></div>
-
-                    </div>
-                </div>
-
-
-                <div class="row bestsell-item">
-                    <div class="col-6">
-                        <div class="row">
-                            <div class="col-6">
-                                <div id="bestsell" style="background-image: url('/logo/bestsell1.jpg')"></div>
-                                <div id="name-item">Fancy - From Crazy World</div>
-                                <div id="classify-item">Personalized Shirt</div>
-                                <div id="price-item">$34.99 USD</div>
-                            </div>
-                            <div class="col-6">
-                                <div id="bestsell" style="background-image: url('/logo/bestsell1.jpg')"></div>
-                                <div id="name-item">Be Careful - There is no plate...</div>
-                                <div id="classify-item">Personalized Shirt</div>
-                                <div id="price-item">$34.99 USD</div>
-                            </div>
+                    <div class="col-12 center">
+                        <div class="owl-carousel">
+                            <div><img src="http://proauth.com/logo/mug1.jpg" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/case1.jpg" class="img-fluid"></div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="row">
-                            <div class="col-4">
-                                <div id="bestsell-mini-right"
-                                     style="background-image: url('/logo/bestsell1.jpg')"></div>
-                                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                                <div id="classify-item-mini-right">Personalized Shirt</div>
-                                <div id="price-item-mini-right">$34.99 USD</div>
-                            </div>
-                            <div class="col-4">
-                                <div id="bestsell-mini-right"
-                                     style="background-image: url('/logo/bestsell1.jpg')"></div>
-                                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                                <div id="classify-item-mini-right">Personalized Shirt</div>
-                                <div id="price-item-mini-right">$34.99 USD</div>
-                            </div>
-                            <div class="col-4">
-                                <div id="bestsell-mini-right"
-                                     style="background-image: url('/logo/bestsell1.jpg')"></div>
-                                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                                <div id="classify-item-mini-right">Personalized Shirt</div>
-                                <div id="price-item-mini-right">$34.99 USD</div>
-                            </div>
-                            <div class="col-12" id="banner-bestsell"
-                                 style="background-image: url('/logo/banner-bestsell.png')"></div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
         </div>
     </div>
 </div>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+<script>
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        loop: true,
+        nav: true,
+        margin: 10,
+        responsive: {}
+    });
+    owl.on('mousewheel', '.owl-stage', function (e) {
+        if (e.deltaY > 0) {
+            owl.trigger('next.owl');
+        } else {
+            owl.trigger('prev.owl');
+        }
+        e.preventDefault();
+    });
+</script>
 </body>
 </html>
