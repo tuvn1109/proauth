@@ -34,66 +34,59 @@
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-branch logo" href="#">
-                <img src="/logo/life-logo.png">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <div class="row">
-                        <div class="col-1">1</div>
-                        <div class="col-1">1</div>
-                        <div class="col-1">1</div>
-                        <div class="col-1">1</div>
-                    </div>
-                    <div class="search">
-                        <div class="search-icon">
-                            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
-                                 fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                                <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"
-                                      style="border: 2px solid #9A9999"></line>
-                            </svg>
-                        </div>
-                        <div class="search-input">
-                            <input type="text"
-                                   placeholder="Search for items, brands and inspiration...">
-                        </div>
-                    </div>
-                    <li class="nav-item">
-                        <div class="favourite-icon"><img
-                                    src="/logo/heart-logo.png">
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="cart-icon"
-                        ><img src="/logo/cart-logo.png">
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="cart-text">Cart: 2</div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="avatar-user"><img
-                                    src="https://s3-alpha-sig.figma.com/img/a897/b22c/eb9b17bd52cfeedd5bace94f3fb287dc?Expires=1607299200&Signature=Xm7BiSGXJDBDUn9Q2~tkAzPHfynZKXK~kaKqkSZpC3O63KyRwvjTp7kJr5MilKNMUWVTBYIjuYuRPSwA0JZoeb5e6Dq8xtQz0OfcJBktASwtEAxlpw5KA6ikN7idPu1JCLIsC9pNeZMv6B15r54r9hli29Tp5lQ3of-zXWx~Im7yzqZk3LHNiX6PKtRVlUoti4UbcILNxnOnRMwPF6rOJuCZeTkYQDOeuViHFP2QjzyEXoNngGgOMziwe2YJjeJuaFsNzyZqQ3antdZZJ4q4Tsikm3hywgusKaVV8JKFOOst4qhzXrH4uH1nddoSVhOtZJABt4pnh3ul7FDYrLxx9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
-                        </div>
-                        <div class="name-user">HELLE, ADMIN</div>
-                    </li>
+<nav class="navbar navbar-expand-lg fixed-top  navbar  navbar-light">
+    <div class="container-fluid">
 
-                </ul>
-            </div>
+        <a class="navbar-branch logo" href="#">
+            <img src="/logo/life-logo.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto ">
+                <li class="nav-item form-inline my-2 my-lg-0">
+                    <div class="search-icon">
+                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                            <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"
+                                  style="border: 2px solid #9A9999"></line>
+                        </svg>
+                    </div>
+                    <input class="form-control mr-sm-2" type="search" id="search-input"
+                           placeholder="Search for items, brands and inspiration..." aria-label="Search">
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto ">
+                <li class="nav-item form-inline" style="padding-right: 33px">
+                    <div class="favourite-icon"><img src="/logo/heart-logo.png"></div>
+                </li>
+                <li class="nav-item form-inline" style="padding-right: 9px">
+                    <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
+                </li>
+                <li class="nav-item form-inline" style="padding-right: 46px">
+                    <div class="cart-text">Cart: 2</div>
+
+                </li>
+
+                <li class="nav-item form-inline " style="padding-right: 17px">
+                    <div class="avatar-user" style="padding-right: 17px"><img
+                                src="https://s3-alpha-sig.figma.com/img/a897/b22c/eb9b17bd52cfeedd5bace94f3fb287dc?Expires=1607299200&Signature=Xm7BiSGXJDBDUn9Q2~tkAzPHfynZKXK~kaKqkSZpC3O63KyRwvjTp7kJr5MilKNMUWVTBYIjuYuRPSwA0JZoeb5e6Dq8xtQz0OfcJBktASwtEAxlpw5KA6ikN7idPu1JCLIsC9pNeZMv6B15r54r9hli29Tp5lQ3of-zXWx~Im7yzqZk3LHNiX6PKtRVlUoti4UbcILNxnOnRMwPF6rOJuCZeTkYQDOeuViHFP2QjzyEXoNngGgOMziwe2YJjeJuaFsNzyZqQ3antdZZJ4q4Tsikm3hywgusKaVV8JKFOOst4qhzXrH4uH1nddoSVhOtZJABt4pnh3ul7FDYrLxx9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+                    </div>
+                    <div class="name-user">HELLE, ADMIN</div>
+                </li>
+            </ul>
+
         </div>
-    </nav>
-</header>
+    </div>
+</nav>
+
 <div class="space-navbar container-fluid">
     <div class="row">
-        <div class="col-2">
+        <div class="col-3" >
             <section class="main-menu ">
                 <div class="title-menu">Explore</div>
                 <div class="details-menu">
@@ -104,6 +97,9 @@
                         <div class="text-menu"><img src="/logo/mug-logo.png"><span>Mug</span></div>
                     </li>
                     <li>
+                        <div class="text-menu"><img src="/logo/phone-logo.png"><span>Phone Case</span></div>
+                    </li>
+                    <li>
                         <div class="text-menu"><img src="/logo/collection-logo.png"><span>Collection</span></div>
                     </li>
 
@@ -111,35 +107,35 @@
                         <div class="text-menu"><img src="/logo/sale-logo.png"><span>Sale Off</span></div>
                     </li>
                     <li>
-
                         <div class="text-menu"><img src="/logo/trackorder-logo.png"><span>Track Order</span></div>
                     </li>
                     <li>
-
                         <div class="text-menu"><img src="/logo/faq-logo.png"><span>FAQs</span></div>
                     </li>
                     <li id="helpcenter">
-
                         <div class="text-menu"><img src="/logo/help-logo.png"><span>Help Center</span></div>
+                    </li>
+                    <li>
+                        <div class="text-menu"><p>© Copyright 2020 - <span style="color: #f37061;margin-left: 0px !important;">Life.</span></p></div>
                     </li>
                 </div>
             </section>
 
         </div>
-        <div class="col-10">
+        <div class="col-9">
 			<?= view($temp, $this->data) ?>
 
         </div>
     </div>
 
     <div class="row" id="footer">
-        <div class="col-2"></div>
-        <div class="col-10">
+        <div class="col-3"></div>
+        <div class="col-9">
             <section id="photo-fr-cus">
                 <div class="row">
                     <div class="col-12 center">
                         <div class="owl-carousel">
-                            <div><img src="http://proauth.com/logo/mug1.jpg" class="img-fluid"></div>
+                            <div class="img-cus"><img src="http://proauth.com/logo/mug1.jpg" class="img-fluid"></div>
                             <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
                             <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
                             <div><img src="http://proauth.com/logo/case1.jpg" class="img-fluid"></div>

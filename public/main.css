@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background: #FFFFFF !important;
+    padding: 0 75px 0 75px;
 }
 
 header {
@@ -26,8 +27,6 @@ img {
 }
 
 .logo {
-    margin-left: 73px;
-    margin-top: 46px;
     width: 86px;
     height: 36px;
 }
@@ -44,18 +43,11 @@ img {
 }
 
 .search-icon {
-    position: absolute;
-    left: 376px;
-    top: 56px;
     width: 15px;
     height: 15px;
-
 }
 
-.search-input input {
-    position: absolute;
-    top: 44px;
-    left: 412px;
+#search-input {
     width: 340px;
     height: 40px;
     border: none;
@@ -63,7 +55,6 @@ img {
 
 .favourite-icon {
     top: 54px;
-    left: 1423px;
     width: 25px;
     height: 25px;
 }
@@ -88,7 +79,7 @@ img {
     font-family: Quicksand;
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 40px;
     display: flex;
     align-items: center;
@@ -104,14 +95,10 @@ img {
 }
 
 .name-user {
-    width: 48px;
-    height: 43px;
-    left: 1692px;
-    top: 44px;
     font-family: Quicksand;
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 43px;
     display: flex;
     align-items: center;
@@ -120,36 +107,43 @@ img {
 }
 
 .main-menu {
-    left: 0px;
-    background: #FFFFFF;
-    position: fixed;
     height: 100%;
-    margin: 0px;
+    position: fixed;
 }
 
-.main-menu .details-menu li .text-menu span {
+.text-menu span {
     color: #000000;
     font-weight: bold;
 }
 
+.text-menu p {
+    font-family: Quicksand;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #000000;
+
+}
+
 .main-menu .title-menu {
-    height: 40px;
-    width: 144px;
-    margin-left: 70px;
+    height: 37px;
+    width: auto;
     top: 1px;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: 40px;
     letter-spacing: 0px;
-    text-align: left;
     font-family: Century Gothic;
     color: #000000;
 
 }
 
 .details-menu {
-    margin-top: 56px;
+    margin-top: 40px;
 }
 
 .details-menu li img {
@@ -162,15 +156,14 @@ img {
 
 .details-menu li {
     height: 40px;
-    margin-left: 73px;
     list-style-type: none;
     vertical-align: center;
-
+    margin-bottom: 20px;
 }
 
 .details-menu li span {
     font-family: Quicksand;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 40px;
     margin-left: 14px;
 }
@@ -191,7 +184,7 @@ img {
 
 .main-body .title-body span {
     font-family: Century Gothic;
-    font-size: 38px;
+    font-size: 35px;
     font-style: normal;
     font-weight: 700;
     line-height: 40px;
@@ -325,10 +318,10 @@ img {
 
 #ellipse-item {
     position: absolute;
-    top: 9px;
-    left: 4px;
-    height: 45px;
-    width: 45px;
+    top: 2%;
+    left: 9%;
+    height: 40px;
+    width: 40px;
     border-radius: 100px;
     background: #2ECC71;
     display: flex;
@@ -488,4 +481,13 @@ img {
     width: 210px;
     border-radius: 0px;
 
+}
+
+.navbar {
+    height: 70px;
+    padding: 0px 75px 0px 75px !important;
+}
+
+.space-navbar {
+    margin-top: 140px;
 }

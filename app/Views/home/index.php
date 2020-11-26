@@ -16,6 +16,7 @@
                     <div id="name-item">Fancy - From Crazy World</div>
                     <div id="classify-item">Personalized Shirt</div>
                     <div id="price-item">$34.99 USD</div>
+                    <div id="ellipse-item"><span>NEW</span></div>
                 </div>
                 <div class="col-sm-6 col-12">
                     <div id="bestsell"><img src="/logo/bestsell1.jpg" class="img-fluid"
@@ -23,6 +24,7 @@
                     <div id="name-item">Be Careful - There is no plate...</div>
                     <div id="classify-item">Personalized Shirt</div>
                     <div id="price-item">$34.99 USD</div>
+                    <div id="ellipse-item"><span>NEW</span></div>
                 </div>
             </div>
         </div>
@@ -33,18 +35,24 @@
                     <div id="name-item-mini-right">Fancy - From Crazy World</div>
                     <div id="classify-item-mini-right">Personalized Shirt</div>
                     <div id="price-item-mini-right">$34.99 USD</div>
+                    <div id="ellipse-item"><span>NEW</span></div>
+
                 </div>
                 <div class="col-md-4 col-6">
                     <div id="bestsell-mini-right"><img src="/logo/mug1.jpg" class="img-fluid"></div>
                     <div id="name-item-mini-right">Fancy - From Crazy World</div>
                     <div id="classify-item-mini-right">Personalized Shirt</div>
                     <div id="price-item-mini-right">$34.99 USD</div>
+                    <div id="ellipse-item"><span>NEW</span></div>
+
                 </div>
                 <div class="col-md-4 col-6">
                     <div id="bestsell-mini-right"><img src="/logo/mug1.jpg" class="img-fluid"></div>
                     <div id="name-item-mini-right">Fancy - From Crazy World</div>
                     <div id="classify-item-mini-right">Personalized Shirt</div>
                     <div id="price-item-mini-right">$34.99 USD</div>
+                    <div id="ellipse-item"><span>NEW</span></div>
+
                 </div>
                 <div class="col-md-12 col-12" id="banner-bestsell">
                     <div id="bestsell-mini-right"><img src="/logo/banner-bestsell.png" class="img-fluid">
@@ -88,10 +96,10 @@
         </div>
         <div class="col-12" style="margin-top: 50px">
             <div class="row">
-                <div class="col-4 bg-blue" id="div-text"><span>FREE SHIPPING ALL ORDER OVER $100</span>
+                <div class="col-md-4 col-12 bg-blue" id="div-text"><span>FREE SHIPPING ALL ORDER OVER $100</span>
                 </div>
-                <div class="col-4 bg-orange" id="div-text"><span>BLACK FRIDAY SALE OFF TO 50%</span></div>
-                <div class="col-4 bg-yellow" id="div-text"><span>WE SUPPORT 24 HOURS A DAY</span></div>
+                <div class="col-md-4 col-12 bg-orange" id="div-text"><span>BLACK FRIDAY SALE OFF TO 50%</span></div>
+                <div class="col-md-4 col-12 bg-yellow" id="div-text"><span>WE SUPPORT 24 HOURS A DAY</span></div>
             </div>
         </div>
         <div class="col-12" style="margin-top: 55px">
@@ -108,11 +116,15 @@
         <div class="col-12 center">
             <div class="title-category"><span>T-shirt</span></div>
         </div>
-
-        <div class="col-12 center" style="margin-top: 30px">
-            <div class="choice-of-type" style="width: 240px">
-                <div class="element-c "><span><img src="/logo/girl-logo.png"> Women</span></div>
-                <div class="element-c active-type"><span><img src="/logo/man-logo.png"> Men</span></div>
+        <div class="col-12 center">
+            <div class="title-category"><span>T-shirt</span></div>
+        </div>
+        <div class="col-12 center">
+            <div class="col-12" style="margin-top: 30px">
+                <div class="choice-of-type" style="width: 240px">
+                    <div class="element-c "><span><img src="/logo/girl-logo.png"> Women</span></div>
+                    <div class="element-c active-type"><span><img src="/logo/man-logo.png"> Men</span></div>
+                </div>
             </div>
         </div>
     </div>
