@@ -45,7 +45,28 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto ">
+            <ul class="navbar-nav ml-3 ">
+                <li class="nav-item mr-1">
+                    <div class="item-menu active-menu"><span>T-Shirts</span></div>
+                </li>
+                <li class="nav-item  mr-1">
+                    <div class="item-menu active-menu"><span>Mug</span></div>
+                </li>
+                <li class="nav-item  mr-1">
+                    <div class="item-menu  active-menu"><span>Phone Case</span></div>
+
+                </li>
+                <li class="nav-item  mr-1">
+                    <div class="item-menu  active-menu"><span>Sale Off</span></div>
+
+                </li>
+                <li class="nav-item  mr-1">
+                    <div class="item-menu"><span>Track Order</span></div>
+                </li>
+                <li class="nav-item">
+                    <div class="item-menu"><span>FAQs</span></div>
+                </li>
+
                 <li class="nav-item form-inline my-2 my-lg-0">
                     <div class="search-icon">
                         <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
@@ -84,54 +105,15 @@
     </div>
 </nav>
 
-<div class="space-navbar container-fluid">
+<div class="space-navbar container">
     <div class="row">
-        <div class="col-3">
-            <section class="main-menu ">
-                <div class="title-menu">Explore</div>
-                <div class="details-menu">
-                    <li>
-                        <div class="text-menu"><img src="/logo/tshirt-logo.png"><span>T-Shirts</span></div>
-                    </li>
-                    <li>
-                        <div class="text-menu"><img src="/logo/mug-logo.png"><span>Mug</span></div>
-                    </li>
-                    <li>
-                        <div class="text-menu"><img src="/logo/phone-logo.png"><span>Phone Case</span></div>
-                    </li>
-                    <li>
-                        <div class="text-menu"><img src="/logo/collection-logo.png"><span>Collection</span></div>
-                    </li>
-
-                    <li>
-                        <div class="text-menu"><img src="/logo/sale-logo.png"><span>Sale Off</span></div>
-                    </li>
-                    <li>
-                        <div class="text-menu"><img src="/logo/trackorder-logo.png"><span>Track Order</span></div>
-                    </li>
-                    <li>
-                        <div class="text-menu"><img src="/logo/faq-logo.png"><span>FAQs</span></div>
-                    </li>
-                    <li id="helpcenter">
-                        <div class="text-menu"><img src="/logo/help-logo.png"><span>Help Center</span></div>
-                    </li>
-                    <li>
-                        <div class="text-menu"><p>© Copyright 2020 - <span
-                                        style="color: #f37061;margin-left: 0px !important;">Life.</span></p></div>
-                    </li>
-                </div>
-            </section>
-
-        </div>
-        <div class="col-9">
+        <div class="col-12">
 			<?= view($temp, $this->data) ?>
-
         </div>
     </div>
 
     <div class="row">
-        <div class="col-3"></div>
-        <div class="col-9">
+        <div class="col-12">
             <section id="signup-save">
                 <div class="row">
                     <div class="col-12  d-flex justify-content-center">
@@ -142,7 +124,7 @@
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         <input id="input-mail-sub" type="text" placeholder="Enter your email here...">
-                        <button id="input-sub" type="button" >SUBSCRIBE</button>
+                        <button id="input-sub" type="button">SUBSCRIBE</button>
                     </div>
                 </div>
             </section>

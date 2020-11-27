@@ -2,7 +2,6 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="title-body"><img src="/logo/bestselling-logo.png"><span>Best Selling</span></div>
-
         </div>
     </div>
 
@@ -94,37 +93,40 @@
             </div>
 
         </div>
-        <div class="col-12" style="margin-top: 50px">
-            <div class="row">
-                <div class="col-md-4 col-12 bg-blue" id="div-text"><span>FREE SHIPPING ALL ORDER OVER $100</span>
-                </div>
-                <div class="col-md-4 col-12 bg-orange" id="div-text"><span>BLACK FRIDAY SALE OFF TO 50%</span></div>
-                <div class="col-md-4 col-12 bg-yellow" id="div-text"><span>WE SUPPORT 24 HOURS A DAY</span></div>
+
+
+    </div>
+
+</section>
+<section id="incentives">
+    <div class="row">
+        <div class="col-md-4 col-12">
+            <div class="bg-blue" id="div-text">
+                <span>FREE SHIPPING ALL ORDER OVER $100</span>
             </div>
         </div>
-        <div class="col-12" style="margin-top: 55px">
-            <div class="row">
-                <div class="col-12 " id="quote-text"><span>We design our products with a passion — 100% made in America.<br>Products by <b>Life.</b></span>
-                </div>
+        <div class="col-md-4 col-12">
+            <div class="bg-orange" id="div-text">
+                <span>BLACK FRIDAY SALE OFF TO 50%</span>
+            </div>
+        </div>
+        <div class="col-md-4 col-12">
+            <div class="bg-yellow" id="div-text">
+                <span>WE SUPPORT 24 HOURS A DAY</span>
             </div>
         </div>
     </div>
-
 </section>
 <section class="category">
     <div class="row">
         <div class="col-12 center">
             <div class="title-category"><span>T-shirt</span></div>
         </div>
-        <div class="col-12 center">
-            <div class="title-category"><span>T-shirt</span></div>
-        </div>
-        <div class="col-12 center">
-            <div class="col-12" style="margin-top: 30px">
-                <div class="choice-of-type" style="width: 240px">
-                    <div class="element-c "><span><img src="/logo/girl-logo.png"> Women</span></div>
-                    <div class="element-c active-type"><span><img src="/logo/man-logo.png"> Men</span></div>
-                </div>
+
+        <div class="col-12 d-flex justify-content-center" style="margin-top: 30px">
+            <div class="choice-of-type" style="width: 240px">
+                <div class="element-c "><span><img src="/logo/girl-logo.png"> Women</span></div>
+                <div class="element-c active-type"><span><img src="/logo/man-logo.png"> Men</span></div>
             </div>
         </div>
     </div>
@@ -217,11 +219,11 @@
 </section>
 <section class="category">
     <div class="row">
-        <div class="col-12 center">
+        <div class="col-12 d-flex justify-content-center">
             <div class="title-category"><span>Gifts & Accessories</span></div>
         </div>
 
-        <div class="col-12 center" style="margin-top: 30px">
+        <div class="col-12 d-flex justify-content-center" style="margin-top: 30px">
             <div class="choice-of-type" style="width: 240px">
                 <div class="element-c  active-type"><span><img src="/logo/mug-logo.png"> Mug</span></div>
                 <div class="element-c"><span><img src="/logo/phone-logo.png"> Case</span></div>
@@ -319,7 +321,7 @@
         </div>
     </div>
 </section>
-<section class="feelback">
+<section class="custom-talk">
     <div class="row">
         <div class="col-12 center">
             <div class="title-category"><span>Don't take our word for it</span></div>
