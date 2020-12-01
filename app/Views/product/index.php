@@ -20,10 +20,15 @@
 
 <section id="main-product">
     <div class="row ">
-        <div class="col-md-6 col-12 d-flex  justify-content-center"
-             style="border: 1px solid red;">
-            <div class="img-pro">
-                <img src="http://proauth.com/logo/bestsell1.jpg"></div>
+        <div class="col-md-6 col-12 d-flex  justify-content-center">
+            <div class="content-carousel" id="c1">
+                <div class="owl-carousel">
+                    <div class="item"><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
+                    <div class="item"><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
+                    <div class="item"><img src="http://proauth.com/logo/case1.jpg" class="img-fluid"></div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-6 col-12 d-flex justify-content-center">
             <div class="row">
@@ -162,7 +167,8 @@
                         <div id="div-note">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-12"><span style="color: red">*</span> Please make sure that all the options you have chosen are correct before clicking on the "Add To Cart" button.
+                                    <div class="col-12"><span style="color: red">*</span> Please make sure that all the
+                                        options you have chosen are correct before clicking on the "Add To Cart" button.
                                     </div>
                                 </div>
                             </div>
@@ -170,9 +176,8 @@
 
                     </div>
 
-                    
-                    <div id="div-addcart"></div>
 
+                    <div id="div-addcart"></div>
 
 
                 </div>

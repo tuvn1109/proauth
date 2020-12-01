@@ -169,16 +169,62 @@
 </div>
 <script src="owlcarousel/owl.carousel.min.js"></script>
 <script>
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        items: 7,
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 1000,
-        autoplayHoverPause: true
+    $(document).ready(function () {
+
+        $(".owl-carousel").owlCarousel({
+            nav: true,
+            loop: true,
+            items: 1,
+            margin: 0,
+            stagePadding: 0,
+            autoplay: false,
+            navClass: ['btn-up', 'btn-down'],
+            navContainerClass: ['owl-nav-pro'],
+        });
+
+        dotcount = 1;
+
+        $('.owl-dot').each(function () {
+            $(this).addClass('dotnumber' + dotcount);
+            $(this).attr('data-info', dotcount);
+            dotcount = dotcount + 1;
+        });
+
+        slidecount = 1;
+
+        $('.owl-item').not('.cloned').each(function () {
+            $(this).addClass('slidenumber' + slidecount);
+            slidecount = slidecount + 1;
+        });
+
+        $('.owl-dot').each(function () {
+            grab = $(this).data('info');
+            slidegrab = $('.slidenumber' + grab + ' img').attr('src');
+            $(this).css("background-image", "url(" + slidegrab + ")");
+        });
+
+        amount = $('.owl-dot').length;
+        gotowidth = 100 / amount;
+        $('.owl-dot').css("height", gotowidth + "%");
+        $('.owl-dot').css("outline", "none");
+
     });
-    owl.trigger('play.owl.autoplay', [1000])
+    $(".btn-up span").html("<img src='/logo/arrowup.png'>");
+    $(".owl-nav .owl-next span").innerHTML = "<img src='/logo/arrowup.png' >";
+
+
+    $('.owl-item').on('click', function (event) {
+        var $this = $(this);
+        alert(1);
+        if ($this.hasClass('clicked')) {
+            $this.removeClass('clicked');
+        } else {
+            $('#c1').find(".clicked").removeClass('clicked');
+            $this.addClass('clicked');
+        }
+    });
+
+
 </script>
 </body>
 </html>
