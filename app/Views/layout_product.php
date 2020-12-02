@@ -45,19 +45,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-3 ">
+            <ul class="navbar-nav ml-3  d-flex justify-content-center ">
                 <li class="nav-item mr-1">
                     <div class="item-menu active-menu"><span>T-Shirts</span></div>
                 </li>
                 <li class="nav-item  mr-1">
-                    <div class="item-menu active-menu"><span>Mug</span></div>
+                    <div class="item-menu "><span>Mug</span></div>
                 </li>
                 <li class="nav-item  mr-1">
-                    <div class="item-menu  active-menu"><span>Phone Case</span></div>
+                    <div class="item-menu  "><span>Phone Case</span></div>
 
                 </li>
                 <li class="nav-item  mr-1">
-                    <div class="item-menu  active-menu"><span>Sale Off</span></div>
+                    <div class="item-menu  "><span>Sale Off</span></div>
 
                 </li>
                 <li class="nav-item  mr-1">
@@ -67,36 +67,42 @@
                     <div class="item-menu"><span>FAQs</span></div>
                 </li>
 
-                <li class="nav-item form-inline my-2 my-lg-0">
-                    <div class="search-icon">
-                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
-                             fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                            <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"
-                                  style="border: 2px solid #9A9999"></line>
-                        </svg>
+                <li class="nav-item">
+                    <div class="item-menu">
+                        <div class="search-icon">
+                            <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
+                                 fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                                <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"
+                                      style="border: 2px solid #9A9999"></line>
+                            </svg>
+                        </div>
                     </div>
+                </li>
+                <li class="nav-item">
                     <input class="mr-sm-2" type="search" id="search-input"
                            placeholder="Search for items, brands and inspiration..." aria-label="Search">
                 </li>
 
             </ul>
             <ul class="navbar-nav ml-auto ">
-                <li class="nav-item form-inline" style="padding-right: 33px">
+                <li class="nav-item form-inline mr-1">
                     <div class="favourite-icon"><img src="/logo/heart-logo.png"></div>
                 </li>
-                <li class="nav-item form-inline" style="padding-right: 9px">
+                <li class="nav-item form-inline mr-1">
                     <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
                 </li>
-                <li class="nav-item form-inline" style="padding-right: 46px">
+                <li class="nav-item form-inline mr-1">
                     <div class="cart-text">Cart: 2</div>
 
                 </li>
-
-                <li class="nav-item form-inline " style="padding-right: 17px">
-                    <div class="avatar-user" style="padding-right: 17px"><img
+                <li class="nav-item form-inline mr-1">
+                    <div class="avatar-user"><img
                                 src="https://s3-alpha-sig.figma.com/img/a897/b22c/eb9b17bd52cfeedd5bace94f3fb287dc?Expires=1607299200&Signature=Xm7BiSGXJDBDUn9Q2~tkAzPHfynZKXK~kaKqkSZpC3O63KyRwvjTp7kJr5MilKNMUWVTBYIjuYuRPSwA0JZoeb5e6Dq8xtQz0OfcJBktASwtEAxlpw5KA6ikN7idPu1JCLIsC9pNeZMv6B15r54r9hli29Tp5lQ3of-zXWx~Im7yzqZk3LHNiX6PKtRVlUoti4UbcILNxnOnRMwPF6rOJuCZeTkYQDOeuViHFP2QjzyEXoNngGgOMziwe2YJjeJuaFsNzyZqQ3antdZZJ4q4Tsikm3hywgusKaVV8JKFOOst4qhzXrH4uH1nddoSVhOtZJABt4pnh3ul7FDYrLxx9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
                     </div>
+                </li>
+
+                <li class="nav-item form-inline ">
                     <div class="name-user">HELLE, ADMIN</div>
                 </li>
             </ul>
@@ -209,13 +215,12 @@
         $('.owl-dot').css("outline", "none");
 
     });
-    $(".btn-up span").html("<img src='/logo/arrowup.png'>");
-    $(".owl-nav .owl-next span").innerHTML = "<img src='/logo/arrowup.png' >";
+    $(".btn-up").html("<img src='/logo/arrowup.png'>");
+    $(".owl-nav .owl-next span").html("<img src='/logo/arrowup.png' >");
 
 
     $('.owl-item').on('click', function (event) {
         var $this = $(this);
-        alert(1);
         if ($this.hasClass('clicked')) {
             $this.removeClass('clicked');
         } else {

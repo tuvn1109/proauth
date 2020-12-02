@@ -494,6 +494,13 @@ $user = $_SESSION['user'];
                             class="feather icon-clipboard"></i><span class="menu-title"
                                                                      data-i18n="order">Order management</span></a>
             </li>
+            <li class=" navigation-header"><span>Product</span>
+            </li>
+            <li class="<?= $menu == 'producttype' ? 'active ' : '' ?> nav-item"><a href="/cpanel/producttype"><i
+                            class="feather icon-clipboard"></i><span class="menu-title"
+                                                                     data-i18n="order">Product type</span></a>
+            </li>
+
             <li class=" navigation-header"><span>Apps</span>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title"
