@@ -141,13 +141,6 @@
                     <div class="col-12">
                         <span class="title">Photos from customers</span>
                     </div>
-                    <div class="col-12 d-flex justify-content-center" id="photo">
-                        <div class="owl-carousel">
-                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/case1.jpg" class="img-fluid"></div>
-                        </div>
-                    </div>
                 </div>
             </section>
             <section id="footer">
@@ -210,7 +203,7 @@
         });
 
         amount = $('.owl-dot').length;
-        gotowidth = 100 / amount;
+        gotowidth = 100 / 6;
         $('.owl-dot').css("height", gotowidth + "%");
         $('.owl-dot').css("outline", "none");
 

@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/select/select2.min.css">
 
-
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/file-uploaders/dropzone.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -46,6 +46,8 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/file-uploaders/dropzone.css">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -496,6 +498,10 @@ $user = $_SESSION['user'];
             </li>
             <li class=" navigation-header"><span>Product</span>
             </li>
+            <li class="<?= $menu == 'properties' ? 'active ' : '' ?> nav-item"><a href="/cpanel/properties"><i
+                            class="feather icon-codepen"></i><span class="menu-title"
+                                                                   data-i18n="order">Properties</span></a>
+            </li>
             <li class="<?= $menu == 'producttype' ? 'active ' : '' ?> nav-item"><a href="/cpanel/producttype"><i
                             class="feather icon-clipboard"></i><span class="menu-title"
                                                                      data-i18n="order">Product type</span></a>
@@ -592,6 +598,8 @@ $user = $_SESSION['user'];
 <script src="/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
 <script src="/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
 <script src="/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"></script>
+<script src="/app-assets/vendors/js/extensions/dropzone.min.js"></script>
+
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -604,6 +612,8 @@ $user = $_SESSION['user'];
 <script src="/app-assets/js/scripts/datatables/datatable.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <script src="/app-assets/js/scripts/forms/select/form-select2.js"></script>
+
+
 <!-- END: Page JS-->
 <?php
 echo view($temp . '_js', $this->data);
