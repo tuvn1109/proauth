@@ -28,10 +28,11 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
-    <link href="/main.css" rel='stylesheet'>
     <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
+    <link href="/main.css" rel='stylesheet'>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top  navbar  navbar-light">
@@ -86,7 +87,7 @@
 
 <div class="space-navbar container-fluid">
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <section class="main-menu ">
                 <div class="title-menu">Explore</div>
                 <div class="details-menu">
@@ -97,7 +98,8 @@
                         <div class="text-menu"><img src="/logo/mug-logo.png"><span>Mug</span></div>
                     </li>
                     <li>
-                        <div class="text-menu"><img src="/logo/phone-logo.png"><span>Phone Case</span></div>
+                        <div class="text-menu"><img src="/logo/phone-logo.png"
+                                                    style="width: 20px;"><span>Phone Case</span></div>
                     </li>
                     <li>
                         <div class="text-menu"><img src="/logo/collection-logo.png"><span>Collection</span></div>
@@ -123,7 +125,7 @@
             </section>
 
         </div>
-        <div class="col-9">
+        <div class="col-10">
 			<?= view($temp, $this->data) ?>
 
         </div>
@@ -142,7 +144,7 @@
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         <input id="input-mail-sub" type="text" placeholder="Enter your email here...">
-                        <button id="input-sub" type="button" >SUBSCRIBE</button>
+                        <button id="input-sub" type="button">SUBSCRIBE</button>
                     </div>
                 </div>
             </section>

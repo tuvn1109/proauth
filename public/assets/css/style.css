@@ -9,6 +9,39 @@ NOTE:
 ------
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
-.form-label-group label{
+.form-label-group label {
     font-size: 11px !important;
+}
+
+.transition-none {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+
+.image-preview {
+    background: #ff000000;
+    position: relative;
+    display: inline-block;
+    margin: 17px;
+    vertical-align: top;
+    border: 1px solid #acacac;
+    padding: 6px 6px 6px 6px;
+}
+
+
+.image-preview .detail {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background: #ebebeb;
+    padding: 5px;
+    margin-bottom: 22px;
+}
+
+.image-preview .detail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
 }

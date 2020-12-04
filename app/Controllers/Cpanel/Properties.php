@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Cpanel;
 
-use App\Models\PropertiesDetail;
+use App\Models\PropertiesDetailModel;
 use App\Models\PropertiesModel;
 use App\Models\ProtypeModel;
 
@@ -14,6 +14,28 @@ class Properties extends CpanelController
 		$data['title'] = 'Properties';
 		$data['menu'] = 'properties';
 		echo view('cpanel/layout', $data);
+	}
+
+	public function image()
+	{
+		$path = $this->request->getVar('name');
+		$filepath = $checkpath = WRITEPATH . 'uploads/' . $path;
+		if (!file_exists($checkpath)) {
+			$filepath = WRITEPATH . 'uploads/default/img-not-found.png';
+		}
+		if (!is_readable($checkpath)) {
+			$filepath = WRITEPATH . 'uploads/default/img-not-found.png';
+		}
+		http_response_code(200);
+		header('Content-Length: ' . filesize($filepath));
+		$finfo = finfo_open(FILEINFO_MIME_TYPE);
+		$fileinfo = pathinfo($filepath);
+		header('Content-Type: ' . finfo_file($finfo, $filepath));
+		finfo_close($finfo);
+		header('Content-Disposition: attachment; filename="' . basename($fileinfo['basename']) . '"'); // feel free to change the suggested filename
+		ob_clean();
+		flush();
+		readfile($filepath);
 	}
 
 
@@ -52,7 +74,7 @@ class Properties extends CpanelController
 	public function insert()
 	{
 		$modelProperties = new PropertiesModel();
-		$modelProDetail = new PropertiesDetail();
+		$modelProDetail = new PropertiesDetailModel();
 		$files = $this->request->getFiles();
 		$name = $this->request->getPost('value');
 
@@ -81,10 +103,28 @@ class Properties extends CpanelController
 			}
 		}
 
+
 	}
 
 
 	public function edit()
+	{
+		$modelProperties = new PropertiesModel();
+		$modelProDetail = new PropertiesDetailModel();
+		$uri = current_url(true);
+		$id = $uri->getSegment(4);
+		$properties = $modelProperties->find($id);
+		$detail = $modelProDetail->where('properties_id', $id)->findAll();
+
+		$data['temp'] = 'cpanel/properties/edit';
+		$data['title'] = 'Properties edit';
+		$data['menu'] = 'properties';
+		$data['info'] = $properties;
+		$data['detail'] = $detail;
+		echo view('cpanel/layout', $data);
+	}
+
+	public function edit2()
 	{
 		$model = new ProtypeModel();
 		$value = $this->request->getPost('value');
@@ -99,9 +139,13 @@ class Properties extends CpanelController
 
 	public function delete()
 	{
-		$model = new ProtypeModel();
+		$modelProperties = new PropertiesModel();
+		$modelProDetail = new PropertiesDetailModel();
 		$id = $this->request->getPost('id');
-		$model->delete($id);
+		$modelProperties->delete($id);
+		$modelProDetail->where('properties_id', $id)->delete();
+
+
 		echo json_encode(1);
 	}
 	//--------------------------------------------------------------------

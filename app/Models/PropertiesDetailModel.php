@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class PropertiesDetail extends Model
+class PropertiesDetailModel extends Model
 {
 	protected $table = 'properties_detail';
 	protected $primaryKey = 'id';

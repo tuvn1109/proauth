@@ -1,6 +1,4 @@
-<div class="card card-custom">
-    <div class="card-header">
-    </div>
+<div class="card card-custom transition-none" id="divaddnew" style="display: none">
     <!--begin::Body-->
     <div class="card-body card-dashboard">
         <form action="#" id="all">
@@ -40,8 +38,7 @@
 </div>
 <div class="card card-custom">
     <div class="card-header">
-        <button type="button" class="btn btn-outline-primary  waves-effect waves-light" data-toggle="modal"
-                data-target="#default"><span><i class="feather icon-plus"></i> Add New</span></button>
+        <button type="button" class="btn btn-outline-primary  waves-effect waves-light" id="btn-addnew"><span><i class="feather icon-plus"></i> Add New</span></button>
     </div>
     <!--begin::Body-->
     <div class="card-body card-dashboard">
@@ -51,7 +48,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Value</th>
+                    <th>Name</th>
                     <th>Action</th>
                 </tr>
                 </thead>

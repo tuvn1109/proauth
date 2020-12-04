@@ -19,7 +19,7 @@
             });
             this.on("removedfile", function (file) {
                 $.each(arrFiles, function (keys, values) {
-                    if (typeof values !== "undefined" && values.name == file.name ) {
+                    if (typeof values !== "undefined" && values.name == file.name) {
                         arrFiles.splice(keys, 1);
                     }
                 });
@@ -42,7 +42,7 @@
             {"data": "name"},
             {
                 "data": "", render: function (data, type, row) {
-                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateCat" data-name="' + row.value + '" data-id="' + row.Id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.Id + '"><i class="feather icon-trash"></i></button>';
+                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateCat" data-name="' + row.value + '" data-id="' + row.id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.id + '"><i class="feather icon-trash"></i></button>';
                 }
             },
         ],
@@ -67,7 +67,7 @@
                     /* Read more about isConfirmed, isDenied below */
                     if (result.value) {
                         $.ajax({
-                            url: "/cpanel/producttype/delete",
+                            url: "/cpanel/properties/delete",
                             dataType: "json",
                             data: {id: dataId},
                             type: "POST",
@@ -84,8 +84,17 @@
         }
     });
 
+
+    $('#btn-addnew').on("click", function () {
+        $('#divaddnew').toggle('slow');
+    });
     $('#addproperties').on("click", function () {
         var formData = new FormData($('#all')[0]);
+        var namepro = $('#value').val();
+        if (namepro == '' || namepro == null) {
+            toastr.error('Name properties null', 'Error');
+            return;
+        }
         $.each(arrFiles, function (keys, values) {
             formData.append('fileUpload[]', values);
         });
@@ -98,6 +107,9 @@
             contentType: false,
             processData: false,
             success: function (data) {
+                $('#divaddnew').toggle('slow');
+                $('#value').val('');
+                myDropzone.removeAllFiles();
                 catTable.ajax.reload(null, false);
             }
         })
