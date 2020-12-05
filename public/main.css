@@ -1,3 +1,21 @@
+
+@media (min-width: 1920px) { 
+    .thumb-bestsell {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    }
+    .thumb-bestsell-right {
+        max-width: 100% !important;
+        max-height: 100% !important;
+     }
+
+     .thumb-bestsell:hover #back-hover {
+
+        max-height: 100% !important;
+
+    }
+
+ }
 body {
     margin: 0;
     background: #FFFFFF !important;
@@ -953,7 +971,7 @@ img {
     display: none;
 }
 
-.thumb-bestsell #back-hover {
+.thumb-bestsell:hover #back-hover {
     position: absolute;
     background: rgba(247, 247, 247, 0.6);
     width: 100%;
