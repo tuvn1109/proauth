@@ -20,10 +20,14 @@
 <section class="cover-img">
     <div class="row">
         <div class="col-6">
-            <img src="/logo/cover-image3.GIF" class="img-fluid">
+               <div class="div-cover-img">
+            <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
+            </div>
         </div>
         <div class="col-6">
-            <img src="/logo/cover-image3.GIF" class="img-fluid">
+        <div class="div-cover-img">
+            <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
+            </div>
         </div>
     </div>
 </section>
@@ -32,79 +36,101 @@
 
     <div class="row" style="margin-top: 50px">
         <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
+            </div>
         </div>
     </div>
     <div class="row" style="margin-top: 50px">
         <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
+            </div>
         </div>
-
     </div>
+
 
 </section>
 
@@ -128,82 +154,106 @@
     </div>
 </section>
 
+
 <section class="category">
 
     <div class="row" style="margin-top: 50px">
         <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
+            </div>
         </div>
     </div>
     <div class="row" style="margin-top: 50px">
         <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
-        </div>
-        <div class="col">
-            <div id="bestsell-mini-right"><img src="/logo/tshirt1.png" class="img-fluid"></div>
+            </div>
+        </div><div class="col">
+          <div class="item-category">
+            <div class="item-category-thumb">
+            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
             <div id="name-item-mini-right">Fancy - From Crazy World</div>
             <div id="classify-item-mini-right">Personalized Shirt</div>
             <div id="price-item-mini-right">$34.99 USD</div>
             <div id="ellipse-item"><span>NEW</span></div>
+            </div>
         </div>
     </div>
+
 
 </section>
 <section class="pagintion">

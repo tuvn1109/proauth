@@ -16,27 +16,6 @@ class Properties extends CpanelController
 		echo view('cpanel/layout', $data);
 	}
 
-	public function image()
-	{
-		$path = $this->request->getVar('name');
-		$filepath = $checkpath = WRITEPATH . 'uploads/' . $path;
-		if (!file_exists($checkpath)) {
-			$filepath = WRITEPATH . 'uploads/default/img-not-found.png';
-		}
-		if (!is_readable($checkpath)) {
-			$filepath = WRITEPATH . 'uploads/default/img-not-found.png';
-		}
-		http_response_code(200);
-		header('Content-Length: ' . filesize($filepath));
-		$finfo = finfo_open(FILEINFO_MIME_TYPE);
-		$fileinfo = pathinfo($filepath);
-		header('Content-Type: ' . finfo_file($finfo, $filepath));
-		finfo_close($finfo);
-		header('Content-Disposition: attachment; filename="' . basename($fileinfo['basename']) . '"'); // feel free to change the suggested filename
-		ob_clean();
-		flush();
-		readfile($filepath);
-	}
 
 
 	public function loaddata()
@@ -96,7 +75,7 @@ class Properties extends CpanelController
 					$img->move(WRITEPATH . 'uploads/properties' . $id);
 					$detail = [
 						'properties_id' => $id,
-						'value' => WRITEPATH . 'uploads/properties' . $id . '/' . $img->getName(),
+						'value' => 'properties' . $id . '/' . $img->getName(),
 					];
 					$modelProDetail->insert($detail);
 				}

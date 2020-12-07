@@ -28,7 +28,7 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
-    <link href="/main.css" rel='stylesheet'>
+    <link href="/mainpro.css" rel='stylesheet'>
     <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">

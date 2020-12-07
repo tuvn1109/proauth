@@ -92,30 +92,30 @@
                 <div class="title-menu">Explore</div>
                 <div class="details-menu">
                     <li>
-                        <div class="text-menu"><img src="/logo/tshirt-logo.png"><span>T-Shirts</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/tshirt-logo.png"><span>T-Shirts</span></a></div>
                     </li>
                     <li>
-                        <div class="text-menu"><img src="/logo/mug-logo.png"><span>Mug</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/mug-logo.png"><span>Mug</span></a></div>
                     </li>
                     <li>
-                        <div class="text-menu"><img src="/logo/phone-logo.png"
-                                                    style="width: 20px;"><span>Phone Case</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/phone-logo.png"
+                                                    style="width: 20px;"><span>Phone Case</span></a></div>
                     </li>
                     <li>
-                        <div class="text-menu"><img src="/logo/collection-logo.png"><span>Collection</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/collection-logo.png"><span>Collection</span></a></div>
                     </li>
 
                     <li>
-                        <div class="text-menu"><img src="/logo/sale-logo.png"><span>Sale Off</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/sale-logo.png"><span>Sale Off</span></a></div>
                     </li>
                     <li>
-                        <div class="text-menu"><img src="/logo/trackorder-logo.png"><span>Track Order</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/trackorder-logo.png"><span>Track Order</span></a></div>
                     </li>
                     <li>
-                        <div class="text-menu"><img src="/logo/faq-logo.png"><span>FAQs</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/faq-logo.png"><span>FAQs</span></a></div>
                     </li>
                     <li id="helpcenter">
-                        <div class="text-menu"><img src="/logo/help-logo.png"><span>Help Center</span></div>
+                        <div class="text-menu"><a href="/category"><img src="/logo/help-logo.png"><span>Help Center</span></a></div>
                     </li>
                     <li>
                         <div class="text-menu"><p>© Copyright 2020 - <span
@@ -132,8 +132,8 @@
     </div>
 
     <div class="row">
-        <div class="col-3"></div>
-        <div class="col-9">
+        <div class="col-2"></div>
+        <div class="col-10">
             <section id="signup-save">
                 <div class="row">
                     <div class="col-12  d-flex justify-content-center">
@@ -159,7 +159,12 @@
                         <div class="owl-carousel">
                             <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
                             <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/case1.jpg" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
                         </div>
                     </div>
                 </div>

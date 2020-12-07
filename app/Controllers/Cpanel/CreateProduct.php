@@ -3,16 +3,29 @@
 namespace App\Controllers\Cpanel;
 
 use App\Models\ProtypeModel;
-
+use App\Models\PropertiesModel;
+use App\Models\PropertiesDetailModel;
 class CreateProduct extends CpanelController
 {
 	public function index()
 	{
-		$data['temp'] = 'cpanel/producttype/index';
-		$data['title'] = 'Product type';
-		$data['menu'] = 'producttype';
+		$modelProperties = new PropertiesModel();
+		$data['temp'] = 'cpanel/product/create/index';
+		$data['title'] = 'Create product';
+		$data['menu'] = 'createpro';
+		$data['listProperties'] = $modelProperties->findAll();
 		echo view('cpanel/layout', $data);
 	}
+
+
+	public function loaddetail(){
+		$modelPropertiesDetail = new PropertiesDetailModel();
+		$id = $this->request->getPost('id');
+		$listDetail = $modelPropertiesDetail->where('properties_id', $id)->findAll();
+		echo \json_encode($listDetail);
+	}
+
+
 
 
 	public function loaddata()

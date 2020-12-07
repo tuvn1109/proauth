@@ -871,6 +871,84 @@ img {
     border: 2px solid #0D7091;
 }
 
+/* OWl START*/
+.owl-carousel img {
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+}
+
+.owl-carousel .item {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.content-carousel {
+    width: 100%;
+    display: block;
+}
+
+.owl-carousel {
+    width: calc(100% - 170px) !important;
+}
+
+.owl-carousel .owl-stage-outer {
+    position: absolute;
+    top: 0;
+    right: -170px;
+}
+
+.owl-carousel .owl-controls .owl-dot {
+    background-size: cover;
+    margin-top: 10px;
+}
+
+.owl-carousel .owl-dots {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 150px;
+    height: 100%;
+}
+
+.owl-carousel .owl-dot {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.owl-dots button {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    outline: none;
+}
+
+.owl-nav-pro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+}
+
+.owl-nav-pro .owl-prev img {
+    position: absolute;
+    top: 0;
+    font-size: 50px;
+}
+
+/* OWl START*/
+
 .product-home-category {
     position: relative;
 }
@@ -903,19 +981,6 @@ img {
     width: 100%;
     height: 100%;
     max-height: 500px;
-    overflow: hidden;
-    border-radius: 15px;
-    top: 0;
-    left: 0;
-    display: block;
-    z-index: 1;
-}
-.thumb-product-home:hover #back-hover {
-    position: absolute;
-    background: rgba(247, 247, 247, 0.6);
-    width: 100%;
-    height: 100%;
-    max-height: 240px;
     overflow: hidden;
     border-radius: 15px;
     top: 0;
@@ -989,23 +1054,3 @@ img {
     overflow: hidden;
     border-radius: 15px;
 }
-
-
-/* OWl START*/
-.owl-carousel .owl-item {
-    height: 150.427px !important;
-    overflow: hidden;
-    margin-right: 10px !important; 
-}
-
-.owl-carousel .owl-item img  {
-    display: block;
-    width: 100%;
-}
-
-.owl-stage-outer  {
-    border-radius: 15px;
-}
-
-
-/* OWl START*/
