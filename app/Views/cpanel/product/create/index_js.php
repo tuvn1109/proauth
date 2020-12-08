@@ -19,7 +19,7 @@ $('.list-group-item').on('click', function () {
                             success: function (data) {
                                 $("#divve").empty();
                                $.each(data,function(a,b){
-                                $("#divve").append('<div class="properties-img"><img class="img-fluid w-100" src="/download/image?name='+b.value+'"></div/>');
+                                $("#divve").append('<div class="properties-img" data-id='+b.id+'><img class="img-fluid w-100" src="/download/image?name='+b.value+'"></div/>');
                                })
                             },
                             error: function () {

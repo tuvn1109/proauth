@@ -48,13 +48,20 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 
 .list-group-item{
     cursor: pointer;
+   
 }
 .properties-img {
     max-width: 100px;
     max-height: 100px;
     margin-right: 10px;
     border-radius: 15px;
-    border: 1px solid springgreen;
+    border: 2px solid #babfc7;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    cursor: pointer;
 }
 .properties-img img{
+    padding: 25px;
+    background-size: contain;
 }

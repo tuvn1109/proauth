@@ -6,16 +6,40 @@
             <div class="row" style="margin-top: 20px">
                 <div class="col-3">
                     <fieldset class="form-label-group">
-                        <input type="text" class="form-control" id="value" name="value"
-                               placeholder="Name properties">
+                        <input type="text" class="form-control" id="value" name="value" placeholder="Name properties">
                         <label for="Properties">Properties</label>
                     </fieldset>
                 </div>
-                <div class="col-12">
+                <div class="col-3">
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-inline-block mr-2">
+                            <fieldset>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="customRadio"
+                                        id="customRadio1" checked="" value="1">
+                                    <label class="custom-control-label" for="customRadio1">Image</label>
+                                </div>
+                            </fieldset>
+                        </li>
+                        <li class="d-inline-block mr-2">
+                            <fieldset>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="customRadio"
+                                        id="customRadio2" value="2">
+                                    <label class="custom-control-label" for="customRadio2">Text</label>
+                                </div>
+                            </fieldset>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12" id="divimg">
                     <div class="dropzone dropzone-area" id="mydropzone">
                         <div class="dz-message">Drop Files Here To Upload
                         </div>
                     </div>
+                </div>
+                <div class="col-12" id="divtext" style="display:none">
+                    text
                 </div>
 
                 <div class="col-12">
@@ -38,7 +62,8 @@
 </div>
 <div class="card card-custom">
     <div class="card-header">
-        <button type="button" class="btn btn-outline-primary  waves-effect waves-light" id="btn-addnew"><span><i class="feather icon-plus"></i> Add New</span></button>
+        <button type="button" class="btn btn-outline-primary  waves-effect waves-light" id="btn-addnew"><span><i
+                    class="feather icon-plus"></i> Add New</span></button>
     </div>
     <!--begin::Body-->
     <div class="card-body card-dashboard">
@@ -46,11 +71,11 @@
         <div class="table-responsive">
             <table class="table" id="Table">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                 </tbody>
@@ -61,7 +86,7 @@
 </div>
 
 <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-     style="display: none;" aria-hidden="true">
+    style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -75,14 +100,14 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal"
-                        id="addprotype">Add
+                    id="addprotype">Add
                 </button>
             </div>
         </div>
     </div>
 </div>
 <div class="modal fade text-left" id="edittype" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-     style="display: none;" aria-hidden="true">
+    style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable   modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -99,8 +124,7 @@
                         </div>
                         <div class="col-12">
                             <fieldset class="form-label-group">
-                                <input type="text" class="form-control" id="value" name="value"
-                                       placeholder="Name type">
+                                <input type="text" class="form-control" id="value" name="value" placeholder="Name type">
                                 <label for="Name type">Name type</label>
                             </fieldset>
                         </div>
@@ -110,7 +134,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal"
-                        id="editrotype">Edit
+                    id="editrotype">Edit
                 </button>
             </div>
         </div>

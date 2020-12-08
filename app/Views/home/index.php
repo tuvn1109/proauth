@@ -15,10 +15,11 @@
                             <img src="/logo/bestsell1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item">Fancy - From Crazy World</div>
@@ -33,10 +34,11 @@
                             <img src="/logo/bestsell1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item">Fancy - From Crazy World</div>
@@ -56,10 +58,11 @@
                             <img src="/logo/mug1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item-mini-right">Fancy - From Crazy World</div>
@@ -75,10 +78,11 @@
                             <img src="/logo/mug1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item-mini-right">Fancy - From Crazy World</div>
@@ -94,10 +98,11 @@
                             <img src="/logo/mug1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item-mini-right">Fancy - From Crazy World</div>
@@ -107,8 +112,8 @@
 
                     </div>
                 </div>
-                
-               
+
+
                 <div class="col-md-12 col-12" id="banner-bestsell">
                     <div id="bestsell-mini-right"><img src="/logo/banner-bestsell.png" class="img-fluid w-100">
                     </div>
@@ -124,17 +129,18 @@
 
 
         <div class="col-lg-6 col-12" id="banner-bestsell2">
-        <div class="row">
+            <div class="row">
                 <div class="col-md-4 col-6">
                     <div id="bestsell">
                         <div class="thumb-bestsell-right">
                             <img src="/logo/mug1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item-mini-right">Fancy - From Crazy World</div>
@@ -150,10 +156,11 @@
                             <img src="/logo/mug1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item-mini-right">Fancy - From Crazy World</div>
@@ -169,10 +176,11 @@
                             <img src="/logo/mug1.jpg" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
+                                    <button class="btn-quickview"><span>quick view</span>
+                                    </button>
+                                    <button class="btn-addcart"><span>add to cart</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div id="name-item-mini-right">Fancy - From Crazy World</div>
@@ -182,9 +190,9 @@
 
                     </div>
                 </div>
-                
-               
-            
+
+
+
             </div>
 
 </section>
@@ -227,48 +235,13 @@
                 <div class="thumb-product-home">
                     <img src="/logo/tshirt1.png" class="img-fluid w-100">
                     <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt2.jpg" class="img-fluid w-100">
-                    <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt3.jpg" class="img-fluid w-100">
-                    <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="name-item-mini-right">Fancy - From Crazy World</div>
                 <div id="classify-item-mini-right">Personalized Shirt</div>
@@ -281,12 +254,13 @@
                 <div class="thumb-product-home">
                     <img src="/logo/tshirt4.png" class="img-fluid w-100">
                     <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="name-item-mini-right">Fancy - From Crazy World</div>
                 <div id="classify-item-mini-right">Personalized Shirt</div>
@@ -294,74 +268,18 @@
                 <div id="ellipse-item"><span>NEW</span></div>
             </div>
         </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt5.jpg" class="img-fluid w-100">
-                    <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-
-
-    </div>   <div class="row" style="margin-top: 50px">
         <div class="col">
             <div class="product-home-category">
                 <div class="thumb-product-home">
                     <img src="/logo/tshirt1.png" class="img-fluid w-100">
                     <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt2.jpg" class="img-fluid w-100">
-                    <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt3.jpg" class="img-fluid w-100">
-                    <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="name-item-mini-right">Fancy - From Crazy World</div>
                 <div id="classify-item-mini-right">Personalized Shirt</div>
@@ -374,12 +292,13 @@
                 <div class="thumb-product-home">
                     <img src="/logo/tshirt4.png" class="img-fluid w-100">
                     <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="name-item-mini-right">Fancy - From Crazy World</div>
                 <div id="classify-item-mini-right">Personalized Shirt</div>
@@ -390,14 +309,15 @@
         <div class="col">
             <div class="product-home-category">
                 <div class="thumb-product-home">
-                    <img src="/logo/tshirt5.jpg" class="img-fluid w-100">
+                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
                     <div id="back-hover">
-                                <div class="centerContent">
-                                <button class="btn-quickview"><span>quick view</span>
-                                </button>
-                                <button class="btn-addcart"><span>add to cart</span>
-                                </button></div>
-                            </div>
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="name-item-mini-right">Fancy - From Crazy World</div>
                 <div id="classify-item-mini-right">Personalized Shirt</div>
@@ -405,9 +325,105 @@
                 <div id="ellipse-item"><span>NEW</span></div>
             </div>
         </div>
-
-
     </div>
+    <div class="row" style="margin-top: 50px">
+        <div class="col">
+            <div class="product-home-category">
+                <div class="thumb-product-home">
+                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
+                    <div id="back-hover">
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="name-item-mini-right">Fancy - From Crazy World</div>
+                <div id="classify-item-mini-right">Personalized Shirt</div>
+                <div id="price-item-mini-right">$34.99 USD</div>
+                <div id="ellipse-item"><span>NEW</span></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="product-home-category">
+                <div class="thumb-product-home">
+                    <img src="/logo/tshirt4.png" class="img-fluid w-100">
+                    <div id="back-hover">
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="name-item-mini-right">Fancy - From Crazy World</div>
+                <div id="classify-item-mini-right">Personalized Shirt</div>
+                <div id="price-item-mini-right">$34.99 USD</div>
+                <div id="ellipse-item"><span>NEW</span></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="product-home-category">
+                <div class="thumb-product-home">
+                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
+                    <div id="back-hover">
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="name-item-mini-right">Fancy - From Crazy World</div>
+                <div id="classify-item-mini-right">Personalized Shirt</div>
+                <div id="price-item-mini-right">$34.99 USD</div>
+                <div id="ellipse-item"><span>NEW</span></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="product-home-category">
+                <div class="thumb-product-home">
+                    <img src="/logo/tshirt4.png" class="img-fluid w-100">
+                    <div id="back-hover">
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="name-item-mini-right">Fancy - From Crazy World</div>
+                <div id="classify-item-mini-right">Personalized Shirt</div>
+                <div id="price-item-mini-right">$34.99 USD</div>
+                <div id="ellipse-item"><span>NEW</span></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="product-home-category">
+                <div class="thumb-product-home">
+                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
+                    <div id="back-hover">
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="name-item-mini-right">Fancy - From Crazy World</div>
+                <div id="classify-item-mini-right">Personalized Shirt</div>
+                <div id="price-item-mini-right">$34.99 USD</div>
+                <div id="ellipse-item"><span>NEW</span></div>
+            </div>
+        </div>
+    </div>
+    
 
 
 </section>
@@ -558,13 +574,13 @@
     <div class="row">
         <div class="col-6">
             <div class="div-cover-img">
-            <img src="/logo/cover-image2.jpg" class="img-fluid w-100">
+                <img src="/logo/cover-image2.jpg" class="img-fluid w-100">
             </div>
         </div>
         <div class="col-6">
-        <div class="div-cover-img">
-            <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
-        </div>
+            <div class="div-cover-img">
+                <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
+            </div>
         </div>
     </div>
 </section>

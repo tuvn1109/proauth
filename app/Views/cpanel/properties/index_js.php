@@ -114,4 +114,26 @@
             }
         })
     });
+
+    $('#customRadio1').on("click", function () {
+        checkTypeProperties();
+    });
+
+    $('#customRadio2').on("click", function () {
+        checkTypeProperties();
+    });
+function checkTypeProperties(){
+    
+   var valueCheck  = $("input[name='customRadio']:checked").val();
+
+        if(valueCheck == 1){
+            $('#divtext').css("display", "none");
+            $("#divimg").css("display", "block");
+        }else{
+            $('#divimg').css("display", "none");
+            $("#divtext").css("display", "block");
+        }
+
+}
+
 </script>
