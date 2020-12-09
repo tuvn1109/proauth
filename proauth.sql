@@ -11,11 +11,52 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 02/12/2020 17:44:01
+ Date: 09/12/2020 17:46:16
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for categories
+-- ----------------------------
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of categories
+-- ----------------------------
+INSERT INTO `categories` VALUES (1, 'T-shirt', NULL, NULL, NULL);
+INSERT INTO `categories` VALUES (2, 'Mug', NULL, NULL, NULL);
+INSERT INTO `categories` VALUES (3, 'Phone case', NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for colors
+-- ----------------------------
+DROP TABLE IF EXISTS `colors`;
+CREATE TABLE `colors`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of colors
+-- ----------------------------
+INSERT INTO `colors` VALUES (2, 'Black', '2020-12-09 01:47:30', '2020-12-09 01:47:30', NULL, '#000000');
+INSERT INTO `colors` VALUES (3, 'Pink', '2020-12-09 01:48:59', '2020-12-09 01:51:34', NULL, '#ff4d00');
+INSERT INTO `colors` VALUES (4, 'Yellow', '2020-12-09 02:04:16', '2020-12-09 02:04:16', NULL, '#fff700');
 
 -- ----------------------------
 -- Table structure for log_forgetpass
@@ -68,6 +109,25 @@ CREATE TABLE `orders`  (
 INSERT INTO `orders` VALUES (1, 'O0001', 1, '2020-11-21 16:01:56', 1000.00, 'New', 'Done');
 
 -- ----------------------------
+-- Table structure for product_color
+-- ----------------------------
+DROP TABLE IF EXISTS `product_color`;
+CREATE TABLE `product_color`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NULL DEFAULT NULL,
+  `color_id` int NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  `layout` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of product_color
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for product_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `product_detail`;
@@ -84,6 +144,24 @@ CREATE TABLE `product_detail`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for product_size
+-- ----------------------------
+DROP TABLE IF EXISTS `product_size`;
+CREATE TABLE `product_size`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NULL DEFAULT NULL,
+  `size_id` int NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of product_size
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for product_type
 -- ----------------------------
 DROP TABLE IF EXISTS `product_type`;
@@ -91,7 +169,7 @@ CREATE TABLE `product_type`  (
   `Id` int NOT NULL AUTO_INCREMENT,
   `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_type
@@ -99,6 +177,9 @@ CREATE TABLE `product_type`  (
 INSERT INTO `product_type` VALUES (2, 'T-shirt');
 INSERT INTO `product_type` VALUES (3, 'Mug');
 INSERT INTO `product_type` VALUES (4, 'Phone case');
+INSERT INTO `product_type` VALUES (10, NULL);
+INSERT INTO `product_type` VALUES (11, '1');
+INSERT INTO `product_type` VALUES (12, '1');
 
 -- ----------------------------
 -- Table structure for products
@@ -128,29 +209,55 @@ CREATE TABLE `products`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `properties`;
 CREATE TABLE `properties`  (
-  `Id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of properties
 -- ----------------------------
+INSERT INTO `properties` VALUES (15, 'Skill', '2020-12-07 05:16:04', '2020-12-07 05:16:04');
+INSERT INTO `properties` VALUES (16, 'Hair', '2020-12-07 05:22:22', '2020-12-07 05:22:22');
+INSERT INTO `properties` VALUES (17, 'Leg', '2020-12-07 05:22:37', '2020-12-07 05:22:37');
+INSERT INTO `properties` VALUES (18, 'Mug', '2020-12-07 05:22:59', '2020-12-07 05:22:59');
+INSERT INTO `properties` VALUES (19, 'Hand', '2020-12-07 05:23:11', '2020-12-07 05:23:11');
 
 -- ----------------------------
 -- Table structure for properties_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `properties_detail`;
 CREATE TABLE `properties_detail`  (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `properties_id` int NULL DEFAULT NULL,
   `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of properties_detail
 -- ----------------------------
+INSERT INTO `properties_detail` VALUES (46, 15, 'properties15/dark.jpg', '2020-12-07 05:16:04', '2020-12-07 05:16:04');
+INSERT INTO `properties_detail` VALUES (47, 15, 'properties15/light.jpg', '2020-12-07 05:16:04', '2020-12-07 05:16:04');
+INSERT INTO `properties_detail` VALUES (48, 15, 'properties15/tan.jpg', '2020-12-07 05:16:04', '2020-12-07 05:16:04');
+INSERT INTO `properties_detail` VALUES (49, 16, 'properties16/hair1.jpg', '2020-12-07 05:22:22', '2020-12-07 05:22:22');
+INSERT INTO `properties_detail` VALUES (50, 16, 'properties16/hair2.jpg', '2020-12-07 05:22:22', '2020-12-07 05:22:22');
+INSERT INTO `properties_detail` VALUES (51, 16, 'properties16/hair3.jpg', '2020-12-07 05:22:22', '2020-12-07 05:22:22');
+INSERT INTO `properties_detail` VALUES (52, 16, 'properties16/hair4.jpg', '2020-12-07 05:22:22', '2020-12-07 05:22:22');
+INSERT INTO `properties_detail` VALUES (53, 16, 'properties16/hair5.jpg', '2020-12-07 05:22:22', '2020-12-07 05:22:22');
+INSERT INTO `properties_detail` VALUES (54, 17, 'properties17/leg1.jpg', '2020-12-07 05:22:37', '2020-12-07 05:22:37');
+INSERT INTO `properties_detail` VALUES (55, 17, 'properties17/leg2.jpg', '2020-12-07 05:22:37', '2020-12-07 05:22:37');
+INSERT INTO `properties_detail` VALUES (56, 17, 'properties17/leg3.jpg', '2020-12-07 05:22:37', '2020-12-07 05:22:37');
+INSERT INTO `properties_detail` VALUES (57, 18, 'properties18/mug1.jpg', '2020-12-07 05:22:59', '2020-12-07 05:22:59');
+INSERT INTO `properties_detail` VALUES (58, 18, 'properties18/mug2.jpg', '2020-12-07 05:22:59', '2020-12-07 05:22:59');
+INSERT INTO `properties_detail` VALUES (59, 18, 'properties18/mug3.jpg', '2020-12-07 05:22:59', '2020-12-07 05:22:59');
+INSERT INTO `properties_detail` VALUES (60, 18, 'properties18/mug4.jpg', '2020-12-07 05:22:59', '2020-12-07 05:22:59');
+INSERT INTO `properties_detail` VALUES (61, 19, 'properties19/hand1.png', '2020-12-07 05:23:11', '2020-12-07 05:23:11');
+INSERT INTO `properties_detail` VALUES (62, 19, 'properties19/hand2.png', '2020-12-07 05:23:11', '2020-12-07 05:23:11');
 
 -- ----------------------------
 -- Table structure for settings
@@ -176,12 +283,34 @@ INSERT INTO `settings` VALUES (6, 'mailType', 'html', 'email');
 INSERT INTO `settings` VALUES (7, 'protocol', 'smtp', 'email');
 
 -- ----------------------------
+-- Table structure for sizes
+-- ----------------------------
+DROP TABLE IF EXISTS `sizes`;
+CREATE TABLE `sizes`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sizes
+-- ----------------------------
+INSERT INTO `sizes` VALUES (1, 'S', '2020-12-09 01:25:57', '2020-12-09 01:25:57', NULL);
+INSERT INTO `sizes` VALUES (2, 'M', '2020-12-09 01:26:01', '2020-12-09 01:26:01', NULL);
+INSERT INTO `sizes` VALUES (3, 'L', '2020-12-09 01:26:05', '2020-12-09 01:26:05', NULL);
+
+-- ----------------------------
 -- Table structure for tag
 -- ----------------------------
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 

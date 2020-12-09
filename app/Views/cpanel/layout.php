@@ -498,13 +498,28 @@ $user = $_SESSION['user'];
             </li>
             <li class=" navigation-header"><span>Product</span>
             </li>
+            <li class="<?= $menu == 'createproduct' ? 'active ' : '' ?> nav-item"><a href="/cpanel/product/create"><i
+                            class="feather icon-plus-circle"></i><span class="menu-title"
+                                                                   data-i18n="order">Create product</span></a>
+            </li><li class="<?= $menu == 'product' ? 'active ' : '' ?> nav-item"><a href="/cpanel/product"><i
+                            class="feather icon-menu"></i><span class="menu-title"
+                                                                   data-i18n="order">Products</span></a>
+            </li>
             <li class="<?= $menu == 'properties' ? 'active ' : '' ?> nav-item"><a href="/cpanel/properties"><i
                             class="feather icon-codepen"></i><span class="menu-title"
                                                                    data-i18n="order">Properties</span></a>
             </li>
-            <li class="<?= $menu == 'producttype' ? 'active ' : '' ?> nav-item"><a href="/cpanel/producttype"><i
+            <li class="<?= $menu == 'category' ? 'active ' : '' ?> nav-item"><a href="/cpanel/category"><i
                             class="feather icon-clipboard"></i><span class="menu-title"
-                                                                     data-i18n="order">Product type</span></a>
+                                                                     data-i18n="order">Categories</span></a>
+            </li>
+            <li class="<?= $menu == 'sizes' ? 'active ' : '' ?> nav-item"><a href="/cpanel/size"><i
+                            class="feather icon-maximize-2"></i><span class="menu-title"
+                                                                     data-i18n="order">Sizes</span></a>
+            </li>
+            <li class="<?= $menu == 'colors' ? 'active ' : '' ?> nav-item"><a href="/cpanel/color"><i
+                            class="feather icon-aperture"></i><span class="menu-title"
+                                                                     data-i18n="order">Colors</span></a>
             </li>
 
             <li class=" navigation-header"><span>Apps</span>

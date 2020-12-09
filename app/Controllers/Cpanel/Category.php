@@ -2,22 +2,22 @@
 
 namespace App\Controllers\Cpanel;
 
-use App\Models\ProtypeModel;
+use App\Models\CategoryModel;
 
-class ProductType extends CpanelController
+class Category extends CpanelController
 {
 	public function index()
 	{
-		$data['temp'] = 'cpanel/producttype/index';
+		$data['temp'] = 'cpanel/category/index';
 		$data['title'] = 'Product type';
-		$data['menu'] = 'producttype';
+		$data['menu'] = 'category';
 		echo view('cpanel/layout', $data);
 	}
 
 
 	public function loaddata()
 	{
-		$model = new ProtypeModel();
+		$model = new CategoryModel();
 		// data
 		$page = $this->request->getGet('page');
 		$draw = $this->request->getGet('draw');
@@ -50,7 +50,7 @@ class ProductType extends CpanelController
 	public function insert()
 	{
 		$value = $this->request->getPost('value');
-		$model = new ProtypeModel();
+		$model = new CategoryModel();
 		$data = [
 			'value' => $value,
 		];
@@ -62,7 +62,7 @@ class ProductType extends CpanelController
 
 	public function edit()
 	{
-		$model = new ProtypeModel();
+		$model = new CategoryModel();
 		$value = $this->request->getPost('value');
 		$id = $this->request->getPost('id');
 		$data = [
@@ -75,7 +75,7 @@ class ProductType extends CpanelController
 
 	public function delete()
 	{
-		$model = new ProtypeModel();
+		$model = new CategoryModel();
 		$id = $this->request->getPost('id');
 		$model->delete($id);
 		echo json_encode(1);
