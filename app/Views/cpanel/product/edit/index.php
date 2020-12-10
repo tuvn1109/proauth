@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card card-custom">
             <div class="card-header">
-                <h3>Create Product</h3>
+                <h3>Edit Product</h3>
             </div>
             <!--begin::Body-->
             <div class="card-body card-dashboard">
@@ -12,7 +12,7 @@
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="<?= $info['name'] ?>">
                             </fieldset>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -31,35 +31,22 @@ endforeach;
                         </div>
 
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
-                            <div class="form-group">
-                                <label>Size</label>
-                                <select class="select2 form-control select2-hidden-accessible" multiple="" id="size"
-                                    name="size[]" data-select2-id="default-select-multi" tabindex="-1"
-                                    aria-hidden="true">
-                                    <?php
-                               foreach($size as $size1):
-                                   ?>
-                                    <option value="<?=$size1['id']?>"><?=$size1['value']?>
-                                    </option>
-
-                                    <?php
-                               endforeach;
-                               ?>
-
-                                </select>
-                            </div>
+                            <fieldset class="form-group">
+                                <label>Thumbnail</label>
+                                <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="/">
+                            </fieldset>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Price $</label>
-                                <input type="text" class="form-control" id="price" name="price" placeholder="...">
+                                <input type="text" class="form-control" id="price" name="price" placeholder="..." value="<?= $info['price'] ?>">
                             </fieldset>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Price sale $</label>
                                 <input type="text" class="form-control" id="price_sale" name="price_sale"
-                                    placeholder="...">
+                                    placeholder="..." value="<?= $info['price_sale'] ?>">
                             </fieldset>
                         </div>
 
@@ -78,7 +65,7 @@ endforeach;
                             <fieldset class="form-group">
                                 <label>Manufactur</label>
                                 <input type="text" class="form-control" id="manufactur" name="manufactur"
-                                    placeholder="Ex: United States">
+                                    placeholder="Ex: United States" value="<?= $info['manufactur'] ?>">
                             </fieldset>
                         </div>
 
@@ -87,14 +74,14 @@ endforeach;
                             <fieldset class="form-group">
                                 <label>Delivery</label>
                                 <input type="text" class="form-control" id="delivery" name="delivery"
-                                    placeholder="delivery">
+                                    placeholder="delivery" value="<?= $info['delivery'] ?>">
                             </fieldset>
                         </div>
 
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Tag</label>
-                                <input type="text" class="form-control" id="tag" name="tag" placeholder="#Tag">
+                                <input type="text" class="form-control" id="tag" name="tag" placeholder="#Tag"  value="X">
                             </fieldset>
                         </div>
                     </div>
@@ -104,7 +91,7 @@ endforeach;
                             <fieldset class="form-group">
                                 <label>Description</label>
                                 <input type="text" class="form-control" id="description" name="description"
-                                    placeholder="We design products for fan">
+                                    placeholder="We design products for fan" value="<?= $info['description'] ?>">
                             </fieldset>
                         </div>
 
@@ -113,90 +100,15 @@ endforeach;
                                 <label for="label-textarea">Detail description</label>
                                 <textarea class="form-control" id="description_detail" name="description_detail"
                                     rows="3"
-                                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus."></textarea>
+                                    placeholder="Lorem ipsum dolor sit amet....."><?= $info['description_detail'] ?></textarea>
                             </fieldset>
                         </div>
 
                     </div>
 
-
-
-
-                </form>
-            </div>
-        </div>
-
-        <!--end::Body-->
-    </div>
-</div>
-
-</div>
-
-
-
-
-<div class="row">
-    <div class="col-3">
-        <div class="card card-custom">
-            <div class="card-header">
-                <h4 class="card-title">Thumbnail</h4>
-            </div>
-            <!--begin::Body-->
-            <div class="card-body card-dashboard" style="padding: 37px;">
-
-                <div id="thumbnail">
-                    <div id="previews">
-                    <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload (240x270)
-                    </div>
-                    </div>
-                </div>
-
-
-                <div id="tpl" style="display:none">
-                    <div class="dz-preview dz-file-preview">
-                        <div class="dz-thumb">
-                        
-                            <img class="img-fluid w-100" data-dz-thumbnail />
-                        </div>
-                        <div class="dz-trash"><span data-dz-remove></span></div>
-                    </div>
-                   
-                </div>
-
-            </div>
-            <!--end::Body-->
-        </div>
-    </div>
-    <div class="col-9">
-        <div class="card card-custom">
-            <div class="card-header">
-                <h4 class="card-title">Product image</h4>
-            </div>
-            <!--begin::Body-->
-            <div class="card-body card-dashboard" id="product-img">
-                <div class="dropzone dropzone-area" id="mydropzone">
-                    <div class="dz-message">Drop Files Here To Upload
-                    </div>
-                </div>
-            </div>
-            <!--end::Body-->
-        </div>
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card card-custom">
-            <div class="card-header">
-                <h4 class="card-title">Layout color</h4>
-            </div>
-            <!--begin::Body-->
-            <div class="card-body card-dashboard">
-                <div class="row">
-
-                    <div class="col-4">
-                        <div class="col-12">
+                    <div class="row">
+                       
+                        <div class="col-2">
                             <fieldset class="form-group">
                                 <label>Layout color</label>
                                 <div class="custom-file">
@@ -206,48 +118,65 @@ endforeach;
                                 </div>
                             </fieldset>
                         </div>
-                        <div class="col-12">
+                        <div class="col-2">
                             <fieldset class="form-group">
                                 <label>Color</label>
                                 <select class="form-control" id="color" name="color">
                                     <?php
-                               foreach($color as $color1):
-                                   ?>
-                                    <option value="<?= $color1['id'] ?>" data-name="<?= $color1['value'] ?>">
-                                        <?= $color1['value'] ?></option>
+                                foreach($color as $color1):
+                                    ?>
+                                    <option value="<?= $color1['id'] ?>" data-name="<?= $color1['value'] ?>"><?= $color1['value'] ?></option>
                                     <?php
-                               endforeach;
-                               ?>
+                                endforeach;
+                                ?>
                                 </select>
                             </fieldset>
 
                         </div>
-                        <div class="col-12">
+                        <div class="col-2">
                             <fieldset class="form-group">
-                                <button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"
-                                    style="margin-top: 19px" id="btn-add-color">+ Color</button>
+                                <button type="button"
+                                    class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" style="margin-top: 19px" id="btn-add-color">+ Color</button>
 
                             </fieldset>
 
                         </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Size</label>
+                                <select class="select2 form-control select2-hidden-accessible" multiple=""
+                                    id="size" name="size[]" data-select2-id="default-select-multi" tabindex="-1"
+                                    aria-hidden="true">
+                                    <?php
+                                foreach($size as $size1):
+                                    ?>
+                                    <option value="<?=$size1['id']?>"><?=$size1['value']?>
+                                    </option>
 
+                                    <?php
+                                endforeach;
+                                ?>
+
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-8">
-                        <div id="drawtable" class="perfect"></div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div id="drawtable"></div>
+                        </div>
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"
+                                id="btn-submit">Update</button>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!--end::Body-->
-
-            <div class="card-footer">
-                <div class="col-12 text-center">
-                    <button type="button" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"
-                        id="btn-submit">Submit</button>
-                </div>
+                </form>
             </div>
         </div>
-    </div>
 
+        <!--end::Body-->
+    </div>
+</div>
 
 </div>

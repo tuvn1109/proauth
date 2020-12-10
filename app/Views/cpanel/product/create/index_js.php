@@ -1,9 +1,45 @@
 <script>
-
 var fileUpload = null;
 var arrFiles = [];
 var arrDataF = [];
 var arrColor = [];
+
+// /
+
+// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+
+///
+
+
+Dropzone.autoDiscover = false;
+var myDropzone = new Dropzone("div#previews", {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFiles: 1,
+    url: '#',
+    uploadMultiple: false,
+    acceptedFiles: 'image/*',
+    autoProcessQueue: false,
+    addRemoveLinks: true,
+    dictRemoveFile: " Trash",
+    thumbnailWidth: null,
+    thumbnailHeight: null,
+    previewTemplate: document.querySelector('#tpl').innerHTML,
+    previewsContainer: "#previews", // Define the container to display the previews
+    init: function() {
+        this.on("addedfile", function(file) {
+            // arrFiles.push(file);
+
+        });
+        this.on("removedfile", function(file) {
+            $.each(arrFiles, function(keys, values) {
+                if (typeof values !== "undefined" && values.name == file.name) {
+                    //  arrFiles.splice(keys, 1);
+                }
+            });
+        });
+    }
+});
+
 
 
 
@@ -48,6 +84,12 @@ function test() {
 
 $('#btn-submit').on('click', function() {
     var formData = new FormData($('#fr_createpro')[0]);
+    $.each(arrDataF, function(keys, values) {
+        formData.append('fileUpload' + values['color'], values['file']);
+
+    });
+    formData.append('test', JSON.stringify(arrDataF));
+
     $.ajax({
         type: 'post',
         url: '/cpanel/product/insert',
@@ -70,35 +112,58 @@ $('#btn-submit').on('click', function() {
 $('#btn-add-color').on('click', function() {
     var reader = new FileReader();
     var color = $('#color').val();
-    var json = JSON.parse($('#jsoncolor').val());
+    let name = $('select#color').find(':selected').data('name');
     var f = $("#inputlayoutcolor")[0].files[0];
     var oj = {
         'file': f,
-        'color':color,
+        'color': color,
+        'colortext': name,
     }
     arrDataF.push(oj);
-
-drawTableColor();
+    drawTableColor();
 });
 
-async function drawTableColor(){
+async function drawTableColor() {
+    $("#drawtable").empty();
+    var $table = $('<table class="table dataTable"><thead></thead></table>');
+    var $linethed = $("<thead></thead>");
+    var $line = $("<tr></tr>");
+    $line.append($('<th style="width:100px" class="text-center">Layout</th>'));
+    $line.append($('<th class="text-center">Color</th>'));
+    $line.append($('<th style="width: 50px;">Xóa</th>'));
+    $linethed.append($line);
+    $table.append($linethed);
 
     for (var i = arrDataF.length - 1; i >= 0; i--) {
-        var val = arrDataF[i]; 
+        var val = arrDataF[i];
         var lin = await getBase64(val['file']);
-console.log(lin)
+        var $line = $("<tr></tr>");
+        $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + lin +
+            '">'));
+        $line.append($("<td class='text-center'></td>").html(val['colortext']));
+        $line.append($("<td></td>").html('<i class="feather icon-x" onclick="deletelayout(' + i + ')"></i>'));
+        $table.append($line);
+
     }
+    $table.appendTo($("#drawtable"));
+
 }
 
 
 function getBase64(file) {
 
- return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-});
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
 
+}
+
+function deletelayout(i) {
+    arrDataF.splice(i, 1);
+    drawTableColor();
+    console.log(arrDataF);
 }
 </script>

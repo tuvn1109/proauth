@@ -7,6 +7,9 @@ use App\Models\PropertiesModel;
 use App\Models\CategoryModel;
 use App\Models\ColorModel;
 use App\Models\SizeModel;
+use App\Models\ProductModel;
+use App\Models\ProductSizeModel;
+use App\Models\ProductColorModel;
 
 class Product extends CpanelController
 {
@@ -71,6 +74,10 @@ class Product extends CpanelController
 	public function insert()
 	{
 			$modelProduct = new ProductModel();
+			$modelProductSize = new ProductSizeModel();
+			$modelProductColor = new ProductColorModel();
+
+
 			$name =  $this->request->getPost('name');
 			$type =  $this->request->getPost('type');
 			$thumbnail =  $this->request->getPost('thumbnail');
@@ -82,6 +89,13 @@ class Product extends CpanelController
 			$description =  $this->request->getPost('description');
 			$description_detail =  $this->request->getPost('description_detail');
 
+			$size =  $this->request->getPost('size');
+			$test = $this->request->getPost('test');
+			$jsonLayout = \json_decode($test,true);
+					
+			
+
+
 			$dataInsert = [
 				'name' => $name,
 				'type' => $type,
@@ -90,28 +104,76 @@ class Product extends CpanelController
 				'price_sale' => $price_sale,
 				'manufactur' => $manufactur,
 				'delivery' => $delivery,
-				'tag' => $tag,
+				//'tag' => $tag,
 				'description' => $description,
 				'description_detail' => $description_detail,
 			];
 			$id = $modelProduct->insert($dataInsert);
+
+
+			// SIZE 
+			foreach($size as $size1):
+
+				$dataS = [
+					'product_id' => $id,
+					'size_id' => $size1,
+				];
+
+			$modelProductSize->insert($dataS);
+			endforeach;
+
+
+
+			foreach($jsonLayout as $jsonLayout):
+				$img =  $this->request->getFile('fileUpload'.$jsonLayout['color']);
+
+				if ($img->isValid() && !$img->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product' . $id)) {
+						mkdir(WRITEPATH . 'uploads/product' . $id, 0777, TRUE);
+					}
+
+					$img->move(WRITEPATH . 'uploads/product' . $id);
+
+					$detail = [
+						'product_id' => $id,
+						'color_id' => $jsonLayout['color'],
+						'layout' => 'product' . $id . '/' . $img->getName(),
+					];
+					$modelProductColor->insert($detail);
+				}
+
+			endforeach;
+
+
+
 	}
 
 
 	public function edit()
 	{
-		$modelProperties = new PropertiesModel();
-		$modelProDetail = new PropertiesDetailModel();
+		$modelProduct = new ProductModel();
+		$modelProductSize = new ProductSizeModel();
+		$modelProductColor = new ProductColorModel();
+		$modelCategory = new CategoryModel();
+		$modelColor = new ColorModel();
+		$modelSize = new SizeModel();
+		
 		$uri = current_url(true);
 		$id = $uri->getSegment(4);
-		$properties = $modelProperties->find($id);
-		$detail = $modelProDetail->where('properties_id', $id)->findAll();
+		$product = $modelProduct->find($id);
+		$colors = $modelProductColor->where('product_id', $id)->findAll();
+		$sizes = $modelProductSize->where('product_id', $id)->findAll();
 
-		$data['temp'] = 'cpanel/properties/edit';
-		$data['title'] = 'Properties edit';
-		$data['menu'] = 'properties';
-		$data['info'] = $properties;
-		$data['detail'] = $detail;
+		$data['temp'] = 'cpanel/product/edit/index';
+		$data['title'] = 'Product edit';
+		$data['menu'] = 'product';
+		$data['info'] = $product;
+		$data['colors'] = $colors;
+		$data['sizes'] = $sizes;
+		$data['category'] = $modelCategory->findAll();
+		$data['color'] = $modelColor->findAll();
+		$data['size'] = $modelSize->findAll();
 		echo view('cpanel/layout', $data);
 	}
 
