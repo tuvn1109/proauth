@@ -52,6 +52,7 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/plugins/dist/tagify.css">
     <!-- END: Custom CSS-->
 
 </head>
@@ -627,7 +628,7 @@ $user = $_SESSION['user'];
 <script src="/app-assets/js/scripts/datatables/datatable.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <script src="/app-assets/js/scripts/forms/select/form-select2.js"></script>
-
+<script src="/assets/plugins/dist/jQuery.tagify.min.js"></script>
 
 <!-- END: Page JS-->
 <?php

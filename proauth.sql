@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 09/12/2020 17:46:16
+ Date: 11/12/2020 18:26:29
 */
 
 SET NAMES utf8mb4;
@@ -121,11 +121,22 @@ CREATE TABLE `product_color`  (
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   `layout` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_color
 -- ----------------------------
+INSERT INTO `product_color` VALUES (1, 1, 2, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL, 'product1/mauao.png');
+INSERT INTO `product_color` VALUES (2, 1, 3, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL, 'product1/tshirt.jpg');
+INSERT INTO `product_color` VALUES (3, 3, 2, '2020-12-10 20:14:47', '2020-12-10 20:14:47', NULL, 'product/3/layout/ tshirt-type.jpg');
+INSERT INTO `product_color` VALUES (4, 3, 3, '2020-12-10 20:14:47', '2020-12-10 20:14:47', NULL, 'product/3/layout/ mauao.png');
+INSERT INTO `product_color` VALUES (5, 4, 2, '2020-12-10 20:41:57', '2020-12-10 20:41:57', NULL, 'product/4/layout/ layoutiphone.png');
+INSERT INTO `product_color` VALUES (6, 5, 2, '2020-12-10 20:55:25', '2020-12-10 20:55:25', NULL, 'product/5/layout/ layoutiphone.png');
+INSERT INTO `product_color` VALUES (7, 6, 2, '2020-12-10 20:56:27', '2020-12-10 20:56:27', NULL, 'product/6/layout/ layoutiphone.png');
+INSERT INTO `product_color` VALUES (8, 16, 2, '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL, 'product/16/layout/ tshirt-type.jpg');
+INSERT INTO `product_color` VALUES (9, 16, 3, '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL, 'product/16/layout/ tshirt5.jpg');
+INSERT INTO `product_color` VALUES (10, 17, 2, '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL, 'product/17/layout/ mauao.png');
+INSERT INTO `product_color` VALUES (11, 17, 3, '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL, 'product/17/layout/ tshirt.jpg');
 
 -- ----------------------------
 -- Table structure for product_detail
@@ -155,10 +166,49 @@ CREATE TABLE `product_size`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_size
+-- ----------------------------
+INSERT INTO `product_size` VALUES (1, 1, 1, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL);
+INSERT INTO `product_size` VALUES (2, 1, 2, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL);
+INSERT INTO `product_size` VALUES (3, 1, 3, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL);
+INSERT INTO `product_size` VALUES (4, 3, 2, '2020-12-10 20:14:47', '2020-12-10 20:14:47', NULL);
+INSERT INTO `product_size` VALUES (5, 3, 3, '2020-12-10 20:14:47', '2020-12-10 20:14:47', NULL);
+INSERT INTO `product_size` VALUES (6, 4, 1, '2020-12-10 20:41:57', '2020-12-10 20:41:57', NULL);
+INSERT INTO `product_size` VALUES (7, 5, 1, '2020-12-10 20:55:25', '2020-12-10 20:55:25', NULL);
+INSERT INTO `product_size` VALUES (8, 6, 1, '2020-12-10 20:56:27', '2020-12-10 20:56:27', NULL);
+INSERT INTO `product_size` VALUES (9, 7, 2, '2020-12-10 21:02:01', '2020-12-10 21:02:01', NULL);
+INSERT INTO `product_size` VALUES (10, 8, 2, '2020-12-10 21:02:47', '2020-12-10 21:02:47', NULL);
+INSERT INTO `product_size` VALUES (11, 9, 2, '2020-12-10 21:03:51', '2020-12-10 21:03:51', NULL);
+INSERT INTO `product_size` VALUES (12, 10, 2, '2020-12-10 21:10:08', '2020-12-10 21:10:08', NULL);
+INSERT INTO `product_size` VALUES (13, 11, 2, '2020-12-10 21:10:26', '2020-12-10 21:10:26', NULL);
+INSERT INTO `product_size` VALUES (14, 12, 1, '2020-12-10 21:29:31', '2020-12-10 21:29:31', NULL);
+INSERT INTO `product_size` VALUES (15, 13, 1, '2020-12-10 21:32:57', '2020-12-10 21:32:57', NULL);
+INSERT INTO `product_size` VALUES (16, 14, 1, '2020-12-10 21:33:49', '2020-12-10 21:33:49', NULL);
+INSERT INTO `product_size` VALUES (17, 15, 1, '2020-12-10 21:34:42', '2020-12-10 21:34:42', NULL);
+INSERT INTO `product_size` VALUES (18, 16, 1, '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL);
+INSERT INTO `product_size` VALUES (19, 17, 1, '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL);
+INSERT INTO `product_size` VALUES (20, 17, 2, '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL);
+INSERT INTO `product_size` VALUES (21, 17, 3, '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL);
+
+-- ----------------------------
+-- Table structure for product_tag
+-- ----------------------------
+DROP TABLE IF EXISTS `product_tag`;
+CREATE TABLE `product_tag`  (
+  `id` int NOT NULL,
+  `tag_id` int NULL DEFAULT NULL,
+  `product_id` int NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of product_tag
 -- ----------------------------
 
 -- ----------------------------
@@ -194,15 +244,35 @@ CREATE TABLE `products`  (
   `type` int NULL DEFAULT NULL,
   `manufactur` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `delivery` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `thumnail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `thumbnail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description_detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
+INSERT INTO `products` VALUES (1, 'Fancy Cloud -Oversize Printed Tee', 25.00, 22.00, NULL, 1, 'United S', '5 day', '', 'We design products for fan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus.', '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL);
+INSERT INTO `products` VALUES (2, 'Product 2', 0.00, 0.00, NULL, 1, '', '', NULL, '', '', '2020-12-10 20:13:31', '2020-12-10 20:13:31', NULL);
+INSERT INTO `products` VALUES (3, 'Product 2', 0.00, 0.00, NULL, 1, '', '', NULL, '', '', '2020-12-10 20:14:47', '2020-12-10 20:14:47', NULL);
+INSERT INTO `products` VALUES (4, 'Crocs VNXK - CM Shop', 0.00, 0.00, NULL, 1, '', '', 'product/4/daulau1.png', '', '', '2020-12-10 20:41:57', '2020-12-10 20:41:57', NULL);
+INSERT INTO `products` VALUES (5, 'Crocs VNXK - CM Shop 2', 0.00, 0.00, NULL, 1, '', '', 'product/5/daulau1.png', '', '', '2020-12-10 20:55:25', '2020-12-10 20:55:25', NULL);
+INSERT INTO `products` VALUES (6, 'Crocs VNXK - CM Shop 6', 0.00, 0.00, NULL, 1, '', '', 'product/6/daulau1.png', '', '', '2020-12-10 20:56:27', '2020-12-10 20:56:27', NULL);
+INSERT INTO `products` VALUES (7, 'Crocs VNXK - CM Shop 7', 0.00, 0.00, NULL, 1, '', '', 'product/7/layoutiphone.png', '', '', '2020-12-10 21:02:01', '2020-12-10 21:02:01', NULL);
+INSERT INTO `products` VALUES (8, 'Crocs VNXK - CM Shop 7', 0.00, 0.00, NULL, 1, '', '', 'product/8/layoutiphone.png', '', '', '2020-12-10 21:02:47', '2020-12-10 21:02:47', NULL);
+INSERT INTO `products` VALUES (9, 'Crocs VNXK - CM Shop 7', 0.00, 0.00, NULL, 1, '', '', 'product/9/layoutiphone.png', '', '', '2020-12-10 21:03:51', '2020-12-10 21:03:51', NULL);
+INSERT INTO `products` VALUES (10, 'Crocs VNXK - CM Shop 7', 0.00, 0.00, NULL, 1, '', '', 'product/10/layoutiphone.png', '', '', '2020-12-10 21:10:08', '2020-12-10 21:10:08', NULL);
+INSERT INTO `products` VALUES (11, 'Crocs VNXK - CM Shop 7', 0.00, 0.00, NULL, 1, '', '', 'product/11/layoutiphone.png', '', '', '2020-12-10 21:10:26', '2020-12-10 21:10:26', NULL);
+INSERT INTO `products` VALUES (12, 'Crocs VNXK - CM Shop 15', 0.00, 0.00, NULL, 1, '', '', 'product/12/bestsell1.jpg', '', '', '2020-12-10 21:29:31', '2020-12-10 21:29:31', NULL);
+INSERT INTO `products` VALUES (13, 'Crocs VNXK - CM Shop 15', 0.00, 0.00, NULL, 1, '', '', 'product/13/bestsell1.jpg', '', '', '2020-12-10 21:32:57', '2020-12-10 21:32:57', NULL);
+INSERT INTO `products` VALUES (14, 'Crocs VNXK - CM Shop 15', 0.00, 0.00, NULL, 1, '', '', 'product/14/bestsell1.jpg', '', '', '2020-12-10 21:33:49', '2020-12-10 21:33:49', NULL);
+INSERT INTO `products` VALUES (15, 'Crocs VNXK - CM Shop 15', 0.00, 0.00, NULL, 1, '', '', 'product/15/bestsell1.jpg', '', '', '2020-12-10 21:34:42', '2020-12-10 21:34:42', NULL);
+INSERT INTO `products` VALUES (16, 'Crocs VNXK - CM Shop 15', 0.00, 0.00, NULL, 1, '', '', 'product/16/bestsell1.jpg', '', '', '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL);
+INSERT INTO `products` VALUES (17, 'T-shirt ABC ', 25.00, 20.00, NULL, 1, 'VN', '3 - 5 days', 'product/17/bestsell1.jpg', 'We deisgn for Fan', 'Best sell 2020 !!!', '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL);
 
 -- ----------------------------
 -- Table structure for properties
@@ -303,19 +373,20 @@ INSERT INTO `sizes` VALUES (2, 'M', '2020-12-09 01:26:01', '2020-12-09 01:26:01'
 INSERT INTO `sizes` VALUES (3, 'L', '2020-12-09 01:26:05', '2020-12-09 01:26:05', NULL);
 
 -- ----------------------------
--- Table structure for tag
+-- Table structure for tags
 -- ----------------------------
-DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag`  (
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of tag
+-- Records of tags
 -- ----------------------------
 
 -- ----------------------------

@@ -1,6 +1,6 @@
 <div class="card card-custom">
     <div class="card-header">
-        <a href="/cpanel/createproduct"><button type="button" class="btn btn-outline-primary  waves-effect waves-light" id="btn-addnew"><span><i
+        <a href="/cpanel/product/create"><button type="button" class="btn btn-outline-primary  waves-effect waves-light" id="btn-addnew"><span><i
                     class="feather icon-plus"></i> Add New</span></button></a>
     </div>
     <!--begin::Body-->
@@ -11,7 +11,14 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Thumbnail</th>
                         <th>Name</th>
+                        <th>Price</th>
+                        <th>Price_sale</th>
+                        <th>Sale</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Created_at</th>
                         <th>Action</th>
                     </tr>
                 </thead>

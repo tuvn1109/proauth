@@ -94,7 +94,7 @@ endforeach;
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Tag</label>
-                                <input type="text" class="form-control" id="tag" name="tag" placeholder="#Tag">
+                                <input type="text" class="form-control" id="tags" name="tags" placeholder="#Tag">
                             </fieldset>
                         </div>
                     </div>

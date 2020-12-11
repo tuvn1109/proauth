@@ -1,10 +1,21 @@
 <script>
 var fileUpload = null;
 var arrFiles = [];
+var arrImgpro = [];
 var arrDataF = [];
 var arrColor = [];
-
+var thumbnail = [];
 // /
+
+/// TAGS
+
+// The DOM element you wish to replace with Tagify
+var input = document.querySelector('input[name=tags]');
+
+// initialize Tagify on the above input node reference
+new Tagify(input)
+
+
 
 // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
 
@@ -27,13 +38,41 @@ var myDropzone = new Dropzone("div#previews", {
     previewsContainer: "#previews", // Define the container to display the previews
     init: function() {
         this.on("addedfile", function(file) {
-            // arrFiles.push(file);
+            thumbnail.push(file);
 
         });
         this.on("removedfile", function(file) {
             $.each(arrFiles, function(keys, values) {
                 if (typeof values !== "undefined" && values.name == file.name) {
-                    //  arrFiles.splice(keys, 1);
+                    thumbnail.splice(keys, 1);
+                }
+            });
+        });
+    }
+});
+
+
+
+var myDropzone = new Dropzone("div#mydropzone", {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFiles: 3,
+    url: '#',
+    uploadMultiple: false,
+    acceptedFiles: 'image/*',
+    autoProcessQueue: false,
+    addRemoveLinks: true,
+    dictRemoveFile: " Trash",
+    thumbnailWidth: null,
+    thumbnailHeight: null,
+    init: function() {
+        this.on("addedfile", function(file) {
+            arrImgpro.push(file);
+
+        });
+        this.on("removedfile", function(file) {
+            $.each(arrImgpro, function(keys, values) {
+                if (typeof values !== "undefined" && values.name == file.name) {
+                    arrImgpro.splice(keys, 1);
                 }
             });
         });
@@ -88,6 +127,12 @@ $('#btn-submit').on('click', function() {
         formData.append('fileUpload' + values['color'], values['file']);
 
     });
+    console.log(arrImgpro);
+    $.each(arrImgpro, function(keys, values) {
+        formData.append('fileImgPro[]', values);
+    });
+
+    formData.append('thumbnail', thumbnail[0]);
     formData.append('test', JSON.stringify(arrDataF));
 
     $.ajax({

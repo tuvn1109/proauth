@@ -41,7 +41,7 @@ class Product extends CpanelController
 
 	public function loaddata()
 	{
-		$model = new PropertiesModel();
+		$model = new ProductModel();
 		// data
 		$page = $this->request->getGet('page');
 		$draw = $this->request->getGet('draw');
@@ -70,6 +70,16 @@ class Product extends CpanelController
 		echo json_encode($data);
 
 	}
+	public function loadimage()
+	{
+		helper('filesystem');
+		$model = new ProductModel();
+		$id =  $this->request->getPost('id');
+		$map = directory_map(WRITEPATH . 'uploads/product/' . $id);
+		$data['data'] = $map;
+		echo json_encode($map);
+
+	}
 
 	public function insert()
 	{
@@ -80,26 +90,27 @@ class Product extends CpanelController
 
 			$name =  $this->request->getPost('name');
 			$type =  $this->request->getPost('type');
-			$thumbnail =  $this->request->getPost('thumbnail');
 			$price =  $this->request->getPost('price');
 			$price_sale =  $this->request->getPost('price_sale');
 			$manufactur =  $this->request->getPost('manufactur');
 			$delivery =  $this->request->getPost('delivery');
-			$tag =  $this->request->getPost('tag');
+			$tags =  $this->request->getPost('tags');
 			$description =  $this->request->getPost('description');
 			$description_detail =  $this->request->getPost('description_detail');
-
 			$size =  $this->request->getPost('size');
 			$test = $this->request->getPost('test');
+
+			$tags =  \json_decode($this->request->getPost('tags'),true);
+
+
 			$jsonLayout = \json_decode($test,true);
-					
-			
-
-
+			$file =  $this->request->getFiles();
+			$imgPro = $file['fileImgPro'];		
+	
 			$dataInsert = [
 				'name' => $name,
 				'type' => $type,
-				'thumbnail' => $thumbnail,
+				//'thumbnail' => $thumbnail,
 				'price' => $price,
 				'price_sale' => $price_sale,
 				'manufactur' => $manufactur,
@@ -122,23 +133,51 @@ class Product extends CpanelController
 			$modelProductSize->insert($dataS);
 			endforeach;
 
+			// thumbnail 
+			$thumbnail =  $this->request->getFile('thumbnail');
+			if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
+				//$newName = $img->getRandomName();
+				if (!is_dir(WRITEPATH . 'uploads/product/' . $id)) {
+					mkdir(WRITEPATH . 'uploads/product/' . $id, 0777, TRUE);
+				}
+
+				$thumbnail->move(WRITEPATH . 'uploads/product/' . $id);
+
+				$dataThumb = [
+					'thumbnail' => 'product/' . $id . '/'. $thumbnail->getName(),
+				];
+				$modelProduct->update($id, $dataThumb);
+			}
 
 
+			foreach($imgPro as $imgPro1):
+
+				if ($imgPro1->isValid() && !$imgPro1->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/image')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id.'/image', 0777, TRUE);
+					}
+
+					$imgPro1->move(WRITEPATH . 'uploads/product/' . $id.'/image');
+
+				}
+
+			endforeach;
 			foreach($jsonLayout as $jsonLayout):
 				$img =  $this->request->getFile('fileUpload'.$jsonLayout['color']);
 
 				if ($img->isValid() && !$img->hasMoved()) {
 					//$newName = $img->getRandomName();
-					if (!is_dir(WRITEPATH . 'uploads/product' . $id)) {
-						mkdir(WRITEPATH . 'uploads/product' . $id, 0777, TRUE);
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/layout')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id.'/layout', 0777, TRUE);
 					}
 
-					$img->move(WRITEPATH . 'uploads/product' . $id);
+					$img->move(WRITEPATH . 'uploads/product/' . $id.'/layout');
 
 					$detail = [
 						'product_id' => $id,
 						'color_id' => $jsonLayout['color'],
-						'layout' => 'product' . $id . '/' . $img->getName(),
+						'layout' => 'product/' . $id . '/layout/ ' . $img->getName(),
 					];
 					$modelProductColor->insert($detail);
 				}
@@ -192,11 +231,12 @@ class Product extends CpanelController
 
 	public function delete()
 	{
+		$modelProduct = new ProductModel();
 		$modelProperties = new PropertiesModel();
 		$modelProDetail = new PropertiesDetailModel();
 		$id = $this->request->getPost('id');
-		$modelProperties->delete($id);
-		$modelProDetail->where('properties_id', $id)->delete();
+		$modelProduct->delete($id);
+	//	$modelProDetail->where('properties_id', $id)->delete();
 
 
 		echo json_encode(1);
