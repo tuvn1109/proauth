@@ -2,9 +2,9 @@
 
 use CodeIgniter\Model;
 
-class TagModel extends Model
+class ProductTagModel extends Model
 {
-	protected $table = 'tags';
+	protected $table = 'product_tag';
 	protected $primaryKey = 'id';
 	protected $returnType = 'array';
 	protected $useSoftDeletes = false;
@@ -20,12 +20,6 @@ class TagModel extends Model
 	protected $selectFields = ['*'];
 
 
-	public function checkValue($value)
-	{
-		$query = $this->select('id');
-		$query = $query->where('value', $value);
-		return $query->get()->getRowArray();
-	}
 }
 
 ?>

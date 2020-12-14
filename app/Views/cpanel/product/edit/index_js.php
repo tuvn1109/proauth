@@ -5,6 +5,7 @@ var arrImgpro = [];
 var arrDataF = [];
 var arrColor = [];
 var thumbnail = [];
+var arrImgproDelete = [];
 // /
 
 /// TAGS
@@ -77,14 +78,22 @@ var myDropzone2 = new Dropzone("div#mydropzone", {
 
         });
         this.on("removedfile", function(file) {
+            console.log(file);
+            arrImgproDelete.push(file.name);
+
             $.each(arrImgpro, function(keys, values) {
                 if (typeof values !== "undefined" && values.name == file.name) {
                     arrImgpro.splice(keys, 1);
                 }
             });
+
+console.log(arrImgproDelete);
+
         });
     }
 });
+
+
 
 $.ajax({
     url: "/cpanel/product/loadimage",
@@ -95,20 +104,21 @@ $.ajax({
     type: "POST",
     success: function(data) {
         var mockFile = {
-            name: data[0],
+            name: data['thumb'][0],
             size: 12345
         };
-        var urll = origin + '/download/image?name=product/'+id+'/' + data[0];
+        var urll = origin + '/download/image?name=product/'+id+'/thumb/' + data['thumb'][0];
         myDropzone.options.addedfile.call(myDropzone, mockFile);
         myDropzone.options.thumbnail.call(myDropzone, mockFile, urll);
       
-        $.each(data, function(keys, values) {
+        $.each(data.image, function(keys, values) {
             var mockFile = {
                 name: values,
                 size: 12345
             };
-            var urll = origin + '/download/image?name=product/'+id+'/' + values;
-            console.log(urll)
+            var urll = origin + '/download/image?name=product/'+id+'/image/' + values;
+            console.log(keys +'--'+values);
+           
             myDropzone2.options.addedfile.call(myDropzone2, mockFile);
             myDropzone2.options.thumbnail.call(myDropzone2, mockFile, urll);
         });
@@ -165,16 +175,19 @@ $('#btn-submit').on('click', function() {
 
     });
     console.log(arrImgpro);
+    formData.append('fileImgPro[]', '');
     $.each(arrImgpro, function(keys, values) {
         formData.append('fileImgPro[]', values);
     });
 
     formData.append('thumbnail', thumbnail[0]);
     formData.append('test', JSON.stringify(arrDataF));
+    formData.append('id', id);
+    formData.append('arrDelete', JSON.stringify(arrImgproDelete));
 
     $.ajax({
         type: 'post',
-        url: '/cpanel/product/insert',
+        url: '/cpanel/product/update',
         dataType: "json",
         data: formData,
         async: false,
@@ -196,10 +209,12 @@ $('#btn-add-color').on('click', function() {
     var color = $('#color').val();
     let name = $('select#color').find(':selected').data('name');
     var f = $("#inputlayoutcolor")[0].files[0];
+    var type = $("#typelayout").val();
     var oj = {
         'file': f,
         'color': color,
         'colortext': name,
+        'type': type,
     }
     arrDataF.push(oj);
     drawTableColor();
@@ -211,6 +226,7 @@ async function drawTableColor() {
     var $linethed = $("<thead></thead>");
     var $line = $("<tr></tr>");
     $line.append($('<th style="width:100px" class="text-center">Layout</th>'));
+    $line.append($('<th class="text-center">Type</th>'));
     $line.append($('<th class="text-center">Color</th>'));
     $line.append($('<th style="width: 50px;">Xóa</th>'));
     $linethed.append($line);
@@ -222,6 +238,7 @@ async function drawTableColor() {
         var $line = $("<tr></tr>");
         $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + lin +
             '">'));
+            $line.append($("<td class='text-center'></td>").html(val['type']));
         $line.append($("<td class='text-center'></td>").html(val['colortext']));
         $line.append($("<td></td>").html('<i class="feather icon-x" onclick="deletelayout(' + i + ')"></i>'));
         $table.append($line);

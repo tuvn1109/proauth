@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card card-custom">
             <div class="card-header">
-                <h3>Create Product</h3>
+                <h3>Update Product</h3>
             </div>
             <!--begin::Body-->
             <div class="card-body card-dashboard">
@@ -12,7 +12,8 @@
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="<?= $info['name'] ?>">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                    value="<?= $info['name'] ?>">
                             </fieldset>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -20,9 +21,11 @@
                                 <label>Type</label>
                                 <select class="form-control" id="type" name="type">
                                     <?php
-foreach($category as $category1):
+foreach($listcategory as $category1):
                             ?>
-                                    <option value="<?= $category1['id'] ?>" <?= $info['type'] == $category1['id'] ? "selected" : "" ?> ><?= $category1['value'] ?></option>
+                                    <option value="<?= $category1['id'] ?>"
+                                        <?= $info['type'] == $category1['id'] ? "selected" : "" ?>>
+                                        <?= $category1['value'] ?></option>
                                     <?php
 endforeach;
                                 ?>
@@ -37,10 +40,13 @@ endforeach;
                                     name="size[]" data-select2-id="default-select-multi" tabindex="-1"
                                     aria-hidden="true">
                                     <?php
-                               foreach($size as $size1):
+                               foreach($listsize as $size1):
                                    ?>
-                                    <option value="<?=$size1['id']?>"><?=$size1['value']?>
-                                    </option>
+                                    <option value="<?=$size1['id']?>" <?php foreach($sizes as $sizes1):
+if($size1['id'] == $sizes1['size_id']){ echo 'selected';}
+
+                                    endforeach;
+                                    ?>><?=$size1['value']?> </option>
 
                                     <?php
                                endforeach;
@@ -52,7 +58,8 @@ endforeach;
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Price $</label>
-                                <input type="text" class="form-control" id="price" name="price" placeholder="..." value="<?= $info['price'] ?>">
+                                <input type="text" class="form-control" id="price" name="price" placeholder="..."
+                                    value="<?= $info['price'] ?>">
                             </fieldset>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -87,14 +94,14 @@ endforeach;
                             <fieldset class="form-group">
                                 <label>Delivery</label>
                                 <input type="text" class="form-control" id="delivery" name="delivery"
-                                    placeholder="delivery"  value="<?= $info['delivery'] ?>">
+                                    placeholder="delivery" value="<?= $info['delivery'] ?>">
                             </fieldset>
                         </div>
 
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Tag</label>
-                                <input type="text" class="form-control" id="tags" name="tags" placeholder="#Tag">
+                                <input type="text" class="form-control" id="tags" name="tags" placeholder="#Tag" value="<?=$info['tag']?>">
                             </fieldset>
                         </div>
                     </div>
@@ -146,8 +153,8 @@ endforeach;
 
                 <div id="thumbnail">
                     <div id="previews">
-                    <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload (240x270)
-                    </div>
+                        <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload (240x270)
+                        </div>
                     </div>
                 </div>
 
@@ -155,12 +162,12 @@ endforeach;
                 <div id="tpl" style="display:none">
                     <div class="dz-preview dz-file-preview">
                         <div class="dz-thumb">
-                        
+
                             <img class="img-fluid w-100" data-dz-thumbnail />
                         </div>
                         <div class="dz-trash"><span data-dz-remove></span></div>
                     </div>
-                   
+
                 </div>
 
             </div>
@@ -211,13 +218,25 @@ endforeach;
                                 <label>Color</label>
                                 <select class="form-control" id="color" name="color">
                                     <?php
-                               foreach($color as $color1):
+                               foreach($listcolor as $color1):
                                    ?>
                                     <option value="<?= $color1['id'] ?>" data-name="<?= $color1['value'] ?>">
                                         <?= $color1['value'] ?></option>
                                     <?php
                                endforeach;
                                ?>
+                                </select>
+                            </fieldset>
+
+                        </div>
+                        <div class="col-12">
+                            <fieldset class="form-group">
+                                <label>Type</label>
+                                <select class="form-control" id="typelayout" name="typelayout">
+                                   
+                                    <option value="front">Front</option>
+                                    <option value="back">Back</option>
+                                   
                                 </select>
                             </fieldset>
 
@@ -235,6 +254,35 @@ endforeach;
 
                     <div class="col-8">
                         <div id="drawtable" class="perfect"></div>
+                        <table class="table dataTable">
+                            <thead></thead>
+                            <thead>
+                                <tr>
+                                    <th style="width:100px" class="text-center">Layout</th>
+                                    <th class="text-center">Color</th>
+                                    <th style="width: 50px;">Xóa</th>
+                                </tr>
+                            </thead>
+
+
+                            <?php 
+                        
+foreach($layout as $layout1):
+    ?>
+
+                            <tr>
+                                <td class="text-center"><img style="height:100px;width:100px"
+                                        src="/download/image?name=<?=$layout1['layout']?>" /></td>
+                                <td class="text-center"><?=$layout1['value']?></td>
+                                <td class="text-center">X</td>
+                            </tr>
+                            <?php
+endforeach;
+?>
+
+
+                        </table>
+
                     </div>
                 </div>
             </div>

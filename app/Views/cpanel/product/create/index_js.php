@@ -159,10 +159,14 @@ $('#btn-add-color').on('click', function() {
     var color = $('#color').val();
     let name = $('select#color').find(':selected').data('name');
     var f = $("#inputlayoutcolor")[0].files[0];
+    var fback = $("#inputlayoutcolorback")[0].files[0];
+    var type = $("#typelayout").val();
     var oj = {
-        'file': f,
+        'font': f,
+        'back': fback,
         'color': color,
         'colortext': name,
+        'type': type,
     }
     arrDataF.push(oj);
     drawTableColor();
@@ -173,7 +177,8 @@ async function drawTableColor() {
     var $table = $('<table class="table dataTable"><thead></thead></table>');
     var $linethed = $("<thead></thead>");
     var $line = $("<tr></tr>");
-    $line.append($('<th style="width:100px" class="text-center">Layout</th>'));
+    $line.append($('<th style="width:100px" class="text-center">Front</th>'));
+    $line.append($('<th class="text-center">Back</th>'));
     $line.append($('<th class="text-center">Color</th>'));
     $line.append($('<th style="width: 50px;">Xóa</th>'));
     $linethed.append($line);
@@ -181,10 +186,14 @@ async function drawTableColor() {
 
     for (var i = arrDataF.length - 1; i >= 0; i--) {
         var val = arrDataF[i];
-        var lin = await getBase64(val['file']);
+        var font = await getBase64(val['font']);
+        var back = await getBase64(val['back']);
         var $line = $("<tr></tr>");
-        $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + lin +
+        $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + font +
             '">'));
+        $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + back +
+            '">'));
+
         $line.append($("<td class='text-center'></td>").html(val['colortext']));
         $line.append($("<td></td>").html('<i class="feather icon-x" onclick="deletelayout(' + i + ')"></i>'));
         $table.append($line);

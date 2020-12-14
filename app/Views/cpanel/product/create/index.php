@@ -198,10 +198,20 @@ endforeach;
                     <div class="col-4">
                         <div class="col-12">
                             <fieldset class="form-group">
-                                <label>Layout color</label>
+                                <label>Layout front</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="inputlayoutcolor"
                                         name="inputlayoutcolor">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-12">
+                            <fieldset class="form-group">
+                                <label>Layout back</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputlayoutcolorback"
+                                        name="inputlayoutcolorback">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                             </fieldset>
@@ -222,6 +232,7 @@ endforeach;
                             </fieldset>
 
                         </div>
+                      
                         <div class="col-12">
                             <fieldset class="form-group">
                                 <button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"
