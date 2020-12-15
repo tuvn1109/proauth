@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card card-custom">
             <div class="card-header">
-                <h3>Create Product</h3>
+                <h3>Create Product <i class="fa fa-heart-o"></i></h3>
             </div>
             <!--begin::Body-->
             <div class="card-body card-dashboard">

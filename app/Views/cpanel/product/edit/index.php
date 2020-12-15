@@ -258,7 +258,8 @@ if($size1['id'] == $sizes1['size_id']){ echo 'selected';}
                             <thead></thead>
                             <thead>
                                 <tr>
-                                    <th style="width:100px" class="text-center">Layout</th>
+                                    <th style="width:100px" class="text-center">Front</th>
+                                    <th style="width:100px" class="text-center">Back</th>
                                     <th class="text-center">Color</th>
                                     <th style="width: 50px;">Xóa</th>
                                 </tr>
@@ -273,6 +274,8 @@ foreach($layout as $layout1):
                             <tr>
                                 <td class="text-center"><img style="height:100px;width:100px"
                                         src="/download/image?name=<?=$layout1['layout']?>" /></td>
+                                <td class="text-center"><img style="height:100px;width:100px"
+                                        src="/download/image?name=<?=$layout1['back']?>" /></td>
                                 <td class="text-center"><?=$layout1['value']?></td>
                                 <td class="text-center">X</td>
                             </tr>

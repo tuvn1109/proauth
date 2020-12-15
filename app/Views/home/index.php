@@ -6,7 +6,7 @@
     </div>
 
 
-    <div class="row bestsell-item">
+    <div class="row bestsell-item animate__animated animate__fadeIn animate__slow">
         <div class="col-lg-6 col-12">
             <div class="row">
                 <div class="col-sm-6 col-12">
@@ -114,8 +114,8 @@
                 </div>
 
 
-                <div class="col-md-12 col-12" id="banner-bestsell">
-                    <div id="bestsell-mini-right"><img src="/logo/banner-bestsell.png" class="img-fluid w-100">
+                <div class="col-md-12 col-12" id="banner-bestsell" >
+                    <div id="bestsell-mini-right" class="animate__animated animate__tada"><img src="/logo/banner-bestsell.png" class="img-fluid w-100">
                     </div>
                 </div>
 
@@ -230,10 +230,16 @@
     </div>
 
     <div class="row" style="margin-top: 50px">
+        <?php 
+        $i = 0;
+        foreach($tshirt as $tshirt1){
+            $i++;
+        ?>
+
         <div class="col">
             <div class="product-home-category">
                 <div class="thumb-product-home">
-                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
+                    <img src="/download/image?name=<?=$tshirt1['thumbnail']?>" class="img-fluid w-100">
                     <div id="back-hover">
                         <div class="centerContent">
                             <button class="btn-quickview"><span>quick view</span>
@@ -241,191 +247,51 @@
                             <button class="btn-addcart"><span>add to cart</span>
                             </button>
                         </div>
+
                     </div>
+                    <div id="favourite"><i class="fal fa-heart"></i></div>
+                    <div id="shareproduct"><i class="far fa-share-alt"></i></div>
+
                 </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
+                <div id="name-item-mini-right"><?= $tshirt1['name'] ?> </div>
                 <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
+                <div id="price-item-mini-right">
+                    <?php
+                    if($tshirt1['sale'] == 'yes'){
+                                    ?>
+                    <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
+">$<?= $tshirt1['price'] ?> USD</span> <span class="price">$<?= $tshirt1['price'] ?> USD</span>
+                    <?php
+                    }else{
+                        ?>
+                    <span class="pricesale">$<?= $tshirt1['price'] ?> USD
+                        <?php
+                    }
+                    ?>
+                </div>
                 <div id="ellipse-item"><span>NEW</span></div>
             </div>
         </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt4.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt4.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
+        <?php
+        if($i == 5){
+            ?>
+        <div class="col-12"  style="margin-top: 50px"></div>
+        <?php
+        }
+       ?>
+
+        <?php
+        }
+        ?>
+
     </div>
-    <div class="row" style="margin-top: 50px">
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt4.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt4.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/tshirt1.png" class="img-fluid w-100">
-                    <div id="back-hover">
-                        <div class="centerContent">
-                            <button class="btn-quickview"><span>quick view</span>
-                            </button>
-                            <button class="btn-addcart"><span>add to cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-    </div>
-    
+    <div class="row">
+        <div class="col-12 center">
 
 
+        </div>
+
+    </div>
 </section>
 <section class="cover-img">
     <div class="row">
@@ -450,123 +316,59 @@
 
 
     <div class="row" style="margin-top: 50px">
+
+        <?php
+$i = 0;
+foreach($accessories as $accessories1){
+    $i++;
+?>
         <div class="col">
             <div class="product-home-category">
                 <div class="thumb-product-home">
-                    <img src="/logo/mug1.jpg" class="img-fluid w-100">
+                <img src="/download/image?name=<?=$accessories1['thumbnail']?>" class="img-fluid w-100">
+                    <div id="back-hover">
+                        <div class="centerContent">
+                            <button class="btn-quickview"><span>quick view</span>
+                            </button>
+                            <button class="btn-addcart"><span>add to cart</span>
+                            </button>
+                        </div>
+                    </div>
+                     <div id="favourite"><i class="fal fa-heart"></i></div>
+                    <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                 </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
+                <div id="name-item-mini-right"><?=$accessories1['name']?></div>
                 <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
+                <div id="price-item-mini-right">
+                    <?php
+                    if($accessories1['sale'] == 'yes'){
+                    ?>
+                    <span class="price-old" >$<?= $accessories1['price'] ?> USD</span> <span class="price">$<?= $accessories1['price_sale'] ?> USD</span>
+                    <?php
+                    }else{
+                        ?>
+                    <span class="price">$<?= $accessories1['price'] ?> USD
+                        <?php
+                    }
+                    ?>
+                </div>
                 <div id="ellipse-item"><span>NEW</span></div>
             </div>
         </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug2.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug3.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug4.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug5.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
+        <?php
+if($i == 5){
+    ?>
+        <div class="col-12" style="margin-top: 50px"></div>
+        <?php
+}
+?>
+        <?php
+}
+?>
 
 
     </div>
-    <div class="row" style="margin-top: 50px">
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug6.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug7.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug8.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug9.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="product-home-category">
-                <div class="thumb-product-home">
-                    <img src="/logo/mug10.jpg" class="img-fluid w-100">
-                </div>
-                <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                <div id="classify-item-mini-right">Personalized Shirt</div>
-                <div id="price-item-mini-right">$34.99 USD</div>
-                <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
 
-
-    </div>
 
 
 </section>

@@ -325,11 +325,11 @@ img {
     font-family: Quicksand;
     font-size: 13px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 25px;
     letter-spacing: 0px;
     text-align: center;
-    color: #666565 78%;
+    color: #E67E22;
     margin-top: 7px;
 
 }
@@ -923,6 +923,7 @@ img {
     z-index: 1;
 }
 
+
 .thumb-bestsell-right {
     max-height: 240px;
     overflow: hidden;
@@ -1007,3 +1008,41 @@ img {
 
 
 /* OWl START*/
+.price-old{
+    text-decoration-line: line-through;
+    margin-right: 15px;
+    color: rgba(102, 101, 101, 0.78);
+
+}
+
+.thumb-product-home:hover #favourite {
+    position: absolute;
+    top: 3%;
+    left: 85%;
+    display: block;
+    z-index: 1;
+   font-size: 20px;
+}
+.thumb-product-home:hover #shareproduct {
+    position: absolute;
+     margin-top: 30px !important;
+    top: 3%;
+    left: 85%;
+    display: block;
+    z-index: 1;
+    font-size: 18px;
+}
+#favourite {
+    display: none;
+}
+#favourite i{
+    cursor: pointer;
+}
+
+#shareproduct {
+    display: none;
+    margin-top: 30px;
+}
+#shareproduct i{
+    cursor: pointer;
+}

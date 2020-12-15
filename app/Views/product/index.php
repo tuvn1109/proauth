@@ -17,15 +17,24 @@
         </div>
     </div>
 </section>
+<?php
 
+var_dump($image)
+
+?>
 <section id="main-product">
     <div class="row ">
         <div class="col-md-6 col-12 d-flex  justify-content-center">
             <div class="content-carousel" id="c1">
                 <div class="owl-carousel">
-                    <div class="item"><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
-                    <div class="item"><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
-                    <div class="item"><img src="http://proauth.com/logo/case1.jpg" class="img-fluid"></div>
+                    <?php
+
+foreach($image as $image1):
+?>
+                    <div class="item"><img src="/download/image?name=product/<?=$info['id']?>/image/<?=$image1?>" class="img-fluid"></div>
+                    <?php
+endforeach;
+                    ?>
                 </div>
             </div>
 
@@ -36,45 +45,60 @@
                     <div class="link-pro">Home > T-shirt</div>
                 </div>
                 <div class="col-12">
-                    <div class="title-pro"><span>Fancy Cloud -Oversize Printed Tee - Up to 9 Kids </span></div>
+                    <div class="title-pro"><span><?= $info['name'] ?></span></div>
                 </div>
                 <div class="col-12">
-                    <div class="price-pro"><p>$24.99 USD</p></div>
+                    <div class="price-pro">
+                        <p>$<?= $info['price'] ?> USD</p>
+                    </div>
 
                 </div>
                 <div class="col-12">
                     <div class="sale-timeout-pro"><img
-                                src="https://s3-alpha-sig.figma.com/img/749b/abcf/e19afa554519859ce55ab2a65fd84809?Expires=1607299200&Signature=F39Ozy6bkYKW9NRk8BfbFd4CUf1Aa9AZz0zLamcQFSEBT8Z6JbqhMBxbM3iNwri86bRIJ1DKlxlEqQ91zsgoJLAw40gTGbf7KLWj~FZ8YjQ5GIO-vaunfaHec1z50b8944TXD9Uz2Xqb0Me9DqTqHrsTG1iPCuB1Df3FBPiciAcF8g2o~7oQGS~pgj2jWYXrZX1vEhykDtFsY6b7rJzwy05p5DvXQKAK26M067LICAnP9kq~b5Wlt-T3wy128FMLZ2kzEUfY0pMnMVp2gjskdfKV7CtZbaSHgQ-lCLdtqWNoJ0XF1pIZcQTjmpySd7pv6lg5oQL8~i2vP3j8UZlYBA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+                            src="https://s3-alpha-sig.figma.com/img/749b/abcf/e19afa554519859ce55ab2a65fd84809?Expires=1607299200&Signature=F39Ozy6bkYKW9NRk8BfbFd4CUf1Aa9AZz0zLamcQFSEBT8Z6JbqhMBxbM3iNwri86bRIJ1DKlxlEqQ91zsgoJLAw40gTGbf7KLWj~FZ8YjQ5GIO-vaunfaHec1z50b8944TXD9Uz2Xqb0Me9DqTqHrsTG1iPCuB1Df3FBPiciAcF8g2o~7oQGS~pgj2jWYXrZX1vEhykDtFsY6b7rJzwy05p5DvXQKAK26M067LICAnP9kq~b5Wlt-T3wy128FMLZ2kzEUfY0pMnMVp2gjskdfKV7CtZbaSHgQ-lCLdtqWNoJ0XF1pIZcQTjmpySd7pv6lg5oQL8~i2vP3j8UZlYBA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="express-pro"><p>ORDER CUT OFF FOR CHRISTMAS: Nov 25</p></div>
+                    <div class="express-pro">
+                        <p>ORDER CUT OFF FOR CHRISTMAS: Nov 25</p>
+                    </div>
                 </div>
                 <div class="col-6 d-flex">
                     <div class=""><img src="/logo/US-logo.png" style="height: 30px;width: 30px"></div>
-                    <div class="info-pro">Products are manufactured in<br><span>United States</span></div>
+                    <div class="info-pro">Products are manufactured in<br><span><?= $info['manufactur'] ?></span></div>
 
                 </div>
                 <div class="col-6 d-flex">
                     <div class=""><img src="/logo/truck-logo.png" style="height: 30px;width: 30px"></div>
-                    <div class="info-pro">Products are manufactured in<br><span>Express by 29 Jan</span></div>
+                    <div class="info-pro">Products are manufactured in<br><span><?= $info['delivery'] ?></span></div>
 
                 </div>
                 <div class="col-12">
-                    <div class="title-discription-pro"><p>We design products for fan</p></div>
-                    <div class="discription-pro"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor
-                            dignissim
-                            convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus.</p></div>
+                    <div class="title-discription-pro">
+                        <p><?= $info['description'] ?></p>
+                    </div>
+                    <div class="discription-pro">
+                        <p><?= $info['description_detail'] ?></p>
+                    </div>
                 </div>
+
+
+                <?php
+
+                $t  = explode(',',$info['tag']);
+
+                ?>
                 <div class="col-12  d-flex">
-                    <div><img src="/logo/tag-logo.png"
-                              style="height: 14.374929428100586px;width: 14.37868881225586px;"></div>
+                    <div><img src="/logo/tag-logo.png" style="height: 14.374929428100586px;width: 14.37868881225586px;">
+                    </div>
                     <div class="tag d-flex">
-                        <div class="tag-text">#T-shirt</div>
-                        <div class="tag-text">#Men</div>
-                        <div class="tag-text">#Oversize</div>
+                        <?php
+                        foreach($t as $t1):
+                    ?>
+                        <div class="tag-text">#<?=$t1?></div>
+                        <?php
+                        endforeach;
+                    ?>
                     </div>
                 </div>
             </div>
@@ -128,18 +152,17 @@
                             <div class="col-12 title-type-pro"><span>Color</span></div>
                             <div class="col-12 list-color-pro ">
                                 <div class="row">
+
+                                    <?php 
+                                foreach($color as $color1):
+                                    ?>
                                     <div class="col-1 ">
-                                        <div class="item-color cl-white"></div>
+                                        <div class="item-color cl-white" style="background-color: <?=$color1['code']?>">
+                                        </div>
                                     </div>
-                                    <div class="col-1 ">
-                                        <div class="item-color cl-orange"></div>
-                                    </div>
-                                    <div class="col-1 ">
-                                        <div class="item-color cl-blue"></div>
-                                    </div>
-                                    <div class="col-1 ">
-                                        <div class="item-color cl-green"></div>
-                                    </div>
+                                    <?php 
+                                endforeach;
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -149,9 +172,14 @@
                             <div class="col-12 list-size-pro">
                                 <div class="row">
                                     <div class="col-12  d-flex">
-                                        <div class="size"><span>S</span></div>
-                                        <div class="size"><span>SM</span></div>
-                                        <div class="size"><span>M</span></div>
+
+                                        <?php 
+                                        foreach($size as $size1):
+                                    ?>
+                                        <div class="size"><span><?=$size1['value']?></span></div>
+                                        <?php
+                                        endforeach;
+                                    ?>
                                     </div>
                                 </div>
 
@@ -185,4 +213,3 @@
         </div>
     </div>
 </section>
-

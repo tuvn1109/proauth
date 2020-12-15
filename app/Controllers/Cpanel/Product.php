@@ -174,14 +174,14 @@ class Product extends CpanelController
 			$thumbnail =  $this->request->getFile('thumbnail');
 			if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
 				//$newName = $img->getRandomName();
-				if (!is_dir(WRITEPATH . 'uploads/product/' . $id)) {
-					mkdir(WRITEPATH . 'uploads/product/' . $id, 0777, TRUE);
+				if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/thumb')) {
+					mkdir(WRITEPATH . 'uploads/product/' . $id.'/thumb', 0777, TRUE);
 				}
 
-				$thumbnail->move(WRITEPATH . 'uploads/product/' . $id);
+				$thumbnail->move(WRITEPATH . 'uploads/product/' . $id.'/thumb');
 
 				$dataThumb = [
-					'thumbnail' => 'product/' . $id . '/'. $thumbnail->getName(),
+					'thumbnail' => 'product/' . $id . '/thumb/'. $thumbnail->getName(),
 				];
 				$modelProduct->update($id, $dataThumb);
 			}
@@ -204,6 +204,7 @@ class Product extends CpanelController
 			if($jsonLayout){
 				foreach($jsonLayout as $jsonLayout):
 					$img =  $this->request->getFile('fileUpload'.$jsonLayout['color']);
+					$imgback =  $this->request->getFile('fileUploadback'.$jsonLayout['color']);
 
 					if ($img->isValid() && !$img->hasMoved()) {
 						//$newName = $img->getRandomName();
@@ -213,15 +214,24 @@ class Product extends CpanelController
 
 						$img->move(WRITEPATH . 'uploads/product/' . $id.'/layout');
 
-						$detail = [
-							'product_id' => $id,
-							'color_id' => $jsonLayout['color'],
-							'type' => $jsonLayout['type'],
-							'layout' => 'product/' . $id . '/layout/' . $img->getName(),
-						];
-						$modelProductColor->insert($detail);
+					}	
+					if ($imgback->isValid() && !$imgback->hasMoved()) {
+						//$newName = $img->getRandomName();
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/layout')) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id.'/layout', 0777, TRUE);
+						}
+						$imgback->move(WRITEPATH . 'uploads/product/' . $id.'/layout');
 					}
 
+
+					
+					$detail = [
+						'product_id' => $id,
+						'color_id' => $jsonLayout['color'],
+						'layout' => 'product/' . $id . '/layout/' . $img->getName(),
+						'back' => 'product/' . $id . '/layout/' . $imgback->getName(),
+					];
+					$modelProductColor->insert($detail);
 				endforeach;
 			}
 			$return = [

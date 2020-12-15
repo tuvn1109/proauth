@@ -124,7 +124,8 @@ function test() {
 $('#btn-submit').on('click', function() {
     var formData = new FormData($('#fr_createpro')[0]);
     $.each(arrDataF, function(keys, values) {
-        formData.append('fileUpload' + values['color'], values['file']);
+        formData.append('fileUpload' + values['color'], values['font']);
+        formData.append('fileUploadback' + values['color'], values['back']);
 
     });
     console.log(arrImgpro);
