@@ -19,6 +19,13 @@ class CategoryModel extends Model
 	protected $skipValidation = false;
 	protected $selectFields = ['*'];
 
+
+	public function getId($value)
+	{
+		$query = $this->select('id');
+		return $query->getWhere(['value' => $value])->getRowArray();
+	}
+
 }
 
 ?>

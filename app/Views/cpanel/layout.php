@@ -501,10 +501,11 @@ $user = $_SESSION['user'];
             </li>
             <li class="<?= $menu == 'createproduct' ? 'active ' : '' ?> nav-item"><a href="/cpanel/product/create"><i
                             class="feather icon-plus-circle"></i><span class="menu-title"
-                                                                   data-i18n="order">Create product</span></a>
-            </li><li class="<?= $menu == 'product' ? 'active ' : '' ?> nav-item"><a href="/cpanel/product"><i
+                                                                       data-i18n="order">Create product</span></a>
+            </li>
+            <li class="<?= $menu == 'product' ? 'active ' : '' ?> nav-item"><a href="/cpanel/product"><i
                             class="feather icon-menu"></i><span class="menu-title"
-                                                                   data-i18n="order">Products</span></a>
+                                                                data-i18n="order">Products</span></a>
             </li>
             <li class="<?= $menu == 'properties' ? 'active ' : '' ?> nav-item"><a href="/cpanel/properties"><i
                             class="feather icon-codepen"></i><span class="menu-title"
@@ -516,11 +517,11 @@ $user = $_SESSION['user'];
             </li>
             <li class="<?= $menu == 'sizes' ? 'active ' : '' ?> nav-item"><a href="/cpanel/size"><i
                             class="feather icon-maximize-2"></i><span class="menu-title"
-                                                                     data-i18n="order">Sizes</span></a>
+                                                                      data-i18n="order">Sizes</span></a>
             </li>
             <li class="<?= $menu == 'colors' ? 'active ' : '' ?> nav-item"><a href="/cpanel/color"><i
                             class="feather icon-aperture"></i><span class="menu-title"
-                                                                     data-i18n="order">Colors</span></a>
+                                                                    data-i18n="order">Colors</span></a>
             </li>
 
             <li class=" navigation-header"><span>Apps</span>
@@ -558,6 +559,12 @@ $user = $_SESSION['user'];
                 </ul>
             </li>
             <li class=" navigation-header"><span>Settings</span>
+            </li>
+            <li class="<?= $menu == 'homesetting' ? 'active ' : '' ?> nav-item"><a href="/cpanel/settings/home"><i
+                            class="fa fa-home"></i><span class="menu-title">Home settings</span></a>
+            </li>
+            <li class="<?= $menu == 'bannersetting' ? 'active ' : '' ?> nav-item"><a href="/cpanel/settings/banner"><i
+                            class="fa fa-picture-o"></i><span class="menu-title">Banner settings</span></a>
             </li>
             <li class="<?= $menu == 'email' ? 'active ' : '' ?> nav-item"><a href="/cpanel/email"><i
                             class="feather icon-mail"></i><span class="menu-title"

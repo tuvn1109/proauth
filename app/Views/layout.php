@@ -203,7 +203,9 @@
             </div>
         </div>
     </div>
-
+<?php
+echo view($temp . '_js', $this->data);
+?>
     <script src="owlcarousel/owl.carousel.min.js"></script>
     <script>
     var owl = $('.owl-carousel');

@@ -49,12 +49,32 @@ class Category extends CpanelController
 
 	public function insert()
 	{
+		helper('comment');
 		$value = $this->request->getPost('value');
+		$icon = $this->request->getFile('iconcate');
 		$model = new CategoryModel();
 		$data = [
 			'value' => $value,
+			'slug' => create_slug($value),
+			'icon' => '',
 		];
 		$id = $model->insert($data);
+
+
+		if ($icon->isValid() && !$icon->hasMoved()) {
+			//$newName = $img->getRandomName();
+			if (!is_dir(WRITEPATH . 'uploads/category/' . $id)) {
+				mkdir(WRITEPATH . 'uploads/category/' . $id, 0777, TRUE);
+			}
+			$icon->move(WRITEPATH . 'uploads/category/' . $id);
+
+			$link = 'category/' . $id . '/' . $icon->getName();
+			$dataIcon = [
+				'icon' => $link,
+			];
+			$model->update($id, $dataIcon);
+		}
+
 
 		echo json_encode($id);
 	}
@@ -62,11 +82,25 @@ class Category extends CpanelController
 
 	public function edit()
 	{
-		$model = new CategoryModel();
+		helper('filesystem');
 		$value = $this->request->getPost('value');
+		$icon = $this->request->getFile('iconcate');
+		$model = new CategoryModel();
 		$id = $this->request->getPost('id');
+
+		$link = '';
+
+		if ($icon->isValid() && !$icon->hasMoved()) {
+			delete_files(WRITEPATH . 'uploads/category/' . $id);
+			if (!is_dir(WRITEPATH . 'uploads/category/' . $id)) {
+				mkdir(WRITEPATH . 'uploads/category/' . $id, 0777, TRUE);
+			}
+			$icon->move(WRITEPATH . 'uploads/category/' . $id);
+			$link = 'category/' . $id . '/' . $icon->getName();
+		}
 		$data = [
 			'value' => $value,
+			'icon' => $link,
 		];
 		$model->update($id, $data);
 
@@ -75,8 +109,11 @@ class Category extends CpanelController
 
 	public function delete()
 	{
+		helper('filesystem');
 		$model = new CategoryModel();
 		$id = $this->request->getPost('id');
+		delete_files(WRITEPATH . 'uploads/category/' . $id);
+		//unlink(WRITEPATH . 'uploads/category/' . $id);
 		$model->delete($id);
 		echo json_encode(1);
 	}

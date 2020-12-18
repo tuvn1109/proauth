@@ -38,8 +38,8 @@ class Product extends CpanelController
 		$data['color'] = $modelColor->findAll();
 		$data['size'] = $modelSize->findAll();
 		echo view('cpanel/layout', $data);
-    }
-    
+	}
+
 
 	public function loaddata()
 	{
@@ -72,14 +72,15 @@ class Product extends CpanelController
 		echo json_encode($data);
 
 	}
+
 	public function loadimage()
 	{
 		helper('filesystem');
 		$model = new ProductModel();
-		$id =  $this->request->getPost('id');
-		$image = directory_map(WRITEPATH . 'uploads/product/' . $id.'/image');
-		$thumb = directory_map(WRITEPATH . 'uploads/product/' . $id.'/thumb');
-		$layout = directory_map(WRITEPATH . 'uploads/product/' . $id.'/layout');
+		$id = $this->request->getPost('id');
+		$image = directory_map(WRITEPATH . 'uploads/product/' . $id . '/image');
+		$thumb = directory_map(WRITEPATH . 'uploads/product/' . $id . '/thumb');
+		$layout = directory_map(WRITEPATH . 'uploads/product/' . $id . '/layout');
 		$data['image'] = $image;
 		$data['thumb'] = $thumb;
 		$data['layout'] = $layout;
@@ -89,158 +90,159 @@ class Product extends CpanelController
 
 	public function insert()
 	{
-			$modelProduct = new ProductModel();
-			$modelProductSize = new ProductSizeModel();
-			$modelProductColor = new ProductColorModel();
-			$modelProductTag = new ProductTagModel();
-			$modelTag = new TagModel();
+		helper('comment');
+		$modelProduct = new ProductModel();
+		$modelProductSize = new ProductSizeModel();
+		$modelProductColor = new ProductColorModel();
+		$modelProductTag = new ProductTagModel();
+		$modelTag = new TagModel();
 
-			$arrTag = [];
-			$name =  $this->request->getPost('name');
-			$type =  $this->request->getPost('type');
-			$price =  $this->request->getPost('price');
-			$price_sale =  $this->request->getPost('price_sale');
-			$manufactur =  $this->request->getPost('manufactur');
-			$delivery =  $this->request->getPost('delivery');
-			$tags =  $this->request->getPost('tags');
-			$description =  $this->request->getPost('description');
-			$description_detail =  $this->request->getPost('description_detail');
-			$size =  $this->request->getPost('size');
-			$test = $this->request->getPost('test');
+		$arrTag = [];
+		$name = $this->request->getPost('name');
+		$type = $this->request->getPost('type');
+		$price = $this->request->getPost('price');
+		$price_sale = $this->request->getPost('price_sale');
+		$manufactur = $this->request->getPost('manufactur');
+		$delivery = $this->request->getPost('delivery');
+		$tags = $this->request->getPost('tags');
+		$description = $this->request->getPost('description');
+		$description_detail = $this->request->getPost('description_detail');
+		$size = $this->request->getPost('size');
+		$test = $this->request->getPost('test');
 
-			$tags =  \json_decode($this->request->getPost('tags'),true);
+		$tags = \json_decode($this->request->getPost('tags'), true);
 
-			foreach($tags as $tags1):
-				$arrTag[] = $tags1['value'];
-			endforeach;
-	
-			$tagText = \implode(",",$arrTag);
-	
-			$jsonLayout = \json_decode($test,true);
-			$file =  $this->request->getFiles();
-			$imgPro = $file['fileImgPro'];		
-	
-			$dataInsert = [
-				'name' => $name,
-				'type' => $type,
-				'price' => $price,
-				'price_sale' => $price_sale,
-				'manufactur' => $manufactur,
-				'delivery' => $delivery,
-				'tag' => $tagText,
-				'description' => $description,
-				'description_detail' => $description_detail,
-			];
-			$id = $modelProduct->insert($dataInsert);
+		foreach ($tags as $tags1):
+			$arrTag[] = $tags1['value'];
+		endforeach;
+
+		$tagText = \implode(",", $arrTag);
+
+		$jsonLayout = \json_decode($test, true);
+		$file = $this->request->getFiles();
+		$imgPro = $file['fileImgPro'];
+
+		$dataInsert = [
+			'name' => $name,
+			'type' => $type,
+			'price' => $price,
+			'price_sale' => $price_sale,
+			'manufactur' => $manufactur,
+			'delivery' => $delivery,
+			'tag' => $tagText,
+			'description' => $description,
+			'description_detail' => $description_detail,
+			'slug' => create_slug($name),
+		];
+		$id = $modelProduct->insert($dataInsert);
 
 
-			// SIZE 
-			if($size){
-			foreach($size as $size1):
+		// SIZE
+		if ($size) {
+			foreach ($size as $size1):
 				$dataS = [
 					'product_id' => $id,
 					'size_id' => $size1,
 				];
 
-			$modelProductSize->insert($dataS);
+				$modelProductSize->insert($dataS);
 			endforeach;
+		}
+		// TAG
+		if ($tags) {
+			foreach ($tags as $tags1):
+				$check = $modelTag->checkValue($tags1['value']);
+				if (!$check) {
+					$dataTag = [
+						'value' => $tags1['value'],
+					];
+					$idTag = $modelTag->insert($dataTag);
+
+					$dataTagPro = [
+						'tag_id' => $idTag,
+						'product_id' => $id,
+					];
+					$modelProductTag->insert($dataTagPro);
+				} else {
+
+					$dataTagPro = [
+						'tag_id' => $check,
+						'product_id' => $id,
+					];
+					$modelProductTag->insert($dataTagPro);
+				}
+			endforeach;
+		}
+		// thumbnail
+		$thumbnail = $this->request->getFile('thumbnail');
+		if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
+			//$newName = $img->getRandomName();
+			if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/thumb')) {
+				mkdir(WRITEPATH . 'uploads/product/' . $id . '/thumb', 0777, TRUE);
 			}
-			// TAG 
-			if($tags){
-				foreach($tags as $tags1):
-					$check = $modelTag->checkValue($tags1['value']);
-					if(!$check){
-						$dataTag = [
-							'value' => $tags1['value'],
-						];
-						$idTag = $modelTag->insert($dataTag);
 
-						$dataTagPro = [
-							'tag_id' => $idTag,
-							'product_id' => $id,
-						];
-						$modelProductTag->insert($dataTagPro);
-					}else{
+			$thumbnail->move(WRITEPATH . 'uploads/product/' . $id . '/thumb');
 
-						$dataTagPro = [
-							'tag_id' => $check,
-							'product_id' => $id,
-						];
-						$modelProductTag->insert($dataTagPro);
+			$dataThumb = [
+				'thumbnail' => 'product/' . $id . '/thumb/' . $thumbnail->getName(),
+			];
+			$modelProduct->update($id, $dataThumb);
+		}
+
+		if ($imgPro) {
+			foreach ($imgPro as $imgPro1):
+
+				if ($imgPro1->isValid() && !$imgPro1->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
 					}
-				endforeach;
-			}
-			// thumbnail 
-			$thumbnail =  $this->request->getFile('thumbnail');
-			if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
-				//$newName = $img->getRandomName();
-				if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/thumb')) {
-					mkdir(WRITEPATH . 'uploads/product/' . $id.'/thumb', 0777, TRUE);
+
+					$imgPro1->move(WRITEPATH . 'uploads/product/' . $id . '/image');
+
 				}
 
-				$thumbnail->move(WRITEPATH . 'uploads/product/' . $id.'/thumb');
+			endforeach;
+		}
+		if ($jsonLayout) {
+			foreach ($jsonLayout as $jsonLayout):
+				$img = $this->request->getFile('fileUpload' . $jsonLayout['color']);
+				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout['color']);
 
-				$dataThumb = [
-					'thumbnail' => 'product/' . $id . '/thumb/'. $thumbnail->getName(),
+				if ($img->isValid() && !$img->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+					}
+
+					$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
+
+				}
+				if ($imgback->isValid() && !$imgback->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+					}
+					$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
+				}
+
+
+				$detail = [
+					'product_id' => $id,
+					'color_id' => $jsonLayout['color'],
+					'layout' => 'product/' . $id . '/layout/' . $img->getName(),
+					'back' => 'product/' . $id . '/layout/' . $imgback->getName(),
 				];
-				$modelProduct->update($id, $dataThumb);
-			}
-
-			if($imgPro){
-				foreach($imgPro as $imgPro1):
-
-					if ($imgPro1->isValid() && !$imgPro1->hasMoved()) {
-						//$newName = $img->getRandomName();
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/image')) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id.'/image', 0777, TRUE);
-						}
-
-						$imgPro1->move(WRITEPATH . 'uploads/product/' . $id.'/image');
-
-					}
-
-				endforeach;
-			}
-			if($jsonLayout){
-				foreach($jsonLayout as $jsonLayout):
-					$img =  $this->request->getFile('fileUpload'.$jsonLayout['color']);
-					$imgback =  $this->request->getFile('fileUploadback'.$jsonLayout['color']);
-
-					if ($img->isValid() && !$img->hasMoved()) {
-						//$newName = $img->getRandomName();
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/layout')) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id.'/layout', 0777, TRUE);
-						}
-
-						$img->move(WRITEPATH . 'uploads/product/' . $id.'/layout');
-
-					}	
-					if ($imgback->isValid() && !$imgback->hasMoved()) {
-						//$newName = $img->getRandomName();
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/layout')) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id.'/layout', 0777, TRUE);
-						}
-						$imgback->move(WRITEPATH . 'uploads/product/' . $id.'/layout');
-					}
-
-
-					
-					$detail = [
-						'product_id' => $id,
-						'color_id' => $jsonLayout['color'],
-						'layout' => 'product/' . $id . '/layout/' . $img->getName(),
-						'back' => 'product/' . $id . '/layout/' . $imgback->getName(),
-					];
-					$modelProductColor->insert($detail);
-				endforeach;
-			}
-			$return = [
-				'code' => 'fetch_user_success',
-				'msg' => 'Success',
-				'stt' => true,
-				'data' => []
-			];
-			echo json_encode($return);
+				$modelProductColor->insert($detail);
+			endforeach;
+		}
+		$return = [
+			'code' => 'fetch_user_success',
+			'msg' => 'Success',
+			'stt' => true,
+			'data' => []
+		];
+		echo json_encode($return);
 
 	}
 
@@ -253,7 +255,7 @@ class Product extends CpanelController
 		$modelCategory = new CategoryModel();
 		$modelColor = new ColorModel();
 		$modelSize = new SizeModel();
-		
+
 		$uri = current_url(true);
 		$id = $uri->getSegment(4);
 		$product = $modelProduct->find($id);
@@ -273,10 +275,9 @@ class Product extends CpanelController
 	}
 
 
-	
 	public function update()
 	{
-		helper('filesystem');
+		helper(['filesystem', 'comment']);
 		$modelProduct = new ProductModel();
 		$modelProductSize = new ProductSizeModel();
 		$modelProductColor = new ProductColorModel();
@@ -284,30 +285,30 @@ class Product extends CpanelController
 		$modelTag = new TagModel();
 
 		$arrTag = [];
-		$id =  $this->request->getPost('id');
-		$name =  $this->request->getPost('name');
-		$type =  $this->request->getPost('type');
-		$price =  $this->request->getPost('price');
-		$price_sale =  $this->request->getPost('price_sale');
-		$manufactur =  $this->request->getPost('manufactur');
-		$delivery =  $this->request->getPost('delivery');
-		$tags =  $this->request->getPost('tags');
-		$description =  $this->request->getPost('description');
-		$description_detail =  $this->request->getPost('description_detail');
-		$size =  $this->request->getPost('size');
-		$arrDelete =  \json_decode($this->request->getPost('arrDelete'),true);
-		$jsonLayout = \json_decode($this->request->getPost('test'),true);
-		$file =  $this->request->getFiles();
+		$id = $this->request->getPost('id');
+		$name = $this->request->getPost('name');
+		$type = $this->request->getPost('type');
+		$price = $this->request->getPost('price');
+		$price_sale = $this->request->getPost('price_sale');
+		$manufactur = $this->request->getPost('manufactur');
+		$delivery = $this->request->getPost('delivery');
+		$tags = $this->request->getPost('tags');
+		$description = $this->request->getPost('description');
+		$description_detail = $this->request->getPost('description_detail');
+		$size = $this->request->getPost('size');
+		$arrDelete = \json_decode($this->request->getPost('arrDelete'), true);
+		$jsonLayout = \json_decode($this->request->getPost('test'), true);
+		$file = $this->request->getFiles();
 
 		//$imgPro = $file['fileImgPro'];	
-		$tags = \json_decode($this->request->getPost('tags'),true);
-			
+		$tags = \json_decode($this->request->getPost('tags'), true);
 
-		foreach($tags as $tags1):
+
+		foreach ($tags as $tags1):
 			$arrTag[] = $tags1['value'];
 		endforeach;
 
-		$tagText = \implode(",",$arrTag);
+		$tagText = \implode(",", $arrTag);
 
 
 		$dataInsert = [
@@ -320,106 +321,105 @@ class Product extends CpanelController
 			'tag' => $tagText,
 			'description' => $description,
 			'description_detail' => $description_detail,
+			'slug' => create_slug($name),
+
 		];
-		$modelProduct->update($id,$dataInsert);
+		$modelProduct->update($id, $dataInsert);
 
 
+		// SIZE
+		if ($size) {
+			$modelProductSize->where('product_id', $id)->delete();
 
-			// SIZE 
-			if($size){
-				$modelProductSize->where('product_id', $id)->delete();
+			foreach ($size as $size1):
 
-				foreach($size as $size1):
-	
-					$dataS = [
-						'product_id' => $id,
-						'size_id' => $size1,
-					];
-	
+				$dataS = [
+					'product_id' => $id,
+					'size_id' => $size1,
+				];
+
 				$modelProductSize->insert($dataS);
-				endforeach;
-			}
-				// TAG 
-			if($tags){
-				$modelProductTag->where('product_id', $id)->delete();
-				
-				foreach($tags as $tags1):
-					$check = $modelTag->checkValue($tags1['value']);
-					if(!$check){
-						$dataTag = [
-							'value' => $tags1['value'],
-						];
-						$idTag = $modelTag->insert($dataTag);
+			endforeach;
+		}
+		// TAG
+		if ($tags) {
+			$modelProductTag->where('product_id', $id)->delete();
 
-						$dataTagPro = [
-							'tag_id' => $idTag,
-							'product_id' => $id,
-						];
-						$modelProductTag->insert($dataTagPro);
-					}else{
+			foreach ($tags as $tags1):
+				$check = $modelTag->checkValue($tags1['value']);
+				if (!$check) {
+					$dataTag = [
+						'value' => $tags1['value'],
+					];
+					$idTag = $modelTag->insert($dataTag);
 
-						$dataTagPro = [
-							'tag_id' => $check,
-							'product_id' => $id,
-						];
-						$modelProductTag->insert($dataTagPro);
-					}
-				endforeach;
-			}
+					$dataTagPro = [
+						'tag_id' => $idTag,
+						'product_id' => $id,
+					];
+					$modelProductTag->insert($dataTagPro);
+				} else {
+
+					$dataTagPro = [
+						'tag_id' => $check,
+						'product_id' => $id,
+					];
+					$modelProductTag->insert($dataTagPro);
+				}
+			endforeach;
+		}
 
 
+		$thumbnail = $this->request->getFile('thumbnail');
 
-			$thumbnail =  $this->request->getFile('thumbnail');
+		if ($thumbnail) {
 
-			if($thumbnail){
-	
-			delete_files(WRITEPATH . 'uploads/product/' . $id.'/thumb');
+			delete_files(WRITEPATH . 'uploads/product/' . $id . '/thumb');
 
 
 			if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
 				//$newName = $img->getRandomName();
-				if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/thumb')) {
-					mkdir(WRITEPATH . 'uploads/product/' . $id.'/thumb', 0777, TRUE);
+				if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/thumb')) {
+					mkdir(WRITEPATH . 'uploads/product/' . $id . '/thumb', 0777, TRUE);
 				}
 
-				$thumbnail->move(WRITEPATH . 'uploads/product/' . $id.'/thumb');
+				$thumbnail->move(WRITEPATH . 'uploads/product/' . $id . '/thumb');
 
 				$dataThumb = [
-					'thumbnail' => 'product/' . $id . '/thumb/'. $thumbnail->getName(),
+					'thumbnail' => 'product/' . $id . '/thumb/' . $thumbnail->getName(),
 				];
 				$modelProduct->update($id, $dataThumb);
 			}
 
 
+		}
+
+
+		if ($arrDelete) {
+			foreach ($arrDelete as $arrDelete1) {
+				unlink(WRITEPATH . 'uploads/product/' . $id . '/image/' . $arrDelete1);
+				echo WRITEPATH . 'uploads/product/' . $id . '/image/' . $arrDelete1 . '<br>';
 			}
+		}
 
 
-			if($arrDelete){
-				foreach($arrDelete as $arrDelete1){
-					unlink(WRITEPATH . 'uploads/product/' . $id.'/image/'.$arrDelete1);
-					echo WRITEPATH . 'uploads/product/' . $id.'/image/'.$arrDelete1.'<br>';
-				}
-			}
-	
-	
-			if($file){
-				$imgPro = $file['fileImgPro'];	
+		if ($file) {
+			$imgPro = $file['fileImgPro'];
 
-				foreach($imgPro as $imgPro1):
+			foreach ($imgPro as $imgPro1):
 
-					if ($imgPro1->isValid() && !$imgPro1->hasMoved()) {
-						//$newName = $img->getRandomName();
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id.'/image')) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id.'/image', 0777, TRUE);
-						}
-
-						$imgPro1->move(WRITEPATH . 'uploads/product/' . $id.'/image');
-
+				if ($imgPro1->isValid() && !$imgPro1->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
 					}
 
-				endforeach;
-			}
+					$imgPro1->move(WRITEPATH . 'uploads/product/' . $id . '/image');
 
+				}
+
+			endforeach;
+		}
 
 
 	}
@@ -445,7 +445,7 @@ class Product extends CpanelController
 		$modelProDetail = new PropertiesDetailModel();
 		$id = $this->request->getPost('id');
 		$modelProduct->delete($id);
-	//	$modelProDetail->where('properties_id', $id)->delete();
+		//	$modelProDetail->where('properties_id', $id)->delete();
 
 
 		echo json_encode(1);

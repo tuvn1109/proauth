@@ -10,6 +10,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
+                    <th>Icon</th>
                     <th>Value</th>
                     <th>Action</th>
                 </tr>
@@ -42,7 +43,15 @@
                                 <label for="Name type">Name type</label>
                             </fieldset>
                         </div>
-
+                        <div class="col-12">
+                            <fieldset class="form-group">
+                                <label for="basicInputFile">Icon</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="iconcate" name="iconcate">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>
+                            </fieldset>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -75,6 +84,15 @@
                                 <input type="text" class="form-control" id="value" name="value"
                                        placeholder="Name type">
                                 <label for="Name type">Name type</label>
+                            </fieldset>
+                        </div>
+                        <div class="col-12">
+                            <fieldset class="form-group">
+                                <label for="basicInputFile">Icon</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="iconcateup" name="iconcate">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>
                             </fieldset>
                         </div>
 

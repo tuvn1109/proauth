@@ -13,10 +13,15 @@
         },
         "columns": [
             {"data": "id"},
+            {
+                "data": "", render: function (data, type, row) {
+                    return '<img src="/download/image?name=' + row.icon + '"  style="height: 50px;width: 50px">';
+                }
+            },
             {"data": "value"},
             {
                 "data": "", render: function (data, type, row) {
-                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateCat" data-name="' + row.value + '" data-id="' + row.Id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.Id + '"><i class="feather icon-trash"></i></button>';
+                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateCat" data-name="' + row.value + '" data-id="' + row.id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.id + '"><i class="feather icon-trash"></i></button>';
                 }
             },
         ],
@@ -87,6 +92,8 @@
             processData: false,
             success: function (data) {
                 catTable.ajax.reload(null, false);
+                $('#iconcateup').val('');
+                $('#alledit .custom-file-label').html('Choose file');
             }
         })
     });
