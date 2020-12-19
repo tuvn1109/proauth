@@ -1,11 +1,4 @@
 <?php
-echo "<pre>";
-print_r($setting);
-echo "</pre>";
-
-?>
-
-<?php
 if ($setting['section1'] == 'on') {
 	?>
     <section class="main-body">
@@ -14,116 +7,150 @@ if ($setting['section1'] == 'on') {
                 <div class="title-body"><img src="/logo/bestselling-logo.png"><span>Best Selling</span></div>
             </div>
         </div>
-
-
         <div class="row bestsell-item animate__animated animate__fadeIn animate__slow">
             <div class="col-lg-6 col-12">
                 <div class="row">
-                    <div class="col-sm-6 col-12">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell">
-                                <img src="/logo/bestsell1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+					<?php
+					foreach ($besttshirt as $besttshirt1):
+						?>
+                        <div class="col-sm-6 col-12">
+                            <div id="bestsell">
+                                <div class="thumb-bestsell">
+                                    <img src="/logo/bestsell1.jpg" class="img-fluid w-100">
+                                    <div id="back-hover">
+                                        <div class="centerContent">
+                                            <button class="btn-quickview"><span>quick view</span>
+                                            </button>
+                                            <button class="btn-addcart"><span>add to cart</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div id="name-item">Fancy - From Crazy World</div>
-                            <div id="classify-item">Personalized Shirt</div>
-                            <div id="price-item">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell">
-                                <img src="/logo/bestsell1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+                                    <div id="favourite" data-id="<?= $besttshirt1['id'] ?>">
+										<?php
+										if (in_array($besttshirt1['id'], $arrFavourite)) {
+											?>
+                                            <i class="fas fa-heart" style="color: red"
+                                               id="iconfavourite<?= $besttshirt1['id'] ?>"></i>
+											<?php
+										} else {
+											?>
+                                            <i class="fal fa-heart" id="iconfavourite<?= $besttshirt1['id'] ?>"></i>
+											<?php
+										}
+										?>
                                     </div>
+                                    <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                                 </div>
-                            </div>
-                            <div id="name-item">Fancy - From Crazy World</div>
-                            <div id="classify-item">Personalized Shirt</div>
-                            <div id="price-item">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
-                        </div>
-                    </div>
+                                <div id="name-item"><a
+                                            href="/product/<?= $besttshirt1['slug'] ?>"><?= $besttshirt1['name'] ?></a>
+                                </div>
+                                <div id="classify-item">Personalized Shirt</div>
+                                <div id="price-item-mini-right">
+									<?php
+									if ($besttshirt1['sale'] == 'yes'){
+										?>
+                                        <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
+">$<?= $besttshirt1['price'] ?> USD</span> <span class="price">$<?= $besttshirt1['price_sale'] ?> USD</span>
+										<?php
+									}else{
+									?>
+                                    <span class="pricesale">$<?= $besttshirt1['price'] ?> USD
+                        <?php
+                        }
+                        ?>
+                                </div>
+								<?php
+								if ($besttshirt1['status'] == 'new') {
+									?>
+                                    <div id="ellipse-new-item"><span>NEW</span></div>
 
+									<?php
+								} elseif ($besttshirt1['status'] == 'sale') {
+									?>
+                                    <div id="ellipse-sale-item">
+                                        <span>-<?= 100 - ($besttshirt1['price_sale'] / $besttshirt1['price'] * 100) ?>%</span>
+                                    </div>
+									<?php
+								}
+								?>
+                            </div>
+                        </div>
+					<?php
+					endforeach;
+					?>
                 </div>
             </div>
             <div class="col-lg-6 col-12">
                 <div class="row">
-                    <div class="col-md-4 col-6">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell-right">
-                                <img src="/logo/mug1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+					<?php
+					foreach ($bestmug as $bestmug1):
+						?>
+                        <div class="col-md-4 col-6">
+                            <div id="bestsell">
+                                <div class="thumb-bestsell-right">
+                                    <img src="/logo/mug1.jpg" class="img-fluid w-100">
+                                    <div id="back-hover">
+                                        <div class="centerContent">
+                                            <button class="btn-quickview"><span>quick view</span>
+                                            </button>
+                                            <button class="btn-addcart"><span>add to cart</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                            <div id="classify-item-mini-right">Personalized Shirt</div>
-                            <div id="price-item-mini-right">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell-right">
-                                <img src="/logo/mug1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+                                    <div id="favourite" data-id="<?= $bestmug1['id'] ?>">
+										<?php
+										if (in_array($bestmug1['id'], $arrFavourite)) {
+											?>
+                                            <i class="fas fa-heart" style="color: red"
+                                               id="iconfavourite<?= $bestmug1['id'] ?>"></i>
+											<?php
+										} else {
+											?>
+                                            <i class="fal fa-heart" id="iconfavourite<?= $bestmug1['id'] ?>"></i>
+											<?php
+										}
+										?>
                                     </div>
+                                    <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                                 </div>
-                            </div>
-                            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                            <div id="classify-item-mini-right">Personalized Shirt</div>
-                            <div id="price-item-mini-right">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
+                                <div id="name-item-mini-right"><a
+                                            href="/product/<?= $besttshirt1['slug'] ?>"><?= $besttshirt1['name'] ?></a>
+                                </div>
+                                <div id="classify-item-mini-right">Personalized Shirt</div>
+                                <div id="price-item-mini-right">
+									<?php
+									if ($bestmug1['sale'] == 'yes'){
+										?>
+                                        <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
+">$<?= $bestmug1['price'] ?> USD</span> <span class="price">$<?= $bestmug1['price_sale'] ?> USD</span>
+										<?php
+									}else{
+									?>
+                                    <span class="pricesale">$<?= $bestmug1['price'] ?> USD
+                        <?php
+                        }
+                        ?>
+                                </div>
+								<?php
+								if ($bestmug1['status'] == 'new') {
+									?>
+                                    <div id="ellipse-new-item"><span>NEW</span></div>
 
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell-right">
-                                <img src="/logo/mug1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+									<?php
+								} elseif ($bestmug1['status'] == 'sale') {
+									?>
+                                    <div id="ellipse-sale-item">
+                                        <span>-<?= 100 - ($bestmug1['price_sale'] / $bestmug1['price'] * 100) ?>%</span>
                                     </div>
-                                </div>
+									<?php
+								}
+								?>
+
                             </div>
-                            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                            <div id="classify-item-mini-right">Personalized Shirt</div>
-                            <div id="price-item-mini-right">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
-
                         </div>
-                    </div>
-
-
+					<?php
+					endforeach;
+					?>
                     <div class="col-md-12 col-12" id="banner-bestsell">
                         <a href="<?= $banner['image1_link'] ?>">
                             <div id="bestsell-mini-right" class="animate__animated animate__tada"><img
@@ -147,67 +174,75 @@ if ($setting['section1'] == 'on') {
 
             <div class="col-lg-6 col-12" id="banner-bestsell2">
                 <div class="row">
-                    <div class="col-md-4 col-6">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell-right">
-                                <img src="/logo/mug1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+					<?php
+					foreach ($bestcase as $bestcase1):
+						?>
+                        <div class="col-md-4 col-6">
+                            <div id="bestsell">
+                                <div class="thumb-bestsell-right">
+                                    <img src="/logo/mug1.jpg" class="img-fluid w-100">
+                                    <div id="back-hover">
+                                        <div class="centerContent">
+                                            <button class="btn-quickview"><span>quick view</span>
+                                            </button>
+                                            <button class="btn-addcart"><span>add to cart</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                            <div id="classify-item-mini-right">Personalized Shirt</div>
-                            <div id="price-item-mini-right">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell-right">
-                                <img src="/logo/mug1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+                                    <div id="favourite" data-id="<?= $bestcase1['id'] ?>">
+										<?php
+										if (in_array($bestcase1['id'], $arrFavourite)) {
+											?>
+                                            <i class="fas fa-heart" style="color: red"
+                                               id="iconfavourite<?= $bestcase1['id'] ?>"></i>
+											<?php
+										} else {
+											?>
+                                            <i class="fal fa-heart" id="iconfavourite<?= $bestcase1['id'] ?>"></i>
+											<?php
+										}
+										?>
                                     </div>
+                                    <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                                 </div>
-                            </div>
-                            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                            <div id="classify-item-mini-right">Personalized Shirt</div>
-                            <div id="price-item-mini-right">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
+                                <div id="name-item-mini-right"><a
+                                            href="/product/<?= $bestcase1['slug'] ?>"><?= $bestcase1['name'] ?></a>
+                                </div>
+                                <div id="classify-item-mini-right">Personalized Shirt</div>
+                                <div id="price-item-mini-right">
+									<?php
+									if ($bestcase1['sale'] == 'yes'){
+										?>
+                                        <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
+">$<?= $bestcase1['price'] ?> USD</span> <span class="price">$<?= $bestcase1['price_sale'] ?> USD</span>
+										<?php
+									}else{
+									?>
+                                    <span class="pricesale">$<?= $bestcase1['price'] ?> USD
+                        <?php
+                        }
+                        ?>
+                                </div>
+								<?php
+								if ($bestcase1['status'] == 'new') {
+									?>
+                                    <div id="ellipse-new-item"><span>NEW</span></div>
 
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div id="bestsell">
-                            <div class="thumb-bestsell-right">
-                                <img src="/logo/mug1.jpg" class="img-fluid w-100">
-                                <div id="back-hover">
-                                    <div class="centerContent">
-                                        <button class="btn-quickview"><span>quick view</span>
-                                        </button>
-                                        <button class="btn-addcart"><span>add to cart</span>
-                                        </button>
+									<?php
+								} elseif ($bestcase1['status'] == 'sale') {
+									?>
+                                    <div id="ellipse-sale-item">
+                                        <span>-<?= 100 - ($bestcase1['price_sale'] / $bestcase1['price'] * 100) ?>%</span>
                                     </div>
-                                </div>
+									<?php
+								}
+								?>
+
                             </div>
-                            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-                            <div id="classify-item-mini-right">Personalized Shirt</div>
-                            <div id="price-item-mini-right">$34.99 USD</div>
-                            <div id="ellipse-item"><span>NEW</span></div>
-
                         </div>
-                    </div>
-
+					<?php
+					endforeach;
+					?>
 
                 </div>
 
@@ -246,9 +281,6 @@ if ($setting['section2'] == 'on') {
 
 
 <?php
-echo "<pre>";
-print_r($setting);
-echo "</pre>";
 
 if ($setting['section3'] == 'on') {
 	?>
@@ -257,19 +289,19 @@ if ($setting['section3'] == 'on') {
             <div class="col-12 center">
                 <div class="title-category"><span><?= $setting['section_category1_title'] ?></span></div>
             </div>
-
             <div class="col-12 d-flex justify-content-center" style="margin-top: 30px">
                 <div class="choice-of-type" style="width: 240px">
 					<?php
-					//	foreach (json_decode($setting['section_category1_type'],true) as $val):
-					?>
-                    <div class="element-c " id="women" data-name="women"><span><img
-                                    src="/logo/girl-logo.png"> Women</span>
-                    </div>
-                    <div class="element-c active-type" id="men" data-name="men"><span><img
-                                    src="/logo/man-logo.png"> Men</span></div>
+					$i = 0;
+					foreach ($sectionCateType1 as $val):
+						$i++;
+						?>
+                        <div class="element-c <?= $i == 1 ? 'active-type' : '' ?>" id="<?= $val['value'] ?>"
+                             data-id="<?= $val['id'] ?>"><span><img
+                                        src="/download/image?name=<?= $val['icon'] ?>"> <?= $val['value'] ?></span>
+                        </div>
 					<?php
-					//	endforeach;
+					endforeach;
 					?>
                 </div>
             </div>
@@ -278,14 +310,14 @@ if ($setting['section3'] == 'on') {
         <div class="row" style="margin-top: 50px" id="drawsectioncategory1">
 			<?php
 			$i = 0;
-			foreach ($tshirt as $tshirt1) {
+			foreach ($sectionCate1 as $val) {
 				$i++;
 				?>
 
                 <div class="col">
                     <div class="product-home-category">
                         <div class="thumb-product-home">
-                            <img src="/download/image?name=<?= $tshirt1['thumbnail'] ?>" class="img-fluid w-100">
+                            <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
                                     <button class="btn-quickview"><span>quick view</span>
@@ -295,37 +327,51 @@ if ($setting['section3'] == 'on') {
                                 </div>
 
                             </div>
-                            <div id="favourite"><i class="fal fa-heart"></i></div>
+                            <div id="favourite" data-id="<?= $val['id'] ?>">
+								<?php
+								if (in_array($val['id'], $arrFavourite)) {
+									?>
+                                    <i class="fas fa-heart" style="color: red"
+                                       id="iconfavourite<?= $val['id'] ?>"></i>
+									<?php
+								} else {
+									?>
+                                    <i class="fal fa-heart" id="iconfavourite<?= $val['id'] ?>"></i>
+									<?php
+								}
+								?>
+                            </div>
                             <div id="shareproduct"><i class="far fa-share-alt"></i></div>
 
                         </div>
                         <div id="name-item-mini-right"><a
-                                    href="/product/<?= $tshirt1['slug'] ?>"><?= $tshirt1['name'] ?></a>
+                                    href="/product/<?= $val['slug'] ?>"><?= $val['name'] ?></a>
                         </div>
                         <div id="classify-item-mini-right">Personalized Shirt</div>
                         <div id="price-item-mini-right">
 							<?php
-							if ($tshirt1['sale'] == 'yes'){
+							if ($val['sale'] == 'yes'){
 								?>
                                 <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
-">$<?= $tshirt1['price'] ?> USD</span> <span class="price">$<?= $tshirt1['price_sale'] ?> USD</span>
+">$<?= $val['price'] ?> USD</span> <span class="price">$<?= $val['price_sale'] ?> USD</span>
 								<?php
 							}else{
 							?>
-                            <span class="pricesale">$<?= $tshirt1['price'] ?> USD
+                            <span class="pricesale">$<?= $val['price'] ?> USD
                         <?php
-                             }
+                        }
                         ?>
                         </div>
-                        	<?php
-						if ($tshirt1['status'] == 'new') {
+						<?php
+						if ($val['status'] == 'new') {
 							?>
                             <div id="ellipse-new-item"><span>NEW</span></div>
 
 							<?php
-						} elseif ($tshirt1['status'] == 'sale') {
+						} elseif ($val['status'] == 'sale') {
 							?>
-                            <div id="ellipse-sale-item"><span>-<?= 100-($tshirt1['price_sale']/$tshirt1['price']*100) ?>%</span></div>
+                            <div id="ellipse-sale-item">
+                                <span>-<?= 100 - ($val['price_sale'] / $val['price'] * 100) ?>%</span></div>
 							<?php
 						}
 						?>
@@ -384,10 +430,18 @@ if ($setting['section5'] == 'on') {
 
             <div class="col-12 d-flex justify-content-center" style="margin-top: 30px">
                 <div class="choice-of-type" style="width: 240px">
-                    <div class="element-c  active-type" id="mug" data-name="mug"><span><img
-                                    src="/logo/mug-logo.png"> Mug</span></div>
-                    <div class="element-c" id="case" data-name="case"><span><img src="/logo/phone-logo.png"> Case</span>
-                    </div>
+					<?php
+					$i = 0;
+					foreach ($sectionCateType2 as $val):
+						$i++;
+						?>
+                        <div class="element-c <?= $i == 1 ? 'active-type' : '' ?>" id="<?= $val['value'] ?>"
+                             data-name="<?= $val['value'] ?>"><span><img
+                                        src="/download/image?name=<?= $val['icon'] ?>"> <?= $val['value'] ?></span>
+                        </div>
+					<?php
+					endforeach;
+					?>
                 </div>
             </div>
         </div>
@@ -396,13 +450,13 @@ if ($setting['section5'] == 'on') {
         <div class="row" style="margin-top: 50px" id="drawsectioncategory2">
 			<?php
 			$i = 0;
-			foreach ($accessories as $accessories1) {
+			foreach ($sectionCate2 as $val) {
 				$i++;
 				?>
                 <div class="col">
                     <div class="product-home-category">
                         <div class="thumb-product-home">
-                            <img src="/download/image?name=<?= $accessories1['thumbnail'] ?>" class="img-fluid w-100">
+                            <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
                                     <button class="btn-quickview"><span>quick view</span>
@@ -411,35 +465,50 @@ if ($setting['section5'] == 'on') {
                                     </button>
                                 </div>
                             </div>
-                            <div id="favourite"><i class="fal fa-heart"></i></div>
+                             <div id="favourite" data-id="<?= $val['id'] ?>">
+								<?php
+								if (in_array($val['id'], $arrFavourite)) {
+									?>
+                                    <i class="fas fa-heart" style="color: red"
+                                       id="iconfavourite<?= $val['id'] ?>"></i>
+									<?php
+								} else {
+									?>
+                                    <i class="fal fa-heart" id="iconfavourite<?= $val['id'] ?>"></i>
+									<?php
+								}
+								?>
+                            </div>
                             <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                         </div>
                         <div id="name-item-mini-right"><a
-                                    href="/product/<?= $tshirt1['slug'] ?>"><?= $accessories1['name'] ?></a></div>
+                                    href="/product/<?= $val['slug'] ?>"><?= $val['name'] ?></a></div>
                         <div id="classify-item-mini-right">Personalized Shirt</div>
                         <div id="price-item-mini-right">
 							<?php
-							if ($accessories1['sale'] == 'yes'){
+							if ($val['sale'] == 'yes'){
 								?>
-                                <span class="price-old">$<?= $accessories1['price'] ?> USD</span> <span
-                                        class="price">$<?= $accessories1['price_sale'] ?> USD</span>
+                                <span class="price-old">$<?= $val['price'] ?> USD</span> <span
+                                        class="price">$<?= $val['price_sale'] ?> USD</span>
 								<?php
 							}else{
 							?>
-                            <span class="price">$<?= $accessories1['price'] ?> USD
+                            <span class="price">$<?= $val['price'] ?> USD
                         <?php
                         }
                         ?>
                         </div>
 						<?php
-						if ($accessories1['status'] == 'new') {
+						if ($val['status'] == 'new') {
 							?>
                             <div id="ellipse-new-item"><span>NEW</span></div>
 
 							<?php
-						} elseif ($accessories1['status'] == 'sale') {
+						} elseif ($val['status'] == 'sale') {
 							?>
-                            <div id="ellipse-sale-item"><span>-<?= 100-($accessories1['price_sale']/$accessories1['price']*100) ?>%</span></div>
+                            <div id="ellipse-sale-item">
+                                <span>-<?= 100 - ($val['price_sale'] / $val['price'] * 100) ?>%</span>
+                            </div>
 							<?php
 						}
 						?>

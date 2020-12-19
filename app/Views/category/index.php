@@ -1,7 +1,16 @@
+
+
+        <?php
+        echo "<pre>";
+        print_r($infoCate);
+        echo "</pre>";
+
+        ?>
+
 <section class="main-body">
     <div class="row">
         <div class="col-6 d-flex justify-content-start">
-            <div class="title-body"><span>T-shirt</span></div>
+            <div class="title-body"><?= $infoCate['value'] ?></div>
         </div>
         <div class="col-6 d-flex justify-content-end">
             <div class="choice-of-type" style="width: 240px">

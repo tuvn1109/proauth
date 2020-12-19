@@ -26,6 +26,14 @@ class CategoryModel extends Model
 		return $query->getWhere(['value' => $value])->getRowArray();
 	}
 
+
+	public function getIdBySlug($slug)
+	{
+		$query = $this->select('id');
+		return $query->getWhere(['slug' => $slug])->getRowArray();
+
+	}
+
 }
 
 ?>

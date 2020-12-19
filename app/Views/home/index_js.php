@@ -1,6 +1,35 @@
 <script>
+
+    $(function () {
+        $('div #favourite').click(function () {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            if (type == '0') {
+                $(this).data('type', 1);
+                console.log(0);
+            }
+            if (type == '1') {
+                $(this).data('type', 0);
+                console.log(1);
+            }
+            $.ajax({
+                url: "/home/favourite",
+                dataType: "html",
+                data: {id: id},
+                type: "POST",
+                success: function (data) {
+                    $('#iconfavourite' + id).toggleClass('fal fas');
+                    $('#iconfavourite' + id).css("color", "red");
+                },
+                error: function () {
+                }
+            });
+
+        });
+    });
+
     $('.element-c').click(function () {
-        var name = $(this).data('name');
+        var idtype = $(this).data('id');
         if (name == 'women') {
             $('#men').removeClass("active-type");
         } else if (name == 'men') {
@@ -11,11 +40,10 @@
             $('#mug').removeClass("active-type");
         }
         $(this).addClass('active-type');
-        var type = name;
         $.ajax({
             url: "/home/loaddata",
             dataType: "json",
-            data: {type: type},
+            data: {type: idtype},
             type: "POST",
             success: function (data) {
                 if (type == 'women' || type == 'men') {

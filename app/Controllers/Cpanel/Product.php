@@ -105,10 +105,15 @@ class Product extends CpanelController
 		$manufactur = $this->request->getPost('manufactur');
 		$delivery = $this->request->getPost('delivery');
 		$tags = $this->request->getPost('tags');
+		$sale = $this->request->getPost('salestatus');
 		$description = $this->request->getPost('description');
 		$description_detail = $this->request->getPost('description_detail');
 		$size = $this->request->getPost('size');
 		$test = $this->request->getPost('test');
+		$slug = create_slug($name);
+		$checkSlug = $modelProduct->where('name', $name)
+			->findAll();
+
 
 		$tags = \json_decode($this->request->getPost('tags'), true);
 
@@ -120,8 +125,9 @@ class Product extends CpanelController
 
 		$jsonLayout = \json_decode($test, true);
 		$file = $this->request->getFiles();
-		$imgPro = $file['fileImgPro'];
-
+		if ($file) {
+			$imgPro = $file['fileImgPro'];
+		}
 		$dataInsert = [
 			'name' => $name,
 			'type' => $type,
@@ -130,13 +136,23 @@ class Product extends CpanelController
 			'manufactur' => $manufactur,
 			'delivery' => $delivery,
 			'tag' => $tagText,
+			'sale' => $sale,
 			'description' => $description,
 			'description_detail' => $description_detail,
-			'slug' => create_slug($name),
+			'slug' => $slug,
 		];
 		$id = $modelProduct->insert($dataInsert);
 
+		// update slug
+		if (count($checkSlug) > 0) {
+			$slug = create_slug($name) . '-' . $id;
+			$dataSlug = [
+				'slug' => $slug,
+			];
+			$modelProduct->update($id, $dataSlug);
+		}
 
+		exit;
 		// SIZE
 		if ($size) {
 			foreach ($size as $size1):
