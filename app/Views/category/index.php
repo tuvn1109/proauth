@@ -1,16 +1,7 @@
-
-
-        <?php
-        echo "<pre>";
-        print_r($infoCate);
-        echo "</pre>";
-
-        ?>
-
 <section class="main-body">
     <div class="row">
         <div class="col-6 d-flex justify-content-start">
-            <div class="title-body"><?= $infoCate['value'] ?></div>
+            <div class="title-body"><span><?= $infoCate['value'] ?></span></div>
         </div>
         <div class="col-6 d-flex justify-content-end">
             <div class="choice-of-type" style="width: 240px">
@@ -29,13 +20,13 @@
 <section class="cover-img">
     <div class="row">
         <div class="col-6">
-               <div class="div-cover-img">
-            <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
+            <div class="div-cover-img">
+                <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
             </div>
         </div>
         <div class="col-6">
-        <div class="div-cover-img">
-            <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
+            <div class="div-cover-img">
+                <img src="/logo/cover-image3.GIF" class="img-fluid w-100">
             </div>
         </div>
     </div>
@@ -44,227 +35,115 @@
 <section class="category">
 
     <div class="row" style="margin-top: 50px">
-        <div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 50px">
-        <div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-    </div>
+		<?php
+		$i = 0;
+		$i2 = 0;
+		foreach ($listCate as $val) {
+			$i++;
+			$i2++;
 
+			?>
+            <div class="col">
+                <div class="item-category">
+                    <div class="item-category-thumb">
+                        <img src="/logo/tshirt1.png" class="img-fluid w-100">
+                        <div id="back-hover">
+                            <div class="centerContent">
+                                <button class="btn-quickview"><span>quick view</span>
+                                </button>
+                                <button class="btn-addcart"><span>add to cart</span>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div id="favourite" data-id="<?= $val['id'] ?>">
+							<?php
+							if (in_array($val['id'], $arrFavourite)) {
+								?>
+                                <i class="fas fa-heart" style="color: red"
+                                   id="iconfavourite<?= $val['id'] ?>"></i>
+								<?php
+							} else {
+								?>
+                                <i class="fal fa-heart" id="iconfavourite<?= $val['id'] ?>"></i>
+								<?php
+							}
+							?>
+                        </div>
+                        <div id="shareproduct"><i class="far fa-share-alt"></i></div>
+                    </div>
+                    <div id="name-item-mini-right"><a href="/<?= $val['slug'] ?>"><?= $val['name'] ?></a></div>
+                    <div id="classify-item-mini-right">Personalized Shirt</div>
+                    <div id="price-item-mini-right">    <?php
+						if ($val['sale'] == 'yes') {
+							?>
+                            <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
+">$<?= $val['price'] ?> USD</span> <span class="price">$<?= $val['price_sale'] ?> USD</span>
+							<?php
+						} else {
+							?>
+                            <span class="pricesale">$<?= $val['price'] ?> USD
+							<?php
+						}
+						?></div>
+					<?php
+					if ($val['status'] == 'new') {
+						?>
+                        <div id="ellipse-new-item"><span>NEW</span></div>
+
+						<?php
+					} elseif ($val['status'] == 'sale') {
+						?>
+                        <div id="ellipse-sale-item">
+                            <span>-<?= 100 - ($val['price_sale'] / $val['price'] * 100) ?>%</span>
+                        </div>
+						<?php
+					}
+					?>
+                </div>
+            </div>
+			<?php
+			if ($i == 5) {
+				?>
+                <div class="col-12" style="margin-bottom: 50px"></div>
+				<?php
+			} ?>
+			<?php
+			if ($i2 == 10) {
+				?>
+                <div class="col-12" style="margin-bottom: 50px">
+                    <section id="incentives">
+                        <div class="row">
+                            <div class="col-md-4 col-12">
+                                <div class="bg-blue" id="div-text">
+                                    <span><?= $banner['text1'] ?></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="bg-orange" id="div-text">
+                                    <span><?= $banner['text2'] ?></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="bg-yellow" id="div-text">
+                                    <span><?= $banner['text3'] ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+				<?php
+			} ?>
+
+			<?php
+
+		}
+		?>
+
+    </div>
 
 </section>
 
-<section id="incentives">
-    <div class="row">
-        <div class="col-md-4 col-12">
-            <div class="bg-blue" id="div-text">
-                <span>FREE SHIPPING ALL ORDER OVER $100</span>
-            </div>
-        </div>
-        <div class="col-md-4 col-12">
-            <div class="bg-orange" id="div-text">
-                <span>BLACK FRIDAY SALE OFF TO 50%</span>
-            </div>
-        </div>
-        <div class="col-md-4 col-12">
-            <div class="bg-yellow" id="div-text">
-                <span>WE SUPPORT 24 HOURS A DAY</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="category">
-
-    <div class="row" style="margin-top: 50px">
-        <div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 50px">
-        <div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div><div class="col">
-          <div class="item-category">
-            <div class="item-category-thumb">
-            <img src="/logo/tshirt1.png" class="img-fluid w-100"></div>
-            <div id="name-item-mini-right">Fancy - From Crazy World</div>
-            <div id="classify-item-mini-right">Personalized Shirt</div>
-            <div id="price-item-mini-right">$34.99 USD</div>
-            <div id="ellipse-item"><span>NEW</span></div>
-            </div>
-        </div>
-    </div>
-
-
-</section>
 <section class="pagintion">
     <div class="row">
         <div class="col"></div>
@@ -275,11 +154,19 @@
     </div>
 
     <div class="number_pagin d-flex justify-content-center">
-        <div id="number">1</div>
-        <div id="number">2</div>
-        <div id="number">3</div>
-        <div id="number">4</div>
-        <div id="number">5</div>
-        <div id="number">next</div>
+		<?php
+		for ($i = 1; $i <= ceil($countListCate / 20); $i++) {
+			?>
+            <div id="page" data-id="<?= $i ?>"><?= $i ?></div>
+			<?php
+		}
+		?>
+		<?php
+		if ($i > 1) {
+			?>
+            <div id="number">next</div>
+			<?php
+		}
+		?>
     </div>
 </section>

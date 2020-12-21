@@ -21,7 +21,7 @@ if ($setting['section1'] == 'on') {
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart"><span>add to cart</span>
+                                            <button class="btn-addcart" data-id="<?= $besttshirt1['id'] ?>"><span>add to cart</span>
                                             </button>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@ if ($setting['section1'] == 'on') {
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart"><span>add to cart</span>
+                                            <button class="btn-addcart" data-id="<?= $bestmug1['id'] ?>"><span>add to cart</span>
                                             </button>
                                         </div>
                                     </div>
@@ -185,7 +185,7 @@ if ($setting['section1'] == 'on') {
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart"><span>add to cart</span>
+                                            <button class="btn-addcart" data-id="<?= $bestcase1['id'] ?>"><span>add to cart</span>
                                             </button>
                                         </div>
                                     </div>
@@ -219,9 +219,9 @@ if ($setting['section1'] == 'on') {
 									}else{
 									?>
                                     <span class="pricesale">$<?= $bestcase1['price'] ?> USD
-                        <?php
-                        }
-                        ?>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
 								<?php
 								if ($bestcase1['status'] == 'new') {
@@ -297,7 +297,7 @@ if ($setting['section3'] == 'on') {
 						$i++;
 						?>
                         <div class="element-c <?= $i == 1 ? 'active-type' : '' ?>" id="<?= $val['value'] ?>"
-                             data-id="<?= $val['id'] ?>"><span><img
+                             data-id="<?= $val['id'] ?>" data-draw="sectioncategory1"><span><img
                                         src="/download/image?name=<?= $val['icon'] ?>"> <?= $val['value'] ?></span>
                         </div>
 					<?php
@@ -436,7 +436,7 @@ if ($setting['section5'] == 'on') {
 						$i++;
 						?>
                         <div class="element-c <?= $i == 1 ? 'active-type' : '' ?>" id="<?= $val['value'] ?>"
-                             data-name="<?= $val['value'] ?>"><span><img
+                             data-id="<?= $val['id'] ?>" data-draw="sectioncategory2"><span><img
                                         src="/download/image?name=<?= $val['icon'] ?>"> <?= $val['value'] ?></span>
                         </div>
 					<?php
@@ -465,7 +465,7 @@ if ($setting['section5'] == 'on') {
                                     </button>
                                 </div>
                             </div>
-                             <div id="favourite" data-id="<?= $val['id'] ?>">
+                            <div id="favourite" data-id="<?= $val['id'] ?>">
 								<?php
 								if (in_array($val['id'], $arrFavourite)) {
 									?>

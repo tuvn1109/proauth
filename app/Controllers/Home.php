@@ -29,7 +29,7 @@ class Home extends BaseController
 		$accessories = $modelProduct->where('type', json_decode($settings['section_category2_type'])[0])->orderBy('created_at', 'DESC')->findAll($settings['section_category2_limit'], 0);
 
 		$data['test'] = json_decode($settings['section_category1_type'], true);
-		$data['arrFavourite'] = explode(',',get_cookie('favourite'));
+		$data['arrFavourite'] = explode(',', get_cookie('favourite'));
 		$data['temp'] = 'home/index';
 		$data['title'] = 'Home';
 		$data['user'] = session('user');
@@ -73,6 +73,43 @@ class Home extends BaseController
 			$text = implode(',', $arrCC);
 			set_cookie([
 				'name' => 'favourite',
+				'value' => $text,
+				'expire' => 1000000,
+				'httponly' => false
+			]);
+
+		}
+
+		echo json_encode($cookie);
+	}
+
+	public function addcart()
+	{
+		helper('cookie');
+		$id = $this->request->getPost('id');
+		$modelProduct = new ProductModel();
+		$cookie = get_cookie('cart');
+		if (!$cookie) {
+			$arrCC = [];
+		} else {
+			$arrCC = explode(',', $cookie);
+		}
+
+		if (!in_array($id, $arrCC)) {
+			$arrCC[] = $id;
+			$text = implode(',', $arrCC);
+			set_cookie([
+				'name' => 'cart',
+				'value' => $text,
+				'expire' => 1000000,
+				'httponly' => false
+			]);
+		} else {
+			$pos = array_search($id, $arrCC);
+			unset($arrCC[$pos]);
+			$text = implode(',', $arrCC);
+			set_cookie([
+				'name' => 'cart',
 				'value' => $text,
 				'expire' => 1000000,
 				'httponly' => false

@@ -111,7 +111,7 @@
     </div>
 </nav>
 
-<div class="space-navbar container">
+<div class="space-navbar container" >
     <div class="row">
         <div class="col-12">
 			<?= view($temp, $this->data) ?>

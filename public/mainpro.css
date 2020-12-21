@@ -1,21 +1,22 @@
-
-@media (min-width: 1920px) { 
+@media (min-width: 1920px) {
     .thumb-bestsell {
-    max-width: 100% !important;
-    max-height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
     }
+
     .thumb-bestsell-right {
         max-width: 100% !important;
         max-height: 100% !important;
-     }
+    }
 
-     .thumb-bestsell:hover #back-hover {
+    .thumb-bestsell:hover #back-hover {
 
         max-height: 100% !important;
 
     }
 
- }
+}
+
 body {
     margin: 0;
     background: #FFFFFF !important;
@@ -509,18 +510,19 @@ img {
 
 }
 
-.cover-img  {
+.cover-img {
     margin-top: 40px;
 }
-.div-cover-img{
+
+.div-cover-img {
     max-height: 250px;
     overflow: hidden;
     border-radius: 15px;
 }
+
 .feelback {
     margin-top: 88px;
 }
-
 
 
 #photo-fr-cus #photo {
@@ -1047,16 +1049,80 @@ img {
     border: none;
 
 }
+
 .item-category {
     position: relative;
 }
 
-.item-category-thumb{
+.item-category-thumb {
     max-height: 240px;
     overflow: hidden;
     border-radius: 15px;
 }
 
-.owl-nav-pro{
+.owl-nav-pro {
     display: none;
+}
+
+.order-list {
+    border: 1px #0E459E solid;
+}
+
+.order-div {
+    padding: 59px;
+}
+
+.order-img-front {
+    max-height: 338px;
+    overflow: hidden;
+    margin-right: 60px;
+}
+
+.order-img-front img {
+    border-radius: 15px;
+}
+
+.order-img-back {
+    max-height: 338px;
+    overflow: hidden;
+}
+
+.order-img-back img {
+    border-radius: 15px;
+
+}
+
+.order-item-name span {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.order-item-type {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    text-align: left;
+}
+
+.order-item-type span {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    text-align: left;
+}
+
+
+
+#price-item-mini-right {
+    font-family: Quicksand;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #E67E22;
+    margin-top: 7px;
+
 }

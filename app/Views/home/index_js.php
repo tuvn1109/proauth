@@ -26,10 +26,27 @@
             });
 
         });
+
+
+        $('.btn-addcart').click(function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: "/home/addcart",
+                dataType: "html",
+                data: {id: id},
+                type: "POST",
+                success: function (data) {
+                },
+                error: function () {
+                }
+            });
+
+        });
     });
 
     $('.element-c').click(function () {
         var idtype = $(this).data('id');
+        var draw = $(this).data('draw');
         if (name == 'women') {
             $('#men').removeClass("active-type");
         } else if (name == 'men') {
@@ -46,7 +63,7 @@
             data: {type: idtype},
             type: "POST",
             success: function (data) {
-                if (type == 'women' || type == 'men') {
+                if (draw == 'sectioncategory1') {
                     $('#drawsectioncategory1').empty();
                     var i = 0;
                     $.each(data, function (keys, values) {
@@ -76,7 +93,7 @@
                         }
                     });
                 }
-                if (type == 'mug' || type == 'case') {
+                if (draw == 'sectioncategory2') {
                     $('#drawsectioncategory2').empty();
                     var i = 0;
                     $.each(data, function (keys, values) {
