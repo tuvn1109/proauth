@@ -26,6 +26,7 @@
     <script src="/app-assets/vendors/js/vendors.min.js"></script>
     <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
     <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
     <link href="/mainpro.css" rel='stylesheet'>
@@ -111,7 +112,7 @@
     </div>
 </nav>
 
-<div class="space-navbar container" >
+<div class="space-navbar container">
     <div class="row">
         <div class="col-12">
 			<?= view($temp, $this->data) ?>

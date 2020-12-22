@@ -11,11 +11,11 @@ use App\Models\ProductSizeModel;
 use App\Models\ProductColorModel;
 use App\Models\ProductTagModel;
 
-class Order extends BaseController
+class Payment extends BaseController
 {
 	public function index()
 	{
-		helper(['filesystem', 'cookie']);
+		helper('cookie');
 		$modelProduct = new ProductModel();
 		$modelProductSize = new ProductSizeModel();
 		$modelProductColor = new ProductColorModel();
@@ -23,7 +23,7 @@ class Order extends BaseController
 		$arrCC = [];
 		$arrCC = explode(',', $cookie);
 		$listOrder = $modelProduct->whereIn('id', $arrCC)->findAll();
-		$data['temp'] = 'order/index';
+		$data['temp'] = 'payment/index';
 		$data['title'] = 'CA';
 		$data['listOrder'] = $listOrder;
 		echo view('layout_product', $data);

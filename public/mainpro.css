@@ -19,9 +19,13 @@
 
 body {
     margin: 0;
-    background: #FFFFFF !important;
+    background: rgba(249, 250, 251, 1) !important;
     padding: 0 75px 0 75px;
-    font-family: Quicksand;
+    font-family: Quicksand !important;
+}
+
+span {
+    font-family: Quicksand !important;
 }
 
 header {
@@ -1065,26 +1069,54 @@ img {
 }
 
 .order-list {
-    border: 1px #0E459E solid;
+    margin-bottom: 40px;
 }
 
 .order-div {
+    position: relative;
     padding: 59px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 15px;
 }
 
 .order-img-front {
     max-height: 338px;
     overflow: hidden;
     margin-right: 60px;
+    position: relative;
 }
 
 .order-img-front img {
     border-radius: 15px;
 }
 
+.order-img-front .icon-front {
+    position: absolute;
+    top: 3%;
+    left: 70%;
+    border-radius: 15px;
+    background: #F1C40F;
+    color: #FFFFFF;
+    width: 65px;
+    height: 25px;
+
+}
+
+.order-img-back .icon-back {
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    border-radius: 15px;
+    background: #E67E22;
+    color: #FFFFFF;
+    width: 65px;
+    height: 25px;
+}
+
 .order-img-back {
     max-height: 338px;
     overflow: hidden;
+    position: relative;
 }
 
 .order-img-back img {
@@ -1093,9 +1125,10 @@ img {
 }
 
 .order-item-name span {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 500;
     text-align: left;
+    line-height: 30px;
 }
 
 .order-item-type {
@@ -1106,12 +1139,11 @@ img {
 }
 
 .order-item-type span {
-    font-size: 15px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 500;
     text-align: left;
 }
-
 
 
 #price-item-mini-right {
@@ -1125,4 +1157,238 @@ img {
     color: #E67E22;
     margin-top: 7px;
 
+}
+
+.quantity span {
+    font-family: Quicksand;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.inputQuantity {
+    margin-left: 25px;
+    border-radius: 15px;
+    width: 90px;
+    outline: none !important;
+    text-align: center;
+    border: 1px solid #2ECC71;
+    box-sizing: border-box;
+}
+
+.delivery img {
+    margin-right: 20px;
+}
+
+.delivery span {
+    font-weight: 500;
+}
+
+.text-expree {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.secure_checkout {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+}
+
+.secure_checkout .total {
+    color: #555555;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.secure_checkout .summary-text {
+    color: rgba(85, 85, 85, 0.9);
+    font-weight: 500;
+}
+
+.secure_checkout .summary-money {
+    color: #555555;
+    font-weight: 600;
+}
+
+.secure_checkout .service-text {
+    color: rgba(85, 85, 85, 0.9);
+    font-weight: 500;
+}
+
+.secure_checkout .service-money {
+    color: #2ECC71;
+    font-weight: 600;
+}
+
+.secure_checkout hr {
+    border-top: 1px solid #2ecc716e;
+}
+
+.account_order {
+    background: #ECECEC;
+    border-radius: 15px;
+    height: 50px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    color: #000000;
+}
+
+.coupon_order {
+    height: 45px;
+    margin-top: 35px;
+}
+
+.note_order {
+    color: rgba(0, 0, 0, 0.59);
+    font-size: 11px;
+}
+
+.coupon_order button {
+    background: rgba(46, 204, 113, 0.2);
+    border-radius: 10px;
+    color: #2ECC71;
+    line-height: 40px;
+    font-weight: bold;
+    outline: none !important;
+    border: none;
+}
+
+.coupon_order input {
+    border: 0.9px solid rgba(46, 204, 113, 0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+    line-height: 40px;
+    outline: none !important;
+    padding-left: 21px;
+}
+
+.coupon_order input::placeholder {
+    color: rgba(46, 204, 113, 0.3);
+    font-weight: bold;
+}
+
+
+.btn_secure_checkout {
+    font-family: Quicksand;
+    background: #2ECC71;
+    border-radius: 15px;
+    color: #FFFFFF;
+    font-weight: 600;
+    outline: none !important;
+    border: none;
+    line-height: 40px;
+}
+
+
+.payment-info .title {
+    font-family: Quicksand;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.payment-info .total {
+    color: #555555;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.payment-info .summary-text {
+    color: rgba(85, 85, 85, 0.9);
+    font-weight: 500;
+}
+
+.payment-info .summary-money {
+    color: #555555;
+    font-weight: 600;
+}
+
+.payment-info .service-text {
+    color: rgba(85, 85, 85, 0.9);
+    font-weight: 500;
+}
+
+.payment-info .service-money {
+    color: #2ECC71;
+    font-weight: 600;
+}
+
+.payment-info {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+}
+
+.payment-item {
+    margin-bottom: 30px;
+}
+
+.payment-item img {
+    height: 100%;
+    border-radius: 15px;
+}
+
+.payment-item-name {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.payment-item-price {
+    color: rgba(230, 126, 34, 1);
+    font-size: 12px;
+    font-weight: 600;
+
+}
+
+.payment-item-quantity {
+    font-size: 12px;
+}
+
+.payment-icon {
+    color: rgba(241, 196, 15, 1);
+}
+
+.payment-icon i {
+    cursor: pointer;
+}
+
+
+.payment-card {
+    border: 0.6px solid rgba(241, 196, 15, 0.7);
+    border-radius: 15px;
+
+
+}
+
+.payment-card hr {
+    border-top: 1px solid rgba(241, 196, 15, 0.7)
+}
+
+.active-address {
+    border: 0.6px solid rgba(241, 196, 15, 0.7);
+}
+
+.div_address {
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 15px;
 }

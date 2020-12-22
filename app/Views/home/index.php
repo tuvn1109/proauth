@@ -322,7 +322,7 @@ if ($setting['section3'] == 'on') {
                                 <div class="centerContent">
                                     <button class="btn-quickview"><span>quick view</span>
                                     </button>
-                                    <button class="btn-addcart"><span>add to cart</span>
+                                    <button class="btn-addcart" data-id="<?= $val['id'] ?>"><span>add to cart</span>
                                     </button>
                                 </div>
 
@@ -461,7 +461,7 @@ if ($setting['section5'] == 'on') {
                                 <div class="centerContent">
                                     <button class="btn-quickview"><span>quick view</span>
                                     </button>
-                                    <button class="btn-addcart"><span>add to cart</span>
+                                    <button class="btn-addcart" data-id="<?= $val['id'] ?>"><span>add to cart</span>
                                     </button>
                                 </div>
                             </div>
