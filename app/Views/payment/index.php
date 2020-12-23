@@ -21,19 +21,19 @@
                     <div class="col-3">
                         <fieldset class="form-group">
                             <label for="roundText">Fullname</label>
-                            <input type="text" id="roundText" class="form-control round" placeholder="Rounded Input">
+                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="Rounded Input">
                         </fieldset>
                     </div>
                     <div class="col-3">
                         <fieldset class="form-group">
                             <label for="roundText">Phone Number</label>
-                            <input type="text" id="roundText" class="form-control round" placeholder="+1.6868.99.999">
+                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="+1.6868.99.999">
                         </fieldset>
                     </div>
                     <div class="col-4">
                         <fieldset class="form-group">
                             <label for="roundText">Email</label>
-                            <input type="text" id="roundText" class="form-control round"
+                            <input type="text" id="roundText" class="form-control round input-yellow"
                                    placeholder="example@gmail.com">
                         </fieldset>
                     </div>
@@ -43,25 +43,25 @@
                     <div class="col-3">
                         <fieldset class="form-group">
                             <label for="roundText">Country</label>
-                            <input type="text" id="roundText" class="form-control round" placeholder="United States">
+                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="United States">
                         </fieldset>
                     </div>
                     <div class="col-3">
                         <fieldset class="form-group">
                             <label for="roundText">City</label>
-                            <input type="text" id="roundText" class="form-control round" placeholder="New York">
+                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="New York">
                         </fieldset>
                     </div>
                     <div class="col-2">
                         <fieldset class="form-group">
                             <label for="roundText">Postal Code</label>
-                            <input type="text" id="roundText" class="form-control round" placeholder="999999">
+                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="999999">
                         </fieldset>
                     </div>
                     <div class="col-4">
                         <fieldset class="form-group">
                             <label for="roundText">Address</label>
-                            <input type="text" id="roundText" class="form-control round"
+                            <input type="text" id="roundText" class="form-control round input-yellow"
                                    placeholder="2707 Avenues Road">
                         </fieldset>
                     </div>
@@ -76,30 +76,20 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="payment-card">
-                            <div class="col-12 ">
-                                <div class="row">
+                            <div class="col-12 " style="border-bottom: 0.6px solid rgba(241, 196, 15, 0.7)">
+                                <div class="row p-1">
                                     <div class="col-6 "><input type="radio" name="radio" checked=""> Card</div>
                                     <div class="col-6 text-right"><img src="/logo/card-logo.png"></div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <hr>
-                                </div>
-                            </div>
                             <div class="col-12">
-                                <div class="col-12"><i class="fas fa-credit-card"></i>
+                                <div class="col-12 p-1">
                                     <input type="text" id="roundText" class="form-control round"
                                            placeholder="">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="col-12 ">
-                                <div class="row">
+                            <div class="col-12 " style="border-top: 0.6px solid rgba(241, 196, 15, 0.7)">
+                                <div class="row p-1">
                                     <div class="col-6 "><input type="radio" name="radio" checked=""> Paypal</div>
                                     <div class="col-6 text-right"><img src="/logo/paypal-logo.png"></div>
                                 </div>
@@ -137,6 +127,41 @@
                 <div class="row">
                     <div class="col-12 title">
                         Shipping Method
+                    </div>
+
+					<?php
+					$i = 0;
+					foreach ($listShippingMethod as $val):
+						$i++;
+						?>
+                        <div class="col-1 mt-2">
+                            <div class="centerContent">
+                                <input type="radio" name="radiomethod" id="radiomethod"
+                                       class="radio_shipping" <?= $i == 1 ? 'checked' : '' ?>
+                                       style="width: 20px;height: 20px" data-id="<?= $val['id'] ?>">
+                            </div>
+                        </div>
+                        <div class="col-5 mt-2">
+                            <div class="method_ship" name="method" id="method<?= $val['id'] ?>">
+                                <div class="row">
+                                    <div class="col-3 ">
+                                        <div class="image centerContent">
+                                            <img src="/download/image?name=<?= $val['logo'] ?>" class="w-100"></div>
+                                    </div>
+                                    <div class="col-6" style="white-space: nowrap"><span
+                                                class="name"><?= $val['name'] ?></span><br><span
+                                                class="expected_delivery">Expected delivery:<br>Jan 13</span></div>
+                                    <div class="col-3">
+                                        <div class="price centerContent"><?= $val['price'] ?>$</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					<?php
+					endforeach;
+					?>
+                    <div class="col-6">
+
                     </div>
                 </div>
 

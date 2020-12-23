@@ -49,10 +49,11 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/file-uploaders/dropzone.css">
 
     <!-- END: Page CSS-->
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css" />
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/plugins/dist/tagify.css">
+    <link rel="stylesheet" href="/assets/plugins/tagify/tagify.css">
     <!-- END: Custom CSS-->
 
 </head>
@@ -494,34 +495,32 @@ $user = $_SESSION['user'];
 
 
             <li class="<?= $menu == 'orders' ? 'active ' : '' ?> nav-item"><a href="/cpanel/orders"><i
-                            class="feather icon-clipboard"></i><span class="menu-title"
-                                                                     data-i18n="order">Order management</span></a>
+                            class="feather icon-clipboard"></i><span class="menu-title">Order management</span></a>
             </li>
             <li class=" navigation-header"><span>Product</span>
             </li>
             <li class="<?= $menu == 'createproduct' ? 'active ' : '' ?> nav-item"><a href="/cpanel/product/create"><i
-                            class="feather icon-plus-circle"></i><span class="menu-title"
-                                                                       data-i18n="order">Create product</span></a>
+                            class="feather icon-plus-circle"></i><span class="menu-title">Create product</span></a>
             </li>
             <li class="<?= $menu == 'product' ? 'active ' : '' ?> nav-item"><a href="/cpanel/product"><i
-                            class="feather icon-menu"></i><span class="menu-title"
-                                                                data-i18n="order">Products</span></a>
+                            class="feather icon-menu"></i><span class="menu-title">Products</span></a>
             </li>
             <li class="<?= $menu == 'properties' ? 'active ' : '' ?> nav-item"><a href="/cpanel/properties"><i
-                            class="feather icon-codepen"></i><span class="menu-title"
-                                                                   data-i18n="order">Properties</span></a>
+                            class="feather icon-codepen"></i><span class="menu-title">Properties</span></a>
             </li>
             <li class="<?= $menu == 'category' ? 'active ' : '' ?> nav-item"><a href="/cpanel/category"><i
-                            class="feather icon-clipboard"></i><span class="menu-title"
-                                                                     data-i18n="order">Categories</span></a>
+                            class="feather icon-clipboard"></i><span class="menu-title">Categories</span></a>
             </li>
             <li class="<?= $menu == 'sizes' ? 'active ' : '' ?> nav-item"><a href="/cpanel/size"><i
-                            class="feather icon-maximize-2"></i><span class="menu-title"
-                                                                      data-i18n="order">Sizes</span></a>
+                            class="feather icon-maximize-2"></i><span class="menu-title">Sizes</span></a>
             </li>
             <li class="<?= $menu == 'colors' ? 'active ' : '' ?> nav-item"><a href="/cpanel/color"><i
-                            class="feather icon-aperture"></i><span class="menu-title"
-                                                                    data-i18n="order">Colors</span></a>
+                            class="feather icon-aperture"></i><span class="menu-title">Colors</span></a>
+            </li>
+            <li class=" navigation-header"><span>Delivery</span>
+            </li>
+            <li class="<?= $menu == 'shippingmethod' ? 'active ' : '' ?> nav-item"><a href="/cpanel/shippingmethod"><i
+                            class="fas fa-truck"></i><span class="menu-title">Shipping method</span></a>
             </li>
 
             <li class=" navigation-header"><span>Apps</span>
@@ -635,7 +634,7 @@ $user = $_SESSION['user'];
 <script src="/app-assets/js/scripts/datatables/datatable.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <script src="/app-assets/js/scripts/forms/select/form-select2.js"></script>
-<script src="/assets/plugins/dist/jQuery.tagify.min.js"></script>
+<script src="/assets/plugins/tagify/jQuery.tagify.min.js"></script>
 
 <!-- END: Page JS-->
 <?php

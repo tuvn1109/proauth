@@ -152,7 +152,6 @@ class Product extends CpanelController
 			$modelProduct->update($id, $dataSlug);
 		}
 
-		exit;
 		// SIZE
 		if ($size) {
 			foreach ($size as $size1):
