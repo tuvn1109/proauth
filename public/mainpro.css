@@ -1426,4 +1426,31 @@ img {
     border: 0.6px solid rgba(241, 196, 15, 0.7) !important;
 }
 
+
+.divcard {
+    border-radius: 9px;
+    border: 1px solid #C0F0D4;
+    padding: 0.5rem !important;
+}
+
+.cardmmyy {
+    width: 5rem;
+}
+
+.cardcvv {
+    width: 4rem;
+}
+
+.cardnumber {
+
+}
+
+.outline-none {
+    outline: none;
+}
+.divlayout{
+    border: 1px solid blue;
+    width: 100px;
+    height: 100px;
+}
 /*radio*/

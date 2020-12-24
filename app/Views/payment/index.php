@@ -13,61 +13,69 @@
                         Contact Info
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-3">Mrs</div>
-                    <div class="col-3">Mr</div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        <fieldset class="form-group">
-                            <label for="roundText">Fullname</label>
-                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="Rounded Input">
-                        </fieldset>
-                    </div>
-                    <div class="col-3">
-                        <fieldset class="form-group">
-                            <label for="roundText">Phone Number</label>
-                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="+1.6868.99.999">
-                        </fieldset>
-                    </div>
-                    <div class="col-4">
-                        <fieldset class="form-group">
-                            <label for="roundText">Email</label>
-                            <input type="text" id="roundText" class="form-control round input-yellow"
-                                   placeholder="example@gmail.com">
-                        </fieldset>
-                    </div>
 
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        <fieldset class="form-group">
-                            <label for="roundText">Country</label>
-                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="United States">
-                        </fieldset>
+                <form id="form_contact">
+                    <div class="row">
+                        <div class="col-3">Mrs</div>
+                        <div class="col-3">Mr</div>
                     </div>
-                    <div class="col-3">
-                        <fieldset class="form-group">
-                            <label for="roundText">City</label>
-                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="New York">
-                        </fieldset>
-                    </div>
-                    <div class="col-2">
-                        <fieldset class="form-group">
-                            <label for="roundText">Postal Code</label>
-                            <input type="text" id="roundText" class="form-control round input-yellow" placeholder="999999">
-                        </fieldset>
-                    </div>
-                    <div class="col-4">
-                        <fieldset class="form-group">
-                            <label for="roundText">Address</label>
-                            <input type="text" id="roundText" class="form-control round input-yellow"
-                                   placeholder="2707 Avenues Road">
-                        </fieldset>
-                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <fieldset class="form-group">
+                                <label for="roundText">Fullname</label>
+                                <input type="text" id="fullname" name="fullname" class="form-control round input-yellow"
+                                       placeholder="Rounded Input">
+                            </fieldset>
+                        </div>
+                        <div class="col-3">
+                            <fieldset class="form-group">
+                                <label for="roundText">Phone Number</label>
+                                <input type="text" id="phone" name="phone" " class="form-control round input-yellow"
+                                placeholder="+1.6868.99.999">
+                            </fieldset>
+                        </div>
+                        <div class="col-4">
+                            <fieldset class="form-group">
+                                <label for="roundText">Email</label>
+                                <input type="text" id="email" name="email" class="form-control round input-yellow"
+                                       placeholder="example@gmail.com">
+                            </fieldset>
+                        </div>
 
-                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <fieldset class="form-group">
+                                <label for="roundText">Country</label>
+                                <input type="text" id="country" name="country" class="form-control round input-yellow"
+                                       placeholder="United States">
+                            </fieldset>
+                        </div>
+                        <div class="col-3">
+                            <fieldset class="form-group">
+                                <label for="roundText">City</label>
+                                <input type="text" id="city" name="city" class="form-control round input-yellow"
+                                       placeholder="New York">
+                            </fieldset>
+                        </div>
+                        <div class="col-2">
+                            <fieldset class="form-group">
+                                <label for="roundText">Postal Code</label>
+                                <input type="text" id="postalcode" name="postalcode"
+                                       class="form-control round input-yellow"
+                                       placeholder="999999">
+                            </fieldset>
+                        </div>
+                        <div class="col-4">
+                            <fieldset class="form-group">
+                                <label for="roundText">Address</label>
+                                <input type="text" id="address" name="address" class="form-control round input-yellow"
+                                       placeholder="2707 Avenues Road">
+                            </fieldset>
+                        </div>
 
+                    </div>
+                </form>
                 <div class="row">
                     <div class="col-12 title">
                         Payment Info
@@ -82,10 +90,17 @@
                                     <div class="col-6 text-right"><img src="/logo/card-logo.png"></div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="col-12 p-1">
-                                    <input type="text" id="roundText" class="form-control round"
-                                           placeholder="">
+                            <div class="col-12 p-1 ">
+                                <div class="row p-1">
+                                    <div class="divcard col-12 d-flex">
+                                        <img src="/logo/card-logo-1.png" class="mr-1">
+                                        <input type="tel" name="cardnumber" class="cardnumber border-0 outline-none"
+                                               placeholder="Card Number">
+                                        <input type="tel" name="cardmmyy" class="cardmmyy border-0 outline-none"
+                                               placeholder="MM / YY" maxlength="4">
+                                        <input type="tel" name="cardcvv" class="cardcvv border-0 outline-none"
+                                               placeholder="CVV" maxlength="3">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12 " style="border-top: 0.6px solid rgba(241, 196, 15, 0.7)">
@@ -137,12 +152,13 @@
                         <div class="col-1 mt-2">
                             <div class="centerContent">
                                 <input type="radio" name="radiomethod" id="radiomethod"
-                                       class="radio_shipping" <?= $i == 1 ? 'checked' : '' ?>
+                                       class="radio_shipping " <?= $i == 1 ? 'checked' : '' ?>
                                        style="width: 20px;height: 20px" data-id="<?= $val['id'] ?>">
                             </div>
                         </div>
                         <div class="col-5 mt-2">
-                            <div class="method_ship" name="method" id="method<?= $val['id'] ?>">
+                            <div class="method_ship <?= $i == 1 ? 'checked_method' : '' ?>" name="method"
+                                 id="method<?= $val['id'] ?>">
                                 <div class="row">
                                     <div class="col-3 ">
                                         <div class="image centerContent">
@@ -249,7 +265,8 @@
                         </div>
                     </div>
                     <div class="col-12 mt-1">
-                        <button type="button" class="btn_secure_checkout w-100">PLACE YOUR ORDER</button>
+                        <button type="button" class="btn_secure_checkout w-100" id="btn_place_order">PLACE YOUR ORDER
+                        </button>
                     </div>
                 </div>
             </div>

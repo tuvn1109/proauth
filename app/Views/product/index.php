@@ -18,8 +18,9 @@
     </div>
 </section>
 <?php
-
-var_dump($image)
+echo "<pre>";
+print_r($color);
+echo "</pre>";
 
 ?>
 <section id="main-product">
@@ -27,14 +28,16 @@ var_dump($image)
         <div class="col-md-6 col-12 d-flex  justify-content-center">
             <div class="content-carousel" id="c1">
                 <div class="owl-carousel">
-                    <?php
+					<?php
 
-foreach($image as $image1):
-?>
-                    <div class="item"><img src="/download/image?name=product/<?=$info['id']?>/image/<?=$image1?>" class="img-fluid"></div>
-                    <?php
-endforeach;
-                    ?>
+					foreach ($image as $image1):
+						?>
+                        <div class="item"><img
+                                    src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $image1 ?>"
+                                    class="img-fluid"></div>
+					<?php
+					endforeach;
+					?>
                 </div>
             </div>
 
@@ -55,7 +58,7 @@ endforeach;
                 </div>
                 <div class="col-12">
                     <div class="sale-timeout-pro"><img
-                            src="https://s3-alpha-sig.figma.com/img/749b/abcf/e19afa554519859ce55ab2a65fd84809?Expires=1607299200&Signature=F39Ozy6bkYKW9NRk8BfbFd4CUf1Aa9AZz0zLamcQFSEBT8Z6JbqhMBxbM3iNwri86bRIJ1DKlxlEqQ91zsgoJLAw40gTGbf7KLWj~FZ8YjQ5GIO-vaunfaHec1z50b8944TXD9Uz2Xqb0Me9DqTqHrsTG1iPCuB1Df3FBPiciAcF8g2o~7oQGS~pgj2jWYXrZX1vEhykDtFsY6b7rJzwy05p5DvXQKAK26M067LICAnP9kq~b5Wlt-T3wy128FMLZ2kzEUfY0pMnMVp2gjskdfKV7CtZbaSHgQ-lCLdtqWNoJ0XF1pIZcQTjmpySd7pv6lg5oQL8~i2vP3j8UZlYBA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+                                src="https://s3-alpha-sig.figma.com/img/749b/abcf/e19afa554519859ce55ab2a65fd84809?Expires=1607299200&Signature=F39Ozy6bkYKW9NRk8BfbFd4CUf1Aa9AZz0zLamcQFSEBT8Z6JbqhMBxbM3iNwri86bRIJ1DKlxlEqQ91zsgoJLAw40gTGbf7KLWj~FZ8YjQ5GIO-vaunfaHec1z50b8944TXD9Uz2Xqb0Me9DqTqHrsTG1iPCuB1Df3FBPiciAcF8g2o~7oQGS~pgj2jWYXrZX1vEhykDtFsY6b7rJzwy05p5DvXQKAK26M067LICAnP9kq~b5Wlt-T3wy128FMLZ2kzEUfY0pMnMVp2gjskdfKV7CtZbaSHgQ-lCLdtqWNoJ0XF1pIZcQTjmpySd7pv6lg5oQL8~i2vP3j8UZlYBA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
                     </div>
                 </div>
                 <div class="col-12">
@@ -83,22 +86,22 @@ endforeach;
                 </div>
 
 
-                <?php
+				<?php
 
-                $t  = explode(',',$info['tag']);
+				$t = explode(',', $info['tag']);
 
-                ?>
+				?>
                 <div class="col-12  d-flex">
                     <div><img src="/logo/tag-logo.png" style="height: 14.374929428100586px;width: 14.37868881225586px;">
                     </div>
                     <div class="tag d-flex">
-                        <?php
-                        foreach($t as $t1):
-                    ?>
-                        <div class="tag-text">#<?=$t1?></div>
-                        <?php
-                        endforeach;
-                    ?>
+						<?php
+						foreach ($t as $t1):
+							?>
+                            <div class="tag-text">#<?= $t1 ?></div>
+						<?php
+						endforeach;
+						?>
                     </div>
                 </div>
             </div>
@@ -122,7 +125,13 @@ endforeach;
                 <div class="col-12">
                     <div id="div-choose">
                         <div class="div-choose-type">
-                            <div class="col-12 title-type-pro"><span>Choose a product type</span></div>
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModalCenter"><i class="fas fa-plus"></i> Image
+                                </button>
+                            </div>
+                            <div class="col-12 title-type-pro"><span>Choose a product type</span> <i
+                                        class="fas fa-edit"></i></div>
                             <div class="col-12 list-type-pro">
                                 <div class="row">
                                     <div class="col-4">
@@ -153,16 +162,17 @@ endforeach;
                             <div class="col-12 list-color-pro ">
                                 <div class="row">
 
-                                    <?php 
-                                foreach($color as $color1):
-                                    ?>
-                                    <div class="col-1 ">
-                                        <div class="item-color cl-white" style="background-color: <?=$color1['code']?>">
+									<?php
+									foreach ($color as $color1):
+										?>
+                                        <div class="col-1 ">
+                                            <div class="item-color cl-white"
+                                                 style="background-color: <?= $color1['code'] ?>">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <?php 
-                                endforeach;
-                                    ?>
+									<?php
+									endforeach;
+									?>
                                 </div>
                             </div>
                         </div>
@@ -173,13 +183,13 @@ endforeach;
                                 <div class="row">
                                     <div class="col-12  d-flex">
 
-                                        <?php 
-                                        foreach($size as $size1):
-                                    ?>
-                                        <div class="size"><span><?=$size1['value']?></span></div>
-                                        <?php
-                                        endforeach;
-                                    ?>
+										<?php
+										foreach ($size as $size1):
+											?>
+                                            <div class="size"><span><?= $size1['value'] ?></span></div>
+										<?php
+										endforeach;
+										?>
                                     </div>
                                 </div>
 
@@ -213,3 +223,38 @@ endforeach;
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Custom</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-1">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="divlayout p-1">
+                                    <img src="/download/image?name=product/24/layout/tshirt-type.jpg" class="w-100">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="divlayout p-1">
+                                    <img src="/download/image?name=product/24/layout/tshirt-logo.png" class="w-100"
+                                         style="height:50px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">PreA</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -54,6 +54,14 @@ class Orders extends CpanelController
 
 	}
 
+	public function insert()
+	{
+		$model = new OrdersModel();
+
+		echo json_encode(1);
+	}
+
+
 	public function delete()
 	{
 		$model = new OrdersModel();
