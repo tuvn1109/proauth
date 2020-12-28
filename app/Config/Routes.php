@@ -30,8 +30,41 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-//$routes->get('/(:any)', 'Category::index/$1');
-//$routes->get('/(:any)/(:any)', 'Category::product/$1/$2');
+$routes->get('/auth', 'Auth::index');
+
+$routes->get('/cpanel', 'Cpanel/Home::index');
+
+$routes->get('/cpanel/product', 'Cpanel/product::index');
+$routes->get('/cpanel/product/create', 'Cpanel/product::create');
+$routes->get('/cpanel/product/edit/(:any)', 'Cpanel/product::edit');
+$routes->get('/cpanel/product/(:any)', 'Cpanel/product::loaddata');
+
+$routes->get('/cpanel/properties', 'Cpanel/properties::index');
+$routes->get('/cpanel/properties/(:any)', 'Cpanel/properties::loaddata');
+
+$routes->get('/cpanel/category', 'Cpanel/category::index');
+$routes->get('/cpanel/category/(:any)', 'Cpanel/category::loaddata');
+
+$routes->get('/cpanel/size', 'Cpanel/size::index');
+$routes->get('/cpanel/size/(:any)', 'Cpanel/size::loaddata');
+
+
+$routes->get('/cpanel/color', 'Cpanel/color::index');
+$routes->get('/cpanel/color/(:any)', 'Cpanel/color::loaddata');
+
+$routes->get('/cpanel/shippingmethod', 'Cpanel/shippingmethod::index');
+$routes->get('/cpanel/shippingmethod/(:any)', 'Cpanel/shippingmethod::loaddata');
+
+$routes->get('/cpanel/users', 'Cpanel/users::index');
+$routes->get('/cpanel/users/(:any)', 'Cpanel/users::loaddata');
+
+$routes->get('/cpanel/settings/home', 'Cpanel/settings::home');
+$routes->get('/cpanel/settings/banner', 'Cpanel/settings::banner');
+$routes->get('/cpanel/settings/email', 'Cpanel/settings::email');
+
+$routes->get('download/(:any)', 'Download::image');
+$routes->get('/(:any)/(:any)', 'Category::product/$1/$2');
+$routes->get('/(:any)', 'Category::index/$1');
 
 /**
  * --------------------------------------------------------------------

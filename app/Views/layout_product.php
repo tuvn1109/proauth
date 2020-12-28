@@ -31,8 +31,8 @@
     <!-- END: Custom CSS-->
     <link href="/mainpro.css" rel='stylesheet'>
     <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
-    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owlcarousel/assets/owl.theme.default.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top  navbar  navbar-light">
@@ -167,10 +167,13 @@
         </div>
     </div>
 </div>
+
+<script src="/owlcarousel/owl.carousel.min.js"></script>
+<script src="/assets/plugins/fabric/fabric.min.js"></script>
+<script src="/assets/plugins/fabric/popper.min.js"></script>
 <?php
 echo view($temp . '_js', $this->data);
 ?>
-<script src="owlcarousel/owl.carousel.min.js"></script>
 <script>
     $(document).ready(function () {
 

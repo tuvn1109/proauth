@@ -57,6 +57,20 @@ class Settings extends CpanelController
 		$data['temp'] = 'cpanel/settings/banner';
 		echo view('cpanel/layout', $data);
 	}
+	
+	public function email()
+	{
+			//return redirect()->to('/');
+			$model_setting = new SettingsModel();
+			$list = $model_setting->where('type', 'email')
+				->findAll();
+			$data['title'] = 'Setting Email';
+			$data['menu'] = 'email';
+			$data['data'] = $list;
+			$data['temp'] = 'cpanel/settings/email';
+			echo view('cpanel/layout', $data);
+	}
+
 
 	public function updatehome()
 	{
@@ -161,11 +175,9 @@ class Settings extends CpanelController
 		endforeach;
 		$a = $modelStting->updateBatch($data, 'filed');
 
-		echo "<pre>";
-		print_r($a);
-		echo "</pre>";
-
 	}
+
+
 	//--------------------------------------------------------------------
 
 }

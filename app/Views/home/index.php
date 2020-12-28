@@ -306,7 +306,12 @@ if ($setting['section3'] == 'on') {
                 </div>
             </div>
         </div>
+<?php
+echo "<pre>";
+print_r($sectionCate1);
+echo "</pre>";
 
+?>
         <div class="row" style="margin-top: 50px" id="drawsectioncategory1">
 			<?php
 			$i = 0;
@@ -345,7 +350,7 @@ if ($setting['section3'] == 'on') {
 
                         </div>
                         <div id="name-item-mini-right"><a
-                                    href="/product/<?= $val['slug'] ?>"><?= $val['name'] ?></a>
+                                    href="/<?= $val['slug'] ?>/<?= $val['slug'] ?>"><?= $val['name'] ?></a>
                         </div>
                         <div id="classify-item-mini-right">Personalized Shirt</div>
                         <div id="price-item-mini-right">

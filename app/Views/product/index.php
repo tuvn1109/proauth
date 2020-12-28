@@ -17,12 +17,6 @@
         </div>
     </div>
 </section>
-<?php
-echo "<pre>";
-print_r($color);
-echo "</pre>";
-
-?>
 <section id="main-product">
     <div class="row ">
         <div class="col-md-6 col-12 d-flex  justify-content-center">
@@ -226,29 +220,51 @@ echo "</pre>";
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 80%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Custom</h5>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-2">
                         <div class="row">
                             <div class="col-12">
-                                <div class="divlayout p-1">
-                                    <img src="/download/image?name=product/24/layout/tshirt-type.jpg" class="w-100">
+                                <div class="divlayout p-1 active-lay"
+                                     data-img="/download/image?name=product/24/layout/font.png">
+                                    <img src="/download/image?name=product/24/layout/font.png"
+                                         class="w-100 img-fluid">
+                                    <span class="label_layout">Front</span>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="divlayout p-1">
-                                    <img src="/download/image?name=product/24/layout/tshirt-logo.png" class="w-100"
-                                         style="height:50px">
+                                <div class="divlayout p-1" data-img="/download/image?name=product/24/layout/back.png">
+                                    <img src="/download/image?name=product/24/layout/back.png"
+                                         class="w-100  img-fluid">
+                                    <span class="label_layout">Back</span>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-9"></div>
+                    <div class="col-7">
+                        <div class="divcanvas">
+                            <canvas width="600" height="600" id="c"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> IMAGE
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-success btn-sm" id="btn-add-text"><i
+                                            class="fas fa-plus"></i> TEXT
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

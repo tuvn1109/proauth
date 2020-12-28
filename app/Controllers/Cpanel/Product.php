@@ -314,7 +314,9 @@ class Product extends CpanelController
 		$arrDelete = \json_decode($this->request->getPost('arrDelete'), true);
 		$jsonLayout = \json_decode($this->request->getPost('test'), true);
 		$file = $this->request->getFiles();
-
+		$slug = create_slug($name);
+		$checkSlug = $modelProduct->where('name', $name)
+			->findAll();
 		//$imgPro = $file['fileImgPro'];	
 		$tags = \json_decode($this->request->getPost('tags'), true);
 
@@ -341,7 +343,14 @@ class Product extends CpanelController
 		];
 		$modelProduct->update($id, $dataInsert);
 
-
+// update slug
+		if (count($checkSlug) > 0) {
+			$slug = create_slug($name) . '-' . $id;
+			$dataSlug = [
+				'slug' => $slug,
+			];
+			$modelProduct->update($id, $dataSlug);
+		}
 		// SIZE
 		if ($size) {
 			$modelProductSize->where('product_id', $id)->delete();

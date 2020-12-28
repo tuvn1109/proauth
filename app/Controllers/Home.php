@@ -24,8 +24,14 @@ class Home extends BaseController
 		$bestSellTshirt = $modelProduct->where('bestselling', 'yes')->whereIn('type', [4, 5])->findAll('2', 0);
 		$bestSellMug = $modelProduct->where('bestselling', 'yes')->where('type', '2')->findAll('3', 0);
 		$bestSellCase = $modelProduct->where('bestselling', 'yes')->where('type', '3')->findAll('2', 0);
-		$sectionCate1 = $modelProduct->where('type', json_decode($settings['section_category1_type'], true)[0])->findAll($settings['section_category1_limit'], 0);
-		$sectionCate2 = $modelProduct->where('type', json_decode($settings['section_category2_type'], true)[0])->findAll($settings['section_category2_limit'], 0);
+		$sectionCate1 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category1_type'], true)[0])->findAll($settings['section_category1_limit'], 0);
+
+		echo "<pre>";
+		print_r($sectionCate1);
+		echo "</pre>";
+
+exit;
+		$sectionCate2 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category2_type'], true)[0])->findAll($settings['section_category2_limit'], 0);
 		$accessories = $modelProduct->where('type', json_decode($settings['section_category2_type'])[0])->orderBy('created_at', 'DESC')->findAll($settings['section_category2_limit'], 0);
 
 		$data['test'] = json_decode($settings['section_category1_type'], true);

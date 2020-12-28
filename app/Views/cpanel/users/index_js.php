@@ -7,9 +7,8 @@
         "ajax": {
             "url": "/cpanel/users/loaddata",
             "data": function (d) {
-                d.page = 1;
-
-                console.log(d);
+                var info = $('#usersTable').DataTable().page.info().page + 1;
+                d.page = info;
             }
         },
         "columns": [

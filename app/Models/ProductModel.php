@@ -19,7 +19,12 @@ class ProductModel extends Model
 	protected $skipValidation = false;
 	protected $selectFields = ['*'];
 
+	public function getIdBySlug($slug)
+	{
+		$query = $this->select('id');
+		return $query->getWhere(['slug' => $slug])->getRowArray();
 
+	}
 }
 
 ?>

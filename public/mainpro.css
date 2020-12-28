@@ -1448,9 +1448,42 @@ img {
 .outline-none {
     outline: none;
 }
-.divlayout{
-    border: 1px solid blue;
-    width: 100px;
-    height: 100px;
+
+.divlayout {
+    position: relative;
+    border: 1px solid #ccc;
+    width: 75px;
+    height: 75px;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 9px;
+    margin-bottom: 10px;
+    text-align: center;
 }
+
+.active-lay {
+    border: 2px solid #52abda;
+}
+
+.label_layout {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(238, 238, 238, 0.7);
+}
+
+canvas #c {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.divcanvas {
+    width: 600px;
+    height: 600px;
+    position: relative;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
 /*radio*/
