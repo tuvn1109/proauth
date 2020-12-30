@@ -17,15 +17,26 @@
 
 }
 
+* {
+    font-family: Quicksand;
+}
+
 body {
     margin: 0;
     background: rgba(249, 250, 251, 1) !important;
     padding: 0 75px 0 75px;
-    font-family: Quicksand !important;
 }
 
 span {
     font-family: Quicksand !important;
+}
+
+ul li a {
+    color: black !important;
+}
+
+ul li span {
+    font-weight: 600;
 }
 
 header {
@@ -755,6 +766,12 @@ img {
     letter-spacing: 0px;
 }
 
+.link-pro {
+    font-family: Quicksand;
+    line-height: 25px;
+    font-weight: 500;
+}
+
 #div-choose {
     background: #F6F6F9 90%;
     border-radius: 5px;
@@ -791,6 +808,11 @@ img {
     border-radius: 5000px;
     cursor: pointer;
 }
+
+.active-color {
+    border : 1px solid #0E459E;
+}
+
 
 .cl-white {
     background-color: #FFFFFF;

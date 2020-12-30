@@ -39,7 +39,8 @@
         <div class="col-md-6 col-12 d-flex justify-content-center">
             <div class="row">
                 <div class="col-12">
-                    <div class="link-pro">Home > T-shirt</div>
+                    <div class="link-pro">Home&nbsp;&nbsp;>&nbsp;&nbsp;<?= $menuactive ?>
+                        &nbsp;&nbsp;>&nbsp;&nbsp;<?= $info['slug_pro'] ?></div>
                 </div>
                 <div class="col-12">
                     <div class="title-pro"><span><?= $info['name'] ?></span></div>
@@ -52,7 +53,7 @@
                 </div>
                 <div class="col-12">
                     <div class="sale-timeout-pro"><img
-                                src="https://s3-alpha-sig.figma.com/img/749b/abcf/e19afa554519859ce55ab2a65fd84809?Expires=1607299200&Signature=F39Ozy6bkYKW9NRk8BfbFd4CUf1Aa9AZz0zLamcQFSEBT8Z6JbqhMBxbM3iNwri86bRIJ1DKlxlEqQ91zsgoJLAw40gTGbf7KLWj~FZ8YjQ5GIO-vaunfaHec1z50b8944TXD9Uz2Xqb0Me9DqTqHrsTG1iPCuB1Df3FBPiciAcF8g2o~7oQGS~pgj2jWYXrZX1vEhykDtFsY6b7rJzwy05p5DvXQKAK26M067LICAnP9kq~b5Wlt-T3wy128FMLZ2kzEUfY0pMnMVp2gjskdfKV7CtZbaSHgQ-lCLdtqWNoJ0XF1pIZcQTjmpySd7pv6lg5oQL8~i2vP3j8UZlYBA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+                                src="#">
                     </div>
                 </div>
                 <div class="col-12">
@@ -120,30 +121,36 @@
                     <div id="div-choose">
                         <div class="div-choose-type">
                             <div class="col-12">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModalCenter"><i class="fas fa-plus"></i> Image
+                                <button type="button" class="btn btn-primary" id="modalButton"><i
+                                            class="fas fa-plus"></i>
+                                    Image
                                 </button>
                             </div>
-                            <div class="col-12 title-type-pro"><span>Choose a product type</span> <i
-                                        class="fas fa-edit"></i></div>
-                            <div class="col-12 list-type-pro">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="item">
-                                            <div class="thumb"><img src="/logo/tshirt-type.jpg" class="img-fluid"></div>
-                                            <div class="title d-flex justify-content-center">xxxx</div>
+                            <div style="display: none">
+                                <div class="col-12 title-type-pro"><span>Choose a product type</span> <i
+                                            class="fas fa-edit"></i></div>
+                                <div class="col-12 list-type-pro">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="item">
+                                                <div class="thumb"><img src="/logo/tshirt-type.jpg" class="img-fluid">
+                                                </div>
+                                                <div class="title d-flex justify-content-center">xxxx</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="item">
-                                            <div class="thumb"><img src="/logo/tshirt-type.jpg" class="img-fluid"></div>
-                                            <div class="title d-flex justify-content-center">xxxx</div>
+                                        <div class="col-4">
+                                            <div class="item">
+                                                <div class="thumb"><img src="/logo/tshirt-type.jpg" class="img-fluid">
+                                                </div>
+                                                <div class="title d-flex justify-content-center">xxxx</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="item ">
-                                            <div class="thumb"><img src="/logo/tshirt-type.jpg" class="img-fluid"></div>
-                                            <div class="title d-flex justify-content-center">xxxx</div>
+                                        <div class="col-4">
+                                            <div class="item ">
+                                                <div class="thumb"><img src="/logo/tshirt-type.jpg" class="img-fluid">
+                                                </div>
+                                                <div class="title d-flex justify-content-center">xxxx</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -157,10 +164,14 @@
                                 <div class="row">
 
 									<?php
+
+									$i = 0;
 									foreach ($color as $color1):
+										$i++;
+
 										?>
                                         <div class="col-1 ">
-                                            <div class="item-color cl-white"
+                                            <div class="item-color active-color" data-id="<?= $color1['id'] ?>"
                                                  style="background-color: <?= $color1['code'] ?>">
                                             </div>
                                         </div>
@@ -217,6 +228,56 @@
         </div>
     </div>
 </section>
+<div id="divdesgin">
+    <div id="clothing-designer"
+         class="fpd-container fpd-shadow-2 fpd-topbar fpd-tabs fpd-tabs-side fpd-top-actions-centered fpd-bottom-actions-centered fpd-views-inside-left">
+        <div class="fpd-product" title="Shirt Front" id="data-thumb-front"
+             data-thumbnail="/download/<?= $color[1]['layout'] ?>">
+            <img src="/download/<?= $color[1]['layout'] ?>" id="front-de" title="Base"
+                 data-parameters='{"left": 400, "top": 300, "width":300,"height":400, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base"}'/>
+
+
+            <div class="fpd-product" title="Shirt Back" id="data-thumb-back"
+                 data-thumbnail="/download/<?= $color[0]['back'] ?>">
+                <img src="/download/<?= $color[0]['back'] ?>" id="back-de" title="Base"
+                     data-parameters='{"left": 400, "top": 300, "width":300,"height":300, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base"}'/>
+            </div>
+
+        </div>
+
+
+        <div class="fpd-design">
+			<?php
+			foreach ($cateImage as $key => $val):
+				?>
+                <div class="fpd-category" title="<?= $key ?>">
+					<?php
+					foreach ($val as $key2 => $value):
+
+						?>
+                        <img src="/images-pro/<?= $key ?>/<?= $value ?>" title="<?= $value ?>"
+                             data-parameters='{"zChangeable": true, "left": 215, "top": 200, "colors": "#000000", "removable": true, "draggable": true, "rotatable": true, "resizable": true, "price": 10, "boundingBox": "Base", "autoCenter": true}'/>
+					<?php
+					endforeach;
+					?>
+                </div>
+			<?php
+			endforeach;
+			?>
+
+        </div>
+    </div>
+</div>
+
+<div class="fpd-clearfix" style="margin-top: 30px;">
+    <div class="api-buttons fpd-container fpd-left">
+        <a href="#" id="print-button" class="fpd-btn">Print</a>
+        <a href="#" id="image-button" class="fpd-btn">Create Image</a>
+        <a href="#" id="checkout-button" class="fpd-btn">Checkout</a>
+        <a href="#" id="recreation-button" class="fpd-btn">Recreate product</a>
+    </div>
+</div>
+
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
@@ -266,6 +327,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">PreA</button>

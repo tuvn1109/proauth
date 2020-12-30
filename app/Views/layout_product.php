@@ -22,23 +22,35 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
+
     <!-- END: Page CSS-->
     <script src="/app-assets/vendors/js/vendors.min.js"></script>
     <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
+
+
+
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/FancyProductDesigner-all.min.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
     <link href="/mainpro.css" rel='stylesheet'>
     <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
     <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/owlcarousel/assets/owl.theme.default.min.css">
+
+    <script src="/assets/plugins/fancy/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/fancy/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script src="/assets/plugins/fancy/fabric.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/fancy/FancyProductDesigner-all.min.js" type="text/javascript"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top  navbar  navbar-light">
     <div class="container-fluid">
 
-        <a class="navbar-branch logo" href="#">
+        <a class="navbar-branch logo" href="/">
             <img src="/logo/life-logo.png">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -47,18 +59,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-3  d-flex justify-content-center ">
-                <li class="nav-item mr-1">
-                    <div class="item-menu active-menu"><span>T-Shirts</span></div>
-                </li>
-                <li class="nav-item  mr-1">
-                    <div class="item-menu "><span>Mug</span></div>
-                </li>
-                <li class="nav-item  mr-1">
-                    <div class="item-menu  "><span>Phone Case</span></div>
+				<?php
+				foreach ($menu as $val):
+					?>
+                    <li class="nav-item mr-1">
+                        <a href="/<?= $val['slug'] ?>">
+                            <div class="item-menu <?= $menuactive == $val['slug'] ? 'active-menu' : '' ?>">
+                                <span><?= $val['value'] ?></span></div>
+                        </a>
+                    </li>
 
-                </li>
+				<?php
+				endforeach;
+				?>
                 <li class="nav-item  mr-1">
-                    <div class="item-menu  "><span>Sale Off</span></div>
+                    <div class="item-menu"><span>Sale Off</span></div>
 
                 </li>
                 <li class="nav-item  mr-1">
@@ -99,7 +114,7 @@
                 </li>
                 <li class="nav-item form-inline mr-1">
                     <div class="avatar-user"><img
-                                src="https://s3-alpha-sig.figma.com/img/a897/b22c/eb9b17bd52cfeedd5bace94f3fb287dc?Expires=1607299200&Signature=Xm7BiSGXJDBDUn9Q2~tkAzPHfynZKXK~kaKqkSZpC3O63KyRwvjTp7kJr5MilKNMUWVTBYIjuYuRPSwA0JZoeb5e6Dq8xtQz0OfcJBktASwtEAxlpw5KA6ikN7idPu1JCLIsC9pNeZMv6B15r54r9hli29Tp5lQ3of-zXWx~Im7yzqZk3LHNiX6PKtRVlUoti4UbcILNxnOnRMwPF6rOJuCZeTkYQDOeuViHFP2QjzyEXoNngGgOMziwe2YJjeJuaFsNzyZqQ3antdZZJ4q4Tsikm3hywgusKaVV8JKFOOst4qhzXrH4uH1nddoSVhOtZJABt4pnh3ul7FDYrLxx9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+                                src="/logo/man-logo.png">
                     </div>
                 </li>
 
@@ -169,8 +184,6 @@
 </div>
 
 <script src="/owlcarousel/owl.carousel.min.js"></script>
-<script src="/assets/plugins/fabric/fabric.min.js"></script>
-<script src="/assets/plugins/fabric/popper.min.js"></script>
 <?php
 echo view($temp . '_js', $this->data);
 ?>

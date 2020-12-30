@@ -16,7 +16,7 @@ if ($setting['section1'] == 'on') {
                         <div class="col-sm-6 col-12">
                             <div id="bestsell">
                                 <div class="thumb-bestsell">
-                                    <img src="/logo/bestsell1.jpg" class="img-fluid w-100">
+                                    <img src="/download/image?name=<?= $besttshirt1['thumbnail'] ?>" class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
@@ -42,7 +42,7 @@ if ($setting['section1'] == 'on') {
                                     <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                                 </div>
                                 <div id="name-item"><a
-                                            href="/product/<?= $besttshirt1['slug'] ?>"><?= $besttshirt1['name'] ?></a>
+                                            href="/<?= $besttshirt1['slug'] ?>/<?= $besttshirt1['slug_pro'] ?>"><?= $besttshirt1['name'] ?></a>
                                 </div>
                                 <div id="classify-item">Personalized Shirt</div>
                                 <div id="price-item-mini-right">
@@ -88,7 +88,7 @@ if ($setting['section1'] == 'on') {
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
                                 <div class="thumb-bestsell-right">
-                                    <img src="/logo/mug1.jpg" class="img-fluid w-100">
+                                    <img src="/download/image?name=<?= $bestmug1['thumbnail'] ?>" class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
@@ -114,7 +114,7 @@ if ($setting['section1'] == 'on') {
                                     <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                                 </div>
                                 <div id="name-item-mini-right"><a
-                                            href="/product/<?= $besttshirt1['slug'] ?>"><?= $besttshirt1['name'] ?></a>
+                                            href="/<?= $bestmug1['slug'] ?>/<?= $bestmug1['slug_pro'] ?>"><?= $bestmug1['name'] ?></a>
                                 </div>
                                 <div id="classify-item-mini-right">Personalized Shirt</div>
                                 <div id="price-item-mini-right">
@@ -180,7 +180,7 @@ if ($setting['section1'] == 'on') {
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
                                 <div class="thumb-bestsell-right">
-                                    <img src="/logo/mug1.jpg" class="img-fluid w-100">
+                                    <img src="/download/image?name=<?= $bestcase1['thumbnail'] ?>" class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
@@ -206,7 +206,7 @@ if ($setting['section1'] == 'on') {
                                     <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                                 </div>
                                 <div id="name-item-mini-right"><a
-                                            href="/product/<?= $bestcase1['slug'] ?>"><?= $bestcase1['name'] ?></a>
+                                            href="/<?= $bestcase1['slug'] ?>/<?= $bestcase1['slug_pro'] ?>"><?= $bestcase1['name'] ?></a>
                                 </div>
                                 <div id="classify-item-mini-right">Personalized Shirt</div>
                                 <div id="price-item-mini-right">
@@ -306,12 +306,7 @@ if ($setting['section3'] == 'on') {
                 </div>
             </div>
         </div>
-<?php
-echo "<pre>";
-print_r($sectionCate1);
-echo "</pre>";
 
-?>
         <div class="row" style="margin-top: 50px" id="drawsectioncategory1">
 			<?php
 			$i = 0;
@@ -350,7 +345,7 @@ echo "</pre>";
 
                         </div>
                         <div id="name-item-mini-right"><a
-                                    href="/<?= $val['slug'] ?>/<?= $val['slug'] ?>"><?= $val['name'] ?></a>
+                                    href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a>
                         </div>
                         <div id="classify-item-mini-right">Personalized Shirt</div>
                         <div id="price-item-mini-right">
@@ -487,7 +482,7 @@ if ($setting['section5'] == 'on') {
                             <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                         </div>
                         <div id="name-item-mini-right"><a
-                                    href="/product/<?= $val['slug'] ?>"><?= $val['name'] ?></a></div>
+                                    href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a></div>
                         <div id="classify-item-mini-right">Personalized Shirt</div>
                         <div id="price-item-mini-right">
 							<?php

@@ -38,6 +38,8 @@
 		<?php
 		$i = 0;
 		$i2 = 0;
+
+
 		foreach ($listCate as $val) {
 			$i++;
 			$i2++;
@@ -46,7 +48,7 @@
             <div class="col">
                 <div class="item-category">
                     <div class="item-category-thumb">
-                        <img src="/logo/tshirt1.png" class="img-fluid w-100">
+                        <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
                         <div id="back-hover">
                             <div class="centerContent">
                                 <button class="btn-quickview"><span>quick view</span>
@@ -72,7 +74,7 @@
                         </div>
                         <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                     </div>
-                    <div id="name-item-mini-right"><a href="/<?= $val['slug'] ?>"><?= $val['name'] ?></a></div>
+                    <div id="name-item-mini-right"><a href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a></div>
                     <div id="classify-item-mini-right">Personalized Shirt</div>
                     <div id="price-item-mini-right">    <?php
 						if ($val['sale'] == 'yes') {

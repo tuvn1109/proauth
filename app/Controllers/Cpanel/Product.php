@@ -425,7 +425,38 @@ class Product extends CpanelController
 				echo WRITEPATH . 'uploads/product/' . $id . '/image/' . $arrDelete1 . '<br>';
 			}
 		}
+		if ($jsonLayout) {
+			foreach ($jsonLayout as $jsonLayout):
+				$img = $this->request->getFile('fileUpload' . $jsonLayout['color']);
+				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout['color']);
 
+				if ($img->isValid() && !$img->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+					}
+
+					$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
+
+				}
+				if ($imgback->isValid() && !$imgback->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+					}
+					$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
+				}
+
+
+				$detail = [
+					'product_id' => $id,
+					'color_id' => $jsonLayout['color'],
+					'layout' => 'product/' . $id . '/layout/' . $img->getName(),
+					'back' => 'product/' . $id . '/layout/' . $imgback->getName(),
+				];
+				$modelProductColor->insert($detail);
+			endforeach;
+		}
 
 		if ($file) {
 			$imgPro = $file['fileImgPro'];
@@ -445,7 +476,13 @@ class Product extends CpanelController
 			endforeach;
 		}
 
-
+		$return = [
+			'code' => 'fetch_user_success',
+			'msg' => 'Update success ',
+			'stt' => true,
+			'data' => []
+		];
+		echo json_encode($return);
 	}
 
 

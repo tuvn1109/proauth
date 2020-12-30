@@ -14,23 +14,19 @@ class Home extends BaseController
 		$modelCategory = new CategoryModel();
 		$settings = $modelSetting->where('type', 'homepage')->findAll();
 		$settings = array_column($settings, 'value', 'filed');
+		$menu = $modelCategory->where('parent', '0')->findAll();
 
 		$banner = $modelSetting->where('type', 'bannerads')->findAll();
 		$banner = array_column($banner, 'value', 'filed');
 		$sectionCateType1 = $modelCategory->whereIn('id', json_decode($settings['section_category1_type']))->orderBy('id', 'DESC')->findAll('2', 0);
 		$sectionCateType2 = $modelCategory->whereIn('id', json_decode($settings['section_category2_type']))->orderBy('id', 'DESC')->findAll('2', 0);
 
-
-		$bestSellTshirt = $modelProduct->where('bestselling', 'yes')->whereIn('type', [4, 5])->findAll('2', 0);
-		$bestSellMug = $modelProduct->where('bestselling', 'yes')->where('type', '2')->findAll('3', 0);
-		$bestSellCase = $modelProduct->where('bestselling', 'yes')->where('type', '3')->findAll('2', 0);
+		$bestSellTshirt = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->whereIn('type', [4, 5])->findAll('2', 0);
+		$bestSellMug = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '2')->findAll('3', 0);
+		$bestSellCase = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '3')->findAll('2', 0);
 		$sectionCate1 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category1_type'], true)[0])->findAll($settings['section_category1_limit'], 0);
 
-		echo "<pre>";
-		print_r($sectionCate1);
-		echo "</pre>";
 
-exit;
 		$sectionCate2 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category2_type'], true)[0])->findAll($settings['section_category2_limit'], 0);
 		$accessories = $modelProduct->where('type', json_decode($settings['section_category2_type'])[0])->orderBy('created_at', 'DESC')->findAll($settings['section_category2_limit'], 0);
 
@@ -39,6 +35,7 @@ exit;
 		$data['temp'] = 'home/index';
 		$data['title'] = 'Home';
 		$data['user'] = session('user');
+		$data['menu'] = $menu;
 		$data['besttshirt'] = $bestSellTshirt;
 		$data['bestmug'] = $bestSellMug;
 		$data['bestcase'] = $bestSellCase;

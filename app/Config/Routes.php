@@ -4,8 +4,7 @@
 $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 	require SYSTEMPATH . 'Config/Routes.php';
 }
 
@@ -32,8 +31,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/auth', 'Auth::index');
 
-$routes->get('/cpanel', 'Cpanel/Home::index');
 
+$routes->get('/cpanel', 'Cpanel/Home::index');
 $routes->get('/cpanel/product', 'Cpanel/product::index');
 $routes->get('/cpanel/product/create', 'Cpanel/product::create');
 $routes->get('/cpanel/product/edit/(:any)', 'Cpanel/product::edit');
@@ -62,7 +61,8 @@ $routes->get('/cpanel/settings/home', 'Cpanel/settings::home');
 $routes->get('/cpanel/settings/banner', 'Cpanel/settings::banner');
 $routes->get('/cpanel/settings/email', 'Cpanel/settings::email');
 
-$routes->get('download/(:any)', 'Download::image');
+$routes->get('/download/image', 'Download::image');
+$routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$3/$4');
 $routes->get('/(:any)/(:any)', 'Category::product/$1/$2');
 $routes->get('/(:any)', 'Category::index/$1');
 
@@ -79,7 +79,6 @@ $routes->get('/(:any)', 'Category::index/$1');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

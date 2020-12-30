@@ -22,7 +22,7 @@ class ProductModel extends Model
 	public function getIdBySlug($slug)
 	{
 		$query = $this->select('id');
-		return $query->getWhere(['slug' => $slug])->getRowArray();
+		return $query->getWhere(['slug_pro' => $slug])->getRowArray();
 
 	}
 }
