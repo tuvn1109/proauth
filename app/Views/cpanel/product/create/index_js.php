@@ -51,7 +51,7 @@
     });
 
 
-    var myDropzone = new Dropzone("div#mydropzone", {
+    var myDropzone2 = new Dropzone("div#mydropzone", {
         paramName: "file", // The name that will be used to transfer the file
         maxFiles: 3,
         url: '#',
@@ -65,7 +65,7 @@
         init: function () {
             this.on("addedfile", function (file) {
                 arrImgpro.push(file);
-
+                console.log(arrImgpro);
             });
             this.on("removedfile", function (file) {
                 $.each(arrImgpro, function (keys, values) {
@@ -120,11 +120,13 @@
         $(this).prop('disabled', true);
         var formData = new FormData($('#fr_createpro')[0]);
         $.each(arrDataF, function (keys, values) {
-            formData.append('fileUpload' + values['color'], values['font']);
+            formData.append('fileUpload' + values['color'], values['front']);
             formData.append('fileUploadback' + values['color'], values['back']);
-
+            $.each(values['images'], function (keyimg, valueimg) {
+                formData.append('fileImgShow' + values['color'], valueimg);
+            });
         });
-        console.log(arrImgpro);
+
         $.each(arrImgpro, function (keys, values) {
             formData.append('fileImgPro[]', values);
         });
@@ -159,18 +161,23 @@
         var reader = new FileReader();
         var color = $('#color').val();
         let name = $('select#color').find(':selected').data('name');
-        var f = $("#inputlayoutcolor")[0].files[0];
-        var fback = $("#inputlayoutcolorback")[0].files[0];
+        var front = $("#inputlayoutcolor")[0].files[0];
+        var back = $("#inputlayoutcolorback")[0].files[0];
         var type = $("#typelayout").val();
+        var images = [...arrImgpro];
         var oj = {
-            'font': f,
-            'back': fback,
+            'images': images,
+            'front': front,
+            'back': back,
             'color': color,
             'colortext': name,
             'type': type,
         }
         arrDataF.push(oj);
         drawTableColor();
+        // console.log(arrDataF)
+        myDropzone2.removeAllFiles(true);
+
     });
 
     async function drawTableColor() {
@@ -178,7 +185,8 @@
         var $table = $('<table class="table dataTable"><thead></thead></table>');
         var $linethed = $("<thead></thead>");
         var $line = $("<tr></tr>");
-        $line.append($('<th style="width:100px" class="text-center">Front</th>'));
+        $line.append($('<th  class="text-center">Image</th>'));
+        $line.append($('<th  class="text-center">Front</th>'));
         $line.append($('<th class="text-center">Back</th>'));
         $line.append($('<th class="text-center">Color</th>'));
         $line.append($('<th style="width: 50px;">Xóa</th>'));
@@ -187,10 +195,20 @@
 
         for (var i = arrDataF.length - 1; i >= 0; i--) {
             var val = arrDataF[i];
-            var font = await getBase64(val['font']);
+            var front = await getBase64(val['front']);
             var back = await getBase64(val['back']);
+            var test = '';
+            var $imagear = $('<div></div>');
+
+            $.each(val['images'], async function (key, value) {
+                var image = await getBase64(value);
+                var a = $('<img style="height:100px;width:100px;margin-left: 10px" src="' + image + '">');
+                $imagear.append(a);
+
+            });
             var $line = $("<tr></tr>");
-            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + font +
+            $line.append($("<td class='text-center'></td>").html($imagear));
+            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + front +
                 '">'));
             $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + back +
                 '">'));

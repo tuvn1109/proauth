@@ -80,7 +80,6 @@ class Category extends BaseController
 
 			$db = \Config\Database::connect();
 			$builder = $db->table('product_color');;
-
 			$builder->select('product_color.id as id,code,layout,back');
 			$builder->join('colors', 'colors.id = product_color.color_id', 'left');
 			$builder->where('product_id', $idPro);

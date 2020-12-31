@@ -44,6 +44,23 @@
             'left': []
         }
     };
+    $('#add-to-card').click(function () {
+        yourDesigner.getProductDataURL(function (dataURL) {
+            // $.post("php/save_image.php", {base64_image: dataURL});
+            $.ajax({
+                url: "/php/save_image.php",
+                dataType: "json",
+                data: {base64_image: dataURL},
+                type: "POST",
+                success: function (data) {
+
+                },
+                error: function () {
+                }
+            });
+
+        });
+    });
 
     $('.item-color').click(function () {
         var id = $(this).data('id');

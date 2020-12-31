@@ -15,6 +15,8 @@ use App\Models\ProductTagModel;
 
 class Product extends CpanelController
 {
+
+
 	public function index()
 	{
 		$data['temp'] = 'cpanel/product/index';
@@ -88,6 +90,41 @@ class Product extends CpanelController
 
 	}
 
+	public function loadimagecolor()
+	{
+		helper('filesystem');
+		function dirToArray($dir)
+		{
+			$result = array();
+			$cdir = scandir($dir);
+			foreach ($cdir as $key => $value) {
+				if (!in_array($value, array(".", ".."))) {
+					if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
+						$result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
+					} else {
+						$result[] = $value;
+					}
+				}
+			}
+			return $result;
+		}
+
+		$modelProductColor = new ProductColorModel();
+
+		$id = $this->request->getPost('id');
+
+		$info = $modelProductColor->find($id);
+
+
+		$dir = WRITEPATH . 'uploads/product/' . $info['product_id'] . '/image/' . $info['color_id'];
+
+		$image = dirToArray($dir);
+
+		$data['image'] = $image;
+		echo json_encode($data);
+
+	}
+
 	public function insert()
 	{
 		helper('comment');
@@ -124,10 +161,7 @@ class Product extends CpanelController
 		$tagText = \implode(",", $arrTag);
 
 		$jsonLayout = \json_decode($test, true);
-		$file = $this->request->getFiles();
-		if ($file) {
-			$imgPro = $file['fileImgPro'];
-		}
+
 		$dataInsert = [
 			'name' => $name,
 			'type' => $type,
@@ -139,7 +173,7 @@ class Product extends CpanelController
 			'sale' => $sale,
 			'description' => $description,
 			'description_detail' => $description_detail,
-			'slug' => $slug,
+			'slug_pro' => $slug,
 		];
 		$id = $modelProduct->insert($dataInsert);
 
@@ -147,7 +181,7 @@ class Product extends CpanelController
 		if (count($checkSlug) > 0) {
 			$slug = create_slug($name) . '-' . $id;
 			$dataSlug = [
-				'slug' => $slug,
+				'slug_pro' => $slug,
 			];
 			$modelProduct->update($id, $dataSlug);
 		}
@@ -204,26 +238,12 @@ class Product extends CpanelController
 			$modelProduct->update($id, $dataThumb);
 		}
 
-		if ($imgPro) {
-			foreach ($imgPro as $imgPro1):
 
-				if ($imgPro1->isValid() && !$imgPro1->hasMoved()) {
-					//$newName = $img->getRandomName();
-					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
-						mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
-					}
-
-					$imgPro1->move(WRITEPATH . 'uploads/product/' . $id . '/image');
-
-				}
-
-			endforeach;
-		}
 		if ($jsonLayout) {
 			foreach ($jsonLayout as $jsonLayout):
-				$img = $this->request->getFile('fileUpload' . $jsonLayout['color']);
-				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout['color']);
 
+				// layout front
+				$img = $this->request->getFile('fileUpload' . $jsonLayout['color']);
 				if ($img->isValid() && !$img->hasMoved()) {
 					//$newName = $img->getRandomName();
 					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
@@ -233,6 +253,9 @@ class Product extends CpanelController
 					$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
 
 				}
+
+				// layout back
+				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout['color']);
 				if ($imgback->isValid() && !$imgback->hasMoved()) {
 					//$newName = $img->getRandomName();
 					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
@@ -241,6 +264,18 @@ class Product extends CpanelController
 					$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
 				}
 
+
+				// image show
+				$imgShow = $this->request->getFile('fileImgShow' . $jsonLayout['color']);
+				foreach ($imgShow as $imgShow1):
+					if ($imgShow1->isValid() && !$imgShow1->hasMoved()) {
+						//$newName = $img->getRandomName();
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout['color'])) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout['color'], 0777, TRUE);
+						}
+						$imgShow1->move(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout['color']);
+					}
+				endforeach;
 
 				$detail = [
 					'product_id' => $id,
@@ -258,33 +293,81 @@ class Product extends CpanelController
 			'data' => []
 		];
 		echo json_encode($return);
+		exit;
+		$file = $this->request->getFiles();
+		if ($file) {
+			$imgPro = $file['fileImgPro'];
+		}
+		if ($imgPro == 'botamthoi') {
+			foreach ($imgPro as $imgPro1):
 
+				if ($imgPro1->isValid() && !$imgPro1->hasMoved()) {
+					//$newName = $img->getRandomName();
+					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
+						mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
+					}
+
+					$imgPro1->move(WRITEPATH . 'uploads/product/' . $id . '/image');
+
+				}
+
+			endforeach;
+		}
 	}
 
 
 	public function edit()
 	{
+		helper('filesystem');
+
 		$modelProduct = new ProductModel();
 		$modelProductSize = new ProductSizeModel();
 		$modelProductColor = new ProductColorModel();
 		$modelCategory = new CategoryModel();
 		$modelColor = new ColorModel();
 		$modelSize = new SizeModel();
-
 		$uri = current_url(true);
 		$id = $uri->getSegment(4);
 		$product = $modelProduct->find($id);
-		$colors = $modelProductColor->join('colors', 'colors.id = product_color.color_id', 'left')->where('product_id', $id)->findAll();
+
+		//$colors = $modelProductColor->where('product_id', $id)->findAll();
 		$sizes = $modelProductSize->where('product_id', $id)->findAll();
+		$db = \Config\Database::connect();
+		$builder = $db->table('product_color');;
+		$builder->select('*,product_color.id as id');
+		$builder->join('colors', 'colors.id = product_color.color_id', 'left');
+		$builder->where('product_id', $id);
+		$colors = $builder->get()->getResultArray();
+
+		$dir = WRITEPATH . 'uploads/product/' . $id . '/image';
+
+		function dirToArray($dir)
+		{
+			$result = array();
+			$cdir = scandir($dir);
+			foreach ($cdir as $key => $value) {
+				if (!in_array($value, array(".", ".."))) {
+					if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
+						$result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
+					} else {
+						$result[] = $value;
+					}
+				}
+			}
+			return $result;
+		}
+
+		$image = dirToArray($dir);
 
 		$data['temp'] = 'cpanel/product/edit/index';
 		$data['title'] = 'Product edit';
 		$data['menu'] = 'product';
 		$data['info'] = $product;
 		$data['layout'] = $colors;
+		$data['imageshow'] = $image;
 		$data['sizes'] = $sizes;
 		$data['listcategory'] = $modelCategory->findAll();
-		$data['listcolor'] = $modelColor->findAll();
+		$data['color'] = $modelColor->findAll();
 		$data['listsize'] = $modelSize->findAll();
 		echo view('cpanel/layout', $data);
 	}
@@ -338,7 +421,7 @@ class Product extends CpanelController
 			'tag' => $tagText,
 			'description' => $description,
 			'description_detail' => $description_detail,
-			'slug' => create_slug($name),
+			'slug_pro' => create_slug($name),
 
 		];
 		$modelProduct->update($id, $dataInsert);

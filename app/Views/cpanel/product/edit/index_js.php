@@ -106,20 +106,55 @@
             var urll = origin + '/download/image?name=product/' + id + '/thumb/' + data['thumb'][0];
             myDropzone.options.addedfile.call(myDropzone, mockFile);
             myDropzone.options.thumbnail.call(myDropzone, mockFile, urll);
-
+            return;
             $.each(data.image, function (keys, values) {
                 var mockFile = {
                     name: values,
                     size: 12345
                 };
                 var urll = origin + '/download/image?name=product/' + id + '/image/' + values;
-                console.log(keys + '--' + values);
-
                 myDropzone2.options.addedfile.call(myDropzone2, mockFile);
                 myDropzone2.options.thumbnail.call(myDropzone2, mockFile, urll);
             });
 
         }
+    });
+    $('#div-btn-add-color').on('click', '#btn-edit-color', function () {
+        $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" style="margin-top: 19px" id="btn-edit-color">+ Color</button></fieldset>');
+        myDropzone2.removeAllFiles(true);
+        console.log('tess');
+        toastr.success('', 'Success');
+
+    });
+    $('.btn-edit-color').on('click', function () {
+        myDropzone2.removeAllFiles(true);
+        let id = $(this).data("id");
+        let idcolor = $(this).data("color");
+        let idpro = $(this).data("idpro");
+        $.ajax({
+            url: "/cpanel/product/loadimagecolor",
+            data: {
+                id: id
+            },
+            dataType: "json",
+            type: "POST",
+            success: function (data) {
+                $.each(data.image, function (keys, values) {
+                    var mockFile = {
+                        name: values,
+                        size: 12345
+                    };
+                    var urll = origin + '/download/image?name=product/' + idpro + '/image/' + idcolor + '/' + values;
+                    console.log(urll);
+                    myDropzone2.emit('addedfile', mockFile);
+                    myDropzone2.emit('thumbnail', mockFile, urll);
+                    myDropzone2.files.push(mockFile);
+                });
+
+                $('#color').val(idcolor).trigger("chosen:updated")
+                $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" style="margin-top: 19px" id="btn-edit-color">+ Edit</button></fieldset>');
+            }
+        });
     });
 
 
