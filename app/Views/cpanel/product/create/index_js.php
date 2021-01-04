@@ -180,6 +180,7 @@
 
     });
 
+
     async function drawTableColor() {
         $("#drawtable").empty();
         var $table = $('<table class="table dataTable"><thead></thead></table>');

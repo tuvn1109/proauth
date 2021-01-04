@@ -250,6 +250,50 @@
         arrDataF.push(oj);
         drawTableColor();
     });
+    drawTableColorJSON()
+
+    async function drawTableColorJSON() {
+        var arrJson = $('#jsoncolor').val();
+        console.log(arrJson)
+        $("#drawtable").empty();
+        var $table = $('<table class="table dataTable"><thead></thead></table>');
+        var $linethed = $("<thead></thead>");
+        var $line = $("<tr></tr>");
+        $line.append($('<th  class="text-center">Image</th>'));
+        $line.append($('<th  class="text-center">Front</th>'));
+        $line.append($('<th class="text-center">Back</th>'));
+        $line.append($('<th class="text-center">Color</th>'));
+        $line.append($('<th style="width: 50px;">Xóa</th>'));
+        $linethed.append($line);
+        $table.append($linethed);
+        for (var i = arrJson.length - 1; i >= 0; i--) {
+            var val = arrJson[i];
+            var front = await getBase64('/download/image?name=' + val['layout']);
+            var back = await getBase64('/download/image?name=' + val['back']);
+            var test = '';
+            var $imagear = $('<div></div>');
+
+            $.each(val['images'], async function (key, value) {
+                var image = await getBase64('/download/image?name=product/' + val['product_id'] + '/image/' + val['color_id'] + '/' + value);
+                var a = $('<img style="height:100px;width:100px;margin-left: 10px" src="' + image + '">');
+                $imagear.append(a);
+
+            });
+            var $line = $("<tr></tr>");
+            $line.append($("<td class='text-center'></td>").html($imagear));
+            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + front +
+                '">'));
+            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + back +
+                '">'));
+
+            $line.append($("<td class='text-center'></td>").html(val['colortext']));
+            $line.append($("<td></td>").html('<i class="feather icon-x" onclick="deletelayout(' + i + ')"></i>'));
+            $table.append($line);
+
+        }
+        $table.appendTo($("#drawtable"));
+
+    }
 
     async function drawTableColor() {
         $("#drawtable").empty();

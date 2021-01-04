@@ -240,6 +240,25 @@
                         </div>
                     </div>
                     <div class="col-12">
+						<?php
+						$arrT = [];
+						echo "<pre>";
+						print_r($layout);
+						echo "</pre>";
+
+						foreach ($layout as $layout1):
+                            $layout1['images'] = $imageshow[$layout1['color_id']];
+                            $arrT[] = $layout1;
+
+						endforeach;
+						echo "<pre>";
+						print_r(json_encode($arrT));
+						echo "</pre>";
+
+						?>
+                        <input type="text" value="<?= json_encode($arrT) ?>" id="">
+                    </div>
+                    <div class="col-12">
                         <div id="drawtable" class="perfect"></div>
                         <table class="table dataTable">
                             <thead></thead>
