@@ -121,6 +121,7 @@ class Product extends CpanelController
 		$image = dirToArray($dir);
 
 		$data['image'] = $image;
+		$data['info'] = $info;
 		echo json_encode($data);
 
 	}

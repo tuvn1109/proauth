@@ -242,73 +242,17 @@
                     <div class="col-12">
 						<?php
 						$arrT = [];
-						echo "<pre>";
-						print_r($layout);
-						echo "</pre>";
-
 						foreach ($layout as $layout1):
-                            $layout1['images'] = $imageshow[$layout1['color_id']];
-                            $arrT[] = $layout1;
-
+							$layout1['images'] = $imageshow[$layout1['color_id']];
+							$arrT[] = $layout1;
 						endforeach;
-						echo "<pre>";
-						print_r(json_encode($arrT));
-						echo "</pre>";
+
 
 						?>
-                        <input type="text" value="<?= json_encode($arrT) ?>" id="">
+                        <input type="text" value='<?= json_encode($arrT) ?>' id="jsoncolor">
                     </div>
                     <div class="col-12">
                         <div id="drawtable" class="perfect"></div>
-                        <table class="table dataTable">
-                            <thead></thead>
-                            <thead>
-                            <tr>
-                                <th class="text-center">Image</th>
-                                <th class="text-center">Front</th>
-                                <th class="text-center">Back</th>
-                                <th class="text-center">Color</th>
-                                <th class="text-center" style="width: 50px;">Sửa</th>
-                                <th class="text-center" style="width: 50px;">Xóa</th>
-                            </tr>
-                            </thead>
-
-
-							<?php
-							foreach ($layout as $layout1):
-								?>
-
-                                <tr>
-                                    <td class="text-center"><?php
-										foreach ($imageshow[$layout1['color_id']] as $val): ?>
-                                            <img style="height:100px;width:100px"
-                                                 src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $layout1['color_id'] ?>/<?= $val ?>"/>
-										<?php
-										endforeach;
-										?>
-                                    </td>
-                                    <td class="text-center"><img style="height:100px;width:100px"
-                                                                 src="/download/image?name=<?= $layout1['layout'] ?>"/>
-                                    </td>
-                                    <td class="text-center"><img style="height:100px;width:100px"
-                                                                 src="/download/image?name=<?= $layout1['back'] ?>"/>
-                                    </td>
-                                    <td class="text-center"><?= $layout1['value'] ?></td>
-                                    <td class="text-center"><i class="far fa-edit btn-edit-color"
-                                                               data-id="<?= $layout1['id'] ?>"
-                                                               data-idpro="<?= $layout1['product_id'] ?>"
-                                                               data-color="<?= $layout1['color_id'] ?>"></i></td>
-                                    <td class="text-center"><i class="far fa-ban" id="btn-delete-color"
-                                                               data-id="<?= $layout1['product_id'] ?>"
-                                                               data-idpro="<?= $layout1['product_id'] ?>"
-                                                               data-color="<?= $layout1['color_id'] ?>"></i></td>
-                                </tr>
-							<?php
-							endforeach;
-							?>
-
-
-                        </table>
                     </div>
                 </div>
 

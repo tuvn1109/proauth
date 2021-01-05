@@ -2,6 +2,8 @@
     var fileUpload = null;
     var arrFiles = [];
     var arrImgpro = [];
+    var arrImgproEdit = [];
+
     var arrDataF = [];
     var arrColor = [];
     var thumbnail = [];
@@ -25,8 +27,6 @@
     var segments = url.split('/');
     var id = segments[6];
 
-
-    console.log(id);
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("div#previews", {
         paramName: "file", // The name that will be used to transfer the file
@@ -72,7 +72,6 @@
         init: function () {
             this.on("addedfile", function (file) {
                 arrImgpro.push(file);
-
             });
             this.on("removedfile", function (file) {
                 console.log(file);
@@ -83,8 +82,6 @@
                         arrImgpro.splice(keys, 1);
                     }
                 });
-
-                console.log(arrImgproDelete);
 
             });
         }
@@ -120,41 +117,13 @@
         }
     });
     $('#div-btn-add-color').on('click', '#btn-edit-color', function () {
-        $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" style="margin-top: 19px" id="btn-edit-color">+ Color</button></fieldset>');
-        myDropzone2.removeAllFiles(true);
-        console.log('tess');
-        toastr.success('', 'Success');
+        //  myDropzone2.removeAllFiles(true);
+        //  console.log('tess');
+        //  toastr.success('', 'Success');
 
     });
     $('.btn-edit-color').on('click', function () {
-        myDropzone2.removeAllFiles(true);
-        let id = $(this).data("id");
-        let idcolor = $(this).data("color");
-        let idpro = $(this).data("idpro");
-        $.ajax({
-            url: "/cpanel/product/loadimagecolor",
-            data: {
-                id: id
-            },
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                $.each(data.image, function (keys, values) {
-                    var mockFile = {
-                        name: values,
-                        size: 12345
-                    };
-                    var urll = origin + '/download/image?name=product/' + idpro + '/image/' + idcolor + '/' + values;
-                    console.log(urll);
-                    myDropzone2.emit('addedfile', mockFile);
-                    myDropzone2.emit('thumbnail', mockFile, urll);
-                    myDropzone2.files.push(mockFile);
-                });
 
-                $('#color').val(idcolor).trigger("chosen:updated")
-                $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" style="margin-top: 19px" id="btn-edit-color">+ Edit</button></fieldset>');
-            }
-        });
     });
 
 
@@ -239,22 +208,28 @@
         var reader = new FileReader();
         var color = $('#color').val();
         let name = $('select#color').find(':selected').data('name');
-        var f = $("#inputlayoutcolor")[0].files[0];
+        var front = $("#inputlayoutcolor")[0].files[0];
+        var back = $("#inputlayoutcolorback")[0].files[0];
         var type = $("#typelayout").val();
+        var images = [...arrImgpro];
         var oj = {
-            'file': f,
+            'images': images,
+            'front': front,
+            'back': back,
             'color': color,
             'colortext': name,
             'type': type,
         }
         arrDataF.push(oj);
         drawTableColor();
+        // console.log(arrDataF)
+        myDropzone2.removeAllFiles(true);
     });
+
     drawTableColorJSON()
 
-    async function drawTableColorJSON() {
-        var arrJson = $('#jsoncolor').val();
-        console.log(arrJson)
+    function drawTableColorJSON() {
+        var arrJson = JSON.parse($('#jsoncolor').val());
         $("#drawtable").empty();
         var $table = $('<table class="table dataTable"><thead></thead></table>');
         var $linethed = $("<thead></thead>");
@@ -263,18 +238,19 @@
         $line.append($('<th  class="text-center">Front</th>'));
         $line.append($('<th class="text-center">Back</th>'));
         $line.append($('<th class="text-center">Color</th>'));
+        $line.append($('<th style="width: 50px;">Sửa</th>'));
         $line.append($('<th style="width: 50px;">Xóa</th>'));
         $linethed.append($line);
         $table.append($linethed);
         for (var i = arrJson.length - 1; i >= 0; i--) {
             var val = arrJson[i];
-            var front = await getBase64('/download/image?name=' + val['layout']);
-            var back = await getBase64('/download/image?name=' + val['back']);
+            var front = '/download/image?name=' + val['layout'];
+            var back = '/download/image?name=' + val['back'];
             var test = '';
             var $imagear = $('<div></div>');
 
-            $.each(val['images'], async function (key, value) {
-                var image = await getBase64('/download/image?name=product/' + val['product_id'] + '/image/' + val['color_id'] + '/' + value);
+            $.each(val['images'], function (key, value) {
+                var image = '/download/image?name=product/' + val['product_id'] + '/image/' + val['color_id'] + '/' + value;
                 var a = $('<img style="height:100px;width:100px;margin-left: 10px" src="' + image + '">');
                 $imagear.append(a);
 
@@ -287,7 +263,8 @@
                 '">'));
 
             $line.append($("<td class='text-center'></td>").html(val['colortext']));
-            $line.append($("<td></td>").html('<i class="feather icon-x" onclick="deletelayout(' + i + ')"></i>'));
+            $line.append($("<td></td>").html('<i class="far fa-edit btn-edit-color" onclick="clickEdit(this)" data-loca="' + i + '" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
+            $line.append($("<td></td>").html('<i class="far fa-ban btn-delete-color" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
             $table.append($line);
 
         }
@@ -295,27 +272,157 @@
 
     }
 
+    var infoEdit = [];
+
+    function clickEdit(data) {
+        myDropzone2.removeAllFiles(true);
+        let loca = $(data).data("loca");
+        let id = $(data).data("id");
+        let idcolor = $(data).data("color");
+        let idpro = $(data).data("idpro");
+        $.ajax({
+            url: "/cpanel/product/loadimagecolor",
+            data: {
+                id: id
+            },
+            dataType: "json",
+            type: "POST",
+            success: function (data) {
+                $.each(data.image, function (keys, values) {
+                    var mockFile = {
+                        name: values,
+                        size: 12345
+                    };
+                    var urll = origin + '/download/image?name=product/' + idpro + '/image/' + idcolor + '/' + values;
+
+                    myDropzone2.emit('addedfile', mockFile);
+                    myDropzone2.emit('thumbnail', mockFile, urll);
+                    myDropzone2.files.push(mockFile);
+                });
+                var ojinfo = {
+                    'front': data.info['layout'],
+                    'back': data.info['back'],
+                }
+                infoEdit.push(ojinfo)
+
+                $('#color').val(idcolor).trigger("chosen:updated")
+                $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" onclick="ssEdit(this)" data-idpro="' + idpro + '" data-loca="' + loca + '" data-id="' + id + '" style="margin-top: 19px" id="btn-edit-color">+ Edit</button></fieldset>');
+
+            }
+        });
+    }
+
+    function ssEdit(data) {
+        console.log(infoEdit);
+        var front = $("#inputlayoutcolor")[0].files[0];
+
+        if (!front) {
+            var front = infoEdit[0]['front'];
+        }
+
+        var back = $("#inputlayoutcolorback")[0].files[0];
+        if (!back) {
+            var back = infoEdit[0]['back'];
+        }
+        var arrJson = JSON.parse($('#jsoncolor').val());
+        let loca = $(data).data("loca");
+        let id = $(data).data("id");
+        let idpro = $(data).data("idpro");
+        var color = $('#color').val();
+        let name = $('select#color').find(':selected').data('name');
+        var images = [...arrImgpro];
+        var imagesedit = [...arrImgproEdit];
+        arrJson.splice(loca, 1);
+        $('#jsoncolor').val(JSON.stringify(arrJson));
+        var oj = {
+            'id': id,
+            'images': images,
+            'imagesedit': imagesedit,
+            'front': front,
+            'back': back,
+            'color': color,
+            'product': idpro,
+            'colortext': name,
+        }
+        arrDataF.push(oj);
+        // arrImgproEdit.push(oj);
+        myDropzone2.removeAllFiles(true);
+        $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" style="margin-top: 19px" id="btn-edit-color">+ Color</button></fieldset>');
+        console.log(arrDataF);
+        drawTableColor()
+    }
+
     async function drawTableColor() {
+        var arrJson = JSON.parse($('#jsoncolor').val());
         $("#drawtable").empty();
         var $table = $('<table class="table dataTable"><thead></thead></table>');
         var $linethed = $("<thead></thead>");
         var $line = $("<tr></tr>");
-        $line.append($('<th style="width:100px" class="text-center">Layout</th>'));
-        $line.append($('<th class="text-center">Type</th>'));
+        $line.append($('<th  class="text-center">Image</th>'));
+        $line.append($('<th  class="text-center">Front</th>'));
+        $line.append($('<th class="text-center">Back</th>'));
         $line.append($('<th class="text-center">Color</th>'));
+        $line.append($('<th style="width: 50px;">Sửa</th>'));
         $line.append($('<th style="width: 50px;">Xóa</th>'));
         $linethed.append($line);
         $table.append($linethed);
 
-        for (var i = arrDataF.length - 1; i >= 0; i--) {
-            var val = arrDataF[i];
-            var lin = await getBase64(val['file']);
+        for (var i = arrJson.length - 1; i >= 0; i--) {
+            var val = arrJson[i];
+            var front = '/download/image?name=' + val['layout'];
+            var back = '/download/image?name=' + val['back'];
+            var test = '';
+            var $imagear = $('<div></div>');
+
+            $.each(val['images'], function (key, value) {
+                var image = '/download/image?name=product/' + val['product_id'] + '/image/' + val['color_id'] + '/' + value;
+                var a = $('<img style="height:100px;width:100px;margin-left: 10px" src="' + image + '">');
+                $imagear.append(a);
+
+            });
             var $line = $("<tr></tr>");
-            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + lin +
+            $line.append($("<td class='text-center'></td>").html($imagear));
+            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + front +
                 '">'));
-            $line.append($("<td class='text-center'></td>").html(val['type']));
+            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + back +
+                '">'));
+
             $line.append($("<td class='text-center'></td>").html(val['colortext']));
-            $line.append($("<td></td>").html('<i class="feather icon-x" onclick="deletelayout(' + i + ')"></i>'));
+            $line.append($("<td></td>").html('<i class="far fa-edit btn-edit-color" onclick="clickEdit(this)" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
+            $line.append($("<td></td>").html('<i class="far fa-ban btn-delete-color" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
+            $table.append($line);
+
+        }
+
+
+        for (var i2 = arrDataF.length - 1; i2 >= 0; i2--) {
+            var val = arrDataF[i2];
+            //var front = await getBase64(val['front']);
+            // var back = await getBase64(val['back']);
+            var $imagear = $('<div></div>');
+
+            $.each(val['images'], async function (key, value) {
+                console.log(value);
+                if (value['status']) {
+                    var image = await getBase64(value);
+                } else {
+                    var image = '/download/image?name=product/' + val['product'] + '/image/' + val['color'] + '/' + value['name'];
+
+                }
+                var a = $('<img style="height:100px;width:100px;margin-left: 10px" src="' + image + '">');
+                $imagear.append(a);
+
+            });
+            var $line = $("<tr></tr>");
+            $line.append($("<td class='text-center'></td>").html($imagear));
+            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + front +
+                '">'));
+            $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + back +
+                '">'));
+
+            $line.append($("<td class='text-center'></td>").html(val['colortext']));
+            $line.append($("<td></td>").html('<i class="far fa-edit btn-edit-color" onclick="clickEdit(this)" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
+            $line.append($("<td></td>").html('<i class="far fa-ban btn-delete-color" onclick="deletelayout(' + i2 + ')"></i>'));
             $table.append($line);
 
         }

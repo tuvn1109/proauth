@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 30/12/2020 17:57:14
+ Date: 04/01/2021 12:00:53
 */
 
 SET NAMES utf8mb4;
@@ -127,7 +127,7 @@ CREATE TABLE `product_color`  (
   `layout` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `back` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_color
@@ -135,7 +135,6 @@ CREATE TABLE `product_color`  (
 INSERT INTO `product_color` VALUES (1, 1, 2, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL, 'product1/mauao.png', NULL);
 INSERT INTO `product_color` VALUES (2, 1, 3, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL, 'product1/tshirt.jpg', NULL);
 INSERT INTO `product_color` VALUES (5, 4, 2, '2020-12-10 20:41:57', '2020-12-10 20:41:57', NULL, 'product/4/layout/ layoutiphone.png', NULL);
-INSERT INTO `product_color` VALUES (6, 5, 2, '2020-12-10 20:55:25', '2020-12-10 20:55:25', NULL, 'product/5/layout/ layoutiphone.png', NULL);
 INSERT INTO `product_color` VALUES (7, 6, 2, '2020-12-10 20:56:27', '2020-12-10 20:56:27', NULL, 'product/6/layout/ layoutiphone.png', NULL);
 INSERT INTO `product_color` VALUES (8, 16, 2, '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL, 'product/16/layout/tshirt-type.jpg', NULL);
 INSERT INTO `product_color` VALUES (9, 16, 3, '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL, 'product/16/layout/tshirt5.jpg', NULL);
@@ -157,6 +156,8 @@ INSERT INTO `product_color` VALUES (24, 2, 2, '2020-12-28 20:09:26', '2020-12-28
 INSERT INTO `product_color` VALUES (25, 3, 2, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL, 'product/3/layout/font.png', 'product/3/layout/back.png');
 INSERT INTO `product_color` VALUES (26, 4, 2, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL, 'product/4/layout/font.png', 'product/4/layout/back.png');
 INSERT INTO `product_color` VALUES (27, 3, 3, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL, 'product/17/layout/tshirt.jpg', 'product/16/layout/tshirt5.jpg');
+INSERT INTO `product_color` VALUES (28, 5, 2, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL, 'product/5/layout/font.png', 'product/5/layout/back.png');
+INSERT INTO `product_color` VALUES (29, 5, 3, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL, 'product/5/layout/tshirt-type.jpg', 'product/5/layout/tshirt-logo.png');
 
 -- ----------------------------
 -- Table structure for product_detail
@@ -186,7 +187,7 @@ CREATE TABLE `product_size`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_size
@@ -199,6 +200,8 @@ INSERT INTO `product_size` VALUES (8, 3, 3, '2020-12-28 20:13:12', '2020-12-28 2
 INSERT INTO `product_size` VALUES (9, 4, 1, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
 INSERT INTO `product_size` VALUES (10, 4, 2, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
 INSERT INTO `product_size` VALUES (11, 4, 3, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
+INSERT INTO `product_size` VALUES (12, 5, 1, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL);
+INSERT INTO `product_size` VALUES (13, 5, 2, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL);
 
 -- ----------------------------
 -- Table structure for product_tag
@@ -212,7 +215,7 @@ CREATE TABLE `product_tag`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 195 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 197 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_tag
@@ -273,6 +276,8 @@ INSERT INTO `product_tag` VALUES (191, 5, 3, '2020-12-28 20:13:12', '2020-12-28 
 INSERT INTO `product_tag` VALUES (192, 16, 3, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL);
 INSERT INTO `product_tag` VALUES (193, 5, 4, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
 INSERT INTO `product_tag` VALUES (194, 17, 4, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
+INSERT INTO `product_tag` VALUES (195, 16, 5, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL);
+INSERT INTO `product_tag` VALUES (196, 5, 5, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL);
 
 -- ----------------------------
 -- Table structure for product_type
@@ -318,7 +323,7 @@ CREATE TABLE `products`  (
   `slug_pro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `status` enum('new','sale') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
@@ -327,6 +332,7 @@ INSERT INTO `products` VALUES (1, 'Mug 1', 10.00, 8.00, 'yes', 2, 'United states
 INSERT INTO `products` VALUES (2, 'T-shirt 01', 25.00, 20.00, NULL, 4, 'US', '3 - 5 days', 'product/2/thumb/tshirt1.png', '', '', '2020-12-28 20:09:26', '2020-12-28 20:11:36', NULL, 't shirt,tshirt', '', 't-shirt-01-2', NULL);
 INSERT INTO `products` VALUES (3, 'T-shirt 02', 25.00, 20.00, NULL, 5, 'US', '3 - 5 days', 'product/3/thumb/bestsell1.jpg', '', '', '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL, 'men t shirt,t shirt,t-shirt', 'yes', 't-shirt-02', NULL);
 INSERT INTO `products` VALUES (4, 'T-shirt 03', 30.00, 25.00, NULL, 5, 'UK', '7 days', 'product/4/thumb/tshirt3.jpg', '', '', '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL, 't shirt,shirt uk', 'yes', 't-shirt-03', NULL);
+INSERT INTO `products` VALUES (5, 'T-shirt Origin 0001', 40.00, 33.00, NULL, 4, 'HN', '3', 'product/5/thumb/bestsell1.jpg', '', '', '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL, 't-shirt,t shirt', NULL, 't-shirt-origin-0001', NULL);
 
 -- ----------------------------
 -- Table structure for properties
