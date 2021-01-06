@@ -147,10 +147,13 @@ class Product extends CpanelController
 		$description = $this->request->getPost('description');
 		$description_detail = $this->request->getPost('description_detail');
 		$size = $this->request->getPost('size');
-		$test = $this->request->getPost('test');
+		$jsoncolor = $this->request->getPost('jsoncolor');
+		$jsonLayout = \json_decode($jsoncolor, true);
+
 		$slug = create_slug($name);
 		$checkSlug = $modelProduct->where('name', $name)
 			->findAll();
+		$file = $this->request->getFiles();
 
 
 		$tags = \json_decode($this->request->getPost('tags'), true);
@@ -161,7 +164,6 @@ class Product extends CpanelController
 
 		$tagText = \implode(",", $arrTag);
 
-		$jsonLayout = \json_decode($test, true);
 
 		$dataInsert = [
 			'name' => $name,
@@ -241,10 +243,9 @@ class Product extends CpanelController
 
 
 		if ($jsonLayout) {
-			foreach ($jsonLayout as $jsonLayout):
-
+			foreach ($jsonLayout as $jsonLayout1):
 				// layout front
-				$img = $this->request->getFile('fileUpload' . $jsonLayout['color']);
+				$img = $this->request->getFile('fileUpload' . $jsonLayout1);
 				if ($img->isValid() && !$img->hasMoved()) {
 					//$newName = $img->getRandomName();
 					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
@@ -256,7 +257,7 @@ class Product extends CpanelController
 				}
 
 				// layout back
-				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout['color']);
+				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout1);
 				if ($imgback->isValid() && !$imgback->hasMoved()) {
 					//$newName = $img->getRandomName();
 					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
@@ -265,22 +266,30 @@ class Product extends CpanelController
 					$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
 				}
 
-
+				if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
+					mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
+				}
 				// image show
-				$imgShow = $this->request->getFile('fileImgShow' . $jsonLayout['color']);
+
+				if ($file) {
+					$imgShow = $file['fileImgShow' . $jsonLayout1];
+
+				}
+
 				foreach ($imgShow as $imgShow1):
 					if ($imgShow1->isValid() && !$imgShow1->hasMoved()) {
 						//$newName = $img->getRandomName();
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout['color'])) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout['color'], 0777, TRUE);
+
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout1)) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout1, 0777, TRUE);
 						}
-						$imgShow1->move(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout['color']);
+						$imgShow1->move(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout1);
 					}
 				endforeach;
 
 				$detail = [
 					'product_id' => $id,
-					'color_id' => $jsonLayout['color'],
+					'color_id' => $jsonLayout1,
 					'layout' => 'product/' . $id . '/layout/' . $img->getName(),
 					'back' => 'product/' . $id . '/layout/' . $imgback->getName(),
 				];
@@ -295,7 +304,6 @@ class Product extends CpanelController
 		];
 		echo json_encode($return);
 		exit;
-		$file = $this->request->getFiles();
 		if ($file) {
 			$imgPro = $file['fileImgPro'];
 		}
@@ -382,7 +390,6 @@ class Product extends CpanelController
 		$modelProductColor = new ProductColorModel();
 		$modelProductTag = new ProductTagModel();
 		$modelTag = new TagModel();
-
 		$arrTag = [];
 		$id = $this->request->getPost('id');
 		$name = $this->request->getPost('name');
@@ -396,7 +403,9 @@ class Product extends CpanelController
 		$description_detail = $this->request->getPost('description_detail');
 		$size = $this->request->getPost('size');
 		$arrDelete = \json_decode($this->request->getPost('arrDelete'), true);
-		$jsonLayout = \json_decode($this->request->getPost('test'), true);
+		$jsoncolor = $this->request->getPost('jsoncolor');
+		$jsonLayout = \json_decode($jsoncolor, true);
+
 		$file = $this->request->getFiles();
 		$slug = create_slug($name);
 		$checkSlug = $modelProduct->where('name', $name)
@@ -431,7 +440,7 @@ class Product extends CpanelController
 		if (count($checkSlug) > 0) {
 			$slug = create_slug($name) . '-' . $id;
 			$dataSlug = [
-				'slug' => $slug,
+				'slug_pro' => $slug,
 			];
 			$modelProduct->update($id, $dataSlug);
 		}
@@ -505,43 +514,96 @@ class Product extends CpanelController
 
 		if ($arrDelete) {
 			foreach ($arrDelete as $arrDelete1) {
-				unlink(WRITEPATH . 'uploads/product/' . $id . '/image/' . $arrDelete1);
-				echo WRITEPATH . 'uploads/product/' . $id . '/image/' . $arrDelete1 . '<br>';
+				//unlink(WRITEPATH . 'uploads/product/' . $id . '/image/' . $arrDelete1);
+				//echo WRITEPATH . 'uploads/product/' . $id . '/image/' . $arrDelete1 . '<br>';
 			}
 		}
 		if ($jsonLayout) {
-			foreach ($jsonLayout as $jsonLayout):
-				$img = $this->request->getFile('fileUpload' . $jsonLayout['color']);
-				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout['color']);
+			foreach ($jsonLayout as $jsonLayout1):
+				$detail = [];
+				$img = $this->request->getFile('fileUpload' . $jsonLayout1);
+				if ($img) {
+					if ($img->isValid() && !$img->hasMoved()) {
+						//$newName = $img->getRandomName();
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+						}
+						$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
 
-				if ($img->isValid() && !$img->hasMoved()) {
-					//$newName = $img->getRandomName();
-					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
-						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+						$detail['layout'] = 'product/' . $id . '/layout/' . $img->getName();
 					}
-
-					$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
-
-				}
-				if ($imgback->isValid() && !$imgback->hasMoved()) {
-					//$newName = $img->getRandomName();
-					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
-						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
-					}
-					$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
 				}
 
+				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout1);
+				if ($imgback) {
+					if ($imgback->isValid() && !$imgback->hasMoved()) {
+						//$newName = $img->getRandomName();
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+						}
+						$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
+						$detail['back'] = 'product/' . $id . '/layout/' . $imgback->getName();
+					}
+				}
 
-				$detail = [
-					'product_id' => $id,
-					'color_id' => $jsonLayout['color'],
-					'layout' => 'product/' . $id . '/layout/' . $img->getName(),
-					'back' => 'product/' . $id . '/layout/' . $imgback->getName(),
-				];
-				$modelProductColor->insert($detail);
+				if ($file) {
+					$tesst = $file['fileImgShow' . $jsonLayout1];
+					if ($tesst) {
+						$imgShow = $file['fileImgShow' . $jsonLayout1];
+					} else {
+						$imgShow = null;
+					}
+
+					echo "<pre>";
+					print_r($tesst);
+					echo "</pre>";
+				}
+				echo "<pre>";
+				print_r($file);
+				echo "</pre>";
+
+				if ($imgShow) {
+					foreach ($imgShow as $imgShow1):
+						if ($imgShow1->isValid() && !$imgShow1->hasMoved()) {
+							//$newName = $img->getRandomName();
+
+							if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout1)) {
+								mkdir(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout1, 0777, TRUE);
+							}
+							$imgShow1->move(WRITEPATH . 'uploads/product/' . $id . '/image/' . $jsonLayout1);
+						}
+					endforeach;
+
+				}
+
+
+				echo "<pre>";
+				print_r($detail);
+				echo "</pre>";
+
+				//check co mau nay chua//
+				$checkColor = $modelProductColor->where('product_id', $id)->where('color_id', $jsonLayout1)->first();
+				if ($checkColor && ($img || $imgback)) {
+					$modelProductColor->update($checkColor['id'], $detail);
+				} elseif (!$checkColor) {
+					$detail['color_id'] = $jsonLayout1;
+					$detail['product_id'] = $id;
+					$modelProductColor->insert($detail);
+				}
+
 			endforeach;
 		}
 
+		$return = [
+			'code' => 'fetch_user_success',
+			'msg' => 'Update success ',
+			'stt' => true,
+			'data' => []
+		];
+		echo json_encode($return);
+
+
+		exit;
 		if ($file) {
 			$imgPro = $file['fileImgPro'];
 
@@ -560,13 +622,6 @@ class Product extends CpanelController
 			endforeach;
 		}
 
-		$return = [
-			'code' => 'fetch_user_success',
-			'msg' => 'Update success ',
-			'stt' => true,
-			'data' => []
-		];
-		echo json_encode($return);
 	}
 
 

@@ -30,6 +30,7 @@ class Product extends BaseController
 		$sizes = $modelProductSize->join('sizes', 'sizes.id = product_size.size_id', 'left')->where('product_id', $id)->findAll();
 		$colors = $modelProductColor->join('colors', 'colors.id = product_color.color_id', 'left')->where('product_id', $id)->findAll();
 
+
 		$image = directory_map(WRITEPATH . 'uploads/product/' . $id.'/image');
 		$data['temp'] = 'product/index';
 		$data['title'] = 'CA';

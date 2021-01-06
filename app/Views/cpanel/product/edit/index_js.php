@@ -122,55 +122,27 @@
         //  toastr.success('', 'Success');
 
     });
-    $('.btn-edit-color').on('click', function () {
-
-    });
-
-
-    $('.list-group-item').on('click', function () {
-        let dataId = $(this).data("id");
-        let dataName = $(this).data("name");
-        var json = $.parseJSON($('#json').val());
-        var oj = {
-            name: dataName,
-            id: dataId
-        };
-        json.push(oj);
-        console.log(json);
-
-
-        $('#json').val(JSON.stringify(json));
-        $.ajax({
-            url: "/cpanel/createproduct/loaddetail",
-            data: {
-                id: dataId
-            },
-            dataType: "json",
-            type: "POST",
-            success: function (data) {
-                $("#divve").empty();
-                $.each(data, function (a, b) {
-                    $("#divve").append('<div class="properties-img" data-id=' + b.id +
-                        '><img class="img-fluid w-100" src="/download/image?name=' + b
-                            .value + '"></div/>');
-                })
-            },
-            error: function () {
-            }
-        });
-
-    });
-
-    function test() {
-
-    }
 
 
     $('#btn-submit').on('click', function () {
         var formData = new FormData($('#fr_createpro')[0]);
-        $.each(arrDataF, function (keys, values) {
-            formData.append('fileUpload' + values['color'], values['file']);
+        var jsoncolor = [];
 
+        $.each(arrDataF, function (keys, values) {
+            if (typeof values['front'] != 'string') {
+                formData.append('fileUpload' + values['color'], values['front']);
+            }
+            if (typeof values['back'] != 'string') {
+                formData.append('fileUploadback' + values['color'], values['back']);
+            }
+
+            $.each(values['images'], function (keyimg, valueimg) {
+                console.log(valueimg)
+                if (valueimg['status']) {
+                    formData.append('fileImgShow' + values['color'] + '[]', valueimg);
+                }
+            });
+            jsoncolor.push(values['color']);
         });
         console.log(arrImgpro);
         formData.append('fileImgPro[]', '');
@@ -179,7 +151,7 @@
         });
 
         formData.append('thumbnail', thumbnail[0]);
-        formData.append('test', JSON.stringify(arrDataF));
+        formData.append('jsoncolor', JSON.stringify(jsoncolor));
         formData.append('id', id);
         formData.append('arrDelete', JSON.stringify(arrImgproDelete));
 
@@ -306,16 +278,18 @@
                 infoEdit.push(ojinfo)
 
                 $('#color').val(idcolor).trigger("chosen:updated")
-                $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" onclick="ssEdit(this)" data-idpro="' + idpro + '" data-loca="' + loca + '" data-id="' + id + '" style="margin-top: 19px" id="btn-edit-color">+ Edit</button></fieldset>');
+                $('#div-btn-edit-color').css("display", "block");
+                $('#div-btn-edit-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" onclick="ssEdit(this)" data-idpro="' + idpro + '" data-loca="' + loca + '" data-id="' + id + '" style="margin-top: 19px" id="btn-edit-color">+ Edit</button></fieldset>');
+
+                $('#div-btn-add-color').css("display", "none");
 
             }
         });
+        console.log(infoEdit);
     }
 
     function ssEdit(data) {
-        console.log(infoEdit);
         var front = $("#inputlayoutcolor")[0].files[0];
-
         if (!front) {
             var front = infoEdit[0]['front'];
         }
@@ -324,6 +298,8 @@
         if (!back) {
             var back = infoEdit[0]['back'];
         }
+
+
         var arrJson = JSON.parse($('#jsoncolor').val());
         let loca = $(data).data("loca");
         let id = $(data).data("id");
@@ -347,9 +323,11 @@
         arrDataF.push(oj);
         // arrImgproEdit.push(oj);
         myDropzone2.removeAllFiles(true);
-        $('#div-btn-add-color').html('<fieldset class="form-group"><button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light" style="margin-top: 19px" id="btn-edit-color">+ Color</button></fieldset>');
+
+        $('#div-btn-add-color').css("display", "block");
+        $('#div-btn-edit-color').css("display", "none");
         console.log(arrDataF);
-        drawTableColor()
+        drawTableColor();
     }
 
     async function drawTableColor() {
@@ -397,12 +375,23 @@
 
         for (var i2 = arrDataF.length - 1; i2 >= 0; i2--) {
             var val = arrDataF[i2];
-            //var front = await getBase64(val['front']);
-            // var back = await getBase64(val['back']);
+
+            if (typeof val['front'] == 'string') {
+                var front = '/download/image?name=' + val['front'];
+            } else {
+                var front = await getBase64(val['front']);
+
+            }
+
+            if (typeof val['back'] == 'string') {
+                var back = '/download/image?name=' + val['back'];
+            } else {
+                var back = await getBase64(val['back']);
+            }
+
             var $imagear = $('<div></div>');
 
             $.each(val['images'], async function (key, value) {
-                console.log(value);
                 if (value['status']) {
                     var image = await getBase64(value);
                 } else {

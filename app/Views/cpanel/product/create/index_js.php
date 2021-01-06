@@ -119,12 +119,16 @@
     $('#btn-submit').on('click', function () {
         $(this).prop('disabled', true);
         var formData = new FormData($('#fr_createpro')[0]);
+        var jsoncolor = [];
         $.each(arrDataF, function (keys, values) {
             formData.append('fileUpload' + values['color'], values['front']);
             formData.append('fileUploadback' + values['color'], values['back']);
             $.each(values['images'], function (keyimg, valueimg) {
-                formData.append('fileImgShow' + values['color'], valueimg);
+                formData.append('fileImgShow' + values['color'] + '[]', valueimg);
             });
+
+
+            jsoncolor.push(values['color']);
         });
 
         $.each(arrImgpro, function (keys, values) {
@@ -132,7 +136,7 @@
         });
 
         formData.append('thumbnail', thumbnail[0]);
-        formData.append('test', JSON.stringify(arrDataF));
+        formData.append('jsoncolor', JSON.stringify(jsoncolor));
 
         $.ajax({
             type: 'post',

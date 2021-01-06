@@ -220,6 +220,9 @@
 
                         </div>
 
+                        <div class="col-12" id="div-btn-edit-color">
+
+                        </div>
                         <div class="col-12" id="div-btn-add-color">
                             <fieldset class="form-group">
                                 <button type="button" class="btn btn-outline-primary mr-1 mb-1 waves-effect waves-light"
@@ -229,6 +232,7 @@
                             </fieldset>
 
                         </div>
+
 
                     </div>
 

@@ -33,6 +33,10 @@ $routes->get('/auth', 'Auth::index');
 
 
 $routes->get('/cpanel', 'Cpanel/Home::index');
+
+$routes->get('/cpanel/orders', 'Cpanel/orders::index');
+$routes->get('/cpanel/orders/(:any)', 'Cpanel/orders::loaddata');
+
 $routes->get('/cpanel/product', 'Cpanel/product::index');
 $routes->get('/cpanel/product/create', 'Cpanel/product::create');
 $routes->get('/cpanel/product/edit/(:any)', 'Cpanel/product::edit');

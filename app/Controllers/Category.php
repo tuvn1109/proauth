@@ -80,7 +80,7 @@ class Category extends BaseController
 
 			$db = \Config\Database::connect();
 			$builder = $db->table('product_color');;
-			$builder->select('product_color.id as id,code,layout,back');
+			$builder->select('product_color.id as id,code,layout,back,colors.id as idcolor');
 			$builder->join('colors', 'colors.id = product_color.color_id', 'left');
 			$builder->where('product_id', $idPro);
 			$colors = $builder->get()->getResultArray();
@@ -91,7 +91,11 @@ class Category extends BaseController
 			//$colors = $modelProductColor->join('colors', 'colors.id = product_color.color_id', 'left')->where('product_id', $idPro)->findAll();
 
 
-			$image = directory_map(WRITEPATH . 'uploads/product/' . $idPro . '/image');
+		$image = directory_map(WRITEPATH . 'uploads/product/' . $idPro . '/image/'.$colors[0]['idcolor']);
+
+			echo "<pre>";
+			print_r($image);
+			echo "</pre>";
 
 			$data['temp'] = 'product/index';
 			$data['title'] = 'CA';
