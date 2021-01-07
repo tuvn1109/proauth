@@ -17,6 +17,7 @@
         </div>
     </div>
 </section>
+
 <section id="main-product">
     <div class="row ">
         <div class="col-md-6 col-12 d-flex  justify-content-center">
@@ -24,10 +25,11 @@
                 <div class="owl-carousel">
 					<?php
 
+
 					foreach ($image as $image1):
 						?>
                         <div class="item"><img
-                                    src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $image1 ?>"
+                                    src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $color[0]['idcolor'] ?>/<?= $image1 ?>"
                                     class="img-fluid"></div>
 					<?php
 					endforeach;
@@ -52,8 +54,7 @@
 
                 </div>
                 <div class="col-12">
-                    <div class="sale-timeout-pro"><img
-                                src="#">
+                    <div class="sale-timeout-pro">
                     </div>
                 </div>
                 <div class="col-12">
@@ -172,6 +173,8 @@
 										?>
                                         <div class="col-1 ">
                                             <div class="item-color active-color" data-id="<?= $color1['id'] ?>"
+                                                 data-idpro="<?= $color1['product_id'] ?>"
+                                                 data-idcolor="<?= $color1['idcolor'] ?>"
                                                  style="background-color: <?= $color1['code'] ?>">
                                             </div>
                                         </div>
@@ -191,7 +194,8 @@
 										<?php
 										foreach ($size as $size1):
 											?>
-                                            <div class="size"><span><?= $size1['value'] ?></span></div>
+                                            <div class="size" data-id="<?= $size1['id'] ?>">
+                                                <span><?= $size1['value'] ?></span></div>
 										<?php
 										endforeach;
 										?>
@@ -202,7 +206,7 @@
                         </div>
                         <div id="div-preview" class="d-flex justify-content-center">
                             <div class="col-6">
-                                <button type="button" id="add-to-card"><span>ADD TO CARD</span></button>
+                                <button type="button" id="add-to-card" data-id="<?= $info['id'] ?>"><span>ADD TO CARD</span></button>
                             </div>
                             <div class="col-6">
                                 <button type="button" id="btn-prevew"><span>PREVIEW</span></button>

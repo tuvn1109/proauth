@@ -8,6 +8,7 @@
     var arrColor = [];
     var thumbnail = [];
     var arrImgproDelete = [];
+    var arrImgproDeleteAuth = [];
     // /
 
     /// TAGS
@@ -74,7 +75,6 @@
                 arrImgpro.push(file);
             });
             this.on("removedfile", function (file) {
-                console.log(file);
                 arrImgproDelete.push(file.name);
 
                 $.each(arrImgpro, function (keys, values) {
@@ -82,11 +82,26 @@
                         arrImgpro.splice(keys, 1);
                     }
                 });
-
+                console.log('ARR DELE');
+                console.log(arrImgproDelete);
+            });
+            this.on('resetFiles', function () {
+                if (this.files.length != 0) {
+                    for (i = 0; i < this.files.length; i++) {
+                        this.files[i].previewElement.remove();
+                    }
+                    this.files.length = 0;
+                }
             });
         }
     });
 
+    function JS_ClearDropZone() {
+        //DropZone Object Get
+        var objDZ = Dropzone.forElement("div#mydropzone");
+        //"resetFiles" Event Call
+        objDZ.emit("resetFiles");
+    }
 
     $.ajax({
         url: "/cpanel/product/loadimage",
@@ -144,7 +159,6 @@
             });
             jsoncolor.push(values['color']);
         });
-        console.log(arrImgpro);
         formData.append('fileImgPro[]', '');
         $.each(arrImgpro, function (keys, values) {
             formData.append('fileImgPro[]', values);
@@ -195,7 +209,9 @@
         arrDataF.push(oj);
         drawTableColor();
         // console.log(arrDataF)
-        myDropzone2.removeAllFiles(true);
+        JS_ClearDropZone();
+
+        // myDropzone2.removeAllFiles(true);
     });
 
     drawTableColorJSON()
@@ -234,7 +250,7 @@
             $line.append($("<td class='text-center'></td>").html('<img style="height:100px;width:100px" src="' + back +
                 '">'));
 
-            $line.append($("<td class='text-center'></td>").html(val['colortext']));
+            $line.append($("<td class='text-center'></td>").html(val['value']));
             $line.append($("<td></td>").html('<i class="far fa-edit btn-edit-color" onclick="clickEdit(this)" data-loca="' + i + '" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
             $line.append($("<td></td>").html('<i class="far fa-ban btn-delete-color" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
             $table.append($line);
@@ -285,7 +301,9 @@
 
             }
         });
-        console.log(infoEdit);
+        //    console.log(infoEdit);
+        console.log(arrImgpro);
+
     }
 
     function ssEdit(data) {
@@ -322,11 +340,17 @@
         }
         arrDataF.push(oj);
         // arrImgproEdit.push(oj);
-        myDropzone2.removeAllFiles(true);
-
+        //myDropzone2.removeAllFiles(true);
+        JS_ClearDropZone();
+        arrImgproDeleteAuth = arrImgproDelete;
+        arrImgproDelete = [];
         $('#div-btn-add-color').css("display", "block");
         $('#div-btn-edit-color').css("display", "none");
-        console.log(arrDataF);
+
+        console.log('arrImgproDeleteAuth');
+        console.log(arrImgproDeleteAuth);
+        console.log('arrImgproDelete');
+        console.log(arrImgproDelete);
         drawTableColor();
     }
 

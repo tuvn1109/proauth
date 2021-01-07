@@ -75,7 +75,7 @@
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
                                 <p class="mb-0">Sale</p>
-                                <input type="checkbox" class="custom-control-input" id="salestatus" name="salestatus">
+                                <input type="checkbox" class="custom-control-input" id="salestatus" name="salestatus" <?= $info['sale'] == 'yes' ? 'checked' : ''; ?>>
                                 <label class="custom-control-label" for="salestatus">
                                     <span class="switch-icon-left"><i class="feather icon-check"></i></span>
                                     <span class="switch-icon-right"><i class="feather icon-x"></i></span>

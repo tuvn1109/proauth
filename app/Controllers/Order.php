@@ -17,6 +17,7 @@ class Order extends BaseController
 	{
 		helper(['filesystem', 'cookie']);
 		$modelProduct = new ProductModel();
+		$modelCategory = new CategoryModel();
 		$modelProductSize = new ProductSizeModel();
 		$modelProductColor = new ProductColorModel();
 		$cookie = get_cookie('cart');
@@ -24,6 +25,8 @@ class Order extends BaseController
 		$arrCC = explode(',', $cookie);
 		$listOrder = $modelProduct->whereIn('id', $arrCC)->findAll();
 		$data['temp'] = 'order/index';
+		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
+		$data['menuactive'] = 'ttt';
 		$data['title'] = 'CA';
 		$data['listOrder'] = $listOrder;
 		echo view('layout_product', $data);

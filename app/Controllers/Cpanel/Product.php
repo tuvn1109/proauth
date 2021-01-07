@@ -129,6 +129,7 @@ class Product extends CpanelController
 	public function insert()
 	{
 		helper('comment');
+
 		$modelProduct = new ProductModel();
 		$modelProductSize = new ProductSizeModel();
 		$modelProductColor = new ProductColorModel();
@@ -144,6 +145,10 @@ class Product extends CpanelController
 		$delivery = $this->request->getPost('delivery');
 		$tags = $this->request->getPost('tags');
 		$sale = $this->request->getPost('salestatus');
+		if ($sale == 'on') {
+			$sale = 'yes';
+		}
+
 		$description = $this->request->getPost('description');
 		$description_detail = $this->request->getPost('description_detail');
 		$size = $this->request->getPost('size');
@@ -398,6 +403,10 @@ class Product extends CpanelController
 		$price_sale = $this->request->getPost('price_sale');
 		$manufactur = $this->request->getPost('manufactur');
 		$delivery = $this->request->getPost('delivery');
+		$sale = $this->request->getPost('salestatus');
+		if ($sale == 'on') {
+			$sale = 'yes';
+		}
 		$tags = $this->request->getPost('tags');
 		$description = $this->request->getPost('description');
 		$description_detail = $this->request->getPost('description_detail');
@@ -413,10 +422,11 @@ class Product extends CpanelController
 		//$imgPro = $file['fileImgPro'];	
 		$tags = \json_decode($this->request->getPost('tags'), true);
 
-
-		foreach ($tags as $tags1):
-			$arrTag[] = $tags1['value'];
-		endforeach;
+		if ($tags) {
+			foreach ($tags as $tags1):
+				$arrTag[] = $tags1['value'];
+			endforeach;
+		}
 
 		$tagText = \implode(",", $arrTag);
 
@@ -429,6 +439,7 @@ class Product extends CpanelController
 			'manufactur' => $manufactur,
 			'delivery' => $delivery,
 			'tag' => $tagText,
+			'sale' => $sale,
 			'description' => $description,
 			'description_detail' => $description_detail,
 			'slug_pro' => create_slug($name),
@@ -546,21 +557,11 @@ class Product extends CpanelController
 					}
 				}
 
-				if ($file) {
-					$tesst = $file['fileImgShow' . $jsonLayout1];
-					if ($tesst) {
-						$imgShow = $file['fileImgShow' . $jsonLayout1];
-					} else {
-						$imgShow = null;
-					}
 
-					echo "<pre>";
-					print_r($tesst);
-					echo "</pre>";
+				$imgShow = null;
+				if (isset($file['fileImgShow' . $jsonLayout1])) {
+					$imgShow = $file['fileImgShow' . $jsonLayout1];;
 				}
-				echo "<pre>";
-				print_r($file);
-				echo "</pre>";
 
 				if ($imgShow) {
 					foreach ($imgShow as $imgShow1):
@@ -624,6 +625,29 @@ class Product extends CpanelController
 
 	}
 
+	public function updatesale()
+	{
+		helper(['filesystem', 'comment']);
+		$modelProduct = new ProductModel();
+		$id = $this->request->getPost('id');
+		$sale = $this->request->getPost('salestatus');
+		if ($sale == 'on') {
+			$sale = 'yes';
+		}
+
+		$dataInsert = [
+			'sale' => $sale,
+		];
+		$modelProduct->update($id, $dataInsert);
+		$return = [
+			'code' => 'fetch_user_success',
+			'msg' => 'Update success ',
+			'stt' => true,
+			'data' => []
+		];
+		echo json_encode($return);
+
+	}
 
 	public function edit2()
 	{

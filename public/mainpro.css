@@ -935,6 +935,7 @@ img {
     position: absolute;
     top: 0;
     right: -170px;
+    border-radius: 15px;
 }
 
 .owl-carousel .owl-controls .owl-dot {
@@ -975,6 +976,10 @@ img {
     position: absolute;
     top: 0;
     font-size: 50px;
+}
+
+.btn-up, .btn-down {
+    display: none;
 }
 
 /* OWl START*/

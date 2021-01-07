@@ -80,7 +80,7 @@ class Category extends BaseController
 
 			$db = \Config\Database::connect();
 			$builder = $db->table('product_color');;
-			$builder->select('product_color.id as id,code,layout,back,colors.id as idcolor');
+			$builder->select('product_color.id as id,code,layout,product_id,back,colors.id as idcolor');
 			$builder->join('colors', 'colors.id = product_color.color_id', 'left');
 			$builder->where('product_id', $idPro);
 			$colors = $builder->get()->getResultArray();
@@ -91,11 +91,8 @@ class Category extends BaseController
 			//$colors = $modelProductColor->join('colors', 'colors.id = product_color.color_id', 'left')->where('product_id', $idPro)->findAll();
 
 
-		$image = directory_map(WRITEPATH . 'uploads/product/' . $idPro . '/image/'.$colors[0]['idcolor']);
+			$image = directory_map(WRITEPATH . 'uploads/product/' . $idPro . '/image/' . $colors[0]['idcolor']);
 
-			echo "<pre>";
-			print_r($image);
-			echo "</pre>";
 
 			$data['temp'] = 'product/index';
 			$data['title'] = 'CA';
@@ -117,13 +114,19 @@ class Category extends BaseController
 	public function colorlayout()
 	{
 		helper(['filesystem', 'cookie']);
-		$cateImage = directory_map('./images-pro');
 
 		$modelProductColor = new ProductColorModel();
 		$id = $this->request->getPost('id');
+		$idpro = $this->request->getPost('idpro');
+		$idcolor = $this->request->getPost('idcolor');
+
+		$cateImage = directory_map('./images-pro');
+		$imageShow = directory_map(WRITEPATH . 'uploads/product/' . $idpro . '/image/' . $idcolor);
+
 
 		$colors = $modelProductColor->where('id', $id)->first();
 		$colors['cateImage'] = $cateImage;
+		$colors['imageShow'] = $imageShow;
 
 		echo json_encode($colors);
 

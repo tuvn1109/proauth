@@ -1,5 +1,62 @@
 <script>
+    // OWL
+    var $owl = $(".owl-carousel").owlCarousel({
+        nav: true,
+        loop: true,
+        items: 1,
+        margin: 0,
+        stagePadding: 0,
+        autoplay: false,
+        navClass: ['btn-up', 'btn-down'],
+        navContainerClass: ['owl-nav-pro'],
+    });
 
+    $(document).ready(function () {
+
+
+        $owl.trigger('refresh.owl.carousel');
+        dotcount = 1;
+        $('.owl-dot').each(function () {
+            $(this).addClass('dotnumber' + dotcount);
+            $(this).attr('data-info', dotcount);
+            dotcount = dotcount + 1;
+        });
+
+        slidecount = 1;
+
+        $('.owl-item').not('.cloned').each(function () {
+            $(this).addClass('slidenumber' + slidecount);
+            slidecount = slidecount + 1;
+        });
+
+        $('.owl-dot').each(function () {
+            grab = $(this).data('info');
+            slidegrab = $('.slidenumber' + grab + ' img').attr('src');
+            $(this).css("background-image", "url(" + slidegrab + ")");
+        });
+
+        amount = $('.owl-dot').length;
+        gotowidth = 100 / 5;
+        $('.owl-dot').css("height", gotowidth + "%");
+        $('.owl-dot').css("outline", "none");
+
+    });
+    $(".btn-up").html("<img src='/logo/arrowup.png'>");
+    $(".owl-nav .owl-next span").html("<img src='/logo/arrowup.png' >");
+
+
+    $('.owl-item').on('click', function (event) {
+        var $this = $(this);
+        if ($this.hasClass('clicked')) {
+            $this.removeClass('clicked');
+        } else {
+            $('#c1').find(".clicked").removeClass('clicked');
+            $this.addClass('clicked');
+        }
+    });
+
+
+    // END OWL
     let pluginOpts = {
         templatesDirectory: '/assets/plugins/fancy/html/',
         toolbarPlacement: 'inside-top',
@@ -44,13 +101,18 @@
             'left': []
         }
     };
+    let arrPro = [];
+    let size = null;
+    let color = null;
     $('#add-to-card').click(function () {
+        var id = $(this).data('id');
+
         yourDesigner.getProductDataURL(function (dataURL) {
             // $.post("php/save_image.php", {base64_image: dataURL});
             $.ajax({
-                url: "/php/save_image.php",
+                url: "/cart/index",
                 dataType: "json",
-                data: {base64_image: dataURL},
+                data: {base64_image: dataURL, id: id, size: size, color: color},
                 type: "POST",
                 success: function (data) {
 
@@ -62,14 +124,63 @@
         });
     });
 
+    $('.size').click(function () {
+        size = $(this).data('id');
+    });
     $('.item-color').click(function () {
         var id = $(this).data('id');
+        var idcolor = $(this).data('idcolor');
+        var idpro = $(this).data('idpro');
+        color = idcolor;
         $.ajax({
             url: "/category/colorlayout",
             dataType: "json",
-            data: {id: id},
+            data: {id: id, idcolor: idcolor, idpro: idpro},
             type: "POST",
             success: function (data) {
+                $('#c1').html('');
+                $owlhtml = $('<div class="owl-carousel"></div>');
+                $.each(data.imageShow, function (key, value) {
+                    $owlhtml.append('<div class="item"><img src="/download/image?name=product/' + idpro + '/image/' + idcolor + '/' + value + '" class="img-fluid"></div>');
+                });
+                $('#c1').html($owlhtml);
+                $owl = $(".owl-carousel").owlCarousel({
+                    nav: true,
+                    loop: true,
+                    items: 1,
+                    margin: 0,
+                    stagePadding: 0,
+                    autoplay: false,
+                    navClass: ['btn-up', 'btn-down'],
+                    navContainerClass: ['owl-nav-pro'],
+                });
+
+                dotcount = 1;
+                $('.owl-dot').each(function () {
+                    $(this).addClass('dotnumber' + dotcount);
+                    $(this).attr('data-info', dotcount);
+                    dotcount = dotcount + 1;
+                });
+
+                slidecount = 1;
+
+                $('.owl-item').not('.cloned').each(function () {
+                    $(this).addClass('slidenumber' + slidecount);
+                    slidecount = slidecount + 1;
+                });
+
+                $('.owl-dot').each(function () {
+                    grab = $(this).data('info');
+                    slidegrab = $('.slidenumber' + grab + ' img').attr('src');
+                    $(this).css("background-image", "url(" + slidegrab + ")");
+                });
+
+                amount = $('.owl-dot').length;
+                gotowidth = 100 / 5;
+                $('.owl-dot').css("height", gotowidth + "%");
+                $('.owl-dot').css("outline", "none");
+
+
                 var front = '/download/' + data.layout;
                 var back = '/download/' + data.back;
                 $('#front-de').attr("src", '/download/' + data.layout);
@@ -88,6 +199,7 @@
                 $clothing = $('<div id="clothing-designer" class="fpd-container fpd-shadow-2 fpd-topbar fpd-tabs fpd-tabs-side fpd-top-actions-centered fpd-bottom-actions-centered fpd-views-inside-left"></div>');
                 $clothing.append('<div class="fpd-product" title="Shirt Front" id="data-thumb-front" data-thumbnail="' + front + '" > <img src="' + front + '" id="front-de" title="Base" /><div class="fpd-product" title="Shirt Back" id="data-thumb-back" data-thumbnail="' + back + '"> <img src="' + back + '" id="back-de" title="Base"/></div></div>');
                 $fpddesign = $('<div class="fpd-design"></div>');
+
 
                 $.each(data.cateImage, function (key, value) {
                     $dd = $('<div class="fpd-category" title="' + key + '"></div>');

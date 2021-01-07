@@ -67,6 +67,10 @@ $routes->get('/cpanel/settings/email', 'Cpanel/settings::email');
 
 $routes->get('/download/image', 'Download::image');
 $routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$3/$4');
+
+
+$routes->get('/order', 'Order::index');
+
 $routes->get('/(:any)/(:any)', 'Category::product/$1/$2');
 $routes->get('/(:any)', 'Category::index/$1');
 

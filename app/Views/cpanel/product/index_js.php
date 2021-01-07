@@ -1,5 +1,5 @@
 <script>
-   
+
 
     var updateId = null;
     const catTable = $('#Table').DataTable({
@@ -15,15 +15,23 @@
         "columns": [
             {"data": "id"},
             {
-                "data": "",render: function (data, type, row) {
-                    return '<img src="/download/image?name='+row.thumbnail+'" style="width:55px;height:70px">';
+                "data": "", render: function (data, type, row) {
+                    return '<img src="/download/image?name=' + row.thumbnail + '" style="width:55px;height:70px">';
                 }
-            
+
             },
             {"data": "name"},
             {"data": "price"},
             {"data": "price_sale"},
-            {"data": "sale"},
+            {
+                "data": "", render: function (data, type, row) {
+                    if (row.sale == 'yes') {
+                        var checked = 'checked';
+                    }
+                    return '<div class="custom-control custom-switch custom-switch-success mr-2 mb-1"><input type="checkbox" class="custom-control-input" id="salestatus' + row.id + '" name="salestatus" onclick="test(' + row.id + ')"  ' + checked + '><label class="custom-control-label" for="salestatus' + row.id + '"><span class="switch-icon-left"><i class="feather icon-check"></i></span><span class="switch-icon-right"><i class="feather icon-x"></i></span></label></div>';
+                }
+
+            },
             {"data": "type"},
             {"data": "description"},
             {"data": "created_at"},
@@ -71,4 +79,47 @@
         }
     });
 
+    function test(id) {
+        if ($('#salestatus' + id).is(':checked')) {
+            var salestatus = 'on';
+        } else {
+            var salestatus = 'off';
+        }
+        $.ajax({
+            url: "/cpanel/product/updatesale",
+            dataType: "json",
+            data: {salestatus: salestatus, id: id},
+            type: "POST",
+            success: function (data) {
+                if (data.stt == true) {
+                    toastr.success(data.msg, 'Success');
+                } else {
+                    toastr.error('Error , try agian', 'Error');
+                    // toastr.success(data.msg, 'Error');
+                }
+            },
+            error: function () {
+            }
+        });
+
+    }
+
+    $('.salestatus').change(function () {
+        let dataId = $(this).data("id");
+
+        console.log('222');
+    });
+
+
+    $('.salestatus').click(function () {
+        let dataId = $(this).data("id");
+        console.log('3333');
+
+    });
+
+    $('.salestatus').on('click', function () {
+        let dataId = $(this).data("id");
+        console.log('3333');
+
+    });
 </script>
