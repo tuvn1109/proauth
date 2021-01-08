@@ -16,22 +16,30 @@
 
                 <form id="form_contact">
                     <div class="row">
-                        <div class="col-3">Mrs</div>
-                        <div class="col-3">Mr</div>
+                        <div class="col-3">
+                            <div class="div-gender centerContent">
+                                <img src="/download/image?name=category/5/girl-logo.png"> Mrs
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="div-gender active-gender centerContent">
+                                <img src="/download/image?name=category/4/man-logo.png"> Mr
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-1">
                         <div class="col-3">
                             <fieldset class="form-group">
                                 <label for="roundText">Fullname</label>
                                 <input type="text" id="fullname" name="fullname" class="form-control round input-yellow"
-                                       placeholder="Rounded Input">
+                                       placeholder="Alax sanderia">
                             </fieldset>
                         </div>
                         <div class="col-3">
                             <fieldset class="form-group">
                                 <label for="roundText">Phone Number</label>
-                                <input type="text" id="phone" name="phone" " class="form-control round input-yellow"
-                                placeholder="+1.6868.99.999">
+                                <input type="text" id="phone" name="phone" class="form-control round input-yellow"
+                                       placeholder="+1.6868.99.999">
                             </fieldset>
                         </div>
                         <div class="col-4">
@@ -200,7 +208,7 @@
                         <div class="payment-item">
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="/logo/mug1.jpg" class="w-100">
+                                    <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="w-100">
                                 </div>
                                 <div class="col-6">
                                     <div class="payment-item-name"><?= $val['name'] ?></div>

@@ -107,12 +107,12 @@
     $('#add-to-card').click(function () {
         var id = $(this).data('id');
 
-        yourDesigner.getProductDataURL(function (dataURL) {
+        yourDesigner.getViewsDataURL(function (dataURL) {
             // $.post("php/save_image.php", {base64_image: dataURL});
             $.ajax({
                 url: "/cart/index",
                 dataType: "json",
-                data: {base64_image: dataURL, id: id, size: size, color: color},
+                data: {front: dataURL[0], back: dataURL[1], id: id, size: size, color: color},
                 type: "POST",
                 success: function (data) {
 
@@ -126,11 +126,15 @@
 
     $('.size').click(function () {
         size = $(this).data('id');
+        $(".size").removeClass("active-size");
+        $(this).addClass("active-size");
     });
     $('.item-color').click(function () {
         var id = $(this).data('id');
         var idcolor = $(this).data('idcolor');
         var idpro = $(this).data('idpro');
+        $(".checkcl").css("display", "none");
+        $("#checkcl" + idcolor).css("display", "");
         color = idcolor;
         $.ajax({
             url: "/category/colorlayout",
@@ -249,8 +253,8 @@
         });
 
         //create an image
-        $('#image-button').click(function () {
-            var image = yourDesigner.createImage();
+        $('#btn-prevew').click(function () {
+            var image = yourDesigner.createImage(1);
             return false;
         });
 

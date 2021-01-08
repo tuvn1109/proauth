@@ -61,6 +61,10 @@ img {
 
 }
 
+.navbar {
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1352);
+}
+
 .logo {
     width: 86px;
     height: 36px;
@@ -346,6 +350,16 @@ img {
     letter-spacing: 0px;
     text-align: center;
     color: #666565 78%;
+    margin-top: 7px;
+
+}
+
+.price {
+    font-family: Quicksand;
+    font-weight: 600;
+    line-height: 25px;
+    text-align: center;
+    color: #E67E22 !important;
     margin-top: 7px;
 
 }
@@ -780,7 +794,38 @@ img {
 
 
 #div-choose-color {
+    /* margin-top: 45px;*/
+}
+
+#div-btn-custom {
     margin-top: 45px;
+}
+
+#div-btn-custom button {
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.13);
+    outline: none;
+    height: 40px;
+    border: none;
+}
+
+#div-btn-custom p {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.add-to-card {
+    background: #2ECC71;
+    font-size: 25px;
+    border-radius: 15px;
+    color: #FFFFFF;
+    font-weight: 700;
+    outline: none !important;
+    border: none;
+    line-height: 55px;
 }
 
 .list-type-pro {
@@ -801,6 +846,7 @@ img {
 }
 
 .item-color {
+    position: relative;
     width: 40px;
     height: 40px;
     border: 2px solid #C0BEBE;
@@ -860,6 +906,10 @@ img {
     border-radius: 10px;
     display: flex;
     cursor: pointer;
+}
+
+.active-size {
+    background: rgba(52, 152, 219, 0.5) !important;
 }
 
 .size span {
@@ -1206,6 +1256,29 @@ img {
     box-sizing: border-box;
 }
 
+.quantity-order {
+    height: 55px;
+    border-radius: 15px;
+    width: 100%;
+    outline: none !important;
+    text-align: center;
+    border: 1px solid #2ECC71;
+    box-sizing: border-box;
+}
+
+.div-favourite-order {
+    border: 1px solid #E67E22;
+    border-radius: 500%;
+    box-sizing: border-box;
+    height: 55px;
+    width: 55px;
+}
+
+.div-favourite-order i {
+    font-size: 25px;
+    color: #E67E22;
+}
+
 .delivery img {
     margin-right: 20px;
 }
@@ -1446,6 +1519,24 @@ img {
     font-weight: 600;
     font-size: 12px;
     color: #000000;
+}
+
+.div-gender {
+    height: 50px;
+    background: rgba(240, 240, 240, 0.9);
+    border-radius: 15px;
+    max-width: 120px !important;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.div-gender img {
+    width: 18px;
+    height: 18px;
+}
+
+.active-gender {
+    background: rgba(241, 196, 15, 0.3);
 }
 
 .input-yellow {

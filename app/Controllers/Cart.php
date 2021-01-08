@@ -16,53 +16,31 @@ class Cart extends BaseController
 	public function index()
 	{
 		helper('cookie');
+		$modelPro = new ProductModel();
 		$id = $this->request->getPost('id');
 		$size = $this->request->getPost('size');
 		$color = $this->request->getPost('color');
-		$img = $this->request->getPost('base64_image');
+		$front = $this->request->getPost('front');
+		$back = $this->request->getPost('back');
 
-		$arr = array(
-			'id' => $id,
-			'size' => $size,
-			'color' => $color,
-			'image' => $img,
-		);
+		$info = $modelPro->find($id);
 
-		echo "<pre>";
-		print_r($arr);
-		echo "</pre>";
-		echo "<pre>";
-		print_r(json_encode($arr));
-		echo "</pre>";
+		$info['size_od'] = $size;
+		$info['color_od'] = $color;
+		$info['front'] = $front;
+		$info['back'] = $back;
+	//	session()->set(['cart' => '']);
+		if (!session('cart')) {
+			$arrCC[] = $info;
+			session()->set(['cart' => $arrCC]);
 
-		$cookie = get_cookie('cart');
-		if (!$cookie) {
-			$arrCC = [];
 		} else {
-			$arrCC = explode(',', $cookie);
+			$arrCC = session('cart');
+			$arrCC[] = $info;
+			session()->set(['cart' => $arrCC]);
+
 		}
 
-		if (!in_array($id, $arrCC)) {
-			$arrCC[] = $id;
-			$text = implode(',', $arrCC);
-			set_cookie([
-				'name' => 'cart',
-				'value' => $text,
-				'expire' => 1000000,
-				'httponly' => false
-			]);
-		} else {
-			$pos = array_search($id, $arrCC);
-			unset($arrCC[$pos]);
-			$text = implode(',', $arrCC);
-			set_cookie([
-				'name' => 'cart',
-				'value' => $text,
-				'expire' => 1000000,
-				'httponly' => false
-			]);
-
-		}
 	}
 
 	public function favourite()

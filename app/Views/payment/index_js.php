@@ -1,5 +1,6 @@
 <script>
     //$("#radiomethod").is(":checked")
+    var shipping_method, gender = null;
     $(function () {
 
         $("input[name='radiomethod']").click(function () {
@@ -14,6 +15,8 @@
 
     $("#btn_place_order").click(function () {
         var formData = new FormData($('#form_contact')[0]);
+        formData.append('gender', gender);
+        formData.append('shipping_method', shipping_method);
         console.log(formData);
         $.ajax({
             type: 'post',
@@ -32,6 +35,10 @@
             }
         }); //End Ajax
 
+    });
+    $(".div-gender").click(function () {
+        $('.div-gender').removeClass("active-gender");
+        $(this).addClass('active-gender');
     });
 
 

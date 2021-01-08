@@ -2,6 +2,8 @@
 
 namespace App\Controllers\Cpanel;
 
+use App\Models\CustomerModel;
+use App\Models\OrdersDetailModel;
 use App\Models\OrdersModel;
 
 class Orders extends CpanelController
@@ -9,8 +11,8 @@ class Orders extends CpanelController
 	public function index()
 	{
 		$model = new OrdersModel();
-		$status = $model->get_enum_values('orders','order_status');
-		$pay = $model->get_enum_values('orders','order_payment');
+		$status = $model->get_enum_values('orders', 'order_status');
+		$pay = $model->get_enum_values('orders', 'order_payment');
 
 
 		$data['temp'] = 'cpanel/orders/index';
@@ -56,7 +58,62 @@ class Orders extends CpanelController
 
 	public function insert()
 	{
-		$model = new OrdersModel();
+		$orderMD = new OrdersModel();
+		$orderDetailMD = new OrdersDetailModel();
+		$customerMD = new CustomerModel();
+		$fullname = $this->request->getPost('fullname');
+		$phone = $this->request->getPost('phone');
+		$email = $this->request->getPost('email');
+		$country = $this->request->getPost('country');
+		$city = $this->request->getPost('city');
+		$postalcode = $this->request->getPost('postalcode');
+		$address = $this->request->getPost('address');
+
+		$dataCus = [
+			'fullname' => $fullname,
+			'phone' => $phone,
+			'email' => $email,
+			'country' => $country,
+			'city' => $city,
+			'postalcode' => $postalcode,
+			'address' => $address,
+		];
+		$idCustom = $customerMD->insert($dataCus);
+
+
+		$dataOrder = [
+			'order_cus' => $idCustom,
+			'order_status' => 'New',
+			'order_code' => $idCustom.date('Ymd').date('is'),
+			'order_date' => date('Y-m-d H:i:s'),
+			//'order_date' => date(),
+		];
+		$idOrder = $orderMD->insert($dataOrder);
+
+		$listCart = session('cart');
+		$total = 0;
+		foreach ($listCart as $val):
+			if ($val['sale'] == 'yes') {
+				$price = $val['price_sale'];
+			} else {
+				$price = $val['price'];
+			}
+			$total += $price;
+			$dataOrderDetail = [
+				'order_id' => $idOrder,
+				'order_detail_size' => $val['size_od'],
+				'order_detail_color' => $val['color_od'],
+				'order_detail_price' => $price,
+				'product_id' => $val['id'],
+			];
+			$idOrder = $orderDetailMD->insert($dataOrderDetail);
+
+		endforeach;
+
+		echo "<pre>";
+		print_r($listCart);
+		echo "</pre>";
+
 
 		echo json_encode(1);
 	}

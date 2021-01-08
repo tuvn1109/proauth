@@ -18,17 +18,22 @@ class Payment extends BaseController
 	{
 		helper('cookie');
 		$modelProduct = new ProductModel();
+		$modelCategory = new CategoryModel();
 		$modelShipping = new ShippingMethodModel();
-		$cookie = get_cookie('cart');
-		$arrCC = [];
-		$arrCC = explode(',', $cookie);
-		$listOrder = $modelProduct->whereIn('id', $arrCC)->findAll();
 
 		$data['temp'] = 'payment/index';
 		$data['title'] = 'CA';
-		$data['listOrder'] = $listOrder;
+		$data['listOrder'] = session('cart');
+		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
+		$data['menuactive'] = 'ttt';
 		$data['listShippingMethod'] = $modelShipping->findAll();
 		echo view('layout_product', $data);
+
+	}
+
+
+	public function smpayment()
+	{
 
 	}
 

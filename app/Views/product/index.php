@@ -49,7 +49,18 @@
                 </div>
                 <div class="col-12">
                     <div class="price-pro">
-                        <p>$<?= $info['price'] ?> USD</p>
+						<?php
+						if ($info['sale'] == 'yes'){
+							?>
+                            <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
+">$<?= $info['price'] ?> USD</span> <span class="price">$<?= $info['price_sale'] ?> USD</span>
+							<?php
+						}else{
+						?>
+                        <span class="pricesale">$<?= $info['price'] ?> USD
+                                    <?php
+                                    }
+                                    ?>
                     </div>
 
                 </div>
@@ -120,14 +131,8 @@
             <div class="row mt-1">
                 <div class="col-12">
                     <div id="div-choose">
-                        <div class="div-choose-type">
-                            <div class="col-12">
-                                <button type="button" class="btn btn-primary" id="modalButton"><i
-                                            class="fas fa-plus"></i>
-                                    Image
-                                </button>
-                            </div>
-                            <div style="display: none">
+                        <div class="div-choose-type" style="display: none">
+                            <div>
                                 <div class="col-12 title-type-pro"><span>Choose a product type</span> <i
                                             class="fas fa-edit"></i></div>
                                 <div class="col-12 list-type-pro">
@@ -172,10 +177,13 @@
 
 										?>
                                         <div class="col-1 ">
-                                            <div class="item-color active-color" data-id="<?= $color1['id'] ?>"
+                                            <div class="item-color" data-id="<?= $color1['id'] ?>"
                                                  data-idpro="<?= $color1['product_id'] ?>"
                                                  data-idcolor="<?= $color1['idcolor'] ?>"
                                                  style="background-color: <?= $color1['code'] ?>">
+                                                <i class="far fa-check centerContent checkcl"
+                                                   style="color: #FFFFFF;font-weight: bold;display: none"
+                                                   id="checkcl<?= $color1['idcolor'] ?>"></i>
                                             </div>
                                         </div>
 									<?php
@@ -204,16 +212,30 @@
 
                             </div>
                         </div>
-                        <div id="div-preview" class="d-flex justify-content-center">
-                            <div class="col-6">
-                                <button type="button" id="add-to-card" data-id="<?= $info['id'] ?>"><span>ADD TO CARD</span></button>
+                        <div class="col-12">
+                            <hr>
+                        </div>
+                        <div id="div-btn-custom" class="d-flex justify-content-center">
+
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <button id="modalButton" class="w-100"><i class="fad fa-pencil-paintbrush"></i> Custom
+                                </button>
                             </div>
-                            <div class="col-6">
+                            <div class="col-2"></div>
+
+                        </div>
+                        <div id="div-preview" class="d-flex justify-content-center" style="display: none !important;">
+
+                            <div class="col-2">
+                            </div>
+                            <div class="col-8">
                                 <button type="button" id="btn-prevew"><span>PREVIEW</span></button>
                             </div>
+
+                            <div class="col-2">
+                            </div>
                         </div>
-
-
                         <div id="div-note">
                             <div class="col-12">
                                 <div class="row">
@@ -227,7 +249,20 @@
                     </div>
 
 
-                    <div id="div-addcart"></div>
+                    <div id="div-addcart">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" id="add-to-card" class="add-to-card w-100"
+                                        data-id="<?= $info['id'] ?>">
+                                    <span>ADD TO CART</span></button>
+                            </div>
+                            <div class="col-4"><input type="number" class="quantity-order" value="1"></div>
+                            <div class="col-2 text-right">
+                                <div class="div-favourite-order centerContent"><i class="fal fa-heart" id="iconfavourite5"></i></div>
+                            </div>
+                        </div>
+
+                    </div>
 
 
                 </div>

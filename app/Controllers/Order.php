@@ -27,6 +27,7 @@ class Order extends BaseController
 		$data['temp'] = 'order/index';
 		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
 		$data['menuactive'] = 'ttt';
+		$data['listCart'] = session('cart');
 		$data['title'] = 'CA';
 		$data['listOrder'] = $listOrder;
 		echo view('layout_product', $data);

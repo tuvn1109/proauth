@@ -70,6 +70,8 @@ $routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$
 
 
 $routes->get('/order', 'Order::index');
+$routes->get('/cart', 'Cart::index');
+$routes->get('/payment', 'Payment::index');
 
 $routes->get('/(:any)/(:any)', 'Category::product/$1/$2');
 $routes->get('/(:any)', 'Category::index/$1');
