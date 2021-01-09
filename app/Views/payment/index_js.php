@@ -5,7 +5,7 @@
 
         $("input[name='radiomethod']").click(function () {
             let dataId = $(this).data("id");
-            console.log(dataId);
+            shipping_method = dataId;
             $('.method_ship').removeClass("checked_method");
             $('#method' + dataId).addClass('checked_method');
 

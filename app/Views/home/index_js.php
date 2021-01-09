@@ -47,14 +47,11 @@
     $('.element-c').click(function () {
         var idtype = $(this).data('id');
         var draw = $(this).data('draw');
-        if (name == 'women') {
-            $('#men').removeClass("active-type");
-        } else if (name == 'men') {
-            $('#women').removeClass("active-type");
-        } else if (name == 'mug') {
-            $('#case').removeClass("active-type");
-        } else if (name == 'case') {
-            $('#mug').removeClass("active-type");
+         if (draw == 'sectioncategory1') {
+            $('#sectioncategory1 .element-c').removeClass("active-type");
+        }
+        if (draw == 'sectioncategory2') {
+            $('#sectioncategory2 .element-c').removeClass("active-type");
         }
         $(this).addClass('active-type');
         $.ajax({

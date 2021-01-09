@@ -76,7 +76,7 @@
 
                 <li class="nav-item form-inline " style="padding-right: 17px">
                     <div class="avatar-user" style="padding-right: 17px"><img
-                                src="https://s3-alpha-sig.figma.com/img/a897/b22c/eb9b17bd52cfeedd5bace94f3fb287dc?Expires=1607299200&Signature=Xm7BiSGXJDBDUn9Q2~tkAzPHfynZKXK~kaKqkSZpC3O63KyRwvjTp7kJr5MilKNMUWVTBYIjuYuRPSwA0JZoeb5e6Dq8xtQz0OfcJBktASwtEAxlpw5KA6ikN7idPu1JCLIsC9pNeZMv6B15r54r9hli29Tp5lQ3of-zXWx~Im7yzqZk3LHNiX6PKtRVlUoti4UbcILNxnOnRMwPF6rOJuCZeTkYQDOeuViHFP2QjzyEXoNngGgOMziwe2YJjeJuaFsNzyZqQ3antdZZJ4q4Tsikm3hywgusKaVV8JKFOOst4qhzXrH4uH1nddoSVhOtZJABt4pnh3ul7FDYrLxx9A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+                                src="/logo/man-logo.png">
                     </div>
                     <div class="name-user">HELLE, ADMIN</div>
                 </li>

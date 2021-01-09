@@ -1605,3 +1605,9 @@ canvas #c {
 }
 
 /*radio*/
+.fpd-modal-overlay.fpd-fullscreen > .fpd-modal-wrapper {
+    width: 50% !important;
+    height: 85% !important;
+    top: 50px !important;
+    overflow: hidden !important;
+}

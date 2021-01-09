@@ -35,6 +35,7 @@ class Orders extends CpanelController
 		$orderType = $this->request->getVar('order')[0]['dir'];
 		$orderCol = $this->request->getVar('columns')[$orderColId]['data'];
 		$model->orderBy($orderCol, $orderType);
+		$model->join('customers', 'customers.customer_id = orders.order_cus', 'left');
 
 		if ($search) {
 			$list = [
@@ -58,6 +59,7 @@ class Orders extends CpanelController
 
 	public function insert()
 	{
+		helper('filesystem');
 		$orderMD = new OrdersModel();
 		$orderDetailMD = new OrdersDetailModel();
 		$customerMD = new CustomerModel();
@@ -67,7 +69,12 @@ class Orders extends CpanelController
 		$country = $this->request->getPost('country');
 		$city = $this->request->getPost('city');
 		$postalcode = $this->request->getPost('postalcode');
+		$ship = $this->request->getPost('shipping_method');
 		$address = $this->request->getPost('address');
+
+
+		$test = session('cart');
+
 
 		$dataCus = [
 			'fullname' => $fullname,
@@ -84,8 +91,9 @@ class Orders extends CpanelController
 		$dataOrder = [
 			'order_cus' => $idCustom,
 			'order_status' => 'New',
-			'order_code' => $idCustom.date('Ymd').date('is'),
+			'order_code' => $idCustom . date('Ymd') . date('is'),
 			'order_date' => date('Y-m-d H:i:s'),
+			'order_shipping' => $ship,
 			//'order_date' => date(),
 		];
 		$idOrder = $orderMD->insert($dataOrder);
@@ -98,26 +106,72 @@ class Orders extends CpanelController
 			} else {
 				$price = $val['price'];
 			}
+
+			$image_parts = explode(";base64,", $val['front']);
+			$image_type_aux = explode("image/", $image_parts[0]);
+			$image_type = $image_type_aux[1];
+			$image_baseFront = base64_decode($image_parts[1]);
+			$fileFront = WRITEPATH . '/uploads/order/' . $idOrder . '/front.' . $image_type;
+			$pathFront = '/order/' . $idOrder . '/front.' . $image_type;
+
+			$image_parts = explode(";base64,", $val['back']);
+			$image_type_aux = explode("image/", $image_parts[0]);
+			$image_type = $image_type_aux[1];
+			$image_baseBack = base64_decode($image_parts[1]);
+
+			$fileBack = WRITEPATH . '/uploads/order/' . $idOrder . '/back.' . $image_type;
+			$pathBack = '/order/' . $idOrder . '/back.' . $image_type;
+
+			if (!is_dir(WRITEPATH . 'uploads/order/' . $idOrder)) {
+				mkdir(WRITEPATH . 'uploads/order/' . $idOrder, 0777, TRUE);
+				file_put_contents($fileFront, $image_baseFront);
+				file_put_contents($fileBack, $image_baseBack);
+
+			}
+
+
 			$total += $price;
 			$dataOrderDetail = [
 				'order_id' => $idOrder,
 				'order_detail_size' => $val['size_od'],
 				'order_detail_color' => $val['color_od'],
 				'order_detail_price' => $price,
+				'order_detail_image_front' => $pathFront,
+				'order_detail_image_back' => $pathBack,
 				'product_id' => $val['id'],
 			];
 			$idOrder = $orderDetailMD->insert($dataOrderDetail);
 
 		endforeach;
 
-		echo "<pre>";
-		print_r($listCart);
-		echo "</pre>";
+		$upTotalPrice = [
+			'order_price' => $total,
+		];
+		$orderMD->update($idOrder,$upTotalPrice);
+
 
 
 		echo json_encode(1);
 	}
 
+
+	public function update()
+	{
+		$orderMD = new OrdersModel();
+		$orderDetailMD = new OrdersDetailModel();
+		$customerMD = new CustomerModel();
+		$id = $this->request->getPost('id');
+
+		$orderMD->join('customers', 'customers.customer_id = orders.order_cus', 'left');
+		$infoOD = $orderMD->find($id);
+
+		$details = $orderDetailMD->where('order_id', $id)->findAll();
+
+		$data['infoOD'] = $infoOD;
+		$data['details'] = $details;
+		echo json_encode($data);
+
+	}
 
 	public function delete()
 	{

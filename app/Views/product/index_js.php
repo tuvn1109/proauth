@@ -1,4 +1,8 @@
 <script>
+
+    var test = $('#front-de').data('parameters');
+    console.log(test);
+
     // OWL
     var $owl = $(".owl-carousel").owlCarousel({
         nav: true,
@@ -106,7 +110,14 @@
     let color = null;
     $('#add-to-card').click(function () {
         var id = $(this).data('id');
-
+        if (size == null) {
+            toastr.error('Please choose size', 'Error');
+            return;
+        }
+        if (color == null) {
+            toastr.error('Please choose color', 'Error');
+            return;
+        }
         yourDesigner.getViewsDataURL(function (dataURL) {
             // $.post("php/save_image.php", {base64_image: dataURL});
             $.ajax({
@@ -115,12 +126,25 @@
                 data: {front: dataURL[0], back: dataURL[1], id: id, size: size, color: color},
                 type: "POST",
                 success: function (data) {
-
+                    if (data.stt == true) {
+                        toastr.success('Add to cart successfully', 'Success');
+                    } else {
+                        toastr.error('Unspecified error, please try again', 'Error');
+                    }
                 },
                 error: function () {
+                    toastr.error('Unspecified error, please try again', 'Error');
                 }
             });
 
+        });
+    });
+    $(document).on('click', '.fpd-done', function () {
+        yourDesigner.getViewsDataURL(function (dataURL) {
+            //  front: dataURL[0], back: dataURL[1]
+            $('#div-preview').css("display", "block");
+            $('#previewfront').attr("src", dataURL[0]);
+            $('#previewback').attr("src", dataURL[1]);
         });
     });
 

@@ -38,6 +38,7 @@
     <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
     <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
 
     <script src="/assets/plugins/fancy/jquery.min.js" type="text/javascript"></script>
     <script src="/assets/plugins/fancy/jquery-ui.min.js" type="text/javascript"></script>
@@ -182,6 +183,7 @@
         </div>
     </div>
 </div>
+<script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 
 <script src="/owlcarousel/owl.carousel.min.js"></script>
 <?php

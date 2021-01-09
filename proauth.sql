@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 08/01/2021 18:28:13
+ Date: 09/01/2021 17:35:28
 */
 
 SET NAMES utf8mb4;
@@ -68,7 +68,7 @@ INSERT INTO `colors` VALUES (4, 'Yellow', '2020-12-09 02:04:16', '2020-12-09 02:
 -- ----------------------------
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL AUTO_INCREMENT,
   `fullname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -79,8 +79,8 @@ CREATE TABLE `customers`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`customer_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customers
@@ -91,6 +91,11 @@ INSERT INTO `customers` VALUES (3, 'Alex son', '0336219199', 'nvtu1009@gmail.com
 INSERT INTO `customers` VALUES (4, 'Alex son', '0336219199', 'nvtu1009@gmail.com', 'VN', 'HN', '10000', '200 quang trung hà đông', '2021-01-08 05:06:29', '2021-01-08 05:06:29', NULL);
 INSERT INTO `customers` VALUES (5, 'Alex son', '0336219199', 'nvtu1009@gmail.com', 'VN', 'HN', '10000', '200 quang trung hà đông', '2021-01-08 05:27:02', '2021-01-08 05:27:02', NULL);
 INSERT INTO `customers` VALUES (6, 'Alex son', '0336219199', 'nvtu1009@gmail.com', 'VN', 'HN', '10000', '200 quang trung hà đông', '2021-01-08 05:27:21', '2021-01-08 05:27:21', NULL);
+INSERT INTO `customers` VALUES (7, 'trịnh hải long ', '098999999', 'thl@gmail.com', 'VN', 'HN', '10000', '100 dịch vọng hậu', '2021-01-08 22:37:42', '2021-01-08 22:37:42', NULL);
+INSERT INTO `customers` VALUES (8, '', '', '', '', '', '', '', '2021-01-09 00:40:56', '2021-01-09 00:40:56', NULL);
+INSERT INTO `customers` VALUES (9, '', '', '', '', '', '', '', '2021-01-09 00:42:41', '2021-01-09 00:42:41', NULL);
+INSERT INTO `customers` VALUES (10, 'phạm tuấn', '098555555', 'tuan@gmail.com', 'VN', 'HN', '10000', '100 dich vong', '2021-01-09 00:47:08', '2021-01-09 00:47:08', NULL);
+INSERT INTO `customers` VALUES (11, 'phạm tuấn', '098555555', 'tuan@gmail.com', 'VN', 'HN', '10000', '100 dich vong', '2021-01-09 00:58:07', '2021-01-09 00:58:07', NULL);
 
 -- ----------------------------
 -- Table structure for log_forgetpass
@@ -134,21 +139,23 @@ CREATE TABLE `orders`  (
   `order_price` decimal(10, 2) NULL DEFAULT NULL,
   `order_status` enum('New','Transport','Done') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `order_payment` enum('Done','Wait for pay') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `order_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `order_shipping` int NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES (1, 'O0001', 1, '2020-11-21 16:01:56', 1000.00, 'New', 'Done', NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (2, NULL, 1, NULL, NULL, 'New', NULL, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (3, NULL, 2, NULL, NULL, 'New', NULL, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (4, NULL, 4, '2021-01-08 05:06:29', NULL, 'New', NULL, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (5, '52021010827:02', 5, '2021-01-08 05:27:02', NULL, 'New', NULL, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (6, '6202101082721', 6, '2021-01-08 05:27:21', NULL, 'New', NULL, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (1, 'O0001', 1, '2020-11-21 16:01:56', 1000.00, 'New', 'Done', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (7, '7202101083742', 7, '2021-01-08 22:37:42', NULL, 'New', NULL, NULL, 1, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (8, '8202101094056', 8, '2021-01-09 00:40:56', NULL, 'New', NULL, NULL, 0, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (9, '9202101094241', 9, '2021-01-09 00:42:41', NULL, 'New', NULL, NULL, 0, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (10, '10202101094708', 10, '2021-01-09 00:47:08', NULL, 'New', NULL, NULL, 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (11, '11202101095807', 11, '2021-01-09 00:58:07', NULL, 'New', NULL, NULL, 2, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for orders_detail
@@ -167,19 +174,21 @@ CREATE TABLE `orders_detail`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders_detail
 -- ----------------------------
-INSERT INTO `orders_detail` VALUES (1, 3, 1, 2, NULL, NULL, 20.00, 22, '2021-01-08 05:02:21', '2021-01-08 05:02:21', NULL);
-INSERT INTO `orders_detail` VALUES (2, 1, 0, 0, NULL, NULL, 20.00, 22, '2021-01-08 05:02:21', '2021-01-08 05:02:21', NULL);
-INSERT INTO `orders_detail` VALUES (3, 4, 1, 2, NULL, NULL, 20.00, 22, '2021-01-08 05:06:29', '2021-01-08 05:06:29', NULL);
+INSERT INTO `orders_detail` VALUES (1, 1, 1, 2, NULL, NULL, 20.00, 22, '2021-01-08 05:02:21', '2021-01-08 05:02:21', NULL);
+INSERT INTO `orders_detail` VALUES (2, 2, 0, 0, NULL, NULL, 20.00, 22, '2021-01-08 05:02:21', '2021-01-08 05:02:21', NULL);
+INSERT INTO `orders_detail` VALUES (3, 1, 1, 2, NULL, NULL, 20.00, 22, '2021-01-08 05:06:29', '2021-01-08 05:06:29', NULL);
 INSERT INTO `orders_detail` VALUES (4, 3, 0, 0, NULL, NULL, 20.00, 22, '2021-01-08 05:06:29', '2021-01-08 05:06:29', NULL);
 INSERT INTO `orders_detail` VALUES (5, 5, 1, 2, NULL, NULL, 20.00, 22, '2021-01-08 05:27:02', '2021-01-08 05:27:02', NULL);
 INSERT INTO `orders_detail` VALUES (6, 5, 0, 0, NULL, NULL, 20.00, 22, '2021-01-08 05:27:02', '2021-01-08 05:27:02', NULL);
 INSERT INTO `orders_detail` VALUES (7, 6, 1, 2, NULL, NULL, 20.00, 22, '2021-01-08 05:27:21', '2021-01-08 05:27:21', NULL);
-INSERT INTO `orders_detail` VALUES (8, 7, 0, 0, NULL, NULL, 20.00, 22, '2021-01-08 05:27:21', '2021-01-08 05:27:21', NULL);
+INSERT INTO `orders_detail` VALUES (9, 7, 1, 2, NULL, NULL, 22.00, 22, '2021-01-08 22:37:42', '2021-01-08 22:37:42', NULL);
+INSERT INTO `orders_detail` VALUES (10, 10, 1, 2, '/order/front.png', '/order/back.png', 22.00, 22, '2021-01-09 00:47:08', '2021-01-09 00:47:08', NULL);
+INSERT INTO `orders_detail` VALUES (11, 11, 1, 2, '/order/11/front.png', '/order/11/back.png', 22.00, 22, '2021-01-09 00:58:07', '2021-01-09 00:58:07', NULL);
 
 -- ----------------------------
 -- Table structure for product_color

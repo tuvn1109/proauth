@@ -24,23 +24,23 @@ class Cart extends BaseController
 		$back = $this->request->getPost('back');
 
 		$info = $modelPro->find($id);
+		if ($info) {
+			$info['size_od'] = $size;
+			$info['color_od'] = $color;
+			$info['front'] = $front;
+			$info['back'] = $back;
+			//	session()->set(['cart' => '']);
+			if (!session('cart')) {
+				$arrCC[] = $info;
+				session()->set(['cart' => $arrCC]);
 
-		$info['size_od'] = $size;
-		$info['color_od'] = $color;
-		$info['front'] = $front;
-		$info['back'] = $back;
-	//	session()->set(['cart' => '']);
-		if (!session('cart')) {
-			$arrCC[] = $info;
-			session()->set(['cart' => $arrCC]);
+			} else {
+				$arrCC = session('cart');
+				$arrCC[] = $info;
+				session()->set(['cart' => $arrCC]);
 
-		} else {
-			$arrCC = session('cart');
-			$arrCC[] = $info;
-			session()->set(['cart' => $arrCC]);
-
+			}
 		}
-
 	}
 
 	public function favourite()

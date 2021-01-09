@@ -284,7 +284,7 @@ if ($setting['section2'] == 'on') {
 
 if ($setting['section3'] == 'on') {
 	?>
-    <section class="category">
+    <section class="category" id="sectioncategory1">
         <div class="row">
             <div class="col-12 center">
                 <div class="title-category"><span><?= $setting['section_category1_title'] ?></span></div>
@@ -422,7 +422,7 @@ if ($setting['section4'] == 'on') {
 <?php
 if ($setting['section5'] == 'on') {
 	?>
-    <section class="category">
+    <section class="category" id="sectioncategory2">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
                 <div class="title-category"><span><?= $setting['section_category2_title'] ?></span></div>
