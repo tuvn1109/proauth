@@ -245,21 +245,14 @@
 <div class="row">
     <div class="col-12">
         <div class="card card-custom">
-            <div class="card-header">
-                <h4 class="card-title">Layout color</h4>
-            </div>
             <!--begin::Body-->
-            <div class="card-body card-dashboard">
-            </div>
-            <!--end::Body-->
-
-            <div class="card-footer">
-                <div class="col-12 text-center">
+            <div class="card-body card-dashboard"><div class="col-12 text-center">
                     <button type="button" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"
                             id="btn-submit">Submit
                     </button>
                 </div>
             </div>
+            <!--end::Body-->
         </div>
     </div>
 

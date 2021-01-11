@@ -1,5 +1,10 @@
 <script>
     $('#kt_login_signup_form').on('submit', function (e) {
+                            toastr.success('xxx', 'Success');
+
+
+
+        return ;
         e.preventDefault();
         var formData = new FormData($(this)[0]);
         var password = $('#password').val();

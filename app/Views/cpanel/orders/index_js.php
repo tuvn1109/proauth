@@ -12,7 +12,7 @@
             }
         },
         "columns": [
-            {"data": "id"},
+            {"data": "order_id"},
             {"data": "order_code"},
             {"data": "fullname"},
             {"data": "order_date"},
@@ -20,10 +20,10 @@
             {"data": "order_status"},
             {"data": "order_payment"},
             {"data": "order_address"},
-            {"data": "order_shipping"},
+            {"data": "name"},
             {
                 "data": "", render: function (data, type, row) {
-                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateOrder" data-id="' + row.id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.id + '"><i class="feather icon-trash"></i></button>';
+                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateOrder" data-id="' + row.order_id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.order_id + '"><i class="feather icon-trash"></i></button>';
                 }
             },
         ],

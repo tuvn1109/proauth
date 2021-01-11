@@ -640,7 +640,6 @@ $user = $_SESSION['user'];
 <?php
 echo view($temp . '_js', $this->data);
 ?>
-
 </body>
 <!-- END: Body-->
 

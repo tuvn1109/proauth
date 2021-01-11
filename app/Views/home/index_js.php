@@ -1,9 +1,29 @@
 <script>
 
     $(function () {
-        $('div #favourite').click(function () {
+        $(document).on('click', '.favourite', function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: "/home/favourite",
+                dataType: "html",
+                data: {id: id},
+                type: "POST",
+                success: function (data) {
+                    $('#iconfavourite' + id).toggleClass('fal fas');
+                    $('#iconfavourite' + id).css("color", "red");
+                    $('.favourite-num span').html(data);
+                },
+                error: function () {
+                }
+            });
+
+        });
+
+        $('.favourite2222').click(function () {
             var id = $(this).data('id');
             var type = $(this).data('type');
+            console.log(id);
+
             if (type == '0') {
                 $(this).data('type', 1);
                 console.log(0);
@@ -47,7 +67,7 @@
     $('.element-c').click(function () {
         var idtype = $(this).data('id');
         var draw = $(this).data('draw');
-         if (draw == 'sectioncategory1') {
+        if (draw == 'sectioncategory1') {
             $('#sectioncategory1 .element-c').removeClass("active-type");
         }
         if (draw == 'sectioncategory2') {

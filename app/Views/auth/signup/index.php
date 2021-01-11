@@ -19,6 +19,7 @@
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors.min.css">
     <!-- END: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/toastr.css">
 
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap.css">
@@ -33,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/authentication.css">
     <!-- END: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
@@ -149,6 +151,7 @@
 
 <!-- BEGIN: Page Vendor JS-->
 <!-- END: Page Vendor JS-->
+<script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 
 <!-- BEGIN: Theme JS-->
 <script src="/app-assets/js/core/app-menu.js"></script>

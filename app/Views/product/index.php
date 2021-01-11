@@ -258,7 +258,9 @@
                                         data-id="<?= $info['id'] ?>">
                                     <span>ADD TO CART</span></button>
                             </div>
-                            <div class="col-4"><input type="number" class="quantity-order" value="1"></div>
+                            <div class="col-4"><input type="number" class="quantity-order" value="1" min="1"
+                                                      id="quantity-order"></div>
+
                             <div class="col-2 text-right">
                                 <div class="div-favourite-order centerContent" id="testdraw"><i class="fal fa-heart"
                                                                                                 id="iconfavourite5"></i>
@@ -275,17 +277,18 @@
     </div>
 </section>
 <div id="divdesgin">
-    <div id="clothing-designer" class="fpd-container fpd-shadow-2 fpd-topbar fpd-tabs fpd-tabs-side fpd-top-actions-centered fpd-bottom-actions-centered fpd-views-inside-left">
+    <div id="clothing-designer"
+         class="fpd-container fpd-shadow-2 fpd-topbar fpd-tabs fpd-tabs-side fpd-top-actions-centered fpd-bottom-actions-centered fpd-views-inside-left">
         <div class="fpd-product" title="Shirt Front" id="data-thumb-front"
              data-thumbnail="/download/<?= $color[1]['layout'] ?>">
             <img src="/download/<?= $color[1]['layout'] ?>" id="front-de" title="Base"
-                 data-parameters='{"left": 400, "top": 300, "width":300,"height":400, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base","removable":"true"}'/>
+                 data-parameters='{"left": 450, "top": 300, "width":300,"height":400, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base","removable":"true"}'/>
 
 
             <div class="fpd-product" title="Shirt Back" id="data-thumb-back"
                  data-thumbnail="/download/<?= $color[0]['back'] ?>">
                 <img src="/download/<?= $color[0]['back'] ?>" id="back-de" title="Base"
-                     data-parameters='{"left": 400, "top": 300, "width":300,"height":300, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base"}'/>
+                     data-parameters='{"left": 450, "top": 300, "width":300,"height":400, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base"}'/>
             </div>
 
         </div>

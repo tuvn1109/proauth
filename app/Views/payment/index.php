@@ -153,36 +153,38 @@
                     </div>
 
 					<?php
-					$i = 0;
-					foreach ($listShippingMethod as $val):
-						$i++;
-						?>
-                        <div class="col-1 mt-2">
-                            <div class="centerContent">
-                                <input type="radio" name="radiomethod" id="radiomethod"
-                                       class="radio_shipping " <?= $i == 1 ? 'checked' : '' ?>
-                                       style="width: 20px;height: 20px" data-id="<?= $val['id'] ?>">
+					if (isset($listShippingMethod)) {
+						$i = 0;
+						foreach ($listShippingMethod as $val):
+							$i++;
+							?>
+                            <div class="col-1 mt-2">
+                                <div class="centerContent">
+                                    <input type="radio" name="radiomethod" id="radiomethod"
+                                           class="radio_shipping " <?= $i == 1 ? 'checked' : '' ?>
+                                           style="width: 20px;height: 20px" data-id="<?= $val['id'] ?>">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-5 mt-2">
-                            <div class="method_ship <?= $i == 1 ? 'checked_method' : '' ?>" name="method"
-                                 id="method<?= $val['id'] ?>">
-                                <div class="row">
-                                    <div class="col-3 ">
-                                        <div class="image centerContent">
-                                            <img src="/download/image?name=<?= $val['logo'] ?>" class="w-100"></div>
-                                    </div>
-                                    <div class="col-6" style="white-space: nowrap"><span
-                                                class="name"><?= $val['name'] ?></span><br><span
-                                                class="expected_delivery">Expected delivery:<br>Jan 13</span></div>
-                                    <div class="col-3">
-                                        <div class="price centerContent"><?= $val['price'] ?>$</div>
+                            <div class="col-5 mt-2">
+                                <div class="method_ship <?= $i == 1 ? 'checked_method' : '' ?>" name="method"
+                                     id="method<?= $val['id'] ?>">
+                                    <div class="row">
+                                        <div class="col-3 ">
+                                            <div class="image centerContent">
+                                                <img src="/download/image?name=<?= $val['logo'] ?>" class="w-100"></div>
+                                        </div>
+                                        <div class="col-6" style="white-space: nowrap"><span
+                                                    class="name"><?= $val['name'] ?></span><br><span
+                                                    class="expected_delivery">Expected delivery:<br>Jan 13</span></div>
+                                        <div class="col-3">
+                                            <div class="price centerContent"><?= $val['price'] ?>$</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-					<?php
-					endforeach;
+						<?php
+						endforeach;
+					}
 					?>
                     <div class="col-6">
 
@@ -203,38 +205,40 @@
                 <div class="row">
 					<?php
 					$total = 0;
-					foreach ($listOrder as $val):
-						?>
-                        <div class="payment-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="w-100">
-                                </div>
-                                <div class="col-6">
-                                    <div class="payment-item-name"><?= $val['name'] ?></div>
-                                    <div class="payment-item-price">
-										<?php
-										if ($val['sale'] == 'yes') {
-											$price = $val['price_sale'];
-										} else {
-											$price = $val['price'];
-										}
-										$total += $price;
-										?>
-                                        $<?= $price ?> USD
+					if (isset($listOrder)) {
+						foreach ($listOrder as $val):
+							?>
+                            <div class="payment-item">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="w-100">
                                     </div>
-                                    <div class="payment-item-quantity">Quantity : 1</div>
-                                </div>
-                                <div class="col-3 ">
-                                    <div class="payment-icon centerContent">
-                                        <i class="far fa-edit"></i>&nbsp;&nbsp;
-                                        <i class="far fa-trash-alt"></i>
+                                    <div class="col-6">
+                                        <div class="payment-item-name"><?= $val['name'] ?></div>
+                                        <div class="payment-item-price">
+											<?php
+											if ($val['sale'] == 'yes') {
+												$price = $val['price_sale'];
+											} else {
+												$price = $val['price'];
+											}
+											$total += $price;
+											?>
+                                            $<?= $price ?> USD
+                                        </div>
+                                        <div class="payment-item-quantity">Quantity : 1</div>
+                                    </div>
+                                    <div class="col-3 ">
+                                        <div class="payment-icon centerContent">
+                                            <i class="far fa-edit"></i>&nbsp;&nbsp;
+                                            <i class="far fa-trash-alt"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-					<?php
-					endforeach;
+						<?php
+						endforeach;
+					}
 					?>
                     <div class="col-12">
                         <hr>

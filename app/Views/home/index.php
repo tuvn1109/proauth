@@ -11,12 +11,14 @@ if ($setting['section1'] == 'on') {
             <div class="col-lg-6 col-12">
                 <div class="row">
 					<?php
+
 					foreach ($besttshirt as $besttshirt1):
 						?>
                         <div class="col-sm-6 col-12">
                             <div id="bestsell">
                                 <div class="thumb-bestsell">
-                                    <img src="/download/image?name=<?= $besttshirt1['thumbnail'] ?>" class="img-fluid w-100">
+                                    <img src="/download/image?name=<?= $besttshirt1['thumbnail'] ?>"
+                                         class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
@@ -25,12 +27,12 @@ if ($setting['section1'] == 'on') {
                                             </button>
                                         </div>
                                     </div>
-                                    <div id="favourite" data-id="<?= $besttshirt1['id'] ?>">
+                                    <div id="favourite" class="favourite" data-id="<?= $besttshirt1['id'] ?>">
 										<?php
 										if (in_array($besttshirt1['id'], $arrFavourite)) {
 											?>
                                             <i class="fas fa-heart" style="color: red"
-                                               id="iconfavourite<?= $besttshirt1['id'] ?>"></i>
+                                               id="iconfavourite<?= $besttshirt1['id'] ?>" ></i>
 											<?php
 										} else {
 											?>
@@ -88,7 +90,8 @@ if ($setting['section1'] == 'on') {
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
                                 <div class="thumb-bestsell-right">
-                                    <img src="/download/image?name=<?= $bestmug1['thumbnail'] ?>" class="img-fluid w-100">
+                                    <img src="/download/image?name=<?= $bestmug1['thumbnail'] ?>"
+                                         class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
@@ -97,7 +100,7 @@ if ($setting['section1'] == 'on') {
                                             </button>
                                         </div>
                                     </div>
-                                    <div id="favourite" data-id="<?= $bestmug1['id'] ?>">
+                                    <div id="favourite" class="favourite" data-id="<?= $bestmug1['id'] ?>">
 										<?php
 										if (in_array($bestmug1['id'], $arrFavourite)) {
 											?>
@@ -180,7 +183,8 @@ if ($setting['section1'] == 'on') {
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
                                 <div class="thumb-bestsell-right">
-                                    <img src="/download/image?name=<?= $bestcase1['thumbnail'] ?>" class="img-fluid w-100">
+                                    <img src="/download/image?name=<?= $bestcase1['thumbnail'] ?>"
+                                         class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
                                             <button class="btn-quickview"><span>quick view</span>
@@ -189,7 +193,7 @@ if ($setting['section1'] == 'on') {
                                             </button>
                                         </div>
                                     </div>
-                                    <div id="favourite" data-id="<?= $bestcase1['id'] ?>">
+                                    <div id="favourite" class="favourite" data-id="<?= $bestcase1['id'] ?>">
 										<?php
 										if (in_array($bestcase1['id'], $arrFavourite)) {
 											?>
@@ -327,7 +331,7 @@ if ($setting['section3'] == 'on') {
                                 </div>
 
                             </div>
-                            <div id="favourite" data-id="<?= $val['id'] ?>">
+                            <div id="favourite" class="favourite" data-id="<?= $val['id'] ?>">
 								<?php
 								if (in_array($val['id'], $arrFavourite)) {
 									?>
@@ -465,7 +469,7 @@ if ($setting['section5'] == 'on') {
                                     </button>
                                 </div>
                             </div>
-                            <div id="favourite" data-id="<?= $val['id'] ?>">
+                            <div id="favourite" class="favourite" data-id="<?= $val['id'] ?>">
 								<?php
 								if (in_array($val['id'], $arrFavourite)) {
 									?>

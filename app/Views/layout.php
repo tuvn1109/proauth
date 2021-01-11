@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title><?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 
 
@@ -20,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/toastr.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
@@ -64,28 +64,44 @@
             </ul>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline" style="padding-right: 33px">
-                    <div class="favourite-icon"><img src="/logo/heart-logo.png"></div>
+                    <div class="favourite-icon"><img src="/logo/heart-logo.png">
+                    <div class="favourite-num"><span>5</span></div>
+                    </div>
                 </li>
                 <li class="nav-item form-inline" style="padding-right: 9px">
                     <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
                 </li>
                 <li class="nav-item form-inline" style="padding-right: 46px">
-                    <div class="cart-text">Cart: 2</div>
+                    <div class="cart-text">Cart: <?= isset($cart) ? count($cart) : 0 ?></div>
 
                 </li>
 
                 <li class="nav-item form-inline " style="padding-right: 17px">
-                    <div class="avatar-user" style="padding-right: 17px"><img
-                                src="/logo/man-logo.png">
-                    </div>
-                    <div class="name-user">HELLE, ADMIN</div>
+					<?php
+					if (isset($user)) {
+						if ($user) {
+							?>
+                            <div class="avatar-user" style="padding-right: 17px"><img
+                                        src="/logo/man-logo.png">
+                            </div>
+                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?></div>
+							<?php
+						} else {
+							?>
+							<?php
+						}
+					} else {
+						?>
+                        <div class="btn-signinup"><a href="/auth">Sign In</a> | <a href="/auth/signup">Sign Up</a></div>
+						<?php
+					}
+					?>
                 </li>
             </ul>
 
         </div>
     </div>
 </nav>
-
 <div class="space-navbar container-fluid">
     <div class="row">
         <div class="col-2">
@@ -203,10 +219,12 @@
         </div>
     </div>
 </div>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+<script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <?php
 echo view($temp . '_js', $this->data);
 ?>
-<script src="owlcarousel/owl.carousel.min.js"></script>
+
 <script>
     var owl = $('.owl-carousel');
     owl.owlCarousel({

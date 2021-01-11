@@ -3,6 +3,12 @@
     var test = $('#front-de').data('parameters');
     console.log(test);
 
+    $('#testdraw').click(function () {
+        console.log('tbao');
+
+        toastr.error('Please choose size', 'Error');
+    });
+
     // OWL
     var $owl = $(".owl-carousel").owlCarousel({
         nav: true,
@@ -166,6 +172,8 @@
             data: {id: id, idcolor: idcolor, idpro: idpro},
             type: "POST",
             success: function (data) {
+                $('#div-preview').css("display", "none");
+
                 $('#c1').html('');
                 $owlhtml = $('<div class="owl-carousel"></div>');
                 $.each(data.imageShow, function (key, value) {
@@ -220,12 +228,21 @@
 
                 //  yourDesigner.addView([{title: 'TESST'}, {thumbnail: 'https://ejoy-english.com/blog/wp-content/uploads/2018/05/tie%CC%82%CC%81ng-anh-u%CC%81c-.jpg'}]);
                 $('#divdesgin').html('');
-                var parame = '{"left": 400, "top": 300, "width":300,"height":400, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base"}';
-                //   data-parameters=' + "'" + parame + "'" + '
+                var parame = {
+                    "left": 450,
+                    "top": 300,
+                    "width": 300,
+                    "height": 400,
+                    "colors": "#d59211",
+                    "price": 20,
+                    "colorLinkGroup": "Base",
+                };
+
+                var parString = JSON.stringify(parame);
 
 
                 $clothing = $('<div id="clothing-designer" class="fpd-container fpd-shadow-2 fpd-topbar fpd-tabs fpd-tabs-side fpd-top-actions-centered fpd-bottom-actions-centered fpd-views-inside-left"></div>');
-                $clothing.append('<div class="fpd-product" title="Shirt Front" id="data-thumb-front" data-thumbnail="' + front + '" > <img src="' + front + '" id="front-de" title="Base" /><div class="fpd-product" title="Shirt Back" id="data-thumb-back" data-thumbnail="' + back + '"> <img src="' + back + '" id="back-de" title="Base"/></div></div>');
+                $clothing.append('<div class="fpd-product" title="Shirt Front" id="data-thumb-front" data-thumbnail="' + front + '" > <img src="' + front + '" id="front-de" title="Base" data-parameters=' + parString + ' /><div class="fpd-product" title="Shirt Back" id="data-thumb-back" data-thumbnail="' + back + '"> <img src="' + back + '" id="back-de" title="Base" data-parameters=' + parString + '  /></div></div>');
                 $fpddesign = $('<div class="fpd-design"></div>');
 
 
@@ -242,7 +259,8 @@
 
 
                 yourDesigner = new FancyProductDesigner($('#clothing-designer'), pluginOpts);
-                console.log(yourDesigner)
+                $('.fpd-modal-wrapper').append('<div class="btn-cancel" id="btn-canel-modal" data-defaulttext="Cancel">Cancel</div>');
+
 
             },
             error: function () {
@@ -308,4 +326,15 @@
         });
 
     });
+
+
+    $(function () {
+        $('.fpd-modal-wrapper').append('<div class="btn-cancel" id="btn-canel-modal" data-defaulttext="Cancel">Cancel</div>');
+
+    });
+    $(document).on('click', '#btn-canel-modal', function () {
+        $('.fpd-modal-overlay').css('display', 'none');
+    });
+
+
 </script>

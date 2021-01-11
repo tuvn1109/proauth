@@ -12,7 +12,7 @@ class Home extends CpanelController
 		$data['menu'] = 'home';
 		$user = session('user');
 
-		if ($user['role'] == 'admin') {
+		if (isset($user) AND $user['role'] == 'admin') {
 			echo view('cpanel/layout', $data);
 		} else {
 			return redirect()->to('/');

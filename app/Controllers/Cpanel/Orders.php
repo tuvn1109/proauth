@@ -5,6 +5,7 @@ namespace App\Controllers\Cpanel;
 use App\Models\CustomerModel;
 use App\Models\OrdersDetailModel;
 use App\Models\OrdersModel;
+use App\Models\UsersModel;
 
 class Orders extends CpanelController
 {
@@ -34,8 +35,9 @@ class Orders extends CpanelController
 		$orderColId = $this->request->getVar('order')[0]['column'];
 		$orderType = $this->request->getVar('order')[0]['dir'];
 		$orderCol = $this->request->getVar('columns')[$orderColId]['data'];
-		$model->orderBy($orderCol, $orderType);
-		$model->join('customers', 'customers.customer_id = orders.order_cus', 'left');
+		$test = $model->listData($orderCol, $orderType, $perpage, $page);
+
+		//$model->join('users', 'users.id = orders.order_cus', 'left');
 
 		if ($search) {
 			$list = [
@@ -48,7 +50,7 @@ class Orders extends CpanelController
 			$count = $model->countAllResults(false);
 			$data['data'] = $model->paginate($perpage, 'gr1', $page);
 		}
-
+		$data['data'] = $test;
 		$data['recordsFiltered'] = $count;
 		$data['draw'] = $draw;
 		$data['recordsTotal'] = count($data['data']);
@@ -63,6 +65,7 @@ class Orders extends CpanelController
 		$orderMD = new OrdersModel();
 		$orderDetailMD = new OrdersDetailModel();
 		$customerMD = new CustomerModel();
+		$userModel = new UsersModel();
 		$fullname = $this->request->getPost('fullname');
 		$phone = $this->request->getPost('phone');
 		$email = $this->request->getPost('email');
@@ -85,8 +88,23 @@ class Orders extends CpanelController
 			'postalcode' => $postalcode,
 			'address' => $address,
 		];
-		$idCustom = $customerMD->insert($dataCus);
+		//$idCustom = $customerMD->insert($dataCus);
 
+		$dataUser = [
+			'username' => $email,
+			'password' => 1234,
+			'fullname' => $fullname,
+			'phone' => $phone,
+			'email' => $email,
+			'country' => $country,
+			'city' => $city,
+			'postalcode' => $postalcode,
+			'address' => $address,
+			'status' => 'active',
+			'role' => 'user',
+
+		];
+		$idCustom = $userModel->insert($dataCus);
 
 		$dataOrder = [
 			'order_cus' => $idCustom,
@@ -147,8 +165,7 @@ class Orders extends CpanelController
 		$upTotalPrice = [
 			'order_price' => $total,
 		];
-		$orderMD->update($idOrder,$upTotalPrice);
-
+		$orderMD->update($idOrder, $upTotalPrice);
 
 
 		echo json_encode(1);

@@ -3,13 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title><?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap-extended.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/colors.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/components.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/dark-layout.css">
@@ -19,32 +17,40 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/toastr.css">
+
+
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/sweetalert2.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
+
+    <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
+
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap-extended.css">
 
     <!-- END: Page CSS-->
     <script src="/app-assets/vendors/js/vendors.min.js"></script>
     <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
-
-
-
     <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" href="/assets/css/animate.min.css"/>
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/FancyProductDesigner-all.min.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
     <link href="/mainpro.css" rel='stylesheet'>
-    <link href="/app-assets/css/bootstrap.css" rel='stylesheet'>
     <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/owlcarousel/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
 
     <script src="/assets/plugins/fancy/jquery.min.js" type="text/javascript"></script>
     <script src="/assets/plugins/fancy/jquery-ui.min.js" type="text/javascript"></script>
 
     <script src="/assets/plugins/fancy/fabric.min.js" type="text/javascript"></script>
     <script src="/assets/plugins/fancy/FancyProductDesigner-all.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
+
 
 </head>
 <body>
@@ -110,24 +116,42 @@
                     <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
                 </li>
                 <li class="nav-item form-inline mr-1">
-                    <div class="cart-text">Cart: 2</div>
+                    <div class="cart-text"><a href="/order">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
 
                 </li>
-                <li class="nav-item form-inline mr-1">
-                    <div class="avatar-user"><img
-                                src="/logo/man-logo.png">
-                    </div>
-                </li>
+                <!--     <li class="nav-item form-inline mr-1">
+						 <div class="avatar-user"><img
+									 src="/logo/man-logo.png">
+						 </div>
+					 </li>-->
 
                 <li class="nav-item form-inline ">
-                    <div class="name-user">HELLE, ADMIN</div>
+					<?php
+					if (isset($user)) {
+						if ($user) {
+							?>
+                            <div class="avatar-user" style="padding-right: 17px"><img
+                                        src="/logo/man-logo.png">
+                            </div>
+                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?></div>
+							<?php
+						} else {
+							?>
+							<?php
+						}
+					} else {
+						?>
+                        <div class="btn-signinup"><a href="/auth">Sign In</a> | <a href="/auth/signup">Sign Ups</a>
+                        </div>
+						<?php
+					}
+					?>
                 </li>
             </ul>
 
         </div>
     </div>
 </nav>
-
 <div class="space-navbar container">
     <div class="row">
         <div class="col-12">
@@ -183,9 +207,10 @@
         </div>
     </div>
 </div>
+<script src="/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
+<script src="/owlcarousel/owl.carousel.min.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 
-<script src="/owlcarousel/owl.carousel.min.js"></script>
 <?php
 echo view($temp . '_js', $this->data);
 ?>

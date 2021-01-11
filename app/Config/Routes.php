@@ -30,6 +30,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/auth', 'Auth::index');
+$routes->get('/auth/signup', 'Auth::signup');
 
 
 $routes->get('/cpanel', 'Cpanel/Home::index');
@@ -69,6 +70,7 @@ $routes->get('/download/image', 'Download::image');
 $routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$3/$4');
 
 
+$routes->get('/testlayout', 'Testlayout::index');
 $routes->get('/order', 'Order::index');
 $routes->get('/cart', 'Cart::index');
 $routes->get('/payment', 'Payment::index');

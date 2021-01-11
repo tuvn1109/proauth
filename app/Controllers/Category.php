@@ -33,15 +33,17 @@ class Category extends BaseController
 			$infoCate = $modelCategory->where('id', $id)->first();
 			$listCate = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('slug', $infoCate['slug'])->paginate(20, 'gr1', $page);
 			$count = $modelProduct->where('type', $id)->countAllResults(false);
+			$sort = $modelCategory->where('parent', $id)->findAll();
 			$data['temp'] = 'category/index';
-			$data['title'] = 'CA';
+			$data['title'] = $infoCate['value'];
 			$data['infoCate'] = $infoCate;
 			$data['menu'] = $modelCategory->where('parent', '0')->findAll();
 			$data['listCate'] = $listCate;
 			$data['countListCate'] = $count;
 			$data['banner'] = $banner;
+			$data['sort'] = $sort;
+			$data['user'] = session('user');
 			$data['arrFavourite'] = explode(',', get_cookie('favourite'));
-
 			echo view('layout', $data);
 
 		} else {
@@ -57,10 +59,14 @@ class Category extends BaseController
 		helper(['filesystem', 'cookie']);
 		$modelCategory = new CategoryModel();
 		$modelProduct = new ProductModel();
+		$modelSetting = new SettingsModel();
+		$banner = $modelSetting->where('type', 'bannerads')->findAll();
+		$banner = array_column($banner, 'value', 'filed');
 		$id = $modelCategory->getIdBySlug($slugcat)['id'];
 		$idPro = $modelProduct->getIdBySlug($slug)['id'];
 		$infoCate = $modelCategory->where('id', $id)->first();
 		$infoPro = $modelProduct->where('id', $idPro)->first();
+		$maybelike = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', $id)->findAll(6, 0);
 
 		$cateImage = directory_map('./images-pro');
 
@@ -95,7 +101,7 @@ class Category extends BaseController
 
 
 			$data['temp'] = 'product/index';
-			$data['title'] = 'CA';
+			$data['title'] = $infoPro['name'];
 			$data['info'] = $product;
 			$data['menu'] = $modelCategory->where('parent', '0')->findAll();
 			$data['menuactive'] = $slugcat;
@@ -103,6 +109,12 @@ class Category extends BaseController
 			$data['size'] = $sizes;
 			$data['color'] = $colors;
 			$data['image'] = $image;
+			$data['banner'] = $banner;
+			$data['user'] = session('user');
+			$data['maybelike'] = $maybelike;
+			$data['arrFavourite'] = explode(',', get_cookie('favourite'));
+
+			$data['cart'] = session('cart');
 			echo view('layout_product', $data);
 		} else {
 			var_dump('404');

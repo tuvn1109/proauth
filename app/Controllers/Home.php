@@ -3,6 +3,7 @@
 use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use App\Models\SettingsModel;
+use App\Models\UsersModel;
 
 class Home extends BaseController
 {
@@ -12,6 +13,7 @@ class Home extends BaseController
 		$modelProduct = new ProductModel();
 		$modelSetting = new SettingsModel();
 		$modelCategory = new CategoryModel();
+		$modelUser = new UsersModel();
 		$settings = $modelSetting->where('type', 'homepage')->findAll();
 		$settings = array_column($settings, 'value', 'filed');
 		$menu = $modelCategory->where('parent', '0')->findAll();
@@ -21,14 +23,23 @@ class Home extends BaseController
 		$sectionCateType1 = $modelCategory->whereIn('id', json_decode($settings['section_category1_type']))->orderBy('id', 'DESC')->findAll('2', 0);
 		$sectionCateType2 = $modelCategory->whereIn('id', json_decode($settings['section_category2_type']))->orderBy('id', 'DESC')->findAll('2', 0);
 
-		$bestSellTshirt = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->whereIn('type', [4, 5])->findAll('2', 0);
-		$bestSellMug = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '2')->findAll('3', 0);
-		$bestSellCase = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '3')->findAll('2', 0);
+		//$bestSellTshirt = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->whereIn('type', [4, 5])->findAll('2', 0);
+		//$bestSellMug = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '2')->findAll('3', 0);
+		//$bestSellCase = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '3')->findAll('2', 0);
 		$sectionCate1 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category1_type'], true)[0])->findAll($settings['section_category1_limit'], 0);
-
-
 		$sectionCate2 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category2_type'], true)[0])->findAll($settings['section_category2_limit'], 0);
 		$accessories = $modelProduct->where('type', json_decode($settings['section_category2_type'])[0])->orderBy('created_at', 'DESC')->findAll($settings['section_category2_limit'], 0);
+
+
+		$bestSellTshirt = $modelProduct->getBestSelling(4, 2);
+		$bestSellMug = $modelProduct->getBestSelling(2, 3);
+		$bestSellCase = $modelProduct->getBestSelling(3, 2);
+
+		// INFO USER
+		//$infoUser =
+
+
+
 
 		$data['test'] = json_decode($settings['section_category1_type'], true);
 		$data['arrFavourite'] = explode(',', get_cookie('favourite'));
@@ -82,8 +93,8 @@ class Home extends BaseController
 			]);
 
 		}
-
-		echo json_encode($cookie);
+$count = explode(',', $cookie);
+		echo json_encode(count($count));
 	}
 
 	public function addcart()

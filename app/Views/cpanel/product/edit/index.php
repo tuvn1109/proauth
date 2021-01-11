@@ -253,7 +253,7 @@
 
 
 						?>
-                        <input type="text" value='<?= json_encode($arrT) ?>' id="jsoncolor">
+                        <input type="text" value='<?= json_encode($arrT) ?>' id="jsoncolor" hidden>
                     </div>
                     <div class="col-12">
                         <div id="drawtable" class="perfect"></div>

@@ -122,7 +122,7 @@ img {
     height: 40px;
     font-family: Quicksand;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     line-height: 40px;
     display: flex;
@@ -141,7 +141,7 @@ img {
 .name-user {
     font-family: Quicksand;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 550;
     font-size: 16px;
     line-height: 43px;
     display: flex;
@@ -1264,6 +1264,7 @@ img {
     text-align: center;
     border: 1px solid #2ECC71;
     box-sizing: border-box;
+    font-size: 25px;
 }
 
 .div-favourite-order {
@@ -1604,10 +1605,45 @@ canvas #c {
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
+.btn-signinup a {
+    font-size: 16px;
+    color: #000000;
+}
+
 /*radio*/
 .fpd-modal-overlay.fpd-fullscreen > .fpd-modal-wrapper {
     width: 50% !important;
-    height: 85% !important;
+    height: 83% !important;
     top: 50px !important;
     overflow: hidden !important;
+}
+
+.fpd-modal-product-designer.fpd-modal-overlay > .fpd-modal-wrapper {
+    padding: 0px !important;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.fpd-modal-close {
+    /* display: none;*/
+}
+
+.fpd-container .fpd-secondary-bg-color, .fpd-container .fpd-btn, .fpd-modal-wrapper .fpd-btn, .fpd-switch-container.fpd-enabled .fpd-switch-toggle, .fpd-switch-container.fpd-enabled .fpd-switch-bar, .fpd-modal-product-designer.fpd-modal-overlay .fpd-done {
+    background-color: #1a1a1a;
+}
+
+.btn-cancel {
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 10px 0;
+    margin-left: 10px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    -webkit-transition: all 200ms ease-out;
+    transition: all 200ms ease-out;
+    background-color: #1a1a1a;
 }

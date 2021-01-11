@@ -22,7 +22,7 @@ class Payment extends BaseController
 		$modelShipping = new ShippingMethodModel();
 
 		$data['temp'] = 'payment/index';
-		$data['title'] = 'CA';
+		$data['title'] = 'Payment';
 		$data['listOrder'] = session('cart');
 		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
 		$data['menuactive'] = 'ttt';

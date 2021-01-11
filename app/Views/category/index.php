@@ -4,15 +4,33 @@
             <div class="title-body"><span><?= $infoCate['value'] ?></span></div>
         </div>
         <div class="col-6 d-flex justify-content-end">
-            <div class="choice-of-type" style="width: 240px">
-                <div class="element-c  active-type"><span><img src="/logo/girl-logo.png"> Women</span></div>
-                <div class="element-c"><span><img src="/logo/man-logo.png"> Men</span></div>
-            </div>
-            <div class="choice-of-type" style="margin-left: 30px">
-                <div class="element-c"><span><img src="/logo/sort-logo.png"> Sort</span></div>
-            </div>
+			<?php
 
+			if (isset($sort) AND count($sort) > 0) {
+				?>
+                <div class="choice-of-type" style="width: 240px">
+
+					<?php
+					$i = 0;
+					foreach ($sort as $sort1):
+						$i++;
+						?>
+                        <div class="element-c <?= $i == 1 ? 'active-type' : '' ?>" data-id=" <?= $sort1['id'] ?>"><span><img
+                                        src="/download/image?name=<?= $sort1['icon'] ?>"> <?= $sort1['value'] ?></span>
+                        </div>
+						<?php
+					endforeach;
+					?>
+                </div>
+				<?php
+			}
+			?>
+            <!--  <div class="choice-of-type" style="margin-left: 30px">
+				  <div class="element-c"><span><img src="/logo/sort-logo.png"> Sort</span></div>
+			  </div>-->
         </div>
+
+
     </div>
 </section>
 
@@ -74,7 +92,8 @@
                         </div>
                         <div id="shareproduct"><i class="far fa-share-alt"></i></div>
                     </div>
-                    <div id="name-item-mini-right"><a href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a></div>
+                    <div id="name-item-mini-right"><a
+                                href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a></div>
                     <div id="classify-item-mini-right">Personalized Shirt</div>
                     <div id="price-item-mini-right">    <?php
 						if ($val['sale'] == 'yes') {
