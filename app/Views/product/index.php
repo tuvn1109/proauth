@@ -280,8 +280,8 @@
     <div id="clothing-designer"
          class="fpd-container fpd-shadow-2 fpd-topbar fpd-tabs fpd-tabs-side fpd-top-actions-centered fpd-bottom-actions-centered fpd-views-inside-left">
         <div class="fpd-product" title="Shirt Front" id="data-thumb-front"
-             data-thumbnail="/download/<?= $color[1]['layout'] ?>">
-            <img src="/download/<?= $color[1]['layout'] ?>" id="front-de" title="Base"
+             data-thumbnail="/download/<?= $color[0]['layout'] ?>">
+            <img src="/download/<?= $color[0]['layout'] ?>" id="front-de" title="Base"
                  data-parameters='{"left": 450, "top": 300, "width":300,"height":400, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base","removable":"true"}'/>
 
 

@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Models\AddressUserModel;
 use App\Models\PropertiesDetailModel;
 use App\Models\PropertiesModel;
 use App\Models\CategoryModel;
@@ -11,6 +12,7 @@ use App\Models\ProductModel;
 use App\Models\ProductSizeModel;
 use App\Models\ProductColorModel;
 use App\Models\ProductTagModel;
+use App\Models\UsersModel;
 
 class Payment extends BaseController
 {
@@ -20,13 +22,23 @@ class Payment extends BaseController
 		$modelProduct = new ProductModel();
 		$modelCategory = new CategoryModel();
 		$modelShipping = new ShippingMethodModel();
-
+		$modelUser = new UsersModel();
+		$modelAddressUser = new AddressUserModel();
+		if (session('user')) {
+			$infoU = $modelUser->find(session('user')['Id']);
+			$shipping_add = $modelAddressUser->where('cus_id', $infoU['Id'])->findAll();
+			$data['shipping_add'] = $shipping_add;
+		}
+		if (!session('cart')) {
+			return redirect()->to('/order');
+		}
+		$data['listOrder'] = session('cart');
 		$data['temp'] = 'payment/index';
 		$data['title'] = 'Payment';
-		$data['listOrder'] = session('cart');
 		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
 		$data['menuactive'] = 'ttt';
 		$data['listShippingMethod'] = $modelShipping->findAll();
+		$data['user'] = $infoU;
 		echo view('layout_product', $data);
 
 	}

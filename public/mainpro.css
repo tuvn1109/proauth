@@ -1391,7 +1391,13 @@ img {
     border: none;
     line-height: 40px;
 }
+.btn_secure_checkout a{
+    color: #FFFFFF;
+}
 
+#div_addressnew{
+    display: none;
+}
 
 .payment-info .title {
     font-family: Quicksand;
@@ -1402,7 +1408,9 @@ img {
     letter-spacing: 0px;
     text-align: left;
 }
-
+.radio_shipping {
+    cursor: pointer;
+}
 .payment-info .total {
     color: #555555;
     font-weight: 600;

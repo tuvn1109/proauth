@@ -6,7 +6,7 @@
         <div class="col-6 d-flex justify-content-end">
 			<?php
 
-			if (isset($sort) AND count($sort) > 0) {
+			if (isset($sort) and count($sort) > 0) {
 				?>
                 <div class="choice-of-type" style="width: 240px">
 
@@ -18,7 +18,7 @@
                         <div class="element-c <?= $i == 1 ? 'active-type' : '' ?>" data-id=" <?= $sort1['id'] ?>"><span><img
                                         src="/download/image?name=<?= $sort1['icon'] ?>"> <?= $sort1['value'] ?></span>
                         </div>
-						<?php
+					<?php
 					endforeach;
 					?>
                 </div>
@@ -128,6 +128,7 @@
 				?>
                 <div class="col-12" style="margin-bottom: 50px"></div>
 				<?php
+				$i = 0;
 			} ?>
 			<?php
 			if ($i2 == 10) {
@@ -165,6 +166,7 @@
 
 </section>
 
+
 <section class="pagintion">
     <div class="row">
         <div class="col"></div>
@@ -173,12 +175,16 @@
         </div>
         <div class="col"></div>
     </div>
+	<?php
 
+	?>
     <div class="number_pagin d-flex justify-content-center">
 		<?php
 		for ($i = 1; $i <= ceil($countListCate / 20); $i++) {
 			?>
-            <div id="page" data-id="<?= $i ?>"><?= $i ?></div>
+            <div id="page" class="page-cate"
+                 data-id="<?= $i ?>" <?= $i == $pagenow ? 'style="cursor:no-drop" disabled' : '' ?>><a
+                        href="?page=<?= $i ?>"><?= $i ?></a></div>
 			<?php
 		}
 		?>

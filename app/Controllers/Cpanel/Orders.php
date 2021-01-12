@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Cpanel;
 
+use App\Models\AddressUserModel;
 use App\Models\CustomerModel;
 use App\Models\OrdersDetailModel;
 use App\Models\OrdersModel;
@@ -66,6 +67,7 @@ class Orders extends CpanelController
 		$orderDetailMD = new OrdersDetailModel();
 		$customerMD = new CustomerModel();
 		$userModel = new UsersModel();
+		$userAddressModel = new AddressUserModel();
 		$fullname = $this->request->getPost('fullname');
 		$phone = $this->request->getPost('phone');
 		$email = $this->request->getPost('email');
@@ -73,38 +75,68 @@ class Orders extends CpanelController
 		$city = $this->request->getPost('city');
 		$postalcode = $this->request->getPost('postalcode');
 		$ship = $this->request->getPost('shipping_method');
+		$type_ship = $this->request->getPost('type_ship_address');
 		$address = $this->request->getPost('address');
-
-
 		$test = session('cart');
+		$user = session('user');
+
+		if (!$user) {
+			$dataUser = [
+				'username' => $email,
+				'password' => 1234,
+				'fullname' => $fullname,
+				'phone' => $phone,
+				'email' => $email,
+				'country' => $country,
+				'city' => $city,
+				'postalcode' => $postalcode,
+				'address' => $address,
+				'status' => 'active',
+				'role' => 'user',
+
+			];
+			$idCustom = $userModel->insert($dataUser);
+
+			$addressUser = [
+				'cus_id' => $idCustom,
+				'country' => $country,
+				'city' => $city,
+				'postalcode' => $postalcode,
+				'address' => $address,
+			];
+
+			$userAddressModel->insert($addressUser);
+			$addresTexT = $country . '&nbsp;' . $city . '&nbsp;' . $postalcode . '&nbsp;' . $address;
+		} else {
+			// type_ship_address
+			$idCustom = $user['Id'];
+			if ($type_ship == 'new') {
+				$countryN = $this->request->getPost('country_new');
+				$cityN = $this->request->getPost('city_new');
+				$postalcodeN = $this->request->getPost('postalcode_new');
+				$addressN = $this->request->getPost('address_new');
+
+				$addressNEW = [
+					'cus_id' => $idCustom,
+					'country' => $countryN,
+					'city' => $cityN,
+					'postalcode' => $postalcodeN,
+					'address' => $addressN,
+				];
+				$userAddressModel->insert($addressNEW);
+				$addresTexT = $countryN . '&nbsp;' . $cityN . '&nbsp;' . $postalcodeN . '&nbsp;' . $addressN;
+
+			} else {
+				$idAddress = $this->request->getPost('idaddress');
+				$infoAddress = $userAddressModel->find($idAddress);
+
+				$addresTexT = $infoAddress['country'] . '&nbsp;' . $infoAddress['city'] . '&nbsp;' . $infoAddress['postalcode'] . '&nbsp;' . $infoAddress['address'];
+
+			}
 
 
-		$dataCus = [
-			'fullname' => $fullname,
-			'phone' => $phone,
-			'email' => $email,
-			'country' => $country,
-			'city' => $city,
-			'postalcode' => $postalcode,
-			'address' => $address,
-		];
-		//$idCustom = $customerMD->insert($dataCus);
+		}
 
-		$dataUser = [
-			'username' => $email,
-			'password' => 1234,
-			'fullname' => $fullname,
-			'phone' => $phone,
-			'email' => $email,
-			'country' => $country,
-			'city' => $city,
-			'postalcode' => $postalcode,
-			'address' => $address,
-			'status' => 'active',
-			'role' => 'user',
-
-		];
-		$idCustom = $userModel->insert($dataCus);
 
 		$dataOrder = [
 			'order_cus' => $idCustom,
@@ -112,9 +144,11 @@ class Orders extends CpanelController
 			'order_code' => $idCustom . date('Ymd') . date('is'),
 			'order_date' => date('Y-m-d H:i:s'),
 			'order_shipping' => $ship,
+			'order_address' => $addresTexT,
 			//'order_date' => date(),
 		];
 		$idOrder = $orderMD->insert($dataOrder);
+
 
 		$listCart = session('cart');
 		$total = 0;
@@ -167,8 +201,8 @@ class Orders extends CpanelController
 		];
 		$orderMD->update($idOrder, $upTotalPrice);
 
-
-		echo json_encode(1);
+		unset($_SESSION['cart']);
+		echo json_encode($idCustom . date('Ymd') . date('is'));
 	}
 
 

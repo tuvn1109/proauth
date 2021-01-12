@@ -39,12 +39,11 @@ class Home extends BaseController
 		//$infoUser =
 
 
-
-
 		$data['test'] = json_decode($settings['section_category1_type'], true);
 		$data['arrFavourite'] = explode(',', get_cookie('favourite'));
 		$data['temp'] = 'home/index';
 		$data['title'] = 'Home';
+		$data['cart'] = session('cart');
 		$data['user'] = session('user');
 		$data['menu'] = $menu;
 		$data['besttshirt'] = $bestSellTshirt;
@@ -93,7 +92,7 @@ class Home extends BaseController
 			]);
 
 		}
-$count = explode(',', $cookie);
+		$count = explode(',', $cookie);
 		echo json_encode(count($count));
 	}
 

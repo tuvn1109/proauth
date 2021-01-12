@@ -115,6 +115,7 @@
                 <li class="nav-item form-inline mr-1">
                     <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
                 </li>
+
                 <li class="nav-item form-inline mr-1">
                     <div class="cart-text"><a href="/order">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
 

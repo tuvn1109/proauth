@@ -31,6 +31,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/auth/signup', 'Auth::signup');
+$routes->get('/auth/logout', 'Auth::logout');
 
 
 $routes->get('/cpanel', 'Cpanel/Home::index');
@@ -62,6 +63,7 @@ $routes->get('/cpanel/shippingmethod/(:any)', 'Cpanel/shippingmethod::loaddata')
 $routes->get('/cpanel/users', 'Cpanel/users::index');
 $routes->get('/cpanel/users/(:any)', 'Cpanel/users::loaddata');
 
+$routes->get('/cpanel/email', 'Cpanel/email::index');
 $routes->get('/cpanel/settings/home', 'Cpanel/settings::home');
 $routes->get('/cpanel/settings/banner', 'Cpanel/settings::banner');
 $routes->get('/cpanel/settings/email', 'Cpanel/settings::email');
@@ -74,6 +76,7 @@ $routes->get('/testlayout', 'Testlayout::index');
 $routes->get('/order', 'Order::index');
 $routes->get('/cart', 'Cart::index');
 $routes->get('/payment', 'Payment::index');
+$routes->get('/error', 'error::index');
 
 $routes->get('/(:any)/(:any)', 'Category::product/$1/$2');
 $routes->get('/(:any)', 'Category::index/$1');

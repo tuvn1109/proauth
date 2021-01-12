@@ -162,13 +162,14 @@ class Product extends CpanelController
 
 
 		$tags = \json_decode($this->request->getPost('tags'), true);
+		$tagText = '';
+		if ($tags) {
+			foreach ($tags as $tags1):
+				$arrTag[] = $tags1['value'];
+			endforeach;
 
-		foreach ($tags as $tags1):
-			$arrTag[] = $tags1['value'];
-		endforeach;
-
-		$tagText = \implode(",", $arrTag);
-
+			$tagText = \implode(",", $arrTag);
+		}
 
 		$dataInsert = [
 			'name' => $name,

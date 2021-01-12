@@ -126,6 +126,9 @@ img {
     align-items: center;
     color: #000000;
 }
+.cart-text a{
+    color: #000000;
+}
 
 .avatar-user img {
     width: 50px;
@@ -1181,3 +1184,12 @@ img {
     cursor: pointer;
 }
 
+.page-cate{
+    margin-right: 30px;
+        cursor: pointer;
+
+}
+.page-cate a{
+   color: black;
+
+}

@@ -6,7 +6,7 @@
     $('#testdraw').click(function () {
         console.log('tbao');
 
-        toastr.error('Please choose size', 'Error');
+        // toastr.error('Please choose size', 'Error');
     });
 
     // OWL
@@ -132,11 +132,7 @@
                 data: {front: dataURL[0], back: dataURL[1], id: id, size: size, color: color},
                 type: "POST",
                 success: function (data) {
-                    if (data.stt == true) {
-                        toastr.success('Add to cart successfully', 'Success');
-                    } else {
-                        toastr.error('Unspecified error, please try again', 'Error');
-                    }
+                    toastr.success('Add to cart successfully', 'Success');
                 },
                 error: function () {
                     toastr.error('Unspecified error, please try again', 'Error');

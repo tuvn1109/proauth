@@ -40,6 +40,8 @@ class Cart extends BaseController
 				session()->set(['cart' => $arrCC]);
 
 			}
+			
+			echo json_encode(count($arrCC));
 		}
 	}
 

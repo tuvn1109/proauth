@@ -65,14 +65,14 @@
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline" style="padding-right: 33px">
                     <div class="favourite-icon"><img src="/logo/heart-logo.png">
-                    <div class="favourite-num"><span>5</span></div>
+                    <div class="favourite-num"><span></span></div>
                     </div>
                 </li>
                 <li class="nav-item form-inline" style="padding-right: 9px">
-                    <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
+                    <div class="cart-icon"><a href="/order"><img src="/logo/cart-logo.png"></a></div>
                 </li>
                 <li class="nav-item form-inline" style="padding-right: 46px">
-                    <div class="cart-text">Cart: <?= isset($cart) ? count($cart) : 0 ?></div>
+                    <div class="cart-text"><a href="/order">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
 
                 </li>
 
@@ -84,7 +84,7 @@
                             <div class="avatar-user" style="padding-right: 17px"><img
                                         src="/logo/man-logo.png">
                             </div>
-                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?></div>
+                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?> &nbsp;&nbsp;&nbsp; <a href="/auth/logout" style="color: #000000"><i class="fad fa-sign-out-alt"></i></a> </div>
 							<?php
 						} else {
 							?>

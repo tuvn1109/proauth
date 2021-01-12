@@ -29,7 +29,9 @@ class Order extends BaseController
 		$data['menuactive'] = 'ttt';
 		$data['listCart'] = session('cart');
 		$data['title'] = 'Cart';
+		$data['cart'] = session('cart');
 		$data['listOrder'] = $listOrder;
+		$data['user'] = session('user');
 		echo view('layout_product', $data);
 
 	}

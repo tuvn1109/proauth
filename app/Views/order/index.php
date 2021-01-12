@@ -1,8 +1,11 @@
+
 <section id="order">
     <div class="row">
         <div class="col-md-8 col-12">
 			<?php
 			$total = 0;
+
+			$check = true;
 			if ($listCart) {
 				foreach ($listCart as $val):
 					if ($val['sale'] == 'yes') {
@@ -51,7 +54,7 @@
 										?>
                                         <span class="pricesale">$<?= $val['price'] ?> USD
                                     <?php
-                                        }
+                                    }
                                     ?>
                                     </div>
                                 </div>
@@ -68,8 +71,29 @@
 
 				<?php
 				endforeach;
+			} else {
+				$check = false;
+				?>
+                <div class="col-md-12 order-list">
+                    <div class="order-div">
+                        <div class="row" style="margin-top: 25px">
+                            <div class="col-12" style="text-align: center; ">
+                                <div class="order-item-name">
+                                    <span style="color: #000000">You have no items in your shopping cart , <a
+                                                href="/" style=" color: #000000"">continue shopping</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+				<?php
 			}
+
+
 			?>
+
         </div>
 
         <div class="col-md-4 col-12">
@@ -118,7 +142,10 @@
                         <div class="note_order">*Shipping and tax will be calculated on checkout</div>
                     </div>
                     <div class="col-12 mt-1">
-                        <button type="button" class="btn_secure_checkout w-100">SECURE CHECKOUT</button>
+                        <button type="button"
+                                class="btn_secure_checkout w-100" <?= $check == false ? 'disabled' : '' ?>><a
+                                    href="/payment">SECURE CHECKOUT</a>
+                        </button>
                     </div>
                 </div>
             </div>

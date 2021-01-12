@@ -42,6 +42,7 @@ class Category extends BaseController
 			$data['countListCate'] = $count;
 			$data['banner'] = $banner;
 			$data['sort'] = $sort;
+			$data['cart'] = session('cart');
 			$data['user'] = session('user');
 			$data['arrFavourite'] = explode(',', get_cookie('favourite'));
 			echo view('layout', $data);

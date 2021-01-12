@@ -1,4 +1,6 @@
+
 <section id="order">
+
     <div class="row">
         <div class="col-12">
             <h3>Payment Information</h3>
@@ -17,12 +19,12 @@
                 <form id="form_contact">
                     <div class="row">
                         <div class="col-3">
-                            <div class="div-gender centerContent">
+                            <div class="div-gender active-gender  centerContent">
                                 <img src="/download/image?name=category/5/girl-logo.png"> Mrs
                             </div>
                         </div>
                         <div class="col-3">
-                            <div class="div-gender active-gender centerContent">
+                            <div class="div-gender centerContent">
                                 <img src="/download/image?name=category/4/man-logo.png"> Mr
                             </div>
                         </div>
@@ -32,6 +34,7 @@
                             <fieldset class="form-group">
                                 <label for="roundText">Fullname</label>
                                 <input type="text" id="fullname" name="fullname" class="form-control round input-yellow"
+                                       value="<?= isset($user) ? $user['fullname'] : '' ?>" <?= isset($user) ? 'readonly' : '' ?>
                                        placeholder="Alax sanderia">
                             </fieldset>
                         </div>
@@ -39,6 +42,7 @@
                             <fieldset class="form-group">
                                 <label for="roundText">Phone Number</label>
                                 <input type="text" id="phone" name="phone" class="form-control round input-yellow"
+                                       value="<?= isset($user) ? $user['phone'] : '' ?>" <?= isset($user) ? 'readonly' : '' ?>
                                        placeholder="+1.6868.99.999">
                             </fieldset>
                         </div>
@@ -46,6 +50,7 @@
                             <fieldset class="form-group">
                                 <label for="roundText">Email</label>
                                 <input type="text" id="email" name="email" class="form-control round input-yellow"
+                                       value="<?= isset($user) ? $user['email'] : '' ?>" <?= isset($user) ? 'readonly' : '' ?>
                                        placeholder="example@gmail.com">
                             </fieldset>
                         </div>
@@ -56,6 +61,7 @@
                             <fieldset class="form-group">
                                 <label for="roundText">Country</label>
                                 <input type="text" id="country" name="country" class="form-control round input-yellow"
+                                       value="<?= isset($user) ? $user['country'] : '' ?>" <?= isset($user) ? 'readonly' : '' ?>
                                        placeholder="United States">
                             </fieldset>
                         </div>
@@ -63,6 +69,7 @@
                             <fieldset class="form-group">
                                 <label for="roundText">City</label>
                                 <input type="text" id="city" name="city" class="form-control round input-yellow"
+                                       value="<?= isset($user) ? $user['city'] : '' ?>" <?= isset($user) ? 'readonly' : '' ?>
                                        placeholder="New York">
                             </fieldset>
                         </div>
@@ -70,6 +77,7 @@
                             <fieldset class="form-group">
                                 <label for="roundText">Postal Code</label>
                                 <input type="text" id="postalcode" name="postalcode"
+                                       value="<?= isset($user) ? $user['postalcode'] : '' ?>" <?= isset($user) ? 'readonly' : '' ?>
                                        class="form-control round input-yellow"
                                        placeholder="999999">
                             </fieldset>
@@ -78,6 +86,7 @@
                             <fieldset class="form-group">
                                 <label for="roundText">Address</label>
                                 <input type="text" id="address" name="address" class="form-control round input-yellow"
+                                       value="<?= isset($user) ? $user['address'] : '' ?>" <?= isset($user) ? 'readonly' : '' ?>
                                        placeholder="2707 Avenues Road">
                             </fieldset>
                         </div>
@@ -132,20 +141,74 @@
                     </div>
 
                     <div class="col-12 d-flex">
-                        <div class="div_address active-address" style="margin-right: 60px">
-                            <div style="padding: 20px;text-align: center">
-                                <span>Same as Billing Address</span><br><span>New York, United States<br>
-2707 Avenues Road, 999999</span>
-                            </div>
-                        </div>
-                        <div class="div_address" style="background-color: #F8F4F4">
+						<?php
+						if (isset($user)) {
+							if (isset($shipping_add)) {
+								$i = 0;
+								foreach ($shipping_add as $shipping_add1):
+									$i++;
+									?>
+                                    <div class="div_address <?= $i == 1 ? 'active-address' : '' ?>"
+                                         style="margin-right: 60px" data-type="old"
+                                         data-id="<?= $shipping_add1['id'] ?>">
+                                        <div style="padding: 20px;text-align: center">
+                                            <span>Same as Billing Address</span><br><span><?= $shipping_add1['city'] ?>, <?= $shipping_add1['country'] ?><br>
+<?= $shipping_add1['address'] ?>, <?= $shipping_add1['postalcode'] ?></span>
+                                        </div>
+                                    </div>
+								<?php
+								endforeach;
+							}
+						}
+						?>
+                        <div class="div_address" style="background-color: #F8F4F4" data-type="new">
                             <div style="padding: 20px;text-align: center">
                                 <span style="font-weight: 600">Register New</span><br><span>Change your Address</span>
                             </div>
                         </div>
 
                     </div>
+
+
                 </div>
+                <div class="row mt-1" id="div_addressnew">
+                    <div class="col-3">
+                        <fieldset class="form-group">
+                            <label for="roundText">Country</label>
+                            <input type="text" id="country_new" name="country_new"
+                                   class="form-control round input-yellow"
+                                   value=""
+                                   placeholder="United States">
+                        </fieldset>
+                    </div>
+                    <div class="col-3">
+                        <fieldset class="form-group">
+                            <label for="roundText">City</label>
+                            <input type="text" id="city_new" name="city_new" class="form-control round input-yellow"
+                                   value=""
+                                   placeholder="New York">
+                        </fieldset>
+                    </div>
+                    <div class="col-2">
+                        <fieldset class="form-group">
+                            <label for="roundText">Postal Code</label>
+                            <input type="text" id="postalcode_new" name="postalcode_new"
+                                   value=""
+                                   class="form-control round input-yellow"
+                                   placeholder="999999">
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                        <fieldset class="form-group">
+                            <label for="roundText">Address</label>
+                            <input type="text" id="address_new" name="address_new"
+                                   class="form-control round input-yellow"
+                                   value=""
+                                   placeholder="2707 Avenues Road">
+                        </fieldset>
+                    </div>
+                </div>
+
 
                 <div class="row">
                     <div class="col-12 title">
