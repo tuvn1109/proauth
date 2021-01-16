@@ -17,6 +17,7 @@ class Category extends BaseController
 {
 	public function index($slug)
 	{
+		$pager = \Config\Services::pager();
 		helper(['filesystem', 'cookie']);
 		$modelCategory = new CategoryModel();
 		$modelProduct = new ProductModel();
@@ -25,31 +26,38 @@ class Category extends BaseController
 		$banner = array_column($banner, 'value', 'filed');
 		$page = $this->request->getGet('page');
 		if (!$page) {
-			$page = 1;
+			$page = 0;
+		} elseif ($page == 1) {
+			$page = 0;
+		} else {
+			$page = $page * 10;
 		}
 		$id = $modelCategory->getIdBySlug($slug);
 
 		if ($id) {
 			$infoCate = $modelCategory->where('id', $id)->first();
+
+			$test = $modelProduct->getList($infoCate['slug'], 20, $page);
+
 			$listCate = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('slug', $infoCate['slug'])->paginate(20, 'gr1', $page);
-			$count = $modelProduct->where('type', $id)->countAllResults(false);
+			$count = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('slug', $infoCate['slug'])->countAllResults(false);
 			$sort = $modelCategory->where('parent', $id)->findAll();
 			$data['temp'] = 'category/index';
 			$data['title'] = $infoCate['value'];
 			$data['infoCate'] = $infoCate;
 			$data['menu'] = $modelCategory->where('parent', '0')->findAll();
-			$data['listCate'] = $listCate;
+			$data['listCate'] = $test;
 			$data['countListCate'] = $count;
 			$data['banner'] = $banner;
 			$data['sort'] = $sort;
+			$data['pagenow'] = $page;
 			$data['cart'] = session('cart');
 			$data['user'] = session('user');
 			$data['arrFavourite'] = explode(',', get_cookie('favourite'));
 			echo view('layout', $data);
 
 		} else {
-			$data['temp'] = 'error404';
-			echo view('layout', $data);
+			echo view('error404');
 
 		}
 

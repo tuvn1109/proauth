@@ -5,7 +5,7 @@
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "/cpanel/color/loaddata",
+            "url": "/cpanel/coupon/loaddata",
             "data": function (d) {
                 var info = $('#Table').DataTable().page.info().page + 1;
                 d.page = info;
@@ -13,15 +13,12 @@
         },
         "columns": [
             {"data": "id"},
-            {"data": "value"},
-            {"data": "code", render: function (data, type, row) {
-                    return '<div style="background-color:'+row.code+';border-radius: 500px;width:40px;height:40px">&nbsp;</div>';
-                }
-                
-                },
+            {"data": "code"},
+            {"data": "discount"},
+            {"data": "expiration_date"},
             {
                 "data": "", render: function (data, type, row) {
-                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateCat" data-code="' + row.code + '"  data-name="' + row.value + '" data-id="' + row.id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.id + '"><i class="feather icon-trash"></i></button>';
+                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateCat" data-code="' + row.code + '" data-discount="' + row.discount + '"  data-date="' + row.expiration_date + '" data-id="' + row.id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.id + '"><i class="feather icon-trash"></i></button>';
                 }
             },
         ],
@@ -29,12 +26,14 @@
         "drawCallback": function () {
             $('.updateCat').on('click', function () {
                 let dataId = $(this).data("id");
-                let dataName = $(this).data("name");
+                let dataDate = $(this).data("date");
                 let dataCode = $(this).data("code");
+                let dataDiscount = $(this).data("discount");
 
                 $('#edittype #id').val(dataId);
-                $('#edittype #value').val(dataName);
+                $('#edittype #date').val(dataDate);
                 $('#edittype #code').val(dataCode);
+                $('#edittype #discount').val(dataDiscount);
                 $('#edittype').modal('show');
 //                window.location.href = 'users/edit/' + dataId;
             });
@@ -48,7 +47,7 @@
                     /* Read more about isConfirmed, isDenied below */
                     if (result.value) {
                         $.ajax({
-                            url: "/cpanel/color/delete",
+                            url: "/cpanel/coupon/delete",
                             dataType: "json",
                             data: {id: dataId},
                             type: "POST",
@@ -69,7 +68,7 @@
         var formData = new FormData($('#all')[0]);
         $.ajax({
             type: 'post',
-            url: '/cpanel/color/insert',
+            url: '/cpanel/coupon/insert',
             data: formData,
             async: false,
             cache: false,
@@ -86,7 +85,7 @@
         var formData = new FormData($('#alledit')[0]);
         $.ajax({
             type: 'post',
-            url: '/cpanel/color/edit',
+            url: '/cpanel/coupon/edit',
             data: formData,
             async: false,
             cache: false,

@@ -267,10 +267,24 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
+                    <div id="div-addcart">
+                        <div class="row">
+                            <div class="col-12">
+                                <i class="fas fa-caret-right"></i> Shipping calculated at checkout<br>
+                                <i class="fas fa-caret-right"></i> Import Duty and GST/VAT applicable in your country
+                                not included<br>
+                                <i class="fas fa-caret-right"></i> Need Help? support@lifecom.io
 
+                            </div>
+
+
+                            <div class="col-12 mt-2">
+                                <img src="/logo/safe_checkout.png" class="w-100">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

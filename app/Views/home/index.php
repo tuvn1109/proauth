@@ -13,11 +13,13 @@ if ($setting['section1'] == 'on') {
 					<?php
 
 					foreach ($besttshirt as $besttshirt1):
+						$getSize = explode('.', $besttshirt1['thumbnail']);
+						$path = $getSize[0] . '275400.' . $getSize[1];
 						?>
                         <div class="col-sm-6 col-12">
                             <div id="bestsell">
                                 <div class="thumb-bestsell">
-                                    <img src="/download/image?name=<?= $besttshirt1['thumbnail'] ?>"
+                                    <img src="/download/image?name=<?= $path ?>"
                                          class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
@@ -32,7 +34,7 @@ if ($setting['section1'] == 'on') {
 										if (in_array($besttshirt1['id'], $arrFavourite)) {
 											?>
                                             <i class="fas fa-heart" style="color: red"
-                                               id="iconfavourite<?= $besttshirt1['id'] ?>" ></i>
+                                               id="iconfavourite<?= $besttshirt1['id'] ?>"></i>
 											<?php
 										} else {
 											?>
@@ -86,17 +88,19 @@ if ($setting['section1'] == 'on') {
                 <div class="row">
 					<?php
 					foreach ($bestmug as $bestmug1):
+						$getSize = explode('.', $bestmug1['thumbnail']);
+						$path = $getSize[0] . '165180.' . $getSize[1];
 						?>
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
                                 <div class="thumb-bestsell-right">
-                                    <img src="/download/image?name=<?= $bestmug1['thumbnail'] ?>"
+                                    <img src="/download/image?name=<?= $path ?>"
                                          class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
-                                            <button class="btn-quickview"><span>quick view</span>
+                                            <button class="btn-quickview top-20"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart" data-id="<?= $bestmug1['id'] ?>"><span>add to cart</span>
+                                            <button class="btn-addcart top-55" data-id="<?= $bestmug1['id'] ?>"><span>add to cart</span>
                                             </button>
                                         </div>
                                     </div>
@@ -178,18 +182,21 @@ if ($setting['section1'] == 'on') {
             <div class="col-lg-6 col-12" id="banner-bestsell2">
                 <div class="row">
 					<?php
+
 					foreach ($bestcase as $bestcase1):
+						$getSize = explode('.', $bestcase1['thumbnail']);
+						$path = $getSize[0] . '165180.' . $getSize[1];
 						?>
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
                                 <div class="thumb-bestsell-right">
-                                    <img src="/download/image?name=<?= $bestcase1['thumbnail'] ?>"
+                                    <img src="/download/image?name=<?= $path ?>"
                                          class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
-                                            <button class="btn-quickview"><span>quick view</span>
+                                            <button class="btn-quickview top-20"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart" data-id="<?= $bestcase1['id'] ?>"><span>add to cart</span>
+                                            <button class="btn-addcart top-55" data-id="<?= $bestcase1['id'] ?>"><span>add to cart</span>
                                             </button>
                                         </div>
                                     </div>
@@ -316,9 +323,11 @@ if ($setting['section3'] == 'on') {
 			$i = 0;
 			foreach ($sectionCate1 as $val) {
 				$i++;
+				$getSize = explode('.', $val['thumbnail']);
+				$path = $getSize[0] . '200245.' . $getSize[1];
 				?>
 
-                <div class="col">
+                <div class="col-cate-2">
                     <div class="product-home-category">
                         <div class="thumb-product-home">
                             <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
@@ -456,8 +465,10 @@ if ($setting['section5'] == 'on') {
 			$i = 0;
 			foreach ($sectionCate2 as $val) {
 				$i++;
+				$getSize = explode('.', $val['thumbnail']);
+				$path = $getSize[0] . '200245.' . $getSize[1];
 				?>
-                <div class="col">
+                <div class="col-cate-2">
                     <div class="product-home-category">
                         <div class="thumb-product-home">
                             <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">

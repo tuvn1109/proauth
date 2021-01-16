@@ -36,6 +36,12 @@ class Order extends BaseController
 
 	}
 
+	public function checkamount()
+	{
+		$cart = session('cart');
+
+	}
+
 	//--------------------------------------------------------------------
 
 }

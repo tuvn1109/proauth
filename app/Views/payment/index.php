@@ -1,4 +1,3 @@
-
 <section id="order">
 
     <div class="row">
@@ -128,6 +127,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
@@ -304,6 +304,7 @@
 					}
 					?>
                     <div class="col-12">
+                        <input type="number" name="amount" id="amount" value="<?= $total ?>" hidden>
                         <hr>
                     </div>
                     <div class="col-12 mt-1">
@@ -318,11 +319,17 @@
                             <div class="col-4 text-right service-money">$0</div>
                         </div>
                     </div>
+                    <div class="col-12 mt-1" id="discount_code">
+                        <div class="row">
+                            <div class="col-8 text-left service-text">Discount code</div>
+                            <div class="col-4 text-right summary-money" id="discount">$0</div>
+                        </div>
+                    </div>
 
                     <div class="col-12 mt-2">
                         <div class="row total">
                             <div class="col-8 text-left">Total:</div>
-                            <div class="col-4 text-right">$<?= $total ?></div>
+                            <div class="col-4 text-right" id="totalamount">$<?= $total ?></div>
                         </div>
                     </div>
                     <div class="col-12 mt-1">
@@ -331,10 +338,11 @@
                     <div class="col-12">
                         <div class="coupon_order">
                             <div class="row">
-                                <div class="col-8"><input type="text" placeholder="COUPON CODE">
+                                <div class="col-8"><input type="text" placeholder="COUPON CODE" id="coupon"
+                                                          name="coupon">
                                 </div>
                                 <div class="col-4 text-right">
-                                    <button type="button" class="w-100">APPLY</button>
+                                    <button type="button" class="w-100" id="btn-add-coupon">APPLY</button>
                                 </div>
                             </div>
                         </div>
@@ -342,6 +350,9 @@
                     <div class="col-12 mt-1">
                         <button type="button" class="btn_secure_checkout w-100" id="btn_place_order">PLACE YOUR ORDER
                         </button>
+                    </div>
+                    <div class="col-12 mt-1" id="divpaypal">
+
                     </div>
                 </div>
             </div>

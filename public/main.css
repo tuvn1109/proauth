@@ -97,6 +97,13 @@ img {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    vertical-align: middle;
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center
 }
 
 .favourite-num span {
@@ -126,7 +133,8 @@ img {
     align-items: center;
     color: #000000;
 }
-.cart-text a{
+
+.cart-text a {
     color: #000000;
 }
 
@@ -222,6 +230,8 @@ img {
     margin-left: 14px;
 }
 
+
+
 .main-body {
     top: 181px;
     left: 30px;
@@ -268,12 +278,12 @@ img {
 
 #bestsell img {
     width: auto;
-    height: auto;
+    height: 100%;
     background-size: contain;
 }
 
 .bestsell-item {
-    margin-top: 69px;
+    margin-top: 50px;
 }
 
 #bestsell-mini-right {
@@ -937,9 +947,13 @@ img {
 
 .thumb-product-home {
     position: relative;
-    max-height: 305px;
+    height: 245px;
     overflow: hidden;
     border-radius: 15px;
+}
+
+.thumb-product-home img {
+    min-height: 100%;
 }
 
 .thumb-home-category img {
@@ -947,7 +961,7 @@ img {
 }
 
 .thumb-bestsell {
-    max-height: 500px;
+    height: 400px;
     overflow: hidden;
     border-radius: 15px;
     position: relative;
@@ -956,6 +970,24 @@ img {
 
 #back-hover {
     display: none;
+}
+
+.btn-quickview {
+    position: absolute;
+    top: 30%;
+    left: 24%;
+    width: 55%;
+}
+
+.btn-addcart {
+    position: absolute;
+    top: 55%;
+    left: 24%;
+    width: 55%;
+}
+
+.thumb-bestsell img {
+    min-height: 100%;
 }
 
 .thumb-bestsell:hover #back-hover {
@@ -999,7 +1031,7 @@ img {
 
 
 .thumb-bestsell-right {
-    max-height: 240px;
+    height: 180px;
     overflow: hidden;
     border-radius: 15px;
     position: relative;
@@ -1059,10 +1091,14 @@ img {
 }
 
 .item-category-thumb {
-    max-height: 240px;
+    height: 245px;
     overflow: hidden;
     border-radius: 15px;
     position: relative;
+}
+
+.item-category-thumb img {
+    min-height: 100%;
 }
 
 
@@ -1184,12 +1220,34 @@ img {
     cursor: pointer;
 }
 
-.page-cate{
+.page-cate {
     margin-right: 30px;
-        cursor: pointer;
+    cursor: pointer;
 
 }
-.page-cate a{
-   color: black;
 
+.page-cate a {
+    color: black;
+
+}
+
+
+.col-cate-2 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 20%;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+    position: relative;
+    width: 100%;
+    padding-right: 14px;
+    padding-left: 14px;
+}
+
+.top-20 {
+    top: 25% !important;
+}
+
+.top-55 {
+    top: 55% !important;
 }

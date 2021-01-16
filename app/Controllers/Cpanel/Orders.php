@@ -148,11 +148,13 @@ class Orders extends CpanelController
 			//'order_date' => date(),
 		];
 		$idOrder = $orderMD->insert($dataOrder);
-
-
 		$listCart = session('cart');
+
 		$total = 0;
+		$i = 0;
 		foreach ($listCart as $val):
+			$i++;
+
 			if ($val['sale'] == 'yes') {
 				$price = $val['price_sale'];
 			} else {
@@ -163,24 +165,22 @@ class Orders extends CpanelController
 			$image_type_aux = explode("image/", $image_parts[0]);
 			$image_type = $image_type_aux[1];
 			$image_baseFront = base64_decode($image_parts[1]);
-			$fileFront = WRITEPATH . '/uploads/order/' . $idOrder . '/front.' . $image_type;
-			$pathFront = '/order/' . $idOrder . '/front.' . $image_type;
-
+			$fileFront = WRITEPATH . '/uploads/order/' . $idOrder . '/front' . $i . '.' . $image_type;
+			$pathFront = '/order/' . $idOrder . '/front' . $i . '.' . $image_type;
 			$image_parts = explode(";base64,", $val['back']);
 			$image_type_aux = explode("image/", $image_parts[0]);
 			$image_type = $image_type_aux[1];
 			$image_baseBack = base64_decode($image_parts[1]);
 
-			$fileBack = WRITEPATH . '/uploads/order/' . $idOrder . '/back.' . $image_type;
-			$pathBack = '/order/' . $idOrder . '/back.' . $image_type;
+			$fileBack = WRITEPATH . '/uploads/order/' . $idOrder . '/back' . $i . '.' . $image_type;
+			$pathBack = '/order/' . $idOrder . '/back' . $i . '.' . $image_type;
+
 
 			if (!is_dir(WRITEPATH . 'uploads/order/' . $idOrder)) {
 				mkdir(WRITEPATH . 'uploads/order/' . $idOrder, 0777, TRUE);
-				file_put_contents($fileFront, $image_baseFront);
-				file_put_contents($fileBack, $image_baseBack);
-
 			}
-
+			file_put_contents($fileFront, $image_baseFront);
+			file_put_contents($fileBack, $image_baseBack);
 
 			$total += $price;
 			$dataOrderDetail = [
@@ -192,7 +192,7 @@ class Orders extends CpanelController
 				'order_detail_image_back' => $pathBack,
 				'product_id' => $val['id'],
 			];
-			$idOrder = $orderDetailMD->insert($dataOrderDetail);
+			$orderDetailMD->insert($dataOrderDetail);
 
 		endforeach;
 
@@ -216,7 +216,7 @@ class Orders extends CpanelController
 		$orderMD->join('customers', 'customers.customer_id = orders.order_cus', 'left');
 		$infoOD = $orderMD->find($id);
 
-		$details = $orderDetailMD->where('order_id', $id)->findAll();
+		$details = $orderDetailMD->listData($id);
 
 		$data['infoOD'] = $infoOD;
 		$data['details'] = $details;

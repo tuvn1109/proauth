@@ -41,6 +41,39 @@ class ProductModel extends Model
 		return $this->get()->getResultArray();
 
 	}
+	public function getListByType($type, $limit)
+	{
+		//$query = $this->select('id');
+		$this->select('*,categories.id as cate_id,products.id as id');
+		$this->join('categories', 'categories.id = products.type', 'left');
+		$this->where('type', $type);
+		$this->limit($limit);
+		return $this->get()->getResultArray();
+
+	}
+
+	public function getList($slug, $limit, $page)
+	{
+		//$query = $this->select('id');
+		$this->select('*,categories.id as cate_id,products.id as id');
+		$this->join('categories', 'categories.id = products.type', 'left');
+		$this->where('slug', $slug);
+		$this->limit($limit, $page);
+		//$this->paginate($limit, 'gr1', $page);
+		//return $this->getCompiledSelect();
+		return $this->get()->getResultArray();
+	}
+
+	public function getListById($id = [])
+	{
+		//$query = $this->select('id');
+		$this->select('*,categories.id as cate_id,products.id as id');
+		$this->join('categories', 'categories.id = products.type', 'left');
+		$this->whereIn('products.id', json_decode($id));
+		//$this->paginate($limit, 'gr1', $page);
+		//return $this->getCompiledSelect();
+		return $this->get()->getResultArray();
+	}
 }
 
 ?>

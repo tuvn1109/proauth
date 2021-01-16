@@ -38,6 +38,10 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/components.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/dark-layout.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/semi-dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/katex.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/quill.bubble.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
@@ -49,7 +53,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/file-uploaders/dropzone.css">
 
     <!-- END: Page CSS-->
-    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css"/>
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
@@ -470,9 +474,9 @@ $user = $_SESSION['user'];
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
-                    <div class="brand-logo"><a class="navbar-brand"
-                                            href="http://192.168.1.3/logo/life-logo.png"></div>
-                    <h2 class="brand-text mb-0">Life.</h2>
+                <div class="brand-logo"><a class="navbar-brand"
+                                           href="http://192.168.1.3/logo/life-logo.png"></div>
+                <h2 class="brand-text mb-0">Life.</h2>
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
@@ -517,6 +521,9 @@ $user = $_SESSION['user'];
             <li class="<?= $menu == 'colors' ? 'active ' : '' ?> nav-item"><a href="/cpanel/color"><i
                             class="feather icon-aperture"></i><span class="menu-title">Colors</span></a>
             </li>
+            <li class="<?= $menu == 'coupon' ? 'active ' : '' ?> nav-item"><a href="/cpanel/coupon"><i
+                            class="fad fa-ticket"></i><span class="menu-title">Coupon</span></a>
+            </li>
             <li class=" navigation-header"><span>Delivery</span>
             </li>
             <li class="<?= $menu == 'shippingmethod' ? 'active ' : '' ?> nav-item"><a href="/cpanel/shippingmethod"><i
@@ -558,6 +565,9 @@ $user = $_SESSION['user'];
                 </ul>
             </li>
             <li class=" navigation-header"><span>Settings</span>
+            </li>
+            <li class="<?= $menu == 'page' ? 'active ' : '' ?> nav-item"><a href="/cpanel/page"><i
+                            class="far fa-pager"></i><span class="menu-title">Page</span></a>
             </li>
             <li class="<?= $menu == 'homesetting' ? 'active ' : '' ?> nav-item"><a href="/cpanel/settings/home"><i
                             class="fa fa-home"></i><span class="menu-title">Home settings</span></a>
@@ -623,13 +633,15 @@ $user = $_SESSION['user'];
 <script src="/app-assets/vendors/js/extensions/dropzone.min.js"></script>
 
 <!-- END: Page Vendor JS-->
+<script src="/app-assets/vendors/js/editors/quill/katex.min.js"></script>
+<script src="/app-assets/vendors/js/editors/quill/highlight.min.js"></script>
+<script src="/app-assets/vendors/js/editors/quill/quill.min.js"></script>
 
 <!-- BEGIN: Theme JS-->
 <script src="/app-assets/js/core/app-menu.js"></script>
 <script src="/app-assets/js/core/app.js"></script>
 <script src="/app-assets/js/scripts/components.js"></script>
 <!-- END: Theme JS-->
-
 <!-- BEGIN: Page JS-->
 <script src="/app-assets/js/scripts/datatables/datatable.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>

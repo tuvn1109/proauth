@@ -1,3 +1,7 @@
+<style>
+
+</style>
+
 <section class="main-body">
     <div class="row">
         <div class="col-6 d-flex justify-content-start">
@@ -63,7 +67,7 @@
 			$i2++;
 
 			?>
-            <div class="col">
+            <div class="col-cate-2">
                 <div class="item-category">
                     <div class="item-category-thumb">
                         <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
@@ -175,9 +179,7 @@
         </div>
         <div class="col"></div>
     </div>
-	<?php
 
-	?>
     <div class="number_pagin d-flex justify-content-center">
 		<?php
 		for ($i = 1; $i <= ceil($countListCate / 20); $i++) {

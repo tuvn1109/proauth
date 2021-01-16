@@ -43,7 +43,7 @@
                         $.each(data.details, function (key, value) {
                             i++;
                             console.log(value.id);
-                            $("#drawdetail").append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_front + '" class="w-100"></td><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_back + '" class="w-100"></td><td style="text-align: center">' + value.order_detail_size + '</td><td style="text-align: center">' + value.order_detail_color + '</td><td style="text-align: center">' + value.order_detail_price + '</td></tr>')
+                            $("#drawdetail").append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_front + '" class="w-100"></td><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_back + '" class="w-100"></td><td style="text-align: center">' + value.size + '</td><td style="text-align: center">' + value.color + '</td><td style="text-align: center">' + value.order_detail_price + '</td></tr>')
                         });
 
                     },

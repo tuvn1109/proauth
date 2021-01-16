@@ -28,6 +28,8 @@ class Payment extends BaseController
 			$infoU = $modelUser->find(session('user')['Id']);
 			$shipping_add = $modelAddressUser->where('cus_id', $infoU['Id'])->findAll();
 			$data['shipping_add'] = $shipping_add;
+			$data['user'] = $infoU;
+
 		}
 		if (!session('cart')) {
 			return redirect()->to('/order');
@@ -38,7 +40,6 @@ class Payment extends BaseController
 		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
 		$data['menuactive'] = 'ttt';
 		$data['listShippingMethod'] = $modelShipping->findAll();
-		$data['user'] = $infoU;
 		echo view('layout_product', $data);
 
 	}

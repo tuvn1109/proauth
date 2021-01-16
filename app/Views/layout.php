@@ -6,7 +6,6 @@
     <title><?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 
-
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/bootstrap-extended.css">
@@ -14,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/components.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/dark-layout.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/semi-dark-layout.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/logo/life-logo.png">
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
@@ -23,6 +22,10 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
+
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/katex.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/quill.snow.css">
     <!-- END: Page CSS-->
     <script src="/app-assets/vendors/js/vendors.min.js"></script>
     <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
@@ -64,8 +67,9 @@
             </ul>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline" style="padding-right: 33px">
-                    <div class="favourite-icon"><img src="/logo/heart-logo.png">
-                    <div class="favourite-num"><span></span></div>
+                    <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
+                            <div class="favourite-num"><span></span></div>
+                        </a>
                     </div>
                 </li>
                 <li class="nav-item form-inline" style="padding-right: 9px">
@@ -84,7 +88,9 @@
                             <div class="avatar-user" style="padding-right: 17px"><img
                                         src="/logo/man-logo.png">
                             </div>
-                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?> &nbsp;&nbsp;&nbsp; <a href="/auth/logout" style="color: #000000"><i class="fad fa-sign-out-alt"></i></a> </div>
+                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?> &nbsp;&nbsp;&nbsp;
+                                <a href="/auth/logout" style="color: #000000"><i class="fad fa-sign-out-alt"></i></a>
+                            </div>
 							<?php
 						} else {
 							?>

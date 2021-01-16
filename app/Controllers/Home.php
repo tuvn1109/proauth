@@ -26,14 +26,17 @@ class Home extends BaseController
 		//$bestSellTshirt = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->whereIn('type', [4, 5])->findAll('2', 0);
 		//$bestSellMug = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '2')->findAll('3', 0);
 		//$bestSellCase = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('bestselling', 'yes')->where('type', '3')->findAll('2', 0);
-		$sectionCate1 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category1_type'], true)[0])->findAll($settings['section_category1_limit'], 0);
-		$sectionCate2 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category2_type'], true)[0])->findAll($settings['section_category2_limit'], 0);
+		//$sectionCate1 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category1_type'], true)[0])->findAll($settings['section_category1_limit'], 0);
+		//$sectionCate2 = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', json_decode($settings['section_category2_type'], true)[0])->findAll($settings['section_category2_limit'], 0);
 		$accessories = $modelProduct->where('type', json_decode($settings['section_category2_type'])[0])->orderBy('created_at', 'DESC')->findAll($settings['section_category2_limit'], 0);
+
+		$sectionCate1 = $modelProduct->getListByType(json_decode($settings['section_category1_type'], true)[0], 10);
+		$sectionCate2 = $modelProduct->getListByType(json_decode($settings['section_category2_type'], true)[0], 10);
 
 
 		$bestSellTshirt = $modelProduct->getBestSelling(4, 2);
 		$bestSellMug = $modelProduct->getBestSelling(2, 3);
-		$bestSellCase = $modelProduct->getBestSelling(3, 2);
+		$bestSellCase = $modelProduct->getBestSelling(3, 3);
 
 		// INFO USER
 		//$infoUser =
@@ -71,6 +74,7 @@ class Home extends BaseController
 			$arrCC = explode(',', $cookie);
 		}
 
+
 		if (!in_array($id, $arrCC)) {
 			$arrCC[] = $id;
 			$text = implode(',', $arrCC);
@@ -92,8 +96,11 @@ class Home extends BaseController
 			]);
 
 		}
+
+
 		$count = explode(',', $cookie);
-		echo json_encode(count($count));
+
+		echo json_encode(count($arrCC));
 	}
 
 	public function addcart()
@@ -138,7 +145,8 @@ class Home extends BaseController
 		$modelProduct = new ProductModel();
 		$modelCategory = new CategoryModel();
 		$idtype = $this->request->getPost('type');
-		$data = $modelProduct->where('type', $idtype)->findAll('10', 0);
+		//$data = $modelProduct->where('type', $idtype)->findAll('10', 0);
+		$data = $modelProduct->getListByType($idtype, 10);
 		echo json_encode($data);
 	}
 

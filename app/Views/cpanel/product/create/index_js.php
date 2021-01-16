@@ -20,7 +20,8 @@
 
     ///
 
-
+    var minHeight = 500;
+    var minWidth = 345;
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("div#previews", {
         paramName: "file", // The name that will be used to transfer the file
@@ -36,6 +37,17 @@
         previewTemplate: document.querySelector('#tpl').innerHTML,
         previewsContainer: "#previews", // Define the container to display the previews
         init: function () {
+            this.on("success", function (file, responseText) {
+                console.log(file);
+            });
+
+
+            this.on("thumbnail", function (file) {
+                if (file.height < minHeight || file.width < minWidth) {
+                    this.files[0].previewElement.remove();
+                    Swal.fire('Image size must be greater than or equal to 220x240', '', 'error');
+                }
+            });
             this.on("addedfile", function (file) {
                 thumbnail.push(file);
 
@@ -63,6 +75,7 @@
         thumbnailWidth: null,
         thumbnailHeight: null,
         init: function () {
+
             this.on("addedfile", function (file) {
                 arrImgpro.push(file);
                 console.log(arrImgpro);

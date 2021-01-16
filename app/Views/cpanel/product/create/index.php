@@ -142,7 +142,7 @@
 
                 <div id="thumbnail">
                     <div id="previews">
-                        <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload (240x270)
+                        <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload ( min 220x240 )
                         </div>
                     </div>
                 </div>

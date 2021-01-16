@@ -19,6 +19,9 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/toastr.css">
 
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/katex.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/quill.snow.css">
 
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
@@ -110,7 +113,9 @@
             </ul>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline mr-1">
-                    <div class="favourite-icon"><img src="/logo/heart-logo.png"></div>
+                    <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
+                            <div class="favourite-num"><span></span></div>
+                        </a></div>
                 </li>
                 <li class="nav-item form-inline mr-1">
                     <div class="cart-icon"><img src="/logo/cart-logo.png"></div>

@@ -183,6 +183,7 @@ class Product extends CpanelController
 			'description' => $description,
 			'description_detail' => $description_detail,
 			'slug_pro' => $slug,
+			'status' => 'new',
 		];
 		$id = $modelProduct->insert($dataInsert);
 
@@ -234,12 +235,31 @@ class Product extends CpanelController
 		// thumbnail
 		$thumbnail = $this->request->getFile('thumbnail');
 		if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
-			//$newName = $img->getRandomName();
+			$newName = $thumbnail->getRandomName();
 			if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/thumb')) {
 				mkdir(WRITEPATH . 'uploads/product/' . $id . '/thumb', 0777, TRUE);
 			}
+			//$name = $thumbnail->getName();
 
-			$thumbnail->move(WRITEPATH . 'uploads/product/' . $id . '/thumb');
+
+			$path = $thumbnail->move(WRITEPATH . 'uploads/product/' . $id . '/thumb', $newName);
+			$explodeName = explode(".", $newName);
+			$nameAuth = $explodeName[0];
+			$type = $explodeName[1];
+
+			$image = \Config\Services::image()
+				->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
+				->fit(200, 245, 'center')
+				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '200245.' . $type);
+
+			$image = \Config\Services::image()
+				->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
+				->fit(275, 400, 'center')
+				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '275400.' . $type);
+			$image = \Config\Services::image()
+				->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
+				->fit(165, 180, 'center')
+				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '165180.' . $type);
 
 			$dataThumb = [
 				'thumbnail' => 'product/' . $id . '/thumb/' . $thumbnail->getName(),

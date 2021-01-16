@@ -2,9 +2,9 @@
 
 use CodeIgniter\Model;
 
-class OrdersDetailModel extends Model
+class CouponModel extends Model
 {
-	protected $table = 'orders_detail';
+	protected $table = 'coupon';
 	protected $primaryKey = 'id';
 	protected $returnType = 'array';
 	protected $useSoftDeletes = false;
@@ -20,17 +20,11 @@ class OrdersDetailModel extends Model
 	protected $selectFields = ['*'];
 
 
-
-
-	function listData($orderID)
+	public function checkValue($value)
 	{
-		$this->select('*,sizes.id as size_id,colors.id as color_id,colors.value as color,sizes.value as size,');
-		$this->join('sizes', 'sizes.id = orders_detail.order_detail_size', 'left');
-		$this->join('colors', 'colors.id = orders_detail.order_detail_color', 'left');
-		$this->where('order_id', $orderID);
-		//$this->paginate($perpage, 'gr1', $page);
-		return $this->get()->getResultArray();
-		//return $this->getCompiledSelect();
+		$query = $this->select('id');
+		$query = $query->where('value', $value);
+		return $query->get()->getRowArray();
 	}
 }
 

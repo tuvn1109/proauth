@@ -57,6 +57,16 @@ $routes->get('/cpanel/size/(:any)', 'Cpanel/size::loaddata');
 $routes->get('/cpanel/color', 'Cpanel/color::index');
 $routes->get('/cpanel/color/(:any)', 'Cpanel/color::loaddata');
 
+$routes->get('/cpanel/coupon', 'Cpanel/coupon::index');
+$routes->get('/cpanel/coupon/(:any)', 'Cpanel/coupon::loaddata');
+
+$routes->get('/cpanel/page', 'Cpanel/page::index');
+$routes->get('/cpanel/page/create', 'Cpanel/page::create');
+$routes->get('/cpanel/page/edit/(:any)', 'Cpanel/page::edit');
+
+$routes->get('/cpanel/page/(:any)', 'Cpanel/page::loaddata');
+
+
 $routes->get('/cpanel/shippingmethod', 'Cpanel/shippingmethod::index');
 $routes->get('/cpanel/shippingmethod/(:any)', 'Cpanel/shippingmethod::loaddata');
 
@@ -75,8 +85,14 @@ $routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$
 $routes->get('/testlayout', 'Testlayout::index');
 $routes->get('/order', 'Order::index');
 $routes->get('/cart', 'Cart::index');
+$routes->get('/user', 'User::index');
 $routes->get('/payment', 'Payment::index');
+$routes->get('/favourite', 'Favourite::index');
 $routes->get('/error', 'error::index');
+
+
+$routes->get('/(:any)', 'Page::index/$1');
+
 
 $routes->get('/(:any)/(:any)', 'Category::product/$1/$2');
 $routes->get('/(:any)', 'Category::index/$1');

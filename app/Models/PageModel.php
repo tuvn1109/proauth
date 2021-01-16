@@ -2,9 +2,9 @@
 
 use CodeIgniter\Model;
 
-class OrdersDetailModel extends Model
+class PageModel extends Model
 {
-	protected $table = 'orders_detail';
+	protected $table = 'pages';
 	protected $primaryKey = 'id';
 	protected $returnType = 'array';
 	protected $useSoftDeletes = false;
@@ -19,19 +19,27 @@ class OrdersDetailModel extends Model
 	protected $skipValidation = false;
 	protected $selectFields = ['*'];
 
-
-
-
-	function listData($orderID)
+	public function getInfoBySlug($slug)
 	{
-		$this->select('*,sizes.id as size_id,colors.id as color_id,colors.value as color,sizes.value as size,');
-		$this->join('sizes', 'sizes.id = orders_detail.order_detail_size', 'left');
-		$this->join('colors', 'colors.id = orders_detail.order_detail_color', 'left');
-		$this->where('order_id', $orderID);
+		$query = $this->select('*');
+		return $query->getWhere(['slug' => $slug])->getRowArray();
+
+	}
+
+	function listData($orderCol, $orderType, $perpage, $page)
+	{
+		if ($orderCol == 'id') {
+			$orderCol = 'order_id';
+		}
+		$this->select('*,users.Id as cus_id,orders.id as order_id,shipping_method.id as shipping_method_id');
+		$this->join('users', 'users.Id = orders.order_cus', 'left');
+		$this->join('shipping_method', 'shipping_method.id = orders.order_shipping', 'left');
+		$this->orderBy($orderCol, $orderType);
 		//$this->paginate($perpage, 'gr1', $page);
 		return $this->get()->getResultArray();
 		//return $this->getCompiledSelect();
 	}
+
 }
 
 ?>
