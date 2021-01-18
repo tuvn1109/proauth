@@ -700,14 +700,14 @@ class Auth extends BaseController
 	{
 		$model = new UsersModel();
 		$fullname = $this->request->getPost('fullname');
-		$username = $this->request->getPost('username');
+		//$username = $this->request->getPost('username');
 		$password = $this->request->getPost('password');
 		$email = $this->request->getPost('email');
 		$phone = $this->request->getPost('phone');
 
 
-		if ($fullname && $username && $password && $email && $phone) {
-			$checkUser = $model->getUserByName($username);
+		if ($fullname  && $password && $email && $phone) {
+			$checkUser = $model->getUserByName($email);
 
 			if ($checkUser) {
 				$JSON = [
@@ -718,17 +718,19 @@ class Auth extends BaseController
 			} else {
 				$data = [
 					'fullname' => $fullname,
-					'username' => $username,
+					'username' => $email,
 					'password' => $password,
 					'email' => $email,
 					'phone' => $phone,
+					'role' => 'user',
+					'status' => 'active',
 				];
 				$id = $model->insert($data);
 
 				$dataSS = [
 					'id' => $id,
 					'fullname' => $fullname,
-					'username' => $username,
+					'username' => $email,
 					'email' => $email,
 					'phone' => $phone,
 				];

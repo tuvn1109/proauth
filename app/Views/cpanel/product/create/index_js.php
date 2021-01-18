@@ -194,7 +194,7 @@
         drawTableColor();
         // console.log(arrDataF)
         myDropzone2.removeAllFiles(true);
-
+        console.log(oj);
     });
 
 
@@ -213,8 +213,17 @@
 
         for (var i = arrDataF.length - 1; i >= 0; i--) {
             var val = arrDataF[i];
-            var front = await getBase64(val['front']);
-            var back = await getBase64(val['back']);
+            // /logo/noimg.jpg
+            if (val['front']) {
+                var front = await getBase64(val['front']);
+            } else {
+                var front = '/logo/noimg.jpg';
+            }
+            if (val['back']) {
+                var back = await getBase64(val['back']);
+            } else {
+                var back = '/logo/noimg.jpg';
+            }
             var test = '';
             var $imagear = $('<div></div>');
 

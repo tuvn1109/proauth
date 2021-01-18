@@ -145,8 +145,12 @@ class Product extends CpanelController
 		$delivery = $this->request->getPost('delivery');
 		$tags = $this->request->getPost('tags');
 		$sale = $this->request->getPost('salestatus');
+		$bestsell = $this->request->getPost('bestselling');
 		if ($sale == 'on') {
 			$sale = 'yes';
+		}
+		if ($bestsell == 'on') {
+			$bestsell = 'yes';
 		}
 
 		$description = $this->request->getPost('description');
@@ -180,6 +184,7 @@ class Product extends CpanelController
 			'delivery' => $delivery,
 			'tag' => $tagText,
 			'sale' => $sale,
+			'bestselling' => $bestsell,
 			'description' => $description,
 			'description_detail' => $description_detail,
 			'slug_pro' => $slug,
@@ -272,25 +277,38 @@ class Product extends CpanelController
 			foreach ($jsonLayout as $jsonLayout1):
 				// layout front
 				$img = $this->request->getFile('fileUpload' . $jsonLayout1);
-				if ($img->isValid() && !$img->hasMoved()) {
-					//$newName = $img->getRandomName();
-					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
-						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+				if ($img) {
+					if ($img->isValid() && !$img->hasMoved()) {
+						//$newName = $img->getRandomName();
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+						}
+
+						$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
+
 					}
-
-					$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
-
+					$pathFront = 'product/' . $id . '/layout/' . $img->getName();
+				} else {
+					$pathFront = '/logo/noimg.jpg';
 				}
-
 				// layout back
 				$imgback = $this->request->getFile('fileUploadback' . $jsonLayout1);
-				if ($imgback->isValid() && !$imgback->hasMoved()) {
-					//$newName = $img->getRandomName();
-					if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
-						mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+
+				if ($imgback) {
+					if ($imgback->isValid() && !$imgback->hasMoved()) {
+						//$newName = $img->getRandomName();
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+						}
+						$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
 					}
-					$imgback->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
+
+					$pathBack = 'product/' . $id . '/layout/' . $imgback->getName();
+				} else {
+					$pathBack = '/logo/noimg.jpg';
+
 				}
+
 
 				if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
 					mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
@@ -316,8 +334,8 @@ class Product extends CpanelController
 				$detail = [
 					'product_id' => $id,
 					'color_id' => $jsonLayout1,
-					'layout' => 'product/' . $id . '/layout/' . $img->getName(),
-					'back' => 'product/' . $id . '/layout/' . $imgback->getName(),
+					'layout' => $pathFront,
+					'back' => $pathBack,
 				];
 				$modelProductColor->insert($detail);
 			endforeach;
@@ -425,8 +443,14 @@ class Product extends CpanelController
 		$manufactur = $this->request->getPost('manufactur');
 		$delivery = $this->request->getPost('delivery');
 		$sale = $this->request->getPost('salestatus');
+		$bestsell = $this->request->getPost('bestselling');
+
 		if ($sale == 'on') {
 			$sale = 'yes';
+		}
+
+		if ($bestsell == 'on') {
+			$bestsell = 'yes';
 		}
 		$tags = $this->request->getPost('tags');
 		$description = $this->request->getPost('description');
@@ -461,6 +485,7 @@ class Product extends CpanelController
 			'delivery' => $delivery,
 			'tag' => $tagText,
 			'sale' => $sale,
+			'bestselling' => $bestsell,
 			'description' => $description,
 			'description_detail' => $description_detail,
 			'slug_pro' => create_slug($name),
@@ -599,9 +624,7 @@ class Product extends CpanelController
 				}
 
 
-				echo "<pre>";
-				print_r($detail);
-				echo "</pre>";
+
 
 				//check co mau nay chua//
 				$checkColor = $modelProductColor->where('product_id', $id)->where('color_id', $jsonLayout1)->first();

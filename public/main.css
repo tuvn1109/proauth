@@ -231,7 +231,6 @@ img {
 }
 
 
-
 .main-body {
     top: 181px;
     left: 30px;
@@ -1250,4 +1249,8 @@ img {
 
 .top-55 {
     top: 55% !important;
+}
+
+.top-40 {
+    top: 40% !important;
 }

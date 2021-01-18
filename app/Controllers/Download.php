@@ -35,10 +35,10 @@ class Download extends BaseController
 		$path = $this->request->getVar('name');
 		$filepath = $checkpath = WRITEPATH . 'uploads/' . $path;
 		if (!file_exists($checkpath)) {
-			$filepath = WRITEPATH . 'uploads/default/img-not-found.png';
+			$filepath = WRITEPATH . 'uploads/default/noimg.jpg';
 		}
 		if (!is_readable($checkpath)) {
-			$filepath = WRITEPATH . 'uploads/default/img-not-found.png';
+			$filepath = WRITEPATH . 'uploads/default/noimg.jpg';
 		}
 		http_response_code(200);
 		header('Content-Length: ' . filesize($filepath));

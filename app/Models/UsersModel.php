@@ -27,6 +27,13 @@ class UsersModel extends Model
 		$query = $query->Where('password', $password);
 		return $query->get()->getRowArray();
 	}
+	public function currentpass($id, $password)
+	{
+		$query = $this->select($this->selectFields);
+		$query = $query->where('id', $id);
+		$query = $query->Where('password', $password);
+		return $query->get()->getRowArray();
+	}
 
 	public function getUserByName($username)
 	{

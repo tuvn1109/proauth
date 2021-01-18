@@ -1,11 +1,13 @@
-
 <section id="order">
     <div class="row">
         <div class="col-md-8 col-12">
 			<?php
 			$total = 0;
-
 			$check = true;
+			echo "<pre>";
+			print_r($listCart);
+			echo "</pre>";
+
 			if ($listCart) {
 				foreach ($listCart as $val):
 					if ($val['sale'] == 'yes') {
@@ -15,7 +17,13 @@
 					}
 					?>
                     <div class="col-md-12 order-list">
+
                         <div class="order-div">
+                            <div class="row">
+                                <div class="col-12 text-right">
+                                    <div class="div-un-cart"><i class="far fa-times uncart" data-id="<?= $val['id'] ?>"></i></div>
+                                </div>
+                            </div>
                             <div class="order-img d-flex">
                                 <div class="order-img-front">
                                     <img src="<?= $val['front'] ?>" class="w-100">

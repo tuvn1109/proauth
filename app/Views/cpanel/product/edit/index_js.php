@@ -403,14 +403,25 @@
             if (typeof val['front'] == 'string') {
                 var front = '/download/image?name=' + val['front'];
             } else {
-                var front = await getBase64(val['front']);
+                if (val['front']) {
+                    var front = await getBase64(val['front']);
+                } else {
+                    var front = '/logo/noimg.jpg';
+                }
+
+                //var front = await getBase64(val['front']);
 
             }
 
             if (typeof val['back'] == 'string') {
                 var back = '/download/image?name=' + val['back'];
             } else {
-                var back = await getBase64(val['back']);
+                if (val['back']) {
+                    var back = await getBase64(val['back']);
+                } else {
+                    var back = '/logo/noimg.jpg';
+                }
+                // var back = await getBase64(val['back']);
             }
 
             var $imagear = $('<div></div>');

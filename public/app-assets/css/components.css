@@ -3448,7 +3448,7 @@ input[type='date'].form-control, input[type='time'].form-control, input[type='da
 }
 .select2-container--classic .select2-selection--multiple .select2-selection__choice, .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color : #17BF63  !important;
-  border-color : #4839EB !important;
+  border-color : #17BF63 !important;
   color : #FFFFFF;
   padding : 5px;
 }

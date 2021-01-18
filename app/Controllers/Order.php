@@ -30,6 +30,7 @@ class Order extends BaseController
 		$data['listCart'] = session('cart');
 		$data['title'] = 'Cart';
 		$data['cart'] = session('cart');
+		$data['arrFavourite'] = explode(',', get_cookie('favourite'));
 		$data['listOrder'] = $listOrder;
 		$data['user'] = session('user');
 		echo view('layout_product', $data);

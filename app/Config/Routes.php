@@ -85,13 +85,13 @@ $routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$
 $routes->get('/testlayout', 'Testlayout::index');
 $routes->get('/order', 'Order::index');
 $routes->get('/cart', 'Cart::index');
-$routes->get('/user', 'User::index');
+$routes->get('/account', 'Account::index');
 $routes->get('/payment', 'Payment::index');
 $routes->get('/favourite', 'Favourite::index');
 $routes->get('/error', 'error::index');
 
 
-$routes->get('/(:any)', 'Page::index/$1');
+//$routes->get('/(:any)', 'Page::index/$1');
 
 
 $routes->get('/(:any)/(:any)', 'Category::product/$1/$2');

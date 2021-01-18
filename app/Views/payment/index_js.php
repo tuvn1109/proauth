@@ -131,10 +131,10 @@
         }
 
         if (type_ship_address == 'new') {
-            var country = $('#country_new').val();
-            var city = $('#city_new').val();
-            var postalcode = $('#postalcode_new').val();
-            var address = $('#address_new').val();
+            var countrynew = $('#country_new').val();
+            var citynew = $('#city_new').val();
+            var postalcodenew = $('#postalcode_new').val();
+            var addressnew = $('#address_new').val();
 
             if (country == '') {
                 $('#country_new').focus();
@@ -164,6 +164,10 @@
         formData.append('shipping_method', shipping_method);
         formData.append('type_ship_address', type_ship_address);
         formData.append('idaddress', idaddress);
+        formData.append('country_new', countrynew);
+        formData.append('city_new', citynew);
+        formData.append('postalcode_new', postalcodenew);
+        formData.append('address_new', addressnew);
 
         paypal.Buttons({
             createOrder: function (data, actions) {
@@ -178,7 +182,7 @@
                 // This function captures the funds from the transaction.
                 return actions.order.capture().then(function (details) {
                     // This function shows a transaction success message to your buyer.
-                    alert('Transaction completed by ' + details.payer.name.given_name);
+                  //  alert('Transaction completed by ' + details.payer.name.given_name);
                     console.log(details);
                     if (details.status == "COMPLETED") {
                         $.ajax({

@@ -22,6 +22,7 @@ class favourite extends BaseController
 		$data['menuactive'] = 'favourite';
 		$data['title'] = 'Favourite';
 		$data['arrFavourite'] = $arrCC;
+				$data['cart'] = session('cart');
 		$data['list'] = $list;
 		$data['user'] = session('user');
 		echo view('layout', $data);

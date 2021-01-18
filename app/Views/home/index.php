@@ -23,7 +23,7 @@ if ($setting['section1'] == 'on') {
                                          class="img-fluid w-100">
                                     <div id="back-hover">
                                         <div class="centerContent">
-                                            <button class="btn-quickview"><span>quick view</span>
+                                            <button class="btn-quickview top-40"><span>quick view</span>
                                             </button>
                                             <button class="btn-addcart" data-id="<?= $besttshirt1['id'] ?>"><span>add to cart</span>
                                             </button>

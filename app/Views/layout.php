@@ -68,7 +68,7 @@
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline" style="padding-right: 33px">
                     <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
-                            <div class="favourite-num"><span></span></div>
+                            <div class="favourite-num"><span><?= isset($arrFavourite) ? count($arrFavourite) : 0 ?></span></div>
                         </a>
                     </div>
                 </li>

@@ -72,17 +72,28 @@
                             </fieldset>
                         </div>
 
-                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                        <div class="col-xl-2 col-md-6 col-12 mb-1">
                             <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
                                 <p class="mb-0">Sale</p>
-                                <input type="checkbox" class="custom-control-input" id="salestatus" name="salestatus" <?= $info['sale'] == 'yes' ? 'checked' : ''; ?>>
+                                <input type="checkbox" class="custom-control-input" id="salestatus"
+                                       name="salestatus" <?= $info['sale'] == 'yes' ? 'checked' : ''; ?>>
                                 <label class="custom-control-label" for="salestatus">
                                     <span class="switch-icon-left"><i class="feather icon-check"></i></span>
                                     <span class="switch-icon-right"><i class="feather icon-x"></i></span>
                                 </label>
                             </div>
                         </div>
-
+                        <div class="col-xl-2 col-12 mb-1">
+                            <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
+                                <p class="mb-0">Bestselling</p>
+                                <input type="checkbox" class="custom-control-input" id="bestselling"
+                                       name="bestselling" <?= $info['bestselling'] == 'yes' ? 'checked' : ''; ?>>
+                                <label class="custom-control-label" for="bestselling">
+                                    <span class="switch-icon-left"><i class="feather icon-check"></i></span>
+                                    <span class="switch-icon-right"><i class="feather icon-x"></i></span>
+                                </label>
+                            </div>
+                        </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Manufactur</label>

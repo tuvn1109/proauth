@@ -109,7 +109,7 @@ class Orders extends CpanelController
 			$addresTexT = $country . '&nbsp;' . $city . '&nbsp;' . $postalcode . '&nbsp;' . $address;
 		} else {
 			// type_ship_address
-			$idCustom = $user['Id'];
+			$idCustom = $user['id'];
 			if ($type_ship == 'new') {
 				$countryN = $this->request->getPost('country_new');
 				$cityN = $this->request->getPost('city_new');

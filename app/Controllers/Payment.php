@@ -25,8 +25,8 @@ class Payment extends BaseController
 		$modelUser = new UsersModel();
 		$modelAddressUser = new AddressUserModel();
 		if (session('user')) {
-			$infoU = $modelUser->find(session('user')['Id']);
-			$shipping_add = $modelAddressUser->where('cus_id', $infoU['Id'])->findAll();
+			$infoU = $modelUser->find(session('user')['id']);
+			$shipping_add = $modelAddressUser->where('cus_id', $infoU['id'])->findAll();
 			$data['shipping_add'] = $shipping_add;
 			$data['user'] = $infoU;
 
@@ -39,6 +39,7 @@ class Payment extends BaseController
 		$data['title'] = 'Payment';
 		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
 		$data['menuactive'] = 'ttt';
+		$data['cart'] = session('cart');
 		$data['listShippingMethod'] = $modelShipping->findAll();
 		echo view('layout_product', $data);
 

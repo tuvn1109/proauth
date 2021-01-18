@@ -85,12 +85,12 @@
                                                            placeholder="Phone" required>
                                                     <label for="inputName">Phone</label>
                                                 </div>
-                                                <div class="form-label-group">
+                                               <!-- <div class="form-label-group">
                                                     <input type="text" id="username" name="username"
                                                            class="form-control"
                                                            placeholder="Username" required>
                                                     <label for="inputName">Username</label>
-                                                </div>
+                                                </div>-->
                                                 <div class="form-label-group">
                                                     <input type="email" id="email" name="email" class="form-control"
                                                            placeholder="Email" required>
