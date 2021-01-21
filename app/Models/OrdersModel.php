@@ -43,6 +43,17 @@ class OrdersModel extends Model
 		//return $this->getCompiledSelect();
 	}
 
+	function listDataWhere($field, $id)
+	{
+		$this->select('*,users.Id as cus_id,orders.id as order_id,shipping_method.id as shipping_method_id');
+		$this->join('users', 'users.Id = orders.order_cus', 'left');
+		$this->join('shipping_method', 'shipping_method.id = orders.order_shipping', 'left');
+		$this->where($field, $id);
+		//$this->paginate($perpage, 'gr1', $page);
+		return $this->get()->getResultArray();
+		//return $this->getCompiledSelect();
+	}
+
 }
 
 ?>

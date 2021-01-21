@@ -16,6 +16,7 @@
                         <th>Price</th>
                         <th>Price_sale</th>
                         <th>Sale</th>
+                        <th>Bestsell</th>
                         <th>Type</th>
                         <th>Description</th>
                         <th>Created_at</th>

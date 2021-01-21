@@ -1,26 +1,134 @@
-@media (min-width: 1920px) {
+@media (min-width: 576px) {
     .thumb-bestsell {
-        max-width: 100% !important;
-        max-height: 100% !important;
+
+    }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+    .thumb-bestsell {
+        min-height: 290px !important;
     }
 
     .thumb-bestsell-right {
-        max-width: 100% !important;
-        max-height: 100% !important;
+        min-height: 130px !important;;
     }
 
-    .thumb-bestsell:hover #back-hover {
+    .bestsell-mini-right {
+        min-height: 130px !important;;
+    }
 
-        max-height: 100% !important;
+    .thumb-product-home {
+        min-height: 170px !important;;
+    }
+
+    .img-section4 {
+        min-height: 200px !important;;
+    }
+
+    .div-cover-img {
+        min-height: 135px !important;;
+    }
+/*
+    .thumb-bestsell img {
+        min-height: 290px !important;;
+    }
+
+    .thumb-bestsell-right img {
+        min-height: 130px !important;;
+    }
+
+    .thumb-product-home img {
+        min-height: 170px !important;;
+    }*/
+}
+
+@media (min-width: 1920px) {
+    .thumb-bestsell {
+        min-height: 500px !important;;
+    }
+
+    .thumb-bestsell-right {
+        min-height: 240px !important;;
+    }
+
+    .bestsell-mini-right {
+        min-height: 240px !important;;
+    }
+
+    .thumb-product-home {
+        min-height: 305px !important;;
+    }
+
+    .img-section4 {
+        min-height: 330px !important;;
+    }
+
+    .div-cover-img {
+        min-height: 250px !important;;
+    }
+/*
+    .thumb-bestsell img {
+        min-height: 500px !important;;
 
     }
 
+    .thumb-bestsell-right img {
+        min-height: 240px !important;;
+    }
+
+
+    .thumb-product-home img {
+        min-height: 305px !important;;
+    }*/
+}
+
+@media (min-width: 2560px) {
+    .thumb-bestsell {
+        min-height: 655px !important;;
+    }
+
+    .thumb-bestsell-right {
+        min-height: 308px !important;;
+    }
+
+    .bestsell-mini-right {
+        min-height: 323px !important;;
+    }
+
+    .thumb-product-home {
+        min-height: 450px !important;;
+    }
+
+    .img-section4 {
+        min-height: 500px !important;;
+    }
+
+    .div-cover-img {
+        min-height: 340px !important;;
+    }
+/*
+    .thumb-bestsell img {
+        min-height: 655px !important;;
+    }
+
+    .thumb-bestsell-right img {
+        min-height: 308px !important;;
+    }
+
+    .thumb-product-home img {
+        min-height: 450px !important;;
+    }*/
 }
 
 body {
     margin: 0;
     background: #FFFFFF !important;
-    padding: 0 75px 0 75px;
     font-family: Quicksand;
 }
 
@@ -44,6 +152,12 @@ img {
     padding: 0;
     margin: 0;
 
+}
+
+.container-fluid {
+    width: 100% !important;
+    padding-left: 0px;
+    padding-rigt: 0px;
 }
 
 .logo {
@@ -161,6 +275,10 @@ img {
 .name-user span {
     font-weight: 600;
     font-size: 16px;
+}
+
+.name-user a {
+    color: black;
 }
 
 .btn-signinup a {
@@ -285,14 +403,12 @@ img {
     margin-top: 50px;
 }
 
-#bestsell-mini-right {
-    max-height: 240px;
+.bestsell-mini-right {
     text-align: center;
     overflow: hidden;
-    border-radius: 15px;
 }
 
-#bestsell-mini-right img {
+.bestsell-mini-right img {
     background-size: contain;
 }
 
@@ -360,7 +476,7 @@ img {
     letter-spacing: 0px;
     text-align: center;
     color: #0E0D0D;
-    margin-top: 2px;
+    margin-top: -px;
 
 }
 
@@ -482,7 +598,7 @@ img {
 #div-text span {
     font-family: Quicksand;
     color: #ffffff;
-    font-size: 17px;
+    font-size: 1rem;
     font-style: normal;
     line-height: 25px;
     letter-spacing: 0px;
@@ -582,9 +698,17 @@ img {
 }
 
 .div-cover-img {
-    max-height: 250px;
+
     overflow: hidden;
     border-radius: 15px;
+}
+
+.br-15 {
+    border-radius: 15px;
+}
+
+.img-section4 {
+    overflow: hidden;
 }
 
 .feelback {
@@ -603,7 +727,9 @@ img {
 }
 
 .space-navbar {
-    margin-top: 140px;
+    padding-top: 140px;
+    padding-left: 75px;
+    padding-right: 75px;
 }
 
 #photo-fr-cus {
@@ -946,7 +1072,6 @@ img {
 
 .thumb-product-home {
     position: relative;
-    height: 245px;
     overflow: hidden;
     border-radius: 15px;
 }
@@ -960,7 +1085,7 @@ img {
 }
 
 .thumb-bestsell {
-    height: 400px;
+
     overflow: hidden;
     border-radius: 15px;
     position: relative;
@@ -1030,7 +1155,6 @@ img {
 
 
 .thumb-bestsell-right {
-    height: 180px;
     overflow: hidden;
     border-radius: 15px;
     position: relative;
@@ -1090,7 +1214,7 @@ img {
 }
 
 .item-category-thumb {
-    height: 245px;
+    height: 305px;
     overflow: hidden;
     border-radius: 15px;
     position: relative;
@@ -1103,7 +1227,7 @@ img {
 
 /* OWl START*/
 .owl-carousel .owl-item {
-    height: 150.427px !important;
+    height: 210px !important;
     overflow: hidden;
     margin-right: 10px !important;
 }

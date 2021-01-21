@@ -41,9 +41,14 @@ class Home extends BaseController
 		// INFO USER
 		//$infoUser =
 
+		if (get_cookie('favourite')) {
+			$data['arrFavourite'] = explode(',', get_cookie('favourite'));
 
+		} else {
+			$data['arrFavourite'] = [];
+
+		}
 		$data['test'] = json_decode($settings['section_category1_type'], true);
-		$data['arrFavourite'] = explode(',', get_cookie('favourite'));
 		$data['temp'] = 'home/index';
 		$data['title'] = 'Home';
 		$data['cart'] = session('cart');

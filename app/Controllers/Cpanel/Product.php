@@ -54,8 +54,22 @@ class Product extends CpanelController
 		$orderColId = $this->request->getVar('order')[0]['column'];
 		$orderType = $this->request->getVar('order')[0]['dir'];
 		$orderCol = $this->request->getVar('columns')[$orderColId]['data'];
-		$model->orderBy($orderCol, $orderType);
+		if ($page == 1) {
+			$page = 0;
+		} elseif ($page > 1) {
+			$page = ($page - 1) * $perpage;
+		}
+		$teest = $model->getListAll(10, $page);
+		$data['recordsFiltered'] = $model->countAllResults(false);
+		$data['draw'] = $draw;
+		$data['data'] = $teest;
+		$data['recordsTotal'] = count($data['data']);
 
+
+		echo json_encode($data);
+
+		exit;
+		$model->orderBy($orderCol, $orderType);
 		if ($search) {
 			$list = [
 				'Value' => $search,
@@ -67,9 +81,6 @@ class Product extends CpanelController
 			$data['data'] = $model->paginate($perpage, 'gr1', $page);
 		}
 
-		$data['recordsFiltered'] = $count;
-		$data['draw'] = $draw;
-		$data['recordsTotal'] = count($data['data']);
 
 		echo json_encode($data);
 
@@ -254,24 +265,29 @@ class Product extends CpanelController
 
 			$image = \Config\Services::image()
 				->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
-				->fit(200, 245, 'center')
-				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '200245.' . $type);
+				->fit(375, 480, 'center')
+				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '375480.' . $type);
 
 			$image = \Config\Services::image()
 				->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
-				->fit(275, 400, 'center')
-				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '275400.' . $type);
+				->fit(476, 690, 'center')
+				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '476690.' . $type, 100);
 			$image = \Config\Services::image()
 				->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
-				->fit(165, 180, 'center')
-				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '165180.' . $type);
+				->fit(308, 343, 'center')
+				->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '308343.' . $type);
 
 			$dataThumb = [
 				'thumbnail' => 'product/' . $id . '/thumb/' . $thumbnail->getName(),
 			];
 			$modelProduct->update($id, $dataThumb);
 		}
-
+		if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
+			mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
+		}
+		if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
+			mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
+		}
 
 		if ($jsonLayout) {
 			foreach ($jsonLayout as $jsonLayout1):
@@ -280,9 +296,6 @@ class Product extends CpanelController
 				if ($img) {
 					if ($img->isValid() && !$img->hasMoved()) {
 						//$newName = $img->getRandomName();
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/layout')) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id . '/layout', 0777, TRUE);
-						}
 
 						$img->move(WRITEPATH . 'uploads/product/' . $id . '/layout');
 
@@ -310,9 +323,6 @@ class Product extends CpanelController
 				}
 
 
-				if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/image')) {
-					mkdir(WRITEPATH . 'uploads/product/' . $id . '/image', 0777, TRUE);
-				}
 				// image show
 
 				if ($file) {
@@ -343,6 +353,7 @@ class Product extends CpanelController
 		$return = [
 			'code' => 'fetch_user_success',
 			'msg' => 'Success',
+			'id' => $id,
 			'stt' => true,
 			'data' => []
 		];
@@ -548,16 +559,35 @@ class Product extends CpanelController
 
 		if ($thumbnail) {
 
-			delete_files(WRITEPATH . 'uploads/product/' . $id . '/thumb');
-
 
 			if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
-				//$newName = $img->getRandomName();
+				delete_files(WRITEPATH . 'uploads/product/' . $id . '/thumb');
+
+				$newName = $thumbnail->getRandomName();
 				if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/thumb')) {
 					mkdir(WRITEPATH . 'uploads/product/' . $id . '/thumb', 0777, TRUE);
 				}
+				//$name = $thumbnail->getName();
 
-				$thumbnail->move(WRITEPATH . 'uploads/product/' . $id . '/thumb');
+
+				$path = $thumbnail->move(WRITEPATH . 'uploads/product/' . $id . '/thumb', $newName);
+				$explodeName = explode(".", $newName);
+				$nameAuth = $explodeName[0];
+				$type = $explodeName[1];
+
+				$image = \Config\Services::image()
+					->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
+					->fit(200, 245, 'center')
+					->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '200245.' . $type);
+
+				$image = \Config\Services::image()
+					->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
+					->fit(275, 400, 'center')
+					->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '275400.' . $type);
+				$image = \Config\Services::image()
+					->withFile(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $newName)
+					->fit(165, 180, 'center')
+					->save(WRITEPATH . 'uploads/product/' . $id . '/thumb/' . $nameAuth . '165180.' . $type);
 
 				$dataThumb = [
 					'thumbnail' => 'product/' . $id . '/thumb/' . $thumbnail->getName(),
@@ -565,6 +595,21 @@ class Product extends CpanelController
 				$modelProduct->update($id, $dataThumb);
 			}
 
+			/*
+						if ($thumbnail->isValid() && !$thumbnail->hasMoved()) {
+							//$newName = $img->getRandomName();
+							if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/thumb')) {
+								mkdir(WRITEPATH . 'uploads/product/' . $id . '/thumb', 0777, TRUE);
+							}
+
+							$thumbnail->move(WRITEPATH . 'uploads/product/' . $id . '/thumb');
+
+							$dataThumb = [
+								'thumbnail' => 'product/' . $id . '/thumb/' . $thumbnail->getName(),
+							];
+							$modelProduct->update($id, $dataThumb);
+						}
+			*/
 
 		}
 
@@ -622,8 +667,6 @@ class Product extends CpanelController
 					endforeach;
 
 				}
-
-
 
 
 				//check co mau nay chua//
@@ -693,6 +736,28 @@ class Product extends CpanelController
 
 	}
 
+	public function updatebest()
+	{
+		helper(['filesystem', 'comment']);
+		$modelProduct = new ProductModel();
+		$id = $this->request->getPost('id');
+		$best = $this->request->getPost('bestselling');
+
+		$dataInsert = [
+			'bestselling' => $best,
+		];
+		$modelProduct->update($id, $dataInsert);
+		$return = [
+			'code' => 'fetch_user_success',
+			'msg' => 'Update success ',
+			'stt' => true,
+			'data' => []
+		];
+		echo json_encode($return);
+
+	}
+
+
 	public function edit2()
 	{
 		$model = new ProtypeModel();
@@ -708,11 +773,25 @@ class Product extends CpanelController
 
 	public function delete()
 	{
+		helper(['filesystem']);
+
 		$modelProduct = new ProductModel();
-		$modelProperties = new PropertiesModel();
-		$modelProDetail = new PropertiesDetailModel();
+		$modelProductColor = new ProductColorModel();
+		$modelProductSize = new ProductSizeModel();
+		$modelProductTag = new ProductTagModel();
 		$id = $this->request->getPost('id');
+
+
 		$modelProduct->delete($id);
+		$modelProductColor->where('product_id', $id)->delete();
+		$modelProductSize->where('product_id', $id)->delete();
+		$modelProductTag->where('product_id', $id)->delete();
+
+
+		delete_files(WRITEPATH . 'uploads/product/' . $id . '/thumb');
+		delete_files(WRITEPATH . 'uploads/product/' . $id . '/layout');
+		delete_files(WRITEPATH . 'uploads/product/' . $id . '/image');
+
 		//	$modelProDetail->where('properties_id', $id)->delete();
 
 

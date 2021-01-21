@@ -14,9 +14,9 @@ if ($setting['section1'] == 'on') {
 
 					foreach ($besttshirt as $besttshirt1):
 						$getSize = explode('.', $besttshirt1['thumbnail']);
-						$path = $getSize[0] . '275400.' . $getSize[1];
+						$path = $getSize[0] . '476690.' . $getSize[1];
 						?>
-                        <div class="col-sm-6 col-12">
+                        <div class="col-md-6 col-12">
                             <div id="bestsell">
                                 <div class="thumb-bestsell">
                                     <img src="/download/image?name=<?= $path ?>"
@@ -89,7 +89,7 @@ if ($setting['section1'] == 'on') {
 					<?php
 					foreach ($bestmug as $bestmug1):
 						$getSize = explode('.', $bestmug1['thumbnail']);
-						$path = $getSize[0] . '165180.' . $getSize[1];
+						$path = $getSize[0] . '308343.' . $getSize[1];
 						?>
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
@@ -160,8 +160,9 @@ if ($setting['section1'] == 'on') {
 					?>
                     <div class="col-md-12 col-12" id="banner-bestsell">
                         <a href="<?= $banner['image1_link'] ?>">
-                            <div id="bestsell-mini-right" class="animate__animated animate__tada"><img
-                                        src="/download/image?name=<?= $banner['image1'] ?>" class="img-fluid w-100">
+                            <div class="bestsell-mini-right animate__animated animate__tada"><img
+                                        src="/download/image?name=<?= $banner['image1'] ?>"
+                                        class="img-fluid br-15 w-100">
                             </div>
                         </a>
                     </div>
@@ -171,8 +172,8 @@ if ($setting['section1'] == 'on') {
 
             <div class="col-lg-6 col-12" id="banner-bestsell2">
                 <a href="<?= $banner['image2_link'] ?>">
-                    <div id="bestsell-mini-right"><img src="/download/image?name=<?= $banner['image2'] ?>"
-                                                       class="img-fluid w-100"></div>
+                    <div class="bestsell-mini-right"><img src="/download/image?name=<?= $banner['image2'] ?>"
+                                                          class="img-fluid br-15 w-100"></div>
                 </a>
 
                 <div id="text-bottom-banner"><?= $banner['textsell'] ?></div>
@@ -185,7 +186,7 @@ if ($setting['section1'] == 'on') {
 
 					foreach ($bestcase as $bestcase1):
 						$getSize = explode('.', $bestcase1['thumbnail']);
-						$path = $getSize[0] . '165180.' . $getSize[1];
+						$path = $getSize[0] . '308343.' . $getSize[1];
 						?>
                         <div class="col-md-4 col-6">
                             <div id="bestsell">
@@ -324,13 +325,13 @@ if ($setting['section3'] == 'on') {
 			foreach ($sectionCate1 as $val) {
 				$i++;
 				$getSize = explode('.', $val['thumbnail']);
-				$path = $getSize[0] . '200245.' . $getSize[1];
+				$path = $getSize[0] . '375480.' . $getSize[1];
 				?>
 
                 <div class="col-cate-2">
                     <div class="product-home-category">
                         <div class="thumb-product-home">
-                            <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
+                            <img src="/download/image?name=<?= $path ?>" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
                                     <button class="btn-quickview"><span>quick view</span>
@@ -421,10 +422,12 @@ if ($setting['section4'] == 'on') {
 	?>
     <section class="cover-img">
         <div class="row">
-            <div class="col-12 ">
-                <a href="<?= $banner['image3_link'] ?>">
-                    <img src="/download/image?name=<?= $banner['image3'] ?>" class="img-fluid">
-                </a>
+            <div class="col-12">
+                <div class="img-section4 br-15">
+                    <a href="<?= $banner['image3_link'] ?>">
+                        <img src="/download/image?name=<?= $banner['image3'] ?>" class="img-fluid w-100">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -466,12 +469,12 @@ if ($setting['section5'] == 'on') {
 			foreach ($sectionCate2 as $val) {
 				$i++;
 				$getSize = explode('.', $val['thumbnail']);
-				$path = $getSize[0] . '200245.' . $getSize[1];
+				$path = $getSize[0] . '375480.' . $getSize[1];
 				?>
                 <div class="col-cate-2">
                     <div class="product-home-category">
                         <div class="thumb-product-home">
-                            <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
+                            <img src="/download/image?name=<?= $path ?>" class="img-fluid w-100">
                             <div id="back-hover">
                                 <div class="centerContent">
                                     <button class="btn-quickview"><span>quick view</span>

@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\OrdersModel;
 use App\Models\PageModel;
 use App\Models\UsersModel;
 
@@ -18,11 +19,32 @@ class Account extends BaseController
 		$data['temp'] = 'account/index';
 		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
 		$data['menuactive'] = 'none';
-		$data['title'] = 'User';
+		$data['title'] = 'Account information';
 		$data['user'] = $info;
 		echo view('layout_product', $data);
 
 	}
+
+
+	public function order()
+	{
+		$modelUser = new UsersModel();
+		$modelCategory = new CategoryModel();
+		$modelOrder = new OrdersModel();
+		$ssUser = session('user');
+
+
+		$test = $modelOrder->listDataWhere('order_cus', $ssUser['id']);
+		$data['temp'] = 'account/order/index';
+		$data['menu'] = $modelCategory->where('parent', '0')->findAll();;
+		$data['menuactive'] = 'none';
+		$data['list'] = $test;
+		$data['title'] = 'Account information';
+
+		echo view('layout_product', $data);
+
+	}
+
 
 	public function changepass()
 	{

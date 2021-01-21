@@ -43,4 +43,44 @@ if (!function_exists('create_slug')) {
 		return $string;
 	}
 }
+if (!function_exists('favourite')) {
+	function favourite($id)
+	{
+		helper('cookie');
+		$cookie = get_cookie('favourite');
+
+		if (!$cookie) {
+			$arrCC = [];
+		} else {
+			$arrCC = explode(',', $cookie);
+		}
+
+		if (!in_array($id, $arrCC)) {
+			$arrCC[] = $id;
+			$text = implode(',', $arrCC);
+			set_cookie([
+				'name' => 'favourite',
+				'value' => $text,
+				'expire' => 1000000,
+				'httponly' => false
+			]);
+		} else {
+			$pos = array_search($id, $arrCC);
+			unset($arrCC[$pos]);
+			$text = implode(',', $arrCC);
+			set_cookie([
+				'name' => 'favourite',
+				'value' => $text,
+				'expire' => 1000000,
+				'httponly' => false
+			]);
+
+		}
+
+		$count = explode(',', $cookie);
+
+		$string = json_encode(count($arrCC));
+		return $string;
+	}
+}
 ?>

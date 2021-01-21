@@ -135,11 +135,12 @@
 					<?php
 					if (isset($user)) {
 						if ($user) {
-							?>
+							?><a href="/account">
                             <div class="avatar-user" style="padding-right: 17px"><img
                                         src="/logo/man-logo.png">
-                            </div>
-                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?></div>
+                            </div></a>
+                            <a href="/account">
+                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?></div></a>
 							<?php
 						} else {
 							?>

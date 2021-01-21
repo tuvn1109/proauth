@@ -41,6 +41,7 @@ class ProductModel extends Model
 		return $this->get()->getResultArray();
 
 	}
+
 	public function getListByType($type, $limit)
 	{
 		//$query = $this->select('id');
@@ -59,6 +60,40 @@ class ProductModel extends Model
 		$this->join('categories', 'categories.id = products.type', 'left');
 		$this->where('slug', $slug);
 		$this->limit($limit, $page);
+		//$this->paginate($limit, 'gr1', $page);
+		//return $this->getCompiledSelect();
+		return $this->get()->getResultArray();
+	}
+
+	public function getListSearch($slug,$page,$limit)
+	{
+		if ($page == 1) {
+			$page = 0;
+		} elseif ($page > 1) {
+			$page = ($page - 1) * $limit;
+		}
+		//$query = $this->select('id');
+		$this->select('*,categories.id as cate_id,products.id as id');
+		$this->join('categories', 'categories.id = products.type', 'left');
+		$this->like('name', $slug);
+		$this->orLike('tag', $slug);
+		$this->orLike('status', $slug);
+		$this->limit($limit, $page);
+		//$this->paginate($limit, 'gr1', $page);
+		//return $this->getCompiledSelect();
+		return $this->get()->getResultArray();
+	}
+
+
+	public function getListAll($limit, $page)
+	{
+		//$limit = '' ;
+		//$query = $this->select('id');
+		$this->select('*,categories.id as cate_id,products.id as id');
+		$this->join('categories', 'categories.id = products.type', 'left');
+		$this->orderBy('products.id', 'DESC');
+		$this->limit($limit, $page);
+
 		//$this->paginate($limit, 'gr1', $page);
 		//return $this->getCompiledSelect();
 		return $this->get()->getResultArray();

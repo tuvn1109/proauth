@@ -45,11 +45,12 @@
             this.on("thumbnail", function (file) {
                 if (file.height < minHeight || file.width < minWidth) {
                     this.files[0].previewElement.remove();
-                    Swal.fire('Image size must be greater than or equal to 220x240', '', 'error');
+                    Swal.fire('Image size must be greater than or equal to 345x500', '', 'error');
+                } else {
+                    thumbnail.push(file);
                 }
             });
             this.on("addedfile", function (file) {
-                thumbnail.push(file);
 
             });
             this.on("removedfile", function (file) {
@@ -91,6 +92,53 @@
     });
 
 
+    // EDITOR
+    var fullEditor = new Quill('#full-container .editor', {
+        bounds: '#full-container .editor',
+        modules: {
+            'formula': true,
+            'syntax': true,
+            'toolbar': [
+                [{
+                    'font': []
+                }, {
+                    'size': []
+                }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{
+                    'color': []
+                }, {
+                    'background': []
+                }],
+                [{
+                    'script': 'super'
+                }, {
+                    'script': 'sub'
+                }],
+                [{
+                    'header': '1'
+                }, {
+                    'header': '2'
+                }, 'blockquote', 'code-block'],
+                [{
+                    'list': 'ordered'
+                }, {
+                    'list': 'bullet'
+                }, {
+                    'indent': '-1'
+                }, {
+                    'indent': '+1'
+                }],
+                ['direction', {
+                    'align': []
+                }],
+                ['link', 'image', 'video', 'formula'],
+                ['clean']
+            ],
+        },
+        theme: 'snow'
+    });
+
     $('.list-group-item').on('click', function () {
         let dataId = $(this).data("id");
         let dataName = $(this).data("name");
@@ -130,8 +178,32 @@
 
 
     $('#btn-submit').on('click', function () {
+
+        var name = $('#name').val();
+        var price = $('#price').val();
+
+        if (name == '' || name == null) {
+            $('#name').focus();
+            toastr.error("Name can't empty", 'Error');
+            return;
+        }
+
+        if (price == '' || price == null) {
+            $('#price').focus();
+            toastr.error("Price can't empty", 'Error');
+            return;
+        }
+        if (!thumbnail[0]) {
+            toastr.error("Thumbnail can't empty", 'Error');
+            return;
+        }
+
         $(this).prop('disabled', true);
         var formData = new FormData($('#fr_createpro')[0]);
+        var content = fullEditor.container.firstChild.innerHTML;
+        formData.append('description', content);
+
+
         var jsoncolor = [];
         $.each(arrDataF, function (keys, values) {
             formData.append('fileUpload' + values['color'], values['front']);
@@ -164,6 +236,10 @@
 
                 if (data.stt == true) {
                     toastr.success(data.msg, 'Success');
+                    window.setTimeout(function () {
+                        window.location = '/cpanel/product/edit/' + data.id;
+                    }, 1000);
+
                 } else {
                     $(this).prop('disabled', false);
 

@@ -90,8 +90,13 @@
                     </div>
                     <div class="row ">
                         <div class="col-12">
+                            <a href="/account/order" style="color: #000000"><i><u>Order history</u></i></a>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-12">
                             <span data-toggle="modal"
-                                  data-target="#exampleModalCenter"><i><u>Change password</u></i></span>
+                                  data-target="#exampleModalCenter" style="color: #000000;cursor: pointer"><i><u>Change password</u></i></span>
                         </div>
                     </div>
                     <div style="display: none">

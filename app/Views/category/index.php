@@ -65,12 +65,13 @@
 		foreach ($listCate as $val) {
 			$i++;
 			$i2++;
-
+			$getSize = explode('.', $val['thumbnail']);
+			$path = $getSize[0] . '375480.' . $getSize[1];
 			?>
             <div class="col-cate-2">
                 <div class="item-category">
                     <div class="item-category-thumb">
-                        <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
+                        <img src="/download/image?name=<?= $path ?>" class="img-fluid w-100">
                         <div id="back-hover">
                             <div class="centerContent">
                                 <button class="btn-quickview"><span>quick view</span>

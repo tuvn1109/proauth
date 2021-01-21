@@ -34,16 +34,14 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
-    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owlcarousel/assets/owl.theme.default.min.css">
     <link href="/main.css" rel='stylesheet'>
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg fixed-top  navbar  navbar-light">
+<nav class="navbar navbar-expand-sm fixed-top  navbar  navbar-light">
     <div class="container-fluid">
-
-
         <a class="navbar-branch logo" href="/">
             <img src="/logo/life-logo.png">
         </a>
@@ -60,15 +58,18 @@
                             <line x1="21" y1="21" x2="16.65" y2="16.65" style="border: 2px solid #9A9999"></line>
                         </svg>
                     </div>
-                    <input class="mr-sm-2" type="search" id="search-input"
-                           placeholder="Search for items, brands and inspiration..." aria-label="Search">
+                    <form action="/search">
+                        <input class="mr-sm-2" type="search" id="search-input" name="texts"
+                               placeholder="Search for items, brands and inspiration..." aria-label="Search">
+                    </form>
                 </li>
 
             </ul>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline" style="padding-right: 33px">
                     <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
-                            <div class="favourite-num"><span><?= isset($arrFavourite) ? count($arrFavourite) : 0 ?></span></div>
+                            <div class="favourite-num">
+                                <span><?= isset($arrFavourite) ? count($arrFavourite) : 0 ?></span></div>
                         </a>
                     </div>
                 </li>
@@ -83,34 +84,38 @@
                 <li class="nav-item form-inline " style="padding-right: 17px">
 					<?php
 					if (isset($user)) {
-						if ($user) {
-							?>
-                            <div class="avatar-user" style="padding-right: 17px"><img
-                                        src="/logo/man-logo.png">
-                            </div>
-                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?> &nbsp;&nbsp;&nbsp;
-                                <a href="/auth/logout" style="color: #000000"><i class="fad fa-sign-out-alt"></i></a>
-                            </div>
-							<?php
-						} else {
-							?>
-							<?php
-						}
-					} else {
-						?>
-                        <div class="btn-signinup"><a href="/auth">Sign In</a> | <a href="/auth/signup">Sign Up</a></div>
-						<?php
-					}
+					if ($user) {
 					?>
-                </li>
-            </ul>
-
+                    <a href="/account">
+                        <div class="avatar-user" style="padding-right: 17px"><img
+                                    src="/logo/man-logo.png">
+                        </div>
+                    </a> <a href="/account">
+                        <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?>
+                    </a>&nbsp;&nbsp;&nbsp;
+                    <a href="/auth/logout" style="color: #000000"><i class="fad fa-sign-out-alt"></i></a>
         </div>
+		<?php
+		} else {
+			?>
+			<?php
+		}
+		} else {
+			?>
+            <div class="btn-signinup"><a href="/auth">Sign In</a> | <a href="/auth/signup">Sign Up</a></div>
+			<?php
+		}
+		?>
+        </li>
+        </ul>
+
+    </div>
     </div>
 </nav>
-<div class="space-navbar container-fluid">
+
+<div class="space-navbar ">
     <div class="row">
-        <div class="col-2">
+        <div class="col-md-2">
             <section class="main-menu ">
                 <div class="title-menu">Explore</div>
                 <div class="details-menu">
@@ -119,7 +124,7 @@
 						?>
                         <li>
                             <div class="text-menu"><a href="/<?= $val['slug'] ?>"><img
-                                            src="/download/image?name=<?= $val['icon'] ?>"><span><?= $val['value'] ?></span></a>
+                                            src="/download/image?name=<?= $val['icon'] ?>" ><span><?= $val['value'] ?></span></a>
                             </div>
                         </li>
 					<?php
@@ -157,15 +162,14 @@
             </section>
 
         </div>
-        <div class="col-10">
+        <div class="col-md-10">
 			<?= view($temp, $this->data) ?>
-
         </div>
     </div>
 
     <div class="row">
         <div class="col-2"></div>
-        <div class="col-10">
+        <div class="col-sm-10 col-12">
             <section id="signup-save">
                 <div class="row">
                     <div class="col-12  d-flex justify-content-center">
@@ -190,14 +194,14 @@
                     </div>
                     <div class="col-12 d-flex justify-content-center" id="photo">
                         <div class="owl-carousel">
-                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/bestsell1.jpg" class="img-fluid"></div>
-                            <div><img src="http://proauth.com/logo/tshirt1.png" class="img-fluid"></div>
+                            <div><img src="/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="/logo/tshirt1.png" class="img-fluid"></div>
+                            <div><img src="/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="/logo/tshirt1.png" class="img-fluid"></div>
+                            <div><img src="/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="/logo/tshirt1.png" class="img-fluid"></div>
+                            <div><img src="/logo/bestsell1.jpg" class="img-fluid"></div>
+                            <div><img src="/logo/tshirt1.png" class="img-fluid"></div>
                         </div>
                     </div>
                 </div>
@@ -225,7 +229,7 @@
         </div>
     </div>
 </div>
-<script src="owlcarousel/owl.carousel.min.js"></script>
+<script src="/owlcarousel/owl.carousel.min.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <?php
 echo view($temp . '_js', $this->data);

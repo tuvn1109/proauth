@@ -20,25 +20,26 @@
 
 <section id="main-product">
     <div class="row ">
-        <div class="col-md-6 col-12 d-flex  justify-content-center">
-            <div class="content-carousel" id="c1">
-                <div class="owl-carousel">
-					<?php
+        <div class="col-md-7 col-12 d-flex  justify-content-center">
+                <div class="col-12">
+                    <div class="content-carousel" id="c1">
+                        <div class="owl-carousel">
+							<?php
 
 
-					foreach ($image as $image1):
-						?>
-                        <div class="item"><img
-                                    src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $color[0]['idcolor'] ?>/<?= $image1 ?>"
-                                    class="img-fluid"></div>
-					<?php
-					endforeach;
-					?>
+							foreach ($image as $image1):
+								?>
+                                <div class="item"><img
+                                            src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $color[0]['idcolor'] ?>/<?= $image1 ?>"
+                                            class="img-fluid"></div>
+							<?php
+							endforeach;
+							?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
         </div>
-        <div class="col-md-6 col-12 d-flex justify-content-center">
+        <div class="col-md-5 col-12">
             <div class="row">
                 <div class="col-12">
                     <div class="link-pro">Home&nbsp;&nbsp;>&nbsp;&nbsp;<?= $menuactive ?>
@@ -52,12 +53,11 @@
 						<?php
 						if ($info['sale'] == 'yes'){
 							?>
-                            <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
-">$<?= $info['price'] ?> USD</span> <span class="price">$<?= $info['price_sale'] ?> USD</span>
+                            <span class="pricesale">$<?= $info['price'] ?> USD</span> <span class="price">$<?= $info['price_sale'] ?> USD</span>
 							<?php
 						}else{
 						?>
-                        <span class="pricesale">$<?= $info['price'] ?> USD
+                            <span class="pricesale">$<?= $info['price'] ?> USD</span>
                                     <?php
                                     }
                                     ?>
@@ -66,21 +66,22 @@
                 </div>
                 <div class="col-12">
                     <div class="sale-timeout-pro">
+                        <img src="/logo/timesale.png">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="express-pro">
-                        <p>ORDER CUT OFF FOR CHRISTMAS: Nov 25</p>
+                        <p><i class="fal fa-bell"></i> ORDER CUT OFF FOR CHRISTMAS: Nov 25</p>
                     </div>
                 </div>
-                <div class="col-6 d-flex">
+                <div class="col-7 d-flex">
                     <div class=""><img src="/logo/US-logo.png" style="height: 30px;width: 30px"></div>
                     <div class="info-pro">Products are manufactured in<br><span><?= $info['manufactur'] ?></span></div>
 
                 </div>
-                <div class="col-6 d-flex">
+                <div class="col-5 d-flex">
                     <div class=""><img src="/logo/truck-logo.png" style="height: 30px;width: 30px"></div>
-                    <div class="info-pro">Products are manufactured in<br><span><?= $info['delivery'] ?></span></div>
+                    <div class="info-pro">Delivery<br><span><?= $info['delivery'] ?></span></div>
 
                 </div>
                 <div class="col-12">
@@ -118,9 +119,9 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 col-12">
+        <div class="col-md-7 col-12">
         </div>
-        <div class="col-md-6 col-12">
+        <div class="col-md-5 col-12">
             <div class="row">
                 <div class="col-3">Size Guide</div>
                 <div class="col-3">Delivery & Return</div>

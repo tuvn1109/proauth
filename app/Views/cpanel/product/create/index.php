@@ -15,6 +15,7 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                             </fieldset>
                         </div>
+
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Type</label>
@@ -128,6 +129,18 @@
                         </div>
 
                     </div>
+                    <div class="row">
+
+                        <div class="col-12">
+                            <fieldset class="form-group">
+                                <label for="label-textarea">Description</label>
+                                <div id="full-container">
+                                    <div class="editor"></div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
 
 
                 </form>
@@ -152,7 +165,7 @@
 
                 <div id="thumbnail">
                     <div id="previews">
-                        <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload ( min 220x240 )
+                        <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload ( min 345x500 )
                         </div>
                     </div>
                 </div>
@@ -256,7 +269,8 @@
     <div class="col-12">
         <div class="card card-custom">
             <!--begin::Body-->
-            <div class="card-body card-dashboard"><div class="col-12 text-center">
+            <div class="card-body card-dashboard">
+                <div class="col-12 text-center">
                     <button type="button" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"
                             id="btn-submit">Submit
                     </button>

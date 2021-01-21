@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 18/01/2021 18:07:40
+ Date: 21/01/2021 18:03:07
 */
 
 SET NAMES utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `categories`  (
 -- ----------------------------
 INSERT INTO `categories` VALUES (1, 'T-shirt', '0', 'category/1/tshirt-logo.png', NULL, '2020-12-28 20:59:42', NULL, 't-shirt');
 INSERT INTO `categories` VALUES (2, 'Mug', '0', 'category/2/mug-logo.png', NULL, '2020-12-17 21:19:30', NULL, 'mug');
-INSERT INTO `categories` VALUES (3, 'Phone case', '0', 'category/3/phone-logo.png', NULL, '2020-12-28 20:59:32', NULL, 'phone-case');
+INSERT INTO `categories` VALUES (3, 'Phone case', '0', 'category/3/Untitled-1 (2).png', NULL, '2021-01-21 01:38:49', NULL, 'phone-case');
 INSERT INTO `categories` VALUES (4, 'Men', '1', 'category/4/man-logo.png', NULL, '2020-12-17 21:37:08', NULL, 't-shirt');
 INSERT INTO `categories` VALUES (5, 'Women', '1', 'category/5/girl-logo.png', NULL, '2020-12-17 21:09:49', NULL, 't-shirt');
 
@@ -273,73 +273,22 @@ CREATE TABLE `product_color`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `product_id` int NULL DEFAULT NULL,
   `color_id` int NULL DEFAULT NULL,
+  `layout` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `back` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
-  `layout` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `back` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_color
 -- ----------------------------
-INSERT INTO `product_color` VALUES (1, 1, 2, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL, 'product1/mauao.png', NULL);
-INSERT INTO `product_color` VALUES (2, 1, 3, '2020-12-10 01:33:32', '2020-12-10 01:33:32', NULL, 'product1/tshirt.jpg', NULL);
-INSERT INTO `product_color` VALUES (5, 4, 2, '2020-12-10 20:41:57', '2020-12-10 20:41:57', NULL, 'product/4/layout/ layoutiphone.png', NULL);
-INSERT INTO `product_color` VALUES (7, 6, 2, '2020-12-10 20:56:27', '2020-12-10 20:56:27', NULL, 'product/6/layout/ layoutiphone.png', NULL);
-INSERT INTO `product_color` VALUES (8, 16, 2, '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL, 'product/16/layout/tshirt-type.jpg', NULL);
-INSERT INTO `product_color` VALUES (9, 16, 3, '2020-12-10 22:01:23', '2020-12-10 22:01:23', NULL, 'product/16/layout/tshirt5.jpg', NULL);
-INSERT INTO `product_color` VALUES (10, 17, 2, '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL, 'product/17/layout/mauao.png', NULL);
-INSERT INTO `product_color` VALUES (11, 17, 3, '2020-12-11 02:10:26', '2020-12-11 02:10:26', NULL, 'product/17/layout/tshirt.jpg', NULL);
-INSERT INTO `product_color` VALUES (12, 18, 2, '2020-12-13 22:09:02', '2020-12-13 22:09:02', NULL, 'product/18/layout/ heart-logo.png', NULL);
-INSERT INTO `product_color` VALUES (13, 18, 3, '2020-12-13 22:09:02', '2020-12-13 22:09:02', NULL, 'product/18/layout/ help-logo.png', NULL);
-INSERT INTO `product_color` VALUES (14, 19, 2, '2020-12-14 02:05:21', '2020-12-14 02:05:21', NULL, 'product/19/layout/tshirt-type.jpg', NULL);
-INSERT INTO `product_color` VALUES (15, 19, 3, '2020-12-14 02:05:21', '2020-12-14 02:05:21', NULL, 'product/19/layout/tshirt5.jpg', NULL);
-INSERT INTO `product_color` VALUES (20, 27, 2, '2020-12-15 02:03:59', '2020-12-15 02:03:59', NULL, 'product/27/layout/mug-logo.png', 'product/27/layout/mug9.jpg');
-INSERT INTO `product_color` VALUES (22, 29, 2, '2020-12-15 02:18:37', '2020-12-15 02:18:37', NULL, 'product/29/layout/mug6.jpg', 'product/29/layout/mug7.jpg');
-INSERT INTO `product_color` VALUES (24, 2, 2, '2020-12-28 20:09:26', '2020-12-28 20:09:26', NULL, 'product/2/layout/font.png', 'product/2/layout/back.png');
-INSERT INTO `product_color` VALUES (25, 3, 2, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL, 'product/3/layout/font.png', 'product/3/layout/back.png');
-INSERT INTO `product_color` VALUES (26, 4, 2, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL, 'product/4/layout/font.png', 'product/4/layout/back.png');
-INSERT INTO `product_color` VALUES (27, 3, 3, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL, 'product/17/layout/tshirt.jpg', 'product/16/layout/tshirt5.jpg');
-INSERT INTO `product_color` VALUES (28, 5, 2, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL, 'product/5/layout/font.png', 'product/5/layout/back.png');
-INSERT INTO `product_color` VALUES (29, 5, 3, '2020-12-30 22:56:50', '2020-12-30 22:56:50', NULL, 'product/5/layout/tshirt-type.jpg', 'product/5/layout/tshirt-logo.png');
-INSERT INTO `product_color` VALUES (31, 7, 3, '2021-01-05 20:00:23', '2021-01-05 20:00:23', NULL, 'product/7/layout/tshirt5.jpg', 'product/7/layout/tshirt2.jpg');
-INSERT INTO `product_color` VALUES (32, 8, 2, '2021-01-05 20:07:01', '2021-01-05 20:07:01', NULL, 'product/8/layout/tshirt4.png', 'product/8/layout/tshirt5.jpg');
-INSERT INTO `product_color` VALUES (33, 9, 2, '2021-01-05 20:11:31', '2021-01-05 20:11:31', NULL, 'product/9/layout/tshirt5.jpg', 'product/9/layout/tshirt-type.jpg');
-INSERT INTO `product_color` VALUES (34, 10, 2, '2021-01-05 20:15:54', '2021-01-05 20:15:54', NULL, 'product/10/layout/tshirt5.jpg', 'product/10/layout/tshirt-type.jpg');
-INSERT INTO `product_color` VALUES (35, 11, 2, '2021-01-05 20:18:04', '2021-01-05 20:18:04', NULL, 'product/11/layout/tshirt5.jpg', 'product/11/layout/tshirt-type.jpg');
-INSERT INTO `product_color` VALUES (36, 21, 2, '2021-01-05 20:36:06', '2021-01-05 20:36:06', NULL, 'product/21/layout/jk1.jpg', 'product/21/layout/jk2.jpg');
-INSERT INTO `product_color` VALUES (37, 22, 2, '2021-01-05 20:38:03', '2021-01-06 21:52:08', NULL, 'product/22/layout/font_3.png', 'product/22/layout/back_1.png');
-INSERT INTO `product_color` VALUES (44, 22, 3, '2021-01-06 02:30:08', '2021-01-06 02:49:17', NULL, 'product/22/layout/PCW-Wallpapers-PC-2K-TECHRUM (20)_6.png', 'product/22/layout/PCW-Wallpapers-PC-2K-TECHRUM (21)_3.jpg');
-INSERT INTO `product_color` VALUES (45, 23, 2, '2021-01-06 03:50:06', '2021-01-06 03:50:06', NULL, 'product/23/layout/PCW-Wallpapers-PC-2K-TECHRUM (38).jpg', 'product/23/layout/PCW-Wallpapers-PC-2K-TECHRUM (30).png');
-INSERT INTO `product_color` VALUES (46, 23, 3, '2021-01-06 03:50:06', '2021-01-06 03:50:06', NULL, 'product/23/layout/PCW-Wallpapers-PC-2K-TECHRUM (262).jpg', 'product/23/layout/PCW-Wallpapers-PC-2K-TECHRUM (107).jpg');
-INSERT INTO `product_color` VALUES (47, 23, 4, '2021-01-06 04:29:41', '2021-01-06 04:29:41', NULL, 'product/23/layout/PCW-Wallpapers-PC-2K-TECHRUM (52).jpg', 'product/23/layout/PCW-Wallpapers-PC-2K-TECHRUM (64).jpg');
-INSERT INTO `product_color` VALUES (48, 24, 3, '2021-01-10 19:32:50', '2021-01-10 19:32:50', NULL, 'product/24/layout/mat-truoc.png', 'product/24/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (49, 24, 2, '2021-01-10 19:37:02', '2021-01-10 19:37:02', NULL, 'product/24/layout/mat-truoc_1.png', 'product/24/layout/mat-sau_1.png');
-INSERT INTO `product_color` VALUES (50, 25, 2, '2021-01-11 21:35:28', '2021-01-11 21:35:28', NULL, 'product/25/layout/mat-truoc.png', 'product/25/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (51, 26, 2, '2021-01-11 21:46:49', '2021-01-11 21:46:49', NULL, 'product/26/layout/mat-truoc.png', 'product/26/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (52, 27, 2, '2021-01-11 21:48:32', '2021-01-11 21:48:32', NULL, 'product/27/layout/mat-truoc.png', 'product/27/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (53, 28, 2, '2021-01-11 21:49:53', '2021-01-11 21:49:53', NULL, 'product/28/layout/mat-sau.png', 'product/28/layout/mat-sau_1.png');
-INSERT INTO `product_color` VALUES (54, 29, 2, '2021-01-11 21:58:31', '2021-01-11 21:58:31', NULL, 'product/29/layout/mat-truoc.png', 'product/29/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (55, 30, 2, '2021-01-11 22:38:08', '2021-01-11 22:38:08', NULL, 'product/30/layout/mat-truoc.png', 'product/30/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (56, 31, 2, '2021-01-11 22:39:03', '2021-01-11 22:39:03', NULL, 'product/31/layout/mat-truoc.png', 'product/31/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (57, 32, 2, '2021-01-11 22:40:04', '2021-01-11 22:40:04', NULL, 'product/32/layout/mat-truoc.png', 'product/32/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (58, 33, 2, '2021-01-12 20:25:57', '2021-01-12 20:25:57', NULL, 'product/33/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png', 'product/33/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ_1.png');
-INSERT INTO `product_color` VALUES (59, 34, 2, '2021-01-12 21:12:36', '2021-01-12 21:12:36', NULL, 'product/34/layout/mat-truoc.png', 'product/34/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (60, 35, 2, '2021-01-12 22:41:27', '2021-01-12 22:41:27', NULL, 'product/35/layout/muglay.jpg', 'product/35/layout/muglay_1.jpg');
-INSERT INTO `product_color` VALUES (61, 36, 2, '2021-01-12 22:42:18', '2021-01-12 22:42:18', NULL, 'product/36/layout/muglay.jpg', 'product/36/layout/muglay_1.jpg');
-INSERT INTO `product_color` VALUES (62, 37, 2, '2021-01-12 22:51:02', '2021-01-12 22:51:02', NULL, 'product/37/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png', 'product/37/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ_1.png');
-INSERT INTO `product_color` VALUES (63, 38, 2, '2021-01-12 22:52:15', '2021-01-12 22:52:15', NULL, 'product/38/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png', 'product/38/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ_1.png');
-INSERT INTO `product_color` VALUES (64, 54, 2, '2021-01-14 22:35:52', '2021-01-14 22:35:52', NULL, 'product/54/layout/muglay.jpg', 'product/54/layout/200px-Cowheadmono-contrast-coffee-mug.png');
-INSERT INTO `product_color` VALUES (65, 55, 2, '2021-01-14 22:55:23', '2021-01-14 22:55:23', NULL, 'product/55/layout/144362-27-2.jpg', 'product/55/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png');
-INSERT INTO `product_color` VALUES (66, 56, 2, '2021-01-14 22:57:41', '2021-01-14 22:57:41', NULL, 'product/56/layout/images.jpg', 'product/56/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png');
-INSERT INTO `product_color` VALUES (67, 57, 2, '2021-01-15 02:26:13', '2021-01-15 02:26:13', NULL, 'product/57/layout/a.jpg', 'product/57/layout/img_0102_75b3883122fa422484c673f98875f0f7_master.webp');
-INSERT INTO `product_color` VALUES (68, 58, 2, '2021-01-15 02:37:47', '2021-01-15 02:37:47', NULL, 'product/58/layout/668.jpg', 'product/58/layout/eddy-store-197287.jpg');
-INSERT INTO `product_color` VALUES (69, 59, 2, '2021-01-15 02:39:43', '2021-01-15 02:39:43', NULL, 'product/59/layout/668.jpg', 'product/59/layout/eddy-store-197287.jpg');
-INSERT INTO `product_color` VALUES (70, 60, 2, '2021-01-15 02:51:25', '2021-01-15 02:51:25', NULL, 'product/60/layout/mat-truoc.png', 'product/60/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (71, 61, 2, '2021-01-17 21:59:10', '2021-01-17 21:59:10', NULL, 'product/61/layout/mat-truoc.png', 'product/61/layout/mat-sau.png');
-INSERT INTO `product_color` VALUES (72, 65, 2, '2021-01-18 01:03:34', '2021-01-18 01:17:48', NULL, 'product/65/layout/ao-t-shirt-bape-logo-camo.jpg', 'product/65/layout/c5fbac0afddbdafc20502729f0e53f91.jpg_720x720q80.jpg_.webp');
+INSERT INTO `product_color` VALUES (1, 2, 2, 'product/2/layout/font.png', 'product/2/layout/back.png', '2021-01-21 02:29:15', '2021-01-21 02:29:15', NULL);
+INSERT INTO `product_color` VALUES (2, 4, 2, 'product/4/layout/font.png', 'product/4/layout/back.png', '2021-01-21 03:03:08', '2021-01-21 03:03:08', NULL);
+INSERT INTO `product_color` VALUES (3, 4, 3, 'product/4/layout/mat-truoc.png', 'product/4/layout/mat-sau.png', '2021-01-21 03:03:08', '2021-01-21 03:03:08', NULL);
+INSERT INTO `product_color` VALUES (4, 5, 2, 'product/5/layout/font.png', 'product/5/layout/back.png', '2021-01-21 03:22:58', '2021-01-21 03:22:58', NULL);
+INSERT INTO `product_color` VALUES (5, 6, 2, 'product/6/layout/font.png', 'product/6/layout/back.png', '2021-01-21 03:30:53', '2021-01-21 03:30:53', NULL);
 
 -- ----------------------------
 -- Table structure for product_detail
@@ -369,173 +318,25 @@ CREATE TABLE `product_size`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 450 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_size
 -- ----------------------------
-INSERT INTO `product_size` VALUES (4, 2, 1, '2020-12-28 20:11:36', '2020-12-28 20:11:36', NULL);
-INSERT INTO `product_size` VALUES (5, 2, 2, '2020-12-28 20:11:36', '2020-12-28 20:11:36', NULL);
-INSERT INTO `product_size` VALUES (6, 2, 3, '2020-12-28 20:11:36', '2020-12-28 20:11:36', NULL);
-INSERT INTO `product_size` VALUES (7, 3, 2, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL);
-INSERT INTO `product_size` VALUES (8, 3, 3, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL);
-INSERT INTO `product_size` VALUES (9, 4, 1, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
-INSERT INTO `product_size` VALUES (10, 4, 2, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
-INSERT INTO `product_size` VALUES (11, 4, 3, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
-INSERT INTO `product_size` VALUES (14, 6, 2, '2021-01-05 19:46:55', '2021-01-05 19:46:55', NULL);
-INSERT INTO `product_size` VALUES (15, 6, 3, '2021-01-05 19:46:55', '2021-01-05 19:46:55', NULL);
-INSERT INTO `product_size` VALUES (16, 7, 1, '2021-01-05 20:00:23', '2021-01-05 20:00:23', NULL);
-INSERT INTO `product_size` VALUES (17, 7, 2, '2021-01-05 20:00:23', '2021-01-05 20:00:23', NULL);
-INSERT INTO `product_size` VALUES (18, 8, 2, '2021-01-05 20:07:01', '2021-01-05 20:07:01', NULL);
-INSERT INTO `product_size` VALUES (19, 8, 3, '2021-01-05 20:07:01', '2021-01-05 20:07:01', NULL);
-INSERT INTO `product_size` VALUES (20, 9, 2, '2021-01-05 20:11:31', '2021-01-05 20:11:31', NULL);
-INSERT INTO `product_size` VALUES (21, 9, 3, '2021-01-05 20:11:31', '2021-01-05 20:11:31', NULL);
-INSERT INTO `product_size` VALUES (22, 10, 2, '2021-01-05 20:15:54', '2021-01-05 20:15:54', NULL);
-INSERT INTO `product_size` VALUES (23, 10, 3, '2021-01-05 20:15:54', '2021-01-05 20:15:54', NULL);
-INSERT INTO `product_size` VALUES (24, 11, 2, '2021-01-05 20:18:04', '2021-01-05 20:18:04', NULL);
-INSERT INTO `product_size` VALUES (25, 11, 3, '2021-01-05 20:18:04', '2021-01-05 20:18:04', NULL);
-INSERT INTO `product_size` VALUES (26, 12, 1, '2021-01-05 20:26:03', '2021-01-05 20:26:03', NULL);
-INSERT INTO `product_size` VALUES (27, 12, 2, '2021-01-05 20:26:03', '2021-01-05 20:26:03', NULL);
-INSERT INTO `product_size` VALUES (28, 13, 1, '2021-01-05 20:29:02', '2021-01-05 20:29:02', NULL);
-INSERT INTO `product_size` VALUES (29, 13, 2, '2021-01-05 20:29:02', '2021-01-05 20:29:02', NULL);
-INSERT INTO `product_size` VALUES (30, 14, 1, '2021-01-05 20:32:11', '2021-01-05 20:32:11', NULL);
-INSERT INTO `product_size` VALUES (31, 14, 2, '2021-01-05 20:32:11', '2021-01-05 20:32:11', NULL);
-INSERT INTO `product_size` VALUES (32, 15, 1, '2021-01-05 20:33:29', '2021-01-05 20:33:29', NULL);
-INSERT INTO `product_size` VALUES (33, 15, 2, '2021-01-05 20:33:29', '2021-01-05 20:33:29', NULL);
-INSERT INTO `product_size` VALUES (34, 16, 1, '2021-01-05 20:34:02', '2021-01-05 20:34:02', NULL);
-INSERT INTO `product_size` VALUES (35, 16, 2, '2021-01-05 20:34:02', '2021-01-05 20:34:02', NULL);
-INSERT INTO `product_size` VALUES (36, 17, 1, '2021-01-05 20:34:26', '2021-01-05 20:34:26', NULL);
-INSERT INTO `product_size` VALUES (37, 17, 2, '2021-01-05 20:34:26', '2021-01-05 20:34:26', NULL);
-INSERT INTO `product_size` VALUES (38, 18, 1, '2021-01-05 20:34:37', '2021-01-05 20:34:37', NULL);
-INSERT INTO `product_size` VALUES (39, 18, 2, '2021-01-05 20:34:37', '2021-01-05 20:34:37', NULL);
-INSERT INTO `product_size` VALUES (40, 19, 1, '2021-01-05 20:35:16', '2021-01-05 20:35:16', NULL);
-INSERT INTO `product_size` VALUES (41, 19, 2, '2021-01-05 20:35:16', '2021-01-05 20:35:16', NULL);
-INSERT INTO `product_size` VALUES (42, 20, 1, '2021-01-05 20:35:37', '2021-01-05 20:35:37', NULL);
-INSERT INTO `product_size` VALUES (43, 20, 2, '2021-01-05 20:35:37', '2021-01-05 20:35:37', NULL);
-INSERT INTO `product_size` VALUES (44, 21, 1, '2021-01-05 20:36:06', '2021-01-05 20:36:06', NULL);
-INSERT INTO `product_size` VALUES (45, 21, 2, '2021-01-05 20:36:06', '2021-01-05 20:36:06', NULL);
-INSERT INTO `product_size` VALUES (89, 5, 1, '2021-01-06 01:21:21', '2021-01-06 01:21:21', NULL);
-INSERT INTO `product_size` VALUES (90, 5, 2, '2021-01-06 01:21:21', '2021-01-06 01:21:21', NULL);
-INSERT INTO `product_size` VALUES (238, 23, 1, '2021-01-06 04:46:55', '2021-01-06 04:46:55', NULL);
-INSERT INTO `product_size` VALUES (239, 23, 2, '2021-01-06 04:46:55', '2021-01-06 04:46:55', NULL);
-INSERT INTO `product_size` VALUES (240, 23, 3, '2021-01-06 04:46:55', '2021-01-06 04:46:55', NULL);
-INSERT INTO `product_size` VALUES (295, 22, 1, '2021-01-08 02:04:28', '2021-01-08 02:04:28', NULL);
-INSERT INTO `product_size` VALUES (296, 22, 2, '2021-01-08 02:04:28', '2021-01-08 02:04:28', NULL);
-INSERT INTO `product_size` VALUES (297, 22, 3, '2021-01-08 02:04:28', '2021-01-08 02:04:28', NULL);
-INSERT INTO `product_size` VALUES (301, 24, 1, '2021-01-10 19:37:02', '2021-01-10 19:37:02', NULL);
-INSERT INTO `product_size` VALUES (302, 24, 2, '2021-01-10 19:37:02', '2021-01-10 19:37:02', NULL);
-INSERT INTO `product_size` VALUES (303, 24, 3, '2021-01-10 19:37:02', '2021-01-10 19:37:02', NULL);
-INSERT INTO `product_size` VALUES (304, 25, 1, '2021-01-11 21:35:28', '2021-01-11 21:35:28', NULL);
-INSERT INTO `product_size` VALUES (305, 25, 2, '2021-01-11 21:35:28', '2021-01-11 21:35:28', NULL);
-INSERT INTO `product_size` VALUES (306, 25, 3, '2021-01-11 21:35:28', '2021-01-11 21:35:28', NULL);
-INSERT INTO `product_size` VALUES (309, 26, 1, '2021-01-11 21:47:19', '2021-01-11 21:47:19', NULL);
-INSERT INTO `product_size` VALUES (310, 26, 2, '2021-01-11 21:47:19', '2021-01-11 21:47:19', NULL);
-INSERT INTO `product_size` VALUES (311, 27, 1, '2021-01-11 21:48:32', '2021-01-11 21:48:32', NULL);
-INSERT INTO `product_size` VALUES (312, 27, 2, '2021-01-11 21:48:32', '2021-01-11 21:48:32', NULL);
-INSERT INTO `product_size` VALUES (313, 27, 3, '2021-01-11 21:48:32', '2021-01-11 21:48:32', NULL);
-INSERT INTO `product_size` VALUES (314, 28, 1, '2021-01-11 21:49:53', '2021-01-11 21:49:53', NULL);
-INSERT INTO `product_size` VALUES (315, 28, 2, '2021-01-11 21:49:53', '2021-01-11 21:49:53', NULL);
-INSERT INTO `product_size` VALUES (316, 28, 3, '2021-01-11 21:49:53', '2021-01-11 21:49:53', NULL);
-INSERT INTO `product_size` VALUES (317, 29, 1, '2021-01-11 21:58:31', '2021-01-11 21:58:31', NULL);
-INSERT INTO `product_size` VALUES (318, 29, 2, '2021-01-11 21:58:31', '2021-01-11 21:58:31', NULL);
-INSERT INTO `product_size` VALUES (319, 29, 3, '2021-01-11 21:58:31', '2021-01-11 21:58:31', NULL);
-INSERT INTO `product_size` VALUES (320, 30, 1, '2021-01-11 22:38:08', '2021-01-11 22:38:08', NULL);
-INSERT INTO `product_size` VALUES (321, 30, 2, '2021-01-11 22:38:08', '2021-01-11 22:38:08', NULL);
-INSERT INTO `product_size` VALUES (322, 30, 3, '2021-01-11 22:38:08', '2021-01-11 22:38:08', NULL);
-INSERT INTO `product_size` VALUES (323, 31, 1, '2021-01-11 22:39:03', '2021-01-11 22:39:03', NULL);
-INSERT INTO `product_size` VALUES (324, 31, 2, '2021-01-11 22:39:03', '2021-01-11 22:39:03', NULL);
-INSERT INTO `product_size` VALUES (325, 31, 3, '2021-01-11 22:39:03', '2021-01-11 22:39:03', NULL);
-INSERT INTO `product_size` VALUES (326, 32, 1, '2021-01-11 22:40:04', '2021-01-11 22:40:04', NULL);
-INSERT INTO `product_size` VALUES (327, 32, 2, '2021-01-11 22:40:04', '2021-01-11 22:40:04', NULL);
-INSERT INTO `product_size` VALUES (328, 32, 3, '2021-01-11 22:40:04', '2021-01-11 22:40:04', NULL);
-INSERT INTO `product_size` VALUES (329, 33, 1, '2021-01-12 20:25:57', '2021-01-12 20:25:57', NULL);
-INSERT INTO `product_size` VALUES (330, 34, 1, '2021-01-12 21:12:36', '2021-01-12 21:12:36', NULL);
-INSERT INTO `product_size` VALUES (331, 34, 2, '2021-01-12 21:12:36', '2021-01-12 21:12:36', NULL);
-INSERT INTO `product_size` VALUES (332, 35, 1, '2021-01-12 22:41:27', '2021-01-12 22:41:27', NULL);
-INSERT INTO `product_size` VALUES (333, 35, 2, '2021-01-12 22:41:27', '2021-01-12 22:41:27', NULL);
-INSERT INTO `product_size` VALUES (334, 35, 3, '2021-01-12 22:41:27', '2021-01-12 22:41:27', NULL);
-INSERT INTO `product_size` VALUES (335, 36, 1, '2021-01-12 22:42:18', '2021-01-12 22:42:18', NULL);
-INSERT INTO `product_size` VALUES (336, 36, 2, '2021-01-12 22:42:18', '2021-01-12 22:42:18', NULL);
-INSERT INTO `product_size` VALUES (337, 37, 1, '2021-01-12 22:51:02', '2021-01-12 22:51:02', NULL);
-INSERT INTO `product_size` VALUES (338, 38, 2, '2021-01-12 22:52:15', '2021-01-12 22:52:15', NULL);
-INSERT INTO `product_size` VALUES (339, 39, 1, '2021-01-14 21:47:33', '2021-01-14 21:47:33', NULL);
-INSERT INTO `product_size` VALUES (340, 39, 2, '2021-01-14 21:47:33', '2021-01-14 21:47:33', NULL);
-INSERT INTO `product_size` VALUES (341, 39, 3, '2021-01-14 21:47:33', '2021-01-14 21:47:33', NULL);
-INSERT INTO `product_size` VALUES (342, 40, 1, '2021-01-14 21:50:31', '2021-01-14 21:50:31', NULL);
-INSERT INTO `product_size` VALUES (343, 40, 2, '2021-01-14 21:50:31', '2021-01-14 21:50:31', NULL);
-INSERT INTO `product_size` VALUES (344, 40, 3, '2021-01-14 21:50:31', '2021-01-14 21:50:31', NULL);
-INSERT INTO `product_size` VALUES (345, 41, 1, '2021-01-14 21:56:08', '2021-01-14 21:56:08', NULL);
-INSERT INTO `product_size` VALUES (346, 41, 2, '2021-01-14 21:56:08', '2021-01-14 21:56:08', NULL);
-INSERT INTO `product_size` VALUES (347, 41, 3, '2021-01-14 21:56:08', '2021-01-14 21:56:08', NULL);
-INSERT INTO `product_size` VALUES (348, 42, 1, '2021-01-14 21:56:48', '2021-01-14 21:56:48', NULL);
-INSERT INTO `product_size` VALUES (349, 42, 2, '2021-01-14 21:56:48', '2021-01-14 21:56:48', NULL);
-INSERT INTO `product_size` VALUES (350, 42, 3, '2021-01-14 21:56:48', '2021-01-14 21:56:48', NULL);
-INSERT INTO `product_size` VALUES (351, 43, 1, '2021-01-14 21:58:16', '2021-01-14 21:58:16', NULL);
-INSERT INTO `product_size` VALUES (352, 43, 2, '2021-01-14 21:58:16', '2021-01-14 21:58:16', NULL);
-INSERT INTO `product_size` VALUES (353, 43, 3, '2021-01-14 21:58:16', '2021-01-14 21:58:16', NULL);
-INSERT INTO `product_size` VALUES (354, 44, 1, '2021-01-14 22:13:37', '2021-01-14 22:13:37', NULL);
-INSERT INTO `product_size` VALUES (355, 44, 2, '2021-01-14 22:13:37', '2021-01-14 22:13:37', NULL);
-INSERT INTO `product_size` VALUES (356, 44, 3, '2021-01-14 22:13:37', '2021-01-14 22:13:37', NULL);
-INSERT INTO `product_size` VALUES (357, 45, 1, '2021-01-14 22:14:31', '2021-01-14 22:14:31', NULL);
-INSERT INTO `product_size` VALUES (358, 45, 2, '2021-01-14 22:14:31', '2021-01-14 22:14:31', NULL);
-INSERT INTO `product_size` VALUES (359, 45, 3, '2021-01-14 22:14:31', '2021-01-14 22:14:31', NULL);
-INSERT INTO `product_size` VALUES (360, 46, 1, '2021-01-14 22:15:01', '2021-01-14 22:15:01', NULL);
-INSERT INTO `product_size` VALUES (361, 46, 2, '2021-01-14 22:15:01', '2021-01-14 22:15:01', NULL);
-INSERT INTO `product_size` VALUES (362, 46, 3, '2021-01-14 22:15:01', '2021-01-14 22:15:01', NULL);
-INSERT INTO `product_size` VALUES (363, 47, 1, '2021-01-14 22:16:05', '2021-01-14 22:16:05', NULL);
-INSERT INTO `product_size` VALUES (364, 47, 2, '2021-01-14 22:16:05', '2021-01-14 22:16:05', NULL);
-INSERT INTO `product_size` VALUES (365, 47, 3, '2021-01-14 22:16:05', '2021-01-14 22:16:05', NULL);
-INSERT INTO `product_size` VALUES (366, 48, 1, '2021-01-14 22:16:41', '2021-01-14 22:16:41', NULL);
-INSERT INTO `product_size` VALUES (367, 48, 2, '2021-01-14 22:16:41', '2021-01-14 22:16:41', NULL);
-INSERT INTO `product_size` VALUES (368, 48, 3, '2021-01-14 22:16:41', '2021-01-14 22:16:41', NULL);
-INSERT INTO `product_size` VALUES (369, 49, 1, '2021-01-14 22:19:16', '2021-01-14 22:19:16', NULL);
-INSERT INTO `product_size` VALUES (370, 49, 2, '2021-01-14 22:19:16', '2021-01-14 22:19:16', NULL);
-INSERT INTO `product_size` VALUES (371, 49, 3, '2021-01-14 22:19:16', '2021-01-14 22:19:16', NULL);
-INSERT INTO `product_size` VALUES (372, 50, 1, '2021-01-14 22:20:04', '2021-01-14 22:20:04', NULL);
-INSERT INTO `product_size` VALUES (373, 50, 2, '2021-01-14 22:20:04', '2021-01-14 22:20:04', NULL);
-INSERT INTO `product_size` VALUES (374, 50, 3, '2021-01-14 22:20:04', '2021-01-14 22:20:04', NULL);
-INSERT INTO `product_size` VALUES (375, 51, 1, '2021-01-14 22:21:55', '2021-01-14 22:21:55', NULL);
-INSERT INTO `product_size` VALUES (376, 51, 2, '2021-01-14 22:21:55', '2021-01-14 22:21:55', NULL);
-INSERT INTO `product_size` VALUES (377, 51, 3, '2021-01-14 22:21:55', '2021-01-14 22:21:55', NULL);
-INSERT INTO `product_size` VALUES (378, 52, 1, '2021-01-14 22:23:11', '2021-01-14 22:23:11', NULL);
-INSERT INTO `product_size` VALUES (379, 52, 2, '2021-01-14 22:23:11', '2021-01-14 22:23:11', NULL);
-INSERT INTO `product_size` VALUES (380, 52, 3, '2021-01-14 22:23:11', '2021-01-14 22:23:11', NULL);
-INSERT INTO `product_size` VALUES (381, 53, 1, '2021-01-14 22:23:31', '2021-01-14 22:23:31', NULL);
-INSERT INTO `product_size` VALUES (382, 53, 2, '2021-01-14 22:23:31', '2021-01-14 22:23:31', NULL);
-INSERT INTO `product_size` VALUES (383, 53, 3, '2021-01-14 22:23:31', '2021-01-14 22:23:31', NULL);
-INSERT INTO `product_size` VALUES (384, 54, 2, '2021-01-14 22:35:52', '2021-01-14 22:35:52', NULL);
-INSERT INTO `product_size` VALUES (385, 55, 1, '2021-01-14 22:55:23', '2021-01-14 22:55:23', NULL);
-INSERT INTO `product_size` VALUES (386, 55, 2, '2021-01-14 22:55:23', '2021-01-14 22:55:23', NULL);
-INSERT INTO `product_size` VALUES (387, 55, 3, '2021-01-14 22:55:23', '2021-01-14 22:55:23', NULL);
-INSERT INTO `product_size` VALUES (388, 56, 1, '2021-01-14 22:57:40', '2021-01-14 22:57:40', NULL);
-INSERT INTO `product_size` VALUES (389, 56, 2, '2021-01-14 22:57:40', '2021-01-14 22:57:40', NULL);
-INSERT INTO `product_size` VALUES (390, 57, 1, '2021-01-15 02:26:12', '2021-01-15 02:26:12', NULL);
-INSERT INTO `product_size` VALUES (391, 57, 2, '2021-01-15 02:26:12', '2021-01-15 02:26:12', NULL);
-INSERT INTO `product_size` VALUES (392, 57, 3, '2021-01-15 02:26:12', '2021-01-15 02:26:12', NULL);
-INSERT INTO `product_size` VALUES (393, 58, 1, '2021-01-15 02:37:45', '2021-01-15 02:37:45', NULL);
-INSERT INTO `product_size` VALUES (394, 58, 2, '2021-01-15 02:37:45', '2021-01-15 02:37:45', NULL);
-INSERT INTO `product_size` VALUES (395, 58, 3, '2021-01-15 02:37:45', '2021-01-15 02:37:45', NULL);
-INSERT INTO `product_size` VALUES (396, 59, 1, '2021-01-15 02:39:41', '2021-01-15 02:39:41', NULL);
-INSERT INTO `product_size` VALUES (397, 59, 2, '2021-01-15 02:39:41', '2021-01-15 02:39:41', NULL);
-INSERT INTO `product_size` VALUES (398, 59, 3, '2021-01-15 02:39:41', '2021-01-15 02:39:41', NULL);
-INSERT INTO `product_size` VALUES (399, 60, 1, '2021-01-15 02:51:25', '2021-01-15 02:51:25', NULL);
-INSERT INTO `product_size` VALUES (400, 60, 2, '2021-01-15 02:51:25', '2021-01-15 02:51:25', NULL);
-INSERT INTO `product_size` VALUES (401, 60, 3, '2021-01-15 02:51:25', '2021-01-15 02:51:25', NULL);
-INSERT INTO `product_size` VALUES (405, 61, 1, '2021-01-18 00:36:28', '2021-01-18 00:36:28', NULL);
-INSERT INTO `product_size` VALUES (406, 61, 2, '2021-01-18 00:36:28', '2021-01-18 00:36:28', NULL);
-INSERT INTO `product_size` VALUES (407, 61, 3, '2021-01-18 00:36:28', '2021-01-18 00:36:28', NULL);
-INSERT INTO `product_size` VALUES (408, 62, 1, '2021-01-18 00:56:32', '2021-01-18 00:56:32', NULL);
-INSERT INTO `product_size` VALUES (409, 62, 2, '2021-01-18 00:56:32', '2021-01-18 00:56:32', NULL);
-INSERT INTO `product_size` VALUES (410, 62, 3, '2021-01-18 00:56:32', '2021-01-18 00:56:32', NULL);
-INSERT INTO `product_size` VALUES (411, 63, 1, '2021-01-18 00:59:31', '2021-01-18 00:59:31', NULL);
-INSERT INTO `product_size` VALUES (412, 63, 2, '2021-01-18 00:59:31', '2021-01-18 00:59:31', NULL);
-INSERT INTO `product_size` VALUES (413, 63, 3, '2021-01-18 00:59:31', '2021-01-18 00:59:31', NULL);
-INSERT INTO `product_size` VALUES (414, 64, 1, '2021-01-18 01:00:01', '2021-01-18 01:00:01', NULL);
-INSERT INTO `product_size` VALUES (415, 64, 2, '2021-01-18 01:00:01', '2021-01-18 01:00:01', NULL);
-INSERT INTO `product_size` VALUES (416, 64, 3, '2021-01-18 01:00:01', '2021-01-18 01:00:01', NULL);
-INSERT INTO `product_size` VALUES (447, 65, 1, '2021-01-18 02:09:38', '2021-01-18 02:09:38', NULL);
-INSERT INTO `product_size` VALUES (448, 65, 2, '2021-01-18 02:09:38', '2021-01-18 02:09:38', NULL);
-INSERT INTO `product_size` VALUES (449, 65, 3, '2021-01-18 02:09:38', '2021-01-18 02:09:38', NULL);
+INSERT INTO `product_size` VALUES (1, 1, 1, '2021-01-21 02:25:18', '2021-01-21 02:25:18', NULL);
+INSERT INTO `product_size` VALUES (2, 1, 2, '2021-01-21 02:25:18', '2021-01-21 02:25:18', NULL);
+INSERT INTO `product_size` VALUES (3, 1, 3, '2021-01-21 02:25:18', '2021-01-21 02:25:18', NULL);
+INSERT INTO `product_size` VALUES (6, 2, 1, '2021-01-21 02:43:33', '2021-01-21 02:43:33', NULL);
+INSERT INTO `product_size` VALUES (7, 2, 2, '2021-01-21 02:43:33', '2021-01-21 02:43:33', NULL);
+INSERT INTO `product_size` VALUES (10, 3, 2, '2021-01-21 03:01:32', '2021-01-21 03:01:32', NULL);
+INSERT INTO `product_size` VALUES (11, 3, 3, '2021-01-21 03:01:32', '2021-01-21 03:01:32', NULL);
+INSERT INTO `product_size` VALUES (12, 4, 1, '2021-01-21 03:03:08', '2021-01-21 03:03:08', NULL);
+INSERT INTO `product_size` VALUES (13, 4, 2, '2021-01-21 03:03:08', '2021-01-21 03:03:08', NULL);
+INSERT INTO `product_size` VALUES (21, 6, 2, '2021-01-21 03:31:54', '2021-01-21 03:31:54', NULL);
+INSERT INTO `product_size` VALUES (22, 6, 3, '2021-01-21 03:31:54', '2021-01-21 03:31:54', NULL);
+INSERT INTO `product_size` VALUES (23, 5, 1, '2021-01-21 04:45:47', '2021-01-21 04:45:47', NULL);
+INSERT INTO `product_size` VALUES (24, 5, 2, '2021-01-21 04:45:47', '2021-01-21 04:45:47', NULL);
+INSERT INTO `product_size` VALUES (25, 5, 3, '2021-01-21 04:45:47', '2021-01-21 04:45:47', NULL);
 
 -- ----------------------------
 -- Table structure for product_tag
@@ -549,147 +350,18 @@ CREATE TABLE `product_tag`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 455 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_tag
 -- ----------------------------
-INSERT INTO `product_tag` VALUES (1, 1, NULL, '2020-12-14 01:53:07', '2020-12-14 01:53:07', NULL);
-INSERT INTO `product_tag` VALUES (2, 1, NULL, '2020-12-14 01:55:39', '2020-12-14 01:55:39', NULL);
-INSERT INTO `product_tag` VALUES (3, 2, NULL, '2020-12-14 01:55:39', '2020-12-14 01:55:39', NULL);
-INSERT INTO `product_tag` VALUES (4, 3, NULL, '2020-12-14 01:55:39', '2020-12-14 01:55:39', NULL);
-INSERT INTO `product_tag` VALUES (5, 4, NULL, '2020-12-14 01:55:39', '2020-12-14 01:55:39', NULL);
-INSERT INTO `product_tag` VALUES (6, 2, NULL, '2020-12-14 01:55:54', '2020-12-14 01:55:54', NULL);
-INSERT INTO `product_tag` VALUES (7, 3, NULL, '2020-12-14 01:55:54', '2020-12-14 01:55:54', NULL);
-INSERT INTO `product_tag` VALUES (8, 4, NULL, '2020-12-14 01:55:54', '2020-12-14 01:55:54', NULL);
-INSERT INTO `product_tag` VALUES (19, 2, 17, '2020-12-14 01:59:04', '2020-12-14 01:59:04', NULL);
-INSERT INTO `product_tag` VALUES (20, 3, 17, '2020-12-14 01:59:04', '2020-12-14 01:59:04', NULL);
-INSERT INTO `product_tag` VALUES (21, 1, 17, '2020-12-14 01:59:04', '2020-12-14 01:59:04', NULL);
-INSERT INTO `product_tag` VALUES (117, 1, 20, '2020-12-14 20:16:09', '2020-12-14 20:16:09', NULL);
-INSERT INTO `product_tag` VALUES (118, 8, 20, '2020-12-14 20:16:09', '2020-12-14 20:16:09', NULL);
-INSERT INTO `product_tag` VALUES (119, 8, 21, '2020-12-14 20:18:07', '2020-12-14 20:18:07', NULL);
-INSERT INTO `product_tag` VALUES (120, 1, 21, '2020-12-14 20:18:07', '2020-12-14 20:18:07', NULL);
-INSERT INTO `product_tag` VALUES (130, 2, 18, '2020-12-15 01:30:13', '2020-12-15 01:30:13', NULL);
-INSERT INTO `product_tag` VALUES (131, 3, 18, '2020-12-15 01:30:13', '2020-12-15 01:30:13', NULL);
-INSERT INTO `product_tag` VALUES (132, 4, 18, '2020-12-15 01:30:13', '2020-12-15 01:30:13', NULL);
-INSERT INTO `product_tag` VALUES (139, 9, 28, '2020-12-15 02:04:07', '2020-12-15 02:04:07', NULL);
-INSERT INTO `product_tag` VALUES (140, 10, 28, '2020-12-15 02:04:07', '2020-12-15 02:04:07', NULL);
-INSERT INTO `product_tag` VALUES (141, 9, 27, '2020-12-15 02:04:28', '2020-12-15 02:04:28', NULL);
-INSERT INTO `product_tag` VALUES (142, 10, 27, '2020-12-15 02:04:28', '2020-12-15 02:04:28', NULL);
-INSERT INTO `product_tag` VALUES (145, 9, 25, '2020-12-15 02:05:14', '2020-12-15 02:05:14', NULL);
-INSERT INTO `product_tag` VALUES (146, 10, 25, '2020-12-15 02:05:14', '2020-12-15 02:05:14', NULL);
-INSERT INTO `product_tag` VALUES (147, 10, 29, '2020-12-15 02:18:37', '2020-12-15 02:18:37', NULL);
-INSERT INTO `product_tag` VALUES (150, 11, 30, '2020-12-16 03:14:15', '2020-12-16 03:14:15', NULL);
-INSERT INTO `product_tag` VALUES (151, 12, 30, '2020-12-16 03:14:15', '2020-12-16 03:14:15', NULL);
-INSERT INTO `product_tag` VALUES (156, 2, 4, '2020-12-17 22:16:51', '2020-12-17 22:16:51', NULL);
-INSERT INTO `product_tag` VALUES (157, 3, 4, '2020-12-17 22:16:51', '2020-12-17 22:16:51', NULL);
-INSERT INTO `product_tag` VALUES (158, 4, 4, '2020-12-17 22:16:51', '2020-12-17 22:16:51', NULL);
-INSERT INTO `product_tag` VALUES (163, 2, 11, '2020-12-18 02:57:02', '2020-12-18 02:57:02', NULL);
-INSERT INTO `product_tag` VALUES (164, 3, 11, '2020-12-18 02:57:02', '2020-12-18 02:57:02', NULL);
-INSERT INTO `product_tag` VALUES (165, 4, 11, '2020-12-18 02:57:02', '2020-12-18 02:57:02', NULL);
-INSERT INTO `product_tag` VALUES (170, 1, 19, '2020-12-18 03:41:56', '2020-12-18 03:41:56', NULL);
-INSERT INTO `product_tag` VALUES (171, 5, 19, '2020-12-18 03:41:56', '2020-12-18 03:41:56', NULL);
-INSERT INTO `product_tag` VALUES (172, 6, 19, '2020-12-18 03:41:56', '2020-12-18 03:41:56', NULL);
-INSERT INTO `product_tag` VALUES (173, 7, 19, '2020-12-18 03:41:56', '2020-12-18 03:41:56', NULL);
-INSERT INTO `product_tag` VALUES (176, 13, 41, '2020-12-27 22:20:50', '2020-12-27 22:20:50', NULL);
-INSERT INTO `product_tag` VALUES (177, 8, 41, '2020-12-27 22:20:50', '2020-12-27 22:20:50', NULL);
-INSERT INTO `product_tag` VALUES (184, 10, 1, '2020-12-28 20:06:21', '2020-12-28 20:06:21', NULL);
-INSERT INTO `product_tag` VALUES (185, 14, 1, '2020-12-28 20:06:21', '2020-12-28 20:06:21', NULL);
-INSERT INTO `product_tag` VALUES (188, 5, 2, '2020-12-28 20:11:36', '2020-12-28 20:11:36', NULL);
-INSERT INTO `product_tag` VALUES (189, 1, 2, '2020-12-28 20:11:36', '2020-12-28 20:11:36', NULL);
-INSERT INTO `product_tag` VALUES (190, 15, 3, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL);
-INSERT INTO `product_tag` VALUES (191, 5, 3, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL);
-INSERT INTO `product_tag` VALUES (192, 16, 3, '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL);
-INSERT INTO `product_tag` VALUES (193, 5, 4, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
-INSERT INTO `product_tag` VALUES (194, 17, 4, '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL);
-INSERT INTO `product_tag` VALUES (197, 18, 6, '2021-01-05 19:46:55', '2021-01-05 19:46:55', NULL);
-INSERT INTO `product_tag` VALUES (198, 19, 6, '2021-01-05 19:46:55', '2021-01-05 19:46:55', NULL);
-INSERT INTO `product_tag` VALUES (199, 20, 6, '2021-01-05 19:46:55', '2021-01-05 19:46:55', NULL);
-INSERT INTO `product_tag` VALUES (200, 5, 7, '2021-01-05 20:00:23', '2021-01-05 20:00:23', NULL);
-INSERT INTO `product_tag` VALUES (201, 20, 7, '2021-01-05 20:00:23', '2021-01-05 20:00:23', NULL);
-INSERT INTO `product_tag` VALUES (202, 20, 8, '2021-01-05 20:07:01', '2021-01-05 20:07:01', NULL);
-INSERT INTO `product_tag` VALUES (203, 20, 9, '2021-01-05 20:11:31', '2021-01-05 20:11:31', NULL);
-INSERT INTO `product_tag` VALUES (204, 5, 9, '2021-01-05 20:11:31', '2021-01-05 20:11:31', NULL);
-INSERT INTO `product_tag` VALUES (205, 20, 10, '2021-01-05 20:15:54', '2021-01-05 20:15:54', NULL);
-INSERT INTO `product_tag` VALUES (206, 5, 10, '2021-01-05 20:15:54', '2021-01-05 20:15:54', NULL);
-INSERT INTO `product_tag` VALUES (207, 20, 11, '2021-01-05 20:18:04', '2021-01-05 20:18:04', NULL);
-INSERT INTO `product_tag` VALUES (208, 5, 11, '2021-01-05 20:18:04', '2021-01-05 20:18:04', NULL);
-INSERT INTO `product_tag` VALUES (209, 21, 12, '2021-01-05 20:26:03', '2021-01-05 20:26:03', NULL);
-INSERT INTO `product_tag` VALUES (210, 22, 12, '2021-01-05 20:26:03', '2021-01-05 20:26:03', NULL);
-INSERT INTO `product_tag` VALUES (211, 21, 13, '2021-01-05 20:29:02', '2021-01-05 20:29:02', NULL);
-INSERT INTO `product_tag` VALUES (212, 22, 13, '2021-01-05 20:29:02', '2021-01-05 20:29:02', NULL);
-INSERT INTO `product_tag` VALUES (213, 21, 14, '2021-01-05 20:32:11', '2021-01-05 20:32:11', NULL);
-INSERT INTO `product_tag` VALUES (214, 22, 14, '2021-01-05 20:32:11', '2021-01-05 20:32:11', NULL);
-INSERT INTO `product_tag` VALUES (215, 21, 15, '2021-01-05 20:33:29', '2021-01-05 20:33:29', NULL);
-INSERT INTO `product_tag` VALUES (216, 22, 15, '2021-01-05 20:33:29', '2021-01-05 20:33:29', NULL);
-INSERT INTO `product_tag` VALUES (217, 21, 16, '2021-01-05 20:34:02', '2021-01-05 20:34:02', NULL);
-INSERT INTO `product_tag` VALUES (218, 22, 16, '2021-01-05 20:34:02', '2021-01-05 20:34:02', NULL);
-INSERT INTO `product_tag` VALUES (219, 21, 17, '2021-01-05 20:34:26', '2021-01-05 20:34:26', NULL);
-INSERT INTO `product_tag` VALUES (220, 22, 17, '2021-01-05 20:34:26', '2021-01-05 20:34:26', NULL);
-INSERT INTO `product_tag` VALUES (221, 21, 18, '2021-01-05 20:34:37', '2021-01-05 20:34:37', NULL);
-INSERT INTO `product_tag` VALUES (222, 22, 18, '2021-01-05 20:34:37', '2021-01-05 20:34:37', NULL);
-INSERT INTO `product_tag` VALUES (223, 21, 19, '2021-01-05 20:35:16', '2021-01-05 20:35:16', NULL);
-INSERT INTO `product_tag` VALUES (224, 22, 19, '2021-01-05 20:35:16', '2021-01-05 20:35:16', NULL);
-INSERT INTO `product_tag` VALUES (225, 21, 20, '2021-01-05 20:35:37', '2021-01-05 20:35:37', NULL);
-INSERT INTO `product_tag` VALUES (226, 22, 20, '2021-01-05 20:35:37', '2021-01-05 20:35:37', NULL);
-INSERT INTO `product_tag` VALUES (227, 21, 21, '2021-01-05 20:36:06', '2021-01-05 20:36:06', NULL);
-INSERT INTO `product_tag` VALUES (228, 22, 21, '2021-01-05 20:36:06', '2021-01-05 20:36:06', NULL);
-INSERT INTO `product_tag` VALUES (259, 16, 5, '2021-01-06 01:21:21', '2021-01-06 01:21:21', NULL);
-INSERT INTO `product_tag` VALUES (260, 5, 5, '2021-01-06 01:21:21', '2021-01-06 01:21:21', NULL);
-INSERT INTO `product_tag` VALUES (359, 22, 23, '2021-01-06 04:46:55', '2021-01-06 04:46:55', NULL);
-INSERT INTO `product_tag` VALUES (360, 21, 23, '2021-01-06 04:46:55', '2021-01-06 04:46:55', NULL);
-INSERT INTO `product_tag` VALUES (397, 21, 22, '2021-01-08 02:04:28', '2021-01-08 02:04:28', NULL);
-INSERT INTO `product_tag` VALUES (398, 22, 22, '2021-01-08 02:04:28', '2021-01-08 02:04:28', NULL);
-INSERT INTO `product_tag` VALUES (401, 23, 24, '2021-01-10 19:37:02', '2021-01-10 19:37:02', NULL);
-INSERT INTO `product_tag` VALUES (402, 22, 24, '2021-01-10 19:37:02', '2021-01-10 19:37:02', NULL);
-INSERT INTO `product_tag` VALUES (403, 22, 25, '2021-01-11 21:35:28', '2021-01-11 21:35:28', NULL);
-INSERT INTO `product_tag` VALUES (404, 5, 25, '2021-01-11 21:35:28', '2021-01-11 21:35:28', NULL);
-INSERT INTO `product_tag` VALUES (405, 22, 26, '2021-01-11 21:47:19', '2021-01-11 21:47:19', NULL);
-INSERT INTO `product_tag` VALUES (406, 16, 26, '2021-01-11 21:47:19', '2021-01-11 21:47:19', NULL);
-INSERT INTO `product_tag` VALUES (407, 22, 27, '2021-01-11 21:48:32', '2021-01-11 21:48:32', NULL);
-INSERT INTO `product_tag` VALUES (408, 22, 28, '2021-01-11 21:49:53', '2021-01-11 21:49:53', NULL);
-INSERT INTO `product_tag` VALUES (409, 22, 29, '2021-01-11 21:58:31', '2021-01-11 21:58:31', NULL);
-INSERT INTO `product_tag` VALUES (410, 20, 30, '2021-01-11 22:38:08', '2021-01-11 22:38:08', NULL);
-INSERT INTO `product_tag` VALUES (411, 1, 30, '2021-01-11 22:38:08', '2021-01-11 22:38:08', NULL);
-INSERT INTO `product_tag` VALUES (412, 20, 31, '2021-01-11 22:39:03', '2021-01-11 22:39:03', NULL);
-INSERT INTO `product_tag` VALUES (413, 1, 31, '2021-01-11 22:39:03', '2021-01-11 22:39:03', NULL);
-INSERT INTO `product_tag` VALUES (414, 20, 32, '2021-01-11 22:40:04', '2021-01-11 22:40:04', NULL);
-INSERT INTO `product_tag` VALUES (415, 24, 33, '2021-01-12 20:25:57', '2021-01-12 20:25:57', NULL);
-INSERT INTO `product_tag` VALUES (416, 11, 33, '2021-01-12 20:25:57', '2021-01-12 20:25:57', NULL);
-INSERT INTO `product_tag` VALUES (417, 25, 33, '2021-01-12 20:25:57', '2021-01-12 20:25:57', NULL);
-INSERT INTO `product_tag` VALUES (418, 26, 34, '2021-01-12 21:12:36', '2021-01-12 21:12:36', NULL);
-INSERT INTO `product_tag` VALUES (419, 10, 35, '2021-01-12 22:41:27', '2021-01-12 22:41:27', NULL);
-INSERT INTO `product_tag` VALUES (420, 10, 36, '2021-01-12 22:42:18', '2021-01-12 22:42:18', NULL);
-INSERT INTO `product_tag` VALUES (421, 27, 37, '2021-01-12 22:51:02', '2021-01-12 22:51:02', NULL);
-INSERT INTO `product_tag` VALUES (422, 27, 38, '2021-01-12 22:52:15', '2021-01-12 22:52:15', NULL);
-INSERT INTO `product_tag` VALUES (423, 10, 39, '2021-01-14 21:47:33', '2021-01-14 21:47:33', NULL);
-INSERT INTO `product_tag` VALUES (424, 10, 40, '2021-01-14 21:50:31', '2021-01-14 21:50:31', NULL);
-INSERT INTO `product_tag` VALUES (425, 10, 41, '2021-01-14 21:56:08', '2021-01-14 21:56:08', NULL);
-INSERT INTO `product_tag` VALUES (426, 10, 42, '2021-01-14 21:56:48', '2021-01-14 21:56:48', NULL);
-INSERT INTO `product_tag` VALUES (427, 10, 43, '2021-01-14 21:58:16', '2021-01-14 21:58:16', NULL);
-INSERT INTO `product_tag` VALUES (428, 10, 44, '2021-01-14 22:13:37', '2021-01-14 22:13:37', NULL);
-INSERT INTO `product_tag` VALUES (429, 10, 45, '2021-01-14 22:14:31', '2021-01-14 22:14:31', NULL);
-INSERT INTO `product_tag` VALUES (430, 10, 46, '2021-01-14 22:15:01', '2021-01-14 22:15:01', NULL);
-INSERT INTO `product_tag` VALUES (431, 10, 47, '2021-01-14 22:16:05', '2021-01-14 22:16:05', NULL);
-INSERT INTO `product_tag` VALUES (432, 10, 48, '2021-01-14 22:16:41', '2021-01-14 22:16:41', NULL);
-INSERT INTO `product_tag` VALUES (433, 10, 49, '2021-01-14 22:19:16', '2021-01-14 22:19:16', NULL);
-INSERT INTO `product_tag` VALUES (434, 10, 50, '2021-01-14 22:20:04', '2021-01-14 22:20:04', NULL);
-INSERT INTO `product_tag` VALUES (435, 10, 51, '2021-01-14 22:21:55', '2021-01-14 22:21:55', NULL);
-INSERT INTO `product_tag` VALUES (436, 10, 52, '2021-01-14 22:23:11', '2021-01-14 22:23:11', NULL);
-INSERT INTO `product_tag` VALUES (437, 10, 53, '2021-01-14 22:23:32', '2021-01-14 22:23:32', NULL);
-INSERT INTO `product_tag` VALUES (438, 10, 54, '2021-01-14 22:35:52', '2021-01-14 22:35:52', NULL);
-INSERT INTO `product_tag` VALUES (439, 1, 57, '2021-01-15 02:26:12', '2021-01-15 02:26:12', NULL);
-INSERT INTO `product_tag` VALUES (440, 22, 57, '2021-01-15 02:26:12', '2021-01-15 02:26:12', NULL);
-INSERT INTO `product_tag` VALUES (441, 25, 57, '2021-01-15 02:26:12', '2021-01-15 02:26:12', NULL);
-INSERT INTO `product_tag` VALUES (442, 22, 58, '2021-01-15 02:37:45', '2021-01-15 02:37:45', NULL);
-INSERT INTO `product_tag` VALUES (443, 28, 58, '2021-01-15 02:37:45', '2021-01-15 02:37:45', NULL);
-INSERT INTO `product_tag` VALUES (444, 22, 59, '2021-01-15 02:39:41', '2021-01-15 02:39:41', NULL);
-INSERT INTO `product_tag` VALUES (445, 28, 59, '2021-01-15 02:39:41', '2021-01-15 02:39:41', NULL);
-INSERT INTO `product_tag` VALUES (446, 22, 60, '2021-01-15 02:51:25', '2021-01-15 02:51:25', NULL);
-INSERT INTO `product_tag` VALUES (451, 29, 61, '2021-01-18 00:36:28', '2021-01-18 00:36:28', NULL);
-INSERT INTO `product_tag` VALUES (452, 1, 61, '2021-01-18 00:36:28', '2021-01-18 00:36:28', NULL);
-INSERT INTO `product_tag` VALUES (453, 22, 61, '2021-01-18 00:36:28', '2021-01-18 00:36:28', NULL);
-INSERT INTO `product_tag` VALUES (454, 5, 61, '2021-01-18 00:36:28', '2021-01-18 00:36:28', NULL);
+INSERT INTO `product_tag` VALUES (1, 5, 2, '2021-01-21 02:43:33', '2021-01-21 02:43:33', NULL);
+INSERT INTO `product_tag` VALUES (2, 36, 2, '2021-01-21 02:43:33', '2021-01-21 02:43:33', NULL);
+INSERT INTO `product_tag` VALUES (3, 5, 3, '2021-01-21 03:01:32', '2021-01-21 03:01:32', NULL);
+INSERT INTO `product_tag` VALUES (4, 22, 3, '2021-01-21 03:01:32', '2021-01-21 03:01:32', NULL);
+INSERT INTO `product_tag` VALUES (5, 27, 7, '2021-01-21 03:40:53', '2021-01-21 03:40:53', NULL);
+INSERT INTO `product_tag` VALUES (6, 11, 7, '2021-01-21 03:40:53', '2021-01-21 03:40:53', NULL);
+INSERT INTO `product_tag` VALUES (7, 10, 8, '2021-01-21 03:43:29', '2021-01-21 03:43:29', NULL);
 
 -- ----------------------------
 -- Table structure for product_type
@@ -725,59 +397,29 @@ CREATE TABLE `products`  (
   `manufactur` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `delivery` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `thumbnail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `description_detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
-  `deleted_at` datetime(0) NULL DEFAULT NULL,
   `tag` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `bestselling` enum('yes','') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `slug_pro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `status` enum('new','sale') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (1, 'Mug 1', 10.00, 8.00, 'yes', 2, 'United states', '3 - 5 days', 'product/1/thumb/mug1.jpg', '', '', '2020-12-28 19:51:22', '2020-12-28 20:06:21', NULL, 'Mug,gift', 'yes', 'mug-1-1', 'new');
-INSERT INTO `products` VALUES (2, 'T-shirt 01', 25.00, 20.00, NULL, 4, 'US', '3 - 5 days', 'product/2/thumb/tshirt1.png', '', '', '2020-12-28 20:09:26', '2020-12-28 20:11:36', NULL, 't shirt,tshirt', '', 't-shirt-01-2', 'new');
-INSERT INTO `products` VALUES (3, 'T-shirt 02', 25.00, 20.00, NULL, 5, 'US', '3 - 5 days', 'product/3/thumb/bestsell1.jpg', '', '', '2020-12-28 20:13:12', '2020-12-28 20:13:12', NULL, 'men t shirt,t shirt,t-shirt', 'yes', 't-shirt-02', 'new');
-INSERT INTO `products` VALUES (4, 'T-shirt 03', 30.00, 25.00, NULL, 5, 'UK', '7 days', 'product/4/thumb/tshirt3.jpg', '', '', '2020-12-28 20:18:48', '2020-12-28 20:18:48', NULL, 't shirt,shirt uk', 'yes', 't-shirt-03', 'new');
-INSERT INTO `products` VALUES (5, 'T-shirt Origin 0001', 40.00, 33.00, 'yes', 4, 'HN', '3', 'product/5/thumb/bestsell1.jpg', '', '', '2020-12-30 22:56:50', '2021-01-08 04:18:46', NULL, 't-shirt,t shirt', '', 't-shirt-origin-0001-5', 'new');
-INSERT INTO `products` VALUES (7, 't-shit women mos 01', 50.00, 40.00, 'yes', 4, 'US', '5', 'product/7/thumb/tshirt3.jpg', '', '', '2021-01-05 20:00:23', '2021-01-08 04:18:25', NULL, 't shirt,women', NULL, 't-shit-women-mos-01', 'new');
-INSERT INTO `products` VALUES (8, 'T-shit women mos 02', 30.00, 25.00, 'yes', 5, 'US', '', 'product/8/thumb/fback.png', '', '', '2021-01-05 20:07:01', '2021-01-08 04:18:23', NULL, 'women', NULL, 't-shit-women-mos-02', 'new');
-INSERT INTO `products` VALUES (9, 'T-shit women mos 03', 55.00, 40.00, 'yes', 5, 'US', '5', 'product/9/thumb/tshirt5.jpg', '', '', '2021-01-05 20:11:31', '2021-01-08 04:18:13', NULL, 'women,t shirt', NULL, 't-shit-women-mos-03', 'new');
-INSERT INTO `products` VALUES (10, 'T-shit women mos 04', 55.00, 40.00, 'yes', 5, 'US', '5', 'product/10/thumb/tshirt5.jpg', '', '', '2021-01-05 20:15:54', '2021-01-06 20:32:22', NULL, 'women,t shirt', NULL, 't-shit-women-mos-04', 'new');
-INSERT INTO `products` VALUES (12, 'jacket ABS 001', 22.00, 20.00, 'yes', 4, 'USS', '', 'product/12/thumb/jk1.jpg', '', '', '2021-01-05 20:26:03', '2021-01-06 20:30:55', NULL, 'jacket,men', NULL, 'jacket-abs-001', 'new');
-INSERT INTO `products` VALUES (22, 'jacket ABS 001 GOOD', 22.00, 20.00, '', 4, 'USS', '3 - 5 days', 'product/22/thumb/jk1.jpg', 'We design products for fan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus.', '2021-01-05 20:38:03', '2021-01-08 04:18:15', NULL, 'jacket,men', '', 'jacket-abs-001-good-22', 'new');
-INSERT INTO `products` VALUES (23, 'jacket ABS 4h20', 50.00, 30.00, 'yes', 4, 'US', '5', 'product/23/thumb/PCW-Wallpapers-PC-2K-TECHRUM (51).jpg', 'we design for fan', 'love fan ', '2021-01-06 03:50:06', '2021-01-06 20:30:59', NULL, 'men,jacket', '', 'jacket-abs-4h20-23', 'new');
-INSERT INTO `products` VALUES (24, 'Hoodie men 01', 55.00, 45.00, 'yes', 4, 'US', '4', 'product/24/thumb/ao-thu-dong-hoodie-nam-trang.jpg', 'Description', '', '2021-01-10 19:32:50', '2021-01-10 19:37:02', NULL, 'hoodie,men', '', 'hoodie-men-01-24', 'new');
-INSERT INTO `products` VALUES (26, 'T-shirt Men 002', 40.00, 50.00, NULL, 4, '', '', 'product/26/thumb/Cropped60_1000x.jpg', '', '', '2021-01-11 21:46:49', '2021-01-11 21:47:19', NULL, 'Men,T-shirt', NULL, 't-shirt-men-002-26', 'new');
-INSERT INTO `products` VALUES (27, 'T-shirt Men 003', 20.00, 15.00, NULL, 4, 'US', 'Delivery', 'product/27/thumb/104_09275655fb5f4bb9a8da753b2039bf88_master.webp', 'Description', '', '2021-01-11 21:48:32', '2021-01-11 21:48:32', NULL, 'Men', NULL, 't-shirt-men-003', 'new');
-INSERT INTO `products` VALUES (28, 'T - shirt men 004', 30.00, 25.00, NULL, 4, 'US', '', 'product/28/thumb/tee-wash-hologram-6.jpg', 'Description', '', '2021-01-11 21:49:53', '2021-01-11 21:49:53', NULL, 'men', NULL, 't-shirt-men-004', 'new');
-INSERT INTO `products` VALUES (29, '	T - shirt men 005', 40.00, 35.00, NULL, 4, '', '', 'product/29/thumb/Screen-Shot-2020-05-21-at-12.33.39.png', 'Description', 'Detail description', '2021-01-11 21:58:31', '2021-01-11 21:58:31', NULL, 'men', NULL, 't-shirt-men-005', 'new');
-INSERT INTO `products` VALUES (30, 'T-shirt women 0001', 40.00, 30.00, NULL, 5, 'US', 'Delivery', 'product/30/thumb/nhung-mau-ao-jordan-t-shirt-cuc-chat-duoi-2-trieu-dong-3.jpg', 'Description', 'Detail description', '2021-01-11 22:38:08', '2021-01-11 22:38:08', NULL, 'women,tshirt', NULL, 't-shirt-women-0001', 'new');
-INSERT INTO `products` VALUES (31, 'T-shirt women 0002', 30.00, 25.00, NULL, 5, 'VN', '3', 'product/31/thumb/sportswear-t-shirt-pbPJ3L.jpg', 'Description', 'Detail description', '2021-01-11 22:39:03', '2021-01-11 22:39:03', NULL, 'women,tshirt', NULL, 't-shirt-women-0002', 'new');
-INSERT INTO `products` VALUES (32, 'T-shirt women 0003', 30.00, 25.00, NULL, 4, 'US', '3', 'product/32/thumb/nhung-mau-ao-jordan-t-shirt-cuc-chat-duoi-2-trieu-dong.jpg', 'Description', 'Detail description', '2021-01-11 22:40:04', '2021-01-11 22:40:04', NULL, 'women', NULL, 't-shirt-women-0003', 'new');
-INSERT INTO `products` VALUES (33, 'Phone case new 2021', 10.00, 8.00, NULL, 3, 'US', 'Delivery', 'product/33/thumb/0.96805900_153605162240.png', 'Description', 'Detail description', '2021-01-12 20:25:57', '2021-01-12 20:25:57', NULL, 'phone,case,2021', 'yes', 'phone-case-new-2021', 'new');
-INSERT INTO `products` VALUES (34, 'T-shirt women 0004', 25.00, 20.00, NULL, 4, 'Manufactur', 'Delivery', 'product/34/thumb/c5fbac0afddbdafc20502729f0e53f91.jpg_720x720q80.jpg_.webp', 'Description', 'Detail description', '2021-01-12 21:12:36', '2021-01-12 21:12:36', NULL, 'a', NULL, 't-shirt-women-0004', 'new');
-INSERT INTO `products` VALUES (35, 'Mug 2', 20.00, 15.00, NULL, 2, 'US', 'Delivery', 'product/35/thumb/3a877117d3f6474c939a21dae64c8287.jpg', 'Description', 'Detail description', '2021-01-12 22:41:27', '2021-01-12 22:41:27', NULL, 'Mug', 'yes', 'mug-2', 'new');
-INSERT INTO `products` VALUES (36, 'Mug 3', 12.00, 10.00, 'yes', 2, 'US', '3', 'product/36/thumb/6406056695448.jpg', 'Description', 'Detail description', '2021-01-12 22:42:18', '2021-01-14 04:05:42', NULL, 'mug', '', 'mug-3', 'new');
-INSERT INTO `products` VALUES (37, 'Phone case model x2', 12.00, 10.00, NULL, 3, 'US', '3', 'product/37/thumb/screen_shot_2020-09-04_at_4-43-02_pm_47d41076023089a0af39c95bb86b7129.fit-720w.png', 'Description', 'Detail description', '2021-01-12 22:51:02', '2021-01-12 22:51:02', NULL, 'phone case', 'yes', 'phone-case-model-x2', 'new');
-INSERT INTO `products` VALUES (38, 'Phone case model x3', 22.00, 20.00, NULL, 3, 'US', '3', 'product/38/thumb/images.jpg', 'Description', 'Detail description', '2021-01-12 22:52:15', '2021-01-12 22:52:15', NULL, 'phone case', 'yes', 'phone-case-model-x3', 'new');
-INSERT INTO `products` VALUES (53, 'MUG 2021 new collection', 15.00, 10.00, NULL, 2, 'US', 'Delivery', 'product/53/thumb/mug-styles-menu-coffee220240.jpg', '', '', '2021-01-14 22:23:31', '2021-01-14 22:23:31', NULL, 'mug', '', 'mug-2021-new-collection-53', 'new');
-INSERT INTO `products` VALUES (54, 'MUG TESTTTT', 15.00, 10.00, NULL, 2, 'US', 'DElivery', 'product/54/thumb/mug-styles-menu-coffee.jpg', '', '', '2021-01-14 22:35:52', '2021-01-14 22:35:52', NULL, 'MUG', NULL, 'mug-testttt', 'new');
-INSERT INTO `products` VALUES (55, 'TEST MUG', 22.00, 21.00, NULL, 2, '', '', 'product/55/thumb/0.96805900_153605162240.png', '', '', '2021-01-14 22:55:23', '2021-01-14 22:55:23', NULL, '', NULL, 'test-mug', 'new');
-INSERT INTO `products` VALUES (56, 'TEST size anh', 22.00, 21.00, NULL, 2, 'SSS', '', 'product/56/thumb/xxxxx.png', '', '', '2021-01-14 22:57:40', '2021-01-14 22:57:41', NULL, '', 'yes', 'test-size-anh', 'new');
-INSERT INTO `products` VALUES (57, 'T-shirt men 2021 holliday', 25.00, 20.00, 'yes', 4, 'US', '4', 'product/57/thumb/ao-t-shirt-bape-logo-camo.jpg', '', '', '2021-01-15 02:26:12', '2021-01-15 02:26:13', NULL, 'tshirt,men,2021', 'yes', 't-shirt-men-2021-holliday', 'new');
-INSERT INTO `products` VALUES (59, 'TEST THUMB', 25.00, 20.00, NULL, 4, 'US', '3', 'product/59/thumb/1610699981_b248f9862bf00561154d.jpg', '', '', '2021-01-15 02:39:41', '2021-01-15 02:39:43', NULL, 'men,thumb', NULL, 'test-thumb-59', 'new');
-INSERT INTO `products` VALUES (60, 'T-shirt Men 2021 holiday 01', 50.00, 45.00, NULL, 4, 'US', '3', 'product/60/thumb/1610700685_0c2a0b9911fd696e5cfb.webp', '', '', '2021-01-15 02:51:25', '2021-01-15 02:51:25', NULL, 'men', '', 't-shirt-men-2021-holiday-01', 'new');
-INSERT INTO `products` VALUES (61, 'T-shirt 160120 NEM', 4500.00, 4200.00, 'yes', 4, 'US', '6', 'product/61/thumb/1610942350_b75f22bd57504149f553.jpg', 'Description', 'Detail description', '2021-01-17 21:59:10', '2021-01-18 00:36:28', NULL, 'new collec,tshirt,men,t shirt', 'yes', 't-shirt-160120-nem-61', 'new');
-INSERT INTO `products` VALUES (62, 'TEST last 01', 22.00, 21.00, NULL, 4, '', '', 'product/62/thumb/1610952992_9d8b8424007dba238695.jpg', '', '', '2021-01-18 00:56:32', '2021-01-18 00:56:32', NULL, '', NULL, 'test-last-01', 'new');
-INSERT INTO `products` VALUES (63, 'TEST last 01', 22.00, 21.00, NULL, 4, '', '', 'product/63/thumb/1610953171_d1e6c6306faa5ad58587.jpg', '', '', '2021-01-18 00:59:31', '2021-01-18 00:59:31', NULL, '', NULL, 'test-last-01-63', 'new');
-INSERT INTO `products` VALUES (64, 'TEST last 01', 22.00, 21.00, NULL, 4, '', '', 'product/64/thumb/1610953201_0b0f66f91938c8f5fd80.jpg', '', '', '2021-01-18 01:00:01', '2021-01-18 01:00:01', NULL, '', NULL, 'test-last-01-64', 'new');
-INSERT INTO `products` VALUES (65, 'TEST last 01', 22.00, 21.00, 'yes', 4, '', '', 'product/65/thumb/1610953413_5709df24b79e06b11ad0.jpg', '', '', '2021-01-18 01:03:33', '2021-01-18 02:09:38', NULL, '', NULL, 'test-last-01-65', 'new');
+INSERT INTO `products` VALUES (5, 'T shirt 0001', 55.00, 40.00, NULL, 4, '', '', 'product/5/thumb/1611220977_8eeffbfebe8194a508d8.jpg', 'We design products for fan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus.', '', 'yes', 't-shirt-0001-5', 'new', '2021-01-21 03:22:57', '2021-01-21 04:45:47', NULL);
+INSERT INTO `products` VALUES (6, 'T shirt 0002', 35.00, 30.00, NULL, 4, 'United', '3 - 5 day', 'product/6/thumb/1611221452_e6935e9b81f20d756f0a.webp', 'We design products for fan', '', '', 'yes', 't-shirt-0002-6', 'new', '2021-01-21 03:30:52', '2021-01-21 03:31:54', NULL);
+INSERT INTO `products` VALUES (7, 'Phone case 0001', 12.00, 10.00, NULL, 3, '', '', 'product/7/thumb/1611222053_4ea8fc9818359d3248a2.png', 'We design products for fan', '', 'phone case,case', 'yes', 'phone-case-0001', 'new', '2021-01-21 03:40:53', '2021-01-21 03:40:53', NULL);
+INSERT INTO `products` VALUES (8, 'Mug 0001', 25.00, 20.00, NULL, 2, 'US', '3 - 5 day', 'product/8/thumb/1611222209_701ba11e2d35efaa3fbc.jpg', 'We design products for fan', '', 'mug', 'yes', 'mug-0001', 'new', '2021-01-21 03:43:29', '2021-01-21 03:43:29', NULL);
+INSERT INTO `products` VALUES (9, 'Mug 0002', 23.00, 20.00, NULL, 2, '', '', 'product/9/thumb/1611222265_59d4b4335f0de1ffc1e7.jpg', 'We design products for fan', '', '', 'yes', 'mug-0002', 'new', '2021-01-21 03:44:25', '2021-01-21 03:44:25', NULL);
+INSERT INTO `products` VALUES (10, 'Mug 0003', 25.00, 20.00, NULL, 2, '', '', 'product/10/thumb/1611222671_364c2bd1779c6d27c8f8.jpg', 'We design products for fan', '', '', 'yes', 'mug-0003', 'new', '2021-01-21 03:51:11', '2021-01-21 03:51:11', NULL);
+INSERT INTO `products` VALUES (11, 'Phone case 0002', 26.00, 20.00, NULL, 3, '', '', 'product/11/thumb/1611223254_6a9befd8aec075b894f0.png', 'We design products for fan', '', '', 'yes', 'phone-case-0002', 'new', '2021-01-21 04:00:54', '2021-01-21 04:00:54', NULL);
+INSERT INTO `products` VALUES (12, 'Phone case 0003', 26.00, 20.00, NULL, 3, '', '', 'product/12/thumb/1611224274_944641fa1b07e7878a65.png', 'We design products for fan', '', '', 'yes', 'phone-case-0003-12', 'new', '2021-01-21 04:17:54', '2021-01-21 04:18:07', NULL);
 
 -- ----------------------------
 -- Table structure for properties
@@ -968,7 +610,7 @@ CREATE TABLE `tags`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tags
@@ -1002,6 +644,13 @@ INSERT INTO `tags` VALUES (26, 'a', '2021-01-12 21:12:36', '2021-01-12 21:12:36'
 INSERT INTO `tags` VALUES (27, 'phone case', '2021-01-12 22:51:02', '2021-01-12 22:51:02', NULL);
 INSERT INTO `tags` VALUES (28, 'thumb', '2021-01-15 02:37:45', '2021-01-15 02:37:45', NULL);
 INSERT INTO `tags` VALUES (29, 'new collec', '2021-01-17 21:59:10', '2021-01-17 21:59:10', NULL);
+INSERT INTO `tags` VALUES (30, 'funny', '2021-01-19 01:24:40', '2021-01-19 01:24:40', NULL);
+INSERT INTO `tags` VALUES (31, 'dog', '2021-01-19 01:24:40', '2021-01-19 01:24:40', NULL);
+INSERT INTO `tags` VALUES (32, 'men summer', '2021-01-19 03:47:35', '2021-01-19 03:47:35', NULL);
+INSERT INTO `tags` VALUES (33, 'new collect', '2021-01-19 04:22:41', '2021-01-19 04:22:41', NULL);
+INSERT INTO `tags` VALUES (34, 'mug 2021', '2021-01-19 04:24:40', '2021-01-19 04:24:40', NULL);
+INSERT INTO `tags` VALUES (35, 's', '2021-01-20 03:23:09', '2021-01-20 03:23:09', NULL);
+INSERT INTO `tags` VALUES (36, 'tag', '2021-01-21 02:43:33', '2021-01-21 02:43:33', NULL);
 
 -- ----------------------------
 -- Table structure for users

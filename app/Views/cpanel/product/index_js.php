@@ -32,7 +32,16 @@
                 }
 
             },
-            {"data": "type"},
+            {
+                "data": "", render: function (data, type, row) {
+                    if (row.bestselling == 'yes') {
+                        var checked = 'checked';
+                    }
+                    return '<div class="custom-control custom-switch custom-switch-success mr-2 mb-1"><input type="checkbox" class="custom-control-input" id="bestselling' + row.id + '" data-id="' + row.id + '" name="bestselling" onclick="updatebest(' + row.id + ')" ' + checked + '><label class="custom-control-label" for="bestselling' + row.id + '"><span class="switch-icon-left"><i class="feather icon-check"></i></span><span class="switch-icon-right"><i class="feather icon-x"></i></span></label></div>';
+                }
+
+            },
+            {"data": "value"},
             {"data": "description"},
             {"data": "created_at"},
             {
@@ -79,6 +88,11 @@
         }
     });
 
+    $('.bestselling').on('change', function () {
+        console.log('change' + $(this).data('id'));
+    });
+
+
     function test(id) {
         if ($('#salestatus' + id).is(':checked')) {
             var salestatus = 'on';
@@ -89,6 +103,30 @@
             url: "/cpanel/product/updatesale",
             dataType: "json",
             data: {salestatus: salestatus, id: id},
+            type: "POST",
+            success: function (data) {
+                if (data.stt == true) {
+                    toastr.success(data.msg, 'Success');
+                } else {
+                    toastr.error('Error , try agian', 'Error');
+                    // toastr.success(data.msg, 'Error');
+                }
+            },
+            error: function () {
+            }
+        });
+
+    }
+    function updatebest(id) {
+        if ($('#bestselling' + id).is(':checked')) {
+            var bestselling = 'yes';
+        } else {
+            var bestselling = '';
+        }
+        $.ajax({
+            url: "/cpanel/product/updatebest",
+            dataType: "json",
+            data: {bestselling: bestselling, id: id},
             type: "POST",
             success: function (data) {
                 if (data.stt == true) {

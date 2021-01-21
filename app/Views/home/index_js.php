@@ -86,9 +86,10 @@
                     var i = 0;
                     $.each(data, function (keys, values) {
                         i += 1;
+                        var path = values.thumbnail.split(".");
                         var $col = $('<div class="col-cate-2"></div>');
                         var $product = $('<div class="product-home-category"></div>');
-                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + values.thumbnail + ' " class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><button class="btn-addcart"><span>add to cart</span></button></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct"><i class="far fa-share-alt"></i></div></div><div id="name-item-mini-right"><a href="/product/' + values.slug + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
+                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + path[0] + '375480.' + path[1] + '" class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><button class="btn-addcart"><span>add to cart</span></button></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct"><i class="far fa-share-alt"></i></div></div><div id="name-item-mini-right"><a href="/product/' + values.slug + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
                         var $price = $('<div id="price-item-mini-right"></div>');
                         if (values.sale == 'yes') {
                             $price.append('<span class="price-old">$' + values.price + ' USD</span><span class="price">$' + values.price_sale + ' USD</span>');
@@ -116,9 +117,10 @@
                     var i = 0;
                     $.each(data, function (keys, values) {
                         i += 1;
+                        var path = values.thumbnail.split(".");
                         var $col = $('<div class="col-cate-2"></div>');
                         var $product = $('<div class="product-home-category"></div>');
-                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + values.thumbnail + ' " class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><button class="btn-addcart"><span>add to cart</span></button></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct"><i class="far fa-share-alt"></i></div></div><div id="name-item-mini-right"><a href="/product/' + values.slug + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
+                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + path[0] + '375480.' + path[1] + '" class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><button class="btn-addcart"><span>add to cart</span></button></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct"><i class="far fa-share-alt"></i></div></div><div id="name-item-mini-right"><a href="/product/' + values.slug + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
                         var $price = $('<div id="price-item-mini-right"></div>');
                         if (values.sale == 'yes') {
                             $price.append('<span class="price-old">$' + values.price + ' USD</span><span class="price">$' + values.price_sale + ' USD</span>');
