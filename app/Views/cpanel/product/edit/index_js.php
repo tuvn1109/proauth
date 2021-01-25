@@ -9,6 +9,10 @@
     var thumbnail = [];
     var arrImgproDelete = [];
     var arrImgproDeleteAuth = [];
+
+
+    var arrDeleteColor = [];
+
     // /
 
     /// TAGS
@@ -95,6 +99,52 @@
             });
         }
     });
+    var fullEditor = new Quill('#full-container .editor', {
+        bounds: '#full-container .editor',
+        modules: {
+            'formula': true,
+            'syntax': true,
+            'toolbar': [
+                [{
+                    'font': []
+                }, {
+                    'size': []
+                }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{
+                    'color': []
+                }, {
+                    'background': []
+                }],
+                [{
+                    'script': 'super'
+                }, {
+                    'script': 'sub'
+                }],
+                [{
+                    'header': '1'
+                }, {
+                    'header': '2'
+                }, 'blockquote', 'code-block'],
+                [{
+                    'list': 'ordered'
+                }, {
+                    'list': 'bullet'
+                }, {
+                    'indent': '-1'
+                }, {
+                    'indent': '+1'
+                }],
+                ['direction', {
+                    'align': []
+                }],
+                ['link', 'image', 'video', 'formula'],
+                ['clean']
+            ],
+        },
+        theme: 'snow'
+    });
+
 
     function JS_ClearDropZone() {
         //DropZone Object Get
@@ -140,7 +190,27 @@
 
 
     $('#btn-submit').on('click', function () {
+        var name = $('#name').val();
+        var price = $('#price').val();
+
+        if (name == '' || name == null) {
+            $('#name').focus();
+            toastr.error("Name can't empty", 'Error');
+            return;
+        }
+
+        if (price == '' || price == null) {
+            $('#price').focus();
+            toastr.error("Price can't empty", 'Error');
+            return;
+        }
+
+
         var formData = new FormData($('#fr_createpro')[0]);
+        var content = fullEditor.container.firstChild.innerHTML;
+        formData.append('description', content);
+        formData.append('arrdeletecolor', JSON.stringify(arrDeleteColor));
+
         var jsoncolor = [];
 
         $.each(arrDataF, function (keys, values) {
@@ -164,6 +234,8 @@
             formData.append('fileImgPro[]', values);
         });
 
+        formData.append('description', content);
+        formData.append('arrdeletecolor', JSON.stringify(arrDeleteColor));
         formData.append('thumbnail', thumbnail[0]);
         formData.append('jsoncolor', JSON.stringify(jsoncolor));
         formData.append('id', id);
@@ -209,9 +281,9 @@
         arrDataF.push(oj);
         drawTableColor();
         // console.log(arrDataF)
+        myDropzone2.removeAllFiles(true);
         JS_ClearDropZone();
 
-        // myDropzone2.removeAllFiles(true);
     });
 
     drawTableColorJSON()
@@ -252,11 +324,23 @@
 
             $line.append($("<td class='text-center'></td>").html(val['value']));
             $line.append($("<td></td>").html('<i class="far fa-edit btn-edit-color" onclick="clickEdit(this)" data-loca="' + i + '" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
-            $line.append($("<td></td>").html('<i class="far fa-ban btn-delete-color" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
+            $line.append($("<td></td>").html('<i class="far fa-ban btn-delete-color" onclick="delColor(this)" data-loca="' + i + '" data-id="' + val['id'] + '" data-idpro="' + val['product_id'] + '" data-color="' + val['color_id'] + '" ></i>'));
             $table.append($line);
 
         }
         $table.appendTo($("#drawtable"));
+
+    }
+
+    function delColor(data) {
+        var arrJson = JSON.parse($('#jsoncolor').val());
+        var loca = $(data).data('loca');
+        var idcolor = $(data).data('color');
+        arrJson.splice(loca, 1);
+        arrDeleteColor.push(idcolor);
+        console.log(arrDeleteColor);
+        $('#jsoncolor').val(JSON.stringify(arrJson));
+        drawTableColorJSON()
 
     }
 

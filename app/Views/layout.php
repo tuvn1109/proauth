@@ -124,7 +124,7 @@
 						?>
                         <li>
                             <div class="text-menu"><a href="/<?= $val['slug'] ?>"><img
-                                            src="/download/image?name=<?= $val['icon'] ?>" ><span><?= $val['value'] ?></span></a>
+                                            src="/download/image?name=<?= $val['icon'] ?>"><span><?= $val['value'] ?></span></a>
                             </div>
                         </li>
 					<?php
@@ -231,6 +231,7 @@
 </div>
 <script src="/owlcarousel/owl.carousel.min.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="/assets/plugins/share/jquery.c-share.js"></script>
 <?php
 echo view($temp . '_js', $this->data);
 ?>

@@ -119,13 +119,13 @@
                             </fieldset>
                         </div>
                     </div>
-                    <div class="row">
+                    <!--<div class="row">
 
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Description</label>
                                 <input type="text" class="form-control" id="description" name="description"
-                                       placeholder="We design products for fan" value="<?= $info['description'] ?>">
+                                       placeholder="We design products for fan" value="<? /*= $info['description'] */ ?>">
                             </fieldset>
                         </div>
 
@@ -134,13 +134,21 @@
                                 <label for="label-textarea">Detail description</label>
                                 <textarea class="form-control" id="description_detail" name="description_detail"
                                           rows="3"
-                                          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus."><?= $info['description_detail'] ?></textarea>
+                                          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus."><? /*= $info['description_detail'] */ ?></textarea>
                             </fieldset>
                         </div>
 
+                    </div>-->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <fieldset class="form-group">
+                                <label for="label-textarea">Description</label>
+                                <div id="full-container">
+                                    <div class="editor"><?= $info['description'] ?></div>
+                                </div>
+                            </fieldset>
+                        </div>
                     </div>
-
-
                 </form>
             </div>
         </div>

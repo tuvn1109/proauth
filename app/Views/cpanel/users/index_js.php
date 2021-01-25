@@ -12,7 +12,7 @@
             }
         },
         "columns": [
-            {"data": "Id"},
+            {"data": "id"},
             {"data": "fullname"},
             {"data": "phone"},
             {"data": "email"},

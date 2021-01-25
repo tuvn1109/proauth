@@ -21,23 +21,21 @@
 <section id="main-product">
     <div class="row ">
         <div class="col-md-7 col-12 d-flex  justify-content-center">
-                <div class="col-12">
-                    <div class="content-carousel" id="c1">
-                        <div class="owl-carousel">
-							<?php
+            <div class="content-carousel" id="c1">
+                <div class="owl-carousel">
+					<?php
 
 
-							foreach ($image as $image1):
-								?>
-                                <div class="item"><img
-                                            src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $color[0]['idcolor'] ?>/<?= $image1 ?>"
-                                            class="img-fluid"></div>
-							<?php
-							endforeach;
-							?>
-                        </div>
-                    </div>
+					foreach ($image as $image1):
+						?>
+                        <div class="item"><img
+                                    src="/download/image?name=product/<?= $info['id'] ?>/image/<?= $color[0]['idcolor'] ?>/<?= $image1 ?>"
+                                    class="img-fluid"></div>
+					<?php
+					endforeach;
+					?>
                 </div>
+            </div>
         </div>
         <div class="col-md-5 col-12">
             <div class="row">
@@ -51,16 +49,17 @@
                 <div class="col-12">
                     <div class="price-pro">
 						<?php
-						if ($info['sale'] == 'yes'){
+						if ($info['sale'] == 'yes') {
 							?>
-                            <span class="pricesale">$<?= $info['price'] ?> USD</span> <span class="price">$<?= $info['price_sale'] ?> USD</span>
+                            <span class="pricesale">$<?= $info['price'] ?> USD</span> <span
+                                    class="price">$<?= $info['price_sale'] ?> USD</span>
 							<?php
-						}else{
-						?>
+						} else {
+							?>
                             <span class="pricesale">$<?= $info['price'] ?> USD</span>
-                                    <?php
-                                    }
-                                    ?>
+							<?php
+						}
+						?>
                     </div>
 
                 </div>
@@ -84,15 +83,11 @@
                     <div class="info-pro">Delivery<br><span><?= $info['delivery'] ?></span></div>
 
                 </div>
-                <div class="col-12">
-                    <div class="title-discription-pro">
+                <div class="col-12" id="description">
+                    <div class="ql-editor">
                         <p><?= $info['description'] ?></p>
                     </div>
-                    <div class="discription-pro">
-                        <p><?= $info['description_detail'] ?></p>
-                    </div>
                 </div>
-
 
 				<?php
 
@@ -113,16 +108,7 @@
                     </div>
                 </div>
             </div>
-
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-7 col-12">
-        </div>
-        <div class="col-md-5 col-12">
-            <div class="row">
+            <div class="row  mt-1">
                 <div class="col-3">Size Guide</div>
                 <div class="col-3">Delivery & Return</div>
                 <div class="col-3">Ask a Question</div>
@@ -288,8 +274,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
+
 </section>
 <div id="divdesgin">
     <div id="clothing-designer"

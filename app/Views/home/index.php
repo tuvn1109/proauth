@@ -25,7 +25,8 @@ if ($setting['section1'] == 'on') {
                                         <div class="centerContent">
                                             <button class="btn-quickview top-40"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart" data-id="<?= $besttshirt1['id'] ?>"><span>add to cart</span>
+                                            <button class="btn-addcart" data-id="<?= $besttshirt1['id'] ?>"><a
+                                                        href="/<?= $besttshirt1['slug'] ?>/<?= $besttshirt1['slug_pro'] ?>"><span>add to cart</span></a>
                                             </button>
                                         </div>
                                     </div>
@@ -43,7 +44,17 @@ if ($setting['section1'] == 'on') {
 										}
 										?>
                                     </div>
-                                    <div id="shareproduct"><i class="far fa-share-alt"></i></div>
+                                    <div id="shareproduct" class="dropdown btnShare"
+                                         data-id="<?= $besttshirt1['id'] ?>" data-url="/<?= $besttshirt1['slug'] ?>/<?= $besttshirt1['slug_pro'] ?>" ><i class="far fa-share-alt"
+                                                                                id="dropdownMenuButton<?= $besttshirt1['id'] ?>"
+                                                                                data-toggle="dropdown"
+                                                                                aria-haspopup="true"
+                                                                                aria-expanded="false"></i>
+                                        <div class="dropdown-menu" id="shareBlock<?= $besttshirt1['id'] ?>"
+                                             aria-labelledby="dropdownMenuButton<?= $besttshirt1['id'] ?>">
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div id="name-item"><a
                                             href="/<?= $besttshirt1['slug'] ?>/<?= $besttshirt1['slug_pro'] ?>"><?= $besttshirt1['name'] ?></a>
@@ -100,7 +111,8 @@ if ($setting['section1'] == 'on') {
                                         <div class="centerContent">
                                             <button class="btn-quickview top-20"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart top-55" data-id="<?= $bestmug1['id'] ?>"><span>add to cart</span>
+                                            <button class="btn-addcart top-55" data-id="<?= $bestmug1['id'] ?>"><a
+                                                        href="/<?= $bestmug1['slug'] ?>/<?= $bestmug1['slug_pro'] ?>"><span>add to cart</span></a>
                                             </button>
                                         </div>
                                     </div>
@@ -197,7 +209,8 @@ if ($setting['section1'] == 'on') {
                                         <div class="centerContent">
                                             <button class="btn-quickview top-20"><span>quick view</span>
                                             </button>
-                                            <button class="btn-addcart top-55" data-id="<?= $bestcase1['id'] ?>"><span>add to cart</span>
+                                            <button class="btn-addcart top-55" data-id="<?= $bestcase1['id'] ?>"><a
+                                                        href="/<?= $bestcase1['slug'] ?>/<?= $bestcase1['slug_pro'] ?>"><span>add to cart</span></a>
                                             </button>
                                         </div>
                                     </div>

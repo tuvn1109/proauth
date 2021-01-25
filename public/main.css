@@ -34,18 +34,19 @@
     .div-cover-img {
         min-height: 135px !important;;
     }
-/*
-    .thumb-bestsell img {
-        min-height: 290px !important;;
-    }
 
-    .thumb-bestsell-right img {
-        min-height: 130px !important;;
-    }
+    /*
+        .thumb-bestsell img {
+            min-height: 290px !important;;
+        }
 
-    .thumb-product-home img {
-        min-height: 170px !important;;
-    }*/
+        .thumb-bestsell-right img {
+            min-height: 130px !important;;
+        }
+
+        .thumb-product-home img {
+            min-height: 170px !important;;
+        }*/
 }
 
 @media (min-width: 1920px) {
@@ -72,20 +73,21 @@
     .div-cover-img {
         min-height: 250px !important;;
     }
-/*
-    .thumb-bestsell img {
-        min-height: 500px !important;;
 
-    }
+    /*
+        .thumb-bestsell img {
+            min-height: 500px !important;;
 
-    .thumb-bestsell-right img {
-        min-height: 240px !important;;
-    }
+        }
+
+        .thumb-bestsell-right img {
+            min-height: 240px !important;;
+        }
 
 
-    .thumb-product-home img {
-        min-height: 305px !important;;
-    }*/
+        .thumb-product-home img {
+            min-height: 305px !important;;
+        }*/
 }
 
 @media (min-width: 2560px) {
@@ -112,18 +114,19 @@
     .div-cover-img {
         min-height: 340px !important;;
     }
-/*
-    .thumb-bestsell img {
-        min-height: 655px !important;;
-    }
 
-    .thumb-bestsell-right img {
-        min-height: 308px !important;;
-    }
+    /*
+        .thumb-bestsell img {
+            min-height: 655px !important;;
+        }
 
-    .thumb-product-home img {
-        min-height: 450px !important;;
-    }*/
+        .thumb-bestsell-right img {
+            min-height: 308px !important;;
+        }
+
+        .thumb-product-home img {
+            min-height: 450px !important;;
+        }*/
 }
 
 body {
@@ -1116,7 +1119,8 @@ img {
 
 .thumb-bestsell:hover #back-hover {
     position: absolute;
-    background: rgba(247, 247, 247, 0.6);
+    /*background: rgba(247, 247, 247, 0.6);*/
+    background: rgb(247 247 247 / 70%);
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -1200,13 +1204,16 @@ img {
 }
 
 #back-hover button {
-
     background-color: #0C0C0C;
-    color: #FFFFFF;
     border-radius: 40px;
     outline: none;
     border: none;
+    color: #FFFFFF;
 
+}
+
+#back-hover button a {
+    color: #FFFFFF;
 }
 
 .item-category {

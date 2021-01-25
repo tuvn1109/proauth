@@ -197,7 +197,7 @@ class Product extends CpanelController
 			'sale' => $sale,
 			'bestselling' => $bestsell,
 			'description' => $description,
-			'description_detail' => $description_detail,
+			//'description_detail' => $description_detail,
 			'slug_pro' => $slug,
 			'status' => 'new',
 		];
@@ -468,6 +468,18 @@ class Product extends CpanelController
 		$description_detail = $this->request->getPost('description_detail');
 		$size = $this->request->getPost('size');
 		$arrDelete = \json_decode($this->request->getPost('arrDelete'), true);
+		$arrDeleteColor = \json_decode($this->request->getPost('arrdeletecolor'), true);
+
+
+
+		if ($arrDeleteColor) {
+			foreach ($arrDeleteColor as $idcolor):
+
+				$modelProductColor->where('color_id', $idcolor)->where('product_id', $id)->delete();
+				delete_files(WRITEPATH . 'uploads/product/' . $id . '/image/' . $idcolor);
+			endforeach;
+		}
+
 		$jsoncolor = $this->request->getPost('jsoncolor');
 		$jsonLayout = \json_decode($jsoncolor, true);
 
@@ -498,7 +510,7 @@ class Product extends CpanelController
 			'sale' => $sale,
 			'bestselling' => $bestsell,
 			'description' => $description,
-			'description_detail' => $description_detail,
+			//	'description_detail' => $description_detail,
 			'slug_pro' => create_slug($name),
 
 		];

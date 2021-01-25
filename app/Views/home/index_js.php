@@ -1,6 +1,34 @@
 <script>
 
     $(function () {
+        var origin = window.location.origin;
+
+        $('.btnShare').click(function () {
+            var id = $(this).data('id');
+            var link = $(this).data('url');
+            $('#shareBlock' + id).html('');
+            $('#shareBlock' + id).cShare({
+                    spacing: 20,
+                    description: 'jQuery plugin - C Share buttons...',
+                    showButtons: ['fb', 'line', 'twitter'],
+                    data: {
+                        fb: {
+                            fa: 'fab fa-facebook-f',
+                            name: 'Fb',
+                            href: (url) => {
+                                var urla = origin + link;
+                                return `https://www.facebook.com/sharer.php?u=${urla}`
+                            },
+                            show: true
+                        },
+
+                    }
+                },
+            );
+
+        });
+
+
         $(document).on('click', '.favourite', function () {
             var id = $(this).data('id');
             console.log(id);
@@ -63,7 +91,8 @@
             });
 
         });
-    });
+    })
+    ;
 
     $('.element-c').click(function () {
         var idtype = $(this).data('id');

@@ -197,6 +197,10 @@
             toastr.error("Thumbnail can't empty", 'Error');
             return;
         }
+        if (arrDataF.length <= 0) {
+            toastr.error("Please add color !!!", 'Error');
+            return;
+        }
 
         $(this).prop('disabled', true);
         var formData = new FormData($('#fr_createpro')[0]);
@@ -258,6 +262,11 @@
         var back = $("#inputlayoutcolorback")[0].files[0];
         var type = $("#typelayout").val();
         var images = [...arrImgpro];
+        console.log(images);
+        if (images.length <= 0) {
+            toastr.error('Please add photos !!!', 'Error');
+            return
+        }
         var oj = {
             'images': images,
             'front': front,
@@ -270,7 +279,6 @@
         drawTableColor();
         // console.log(arrDataF)
         myDropzone2.removeAllFiles(true);
-        console.log(oj);
     });
 
 
