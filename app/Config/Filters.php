@@ -17,7 +17,7 @@ class Filters extends BaseConfig
 	// Always applied before every request
 	public $globals = [
 		'before' => [
-			'auth' => ['except' => ['auth', 'auth/*', '/*' , 'download/*']]
+			//'auth' => ['except' => ['auth', 'auth/*', '/*', 'download/*']]
 			//'honeypot'
 			// 'csrf',
 		],
@@ -35,5 +35,7 @@ class Filters extends BaseConfig
 	// List filter aliases and any before/after uri patterns
 	// that they should run on, like:
 	//    'isLoggedIn' => ['before' => ['account/*', 'profiles/*']],
-	public $filters = [];
+	public $filters = [
+		'auth' => ['before' => ['account', 'account/*', 'cpanel', 'cpanel/*']]
+	];
 }

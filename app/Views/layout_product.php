@@ -106,23 +106,27 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <input class="mr-sm-2" type="search" id="search-input"
-                           placeholder="Search for items, brands and inspiration..." aria-label="Search">
+                    <form action="/search">
+                        <input class="mr-sm-2" type="search" id="search-input" name="texts"
+                               placeholder="Search for items, brands and inspiration..." aria-label="Search"></form>
                 </li>
 
             </ul>
+			<?php
+			//isset($arrFavourite) ? count($arrFavourite) : 0 ?>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline mr-1">
                     <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
-                            <div class="favourite-num"><span><?= isset($arrFavourite) ? count($arrFavourite) : 0 ?></span></div>
+                            <div class="favourite-num">
+                                <span></span></div>
                         </a></div>
                 </li>
                 <li class="nav-item form-inline mr-1">
-                    <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
+                    <div class="cart-icon"><a href="/cart"><img src="/logo/cart-logo.png"></a></div>
                 </li>
 
                 <li class="nav-item form-inline mr-1">
-                    <div class="cart-text"><a href="/order">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
+                    <div class="cart-text"><a href="/cart">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
 
                 </li>
                 <!--     <li class="nav-item form-inline mr-1">
@@ -136,11 +140,13 @@
 					if (isset($user)) {
 						if ($user) {
 							?><a href="/account">
-                            <div class="avatar-user" style="padding-right: 17px"><img
-                                        src="/logo/man-logo.png">
-                            </div></a>
+                                <div class="avatar-user" style="padding-right: 17px"><img
+                                            src="/logo/man-logo.png">
+                                </div>
+                            </a>
                             <a href="/account">
-                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?></div></a>
+                                <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?></div>
+                            </a>
 							<?php
 						} else {
 							?>
@@ -222,7 +228,19 @@
 echo view($temp . '_js', $this->data);
 ?>
 <script>
+    // count FAVOURIITE
+    $.ajax({
+        url: "/Favourite/favouriteadd",
+        dataType: "html",
+        data: {},
+        type: "POST",
+        success: function (data) {
+            $('.favourite-num span').html(data);
 
+        },
+        error: function () {
+        }
+    });
 </script>
 </body>
 </html>

@@ -1,109 +1,157 @@
+<style>
+    #divlistcart .bootstrap-touchspin.input-group {
+        width: 100% !important;
+    }
+
+    #divlistcart input {
+        background-color: #ffffff00 !important;
+    }
+
+    #divlistcart .bootstrap-touchspin {
+        margin-left: 25px !important;
+    }
+
+    #divlistcart .bootstrap-touchspin.input-group button {
+        background-color: #ffffff00 !important;
+        color: black !important;
+        font-size: 15px;
+        box-shadow: 0 1px 1px -1px #ffffff !important;
+    }
+
+    #divlistcart .bootstrap-touchspin {
+        border: 1px solid #2ECC71 !important;
+        font-size: 15px !important;
+        border-radius: 15px !important;
+        outline: none !important
+    }
+
+    #divlistcart .bootstrap-touchspin input {
+        font-size: 15px !important;
+    }
+
+    #divlistcart .bootstrap-touchspin.input-group .form-control {
+
+    {
+        background-color: #FFFFFF !important
+    ;
+    }
+
+
+    #divlistcart .btn {
+        /*padding: 5px !important;*/
+    }
+
+</style>
+
 <section id="order">
     <div class="row">
         <div class="col-md-8 col-12">
-			<?php
-			$total = 0;
-			$check = true;
-			echo "<pre>";
-			print_r($listCart);
-			echo "</pre>";
+            <div id="divlistcart">
+				<?php
+				$total = 0;
+				$check = true;
 
-			if ($listCart) {
-				foreach ($listCart as $val):
-					if ($val['sale'] == 'yes') {
-						$total += $val['price_sale'];
-					} else {
-						$total += $val['price'];
-					}
-					?>
-                    <div class="col-md-12 order-list">
+				if ($listCart) {
+					$loca = 0;
+					foreach ($listCart as $val):
+						if ($val['sale'] == 'yes') {
+							$total += $val['price_sale'] * $val['quantity'];
+						} else {
+							$total += $val['price'] * $val['quantity'];
+						}
+						?>
+                        <div class="col-md-12 order-list">
 
-                        <div class="order-div">
-                            <div class="row">
-                                <div class="col-12 text-right">
-                                    <div class="div-un-cart"><i class="far fa-times uncart" data-id="<?= $val['id'] ?>"></i></div>
+                            <div class="order-div">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <div class="div-un-cart"><i class="far fa-times uncart"
+                                                                    data-id="<?= $loca ?>"></i></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="order-img d-flex">
-                                <div class="order-img-front">
-                                    <img src="<?= $val['front'] ?>" class="w-100">
-                                    <div class="icon-front centerContent">Front</div>
+                                <div class="order-img d-flex">
+                                    <div class="order-img-front">
+                                        <img src="<?= $val['front'] ?>" class="w-100">
+                                        <div class="icon-front centerContent">Front</div>
+                                    </div>
+                                    <div class="order-img-back ">
+                                        <img src="<?= $val['back'] ?>" class="w-100">
+                                        <div class="icon-back centerContent">Back</div>
+                                    </div>
                                 </div>
-                                <div class="order-img-back ">
-                                    <img src="<?= $val['back'] ?>" class="w-100">
-                                    <div class="icon-back centerContent">Back</div>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 25px">
-                                <div class="col-8">
-                                    <div class="order-item-name">
-                                        <span><?= $val['name'] ?></span><br>
-                                        <div class="order-item-type">Product type: <span>Two Tone Mug Blue 11 oz</span>
+                                <div class="row" style="margin-top: 25px">
+                                    <div class="col-8">
+                                        <div class="order-item-name">
+                                            <span><?= $val['name'] ?></span><br>
+                                            <div class="order-item-type">Product type:
+                                                <span>Two Tone Mug Blue 11 oz</span>
+                                            </div>
+
                                         </div>
-
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="quantity d-flex"><span>Quantity:</span> <input type="number"
-                                                                                               class="inputQuantity"
-                                                                                               value="1">
+                                    <div class="col-4">
+                                        <div class="quantity d-flex"><span>Quantity:</span> <input type="number"
+                                                                                                   class="inputQuantity"
+                                                                                                   id="quantity-order"
+                                                                                                   value="<?= $val['quantity'] ?>"
+                                                                                                   data-loca="<?= $loca ?>">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="order-item-price">
-
-										<?php
-										if ($val['sale'] == 'yes'){
-											?>
-                                            <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
-">$<?= $val['price'] ?> USD</span> <span class="price">$<?= $val['price_sale'] ?> USD</span>
+                                    <div class="col-8">
+                                        <div class="order-item-price">
 											<?php
-										}else{
-										?>
-                                        <span class="pricesale">$<?= $val['price'] ?> USD
+											if ($val['sale'] == 'yes'){
+												?>
+                                                <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);
+">$<?= $val['price'] ?> USD</span> <span class="price">$<?= $val['price_sale'] ?> USD</span>
+												<?php
+											}else{
+											?>
+                                            <span class="price">$<?= $val['price'] ?> USD
                                     <?php
                                     }
                                     ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="delivery"><img src="/logo/truck-logo.png"
-                                                               style="height: 30px;width: 30px">
-                                        <span>Delivery</span><br><span class="text-expree">Express
-                                by 29 Jan</span>
+                                    <div class="col-4">
+                                        <div class="delivery"><img src="/logo/truck-logo.png"
+                                                                   style="height: 30px;width: 30px">
+                                            <span>Delivery</span><br><span
+                                                    class="text-expree"><?= $val['delivery'] ?></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-				<?php
-				endforeach;
-			} else {
-				$check = false;
-				?>
-                <div class="col-md-12 order-list">
-                    <div class="order-div">
-                        <div class="row" style="margin-top: 25px">
-                            <div class="col-12" style="text-align: center; ">
-                                <div class="order-item-name">
+						<?php
+						$loca++;
+					endforeach;
+				} else {
+					$check = false;
+					?>
+                    <div class="col-md-12 order-list">
+                        <div class="order-div">
+                            <div class="row" style="margin-top: 25px">
+                                <div class="col-12" style="text-align: center; ">
+                                    <div class="order-item-name">
                                     <span style="color: #000000">You have no items in your shopping cart , <a
                                                 href="/" style=" color: #000000"">continue shopping</a></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-				<?php
-			}
+					<?php
+				}
 
 
-			?>
+				?>
 
+            </div>
         </div>
-
         <div class="col-md-4 col-12">
             <div class="secure_checkout ">
                 <div class="row">
@@ -140,7 +188,7 @@
                     <div class="col-12 mt-2">
                         <div class="row total">
                             <div class="col-8 text-left">Total:</div>
-                            <div class="col-4 text-right">$<?= $total ?></div>
+                            <div class="col-4 text-right total-order">$<?= $total ?></div>
                         </div>
                     </div>
                     <div class="col-12 mt-1">

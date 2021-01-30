@@ -1,16 +1,80 @@
-@media (min-width: 576px) {
+@media (max-width: 768px) {
+    .navbar {
+        padding-right: 15px !important;
+        padding-left: 15px !important;;
+    }
+
+    .owl-carousel .owl-dots {
+        position: static !important;
+        display: flex;
+        width: 100% !important;
+        height: 100%;
+    }
+
+    .owl-carousel .owl-stage-outer {
+        right: 0 !important;
+    }
+
+    .owl-carousel {
+        width: 100% !important;
+    }
+
+    .owl-dots button {
+        min-width: auto !important;
+        margin-top: 20px !important;
+        height: 100px !important;
+        margin: 10px;
+    }
+
+    .owl-carousel .item img {
+        height: 500px !important;
+    }
+
+    #main-product {
+        margin-top: 20px !important;
+    }
 }
 
+
 @media (min-width: 768px) {
+
+
+    .owl-carousel {
+        width: calc(100% - 190px) !important;
+    }
+
+    .owl-dots button {
+        width: 100%;
+        min-width: 175px !important;
+        height: 180px !important;
+        margin-bottom: 30px;
+        border-radius: 15px;
+        outline: none;
+    }
+
+    .owl-carousel .item img {
+        height: 770px !important;
+    }
 }
 
 @media (min-width: 992px) {
+
+
 }
 
 @media (min-width: 1200px) {
 }
 
 @media (min-width: 1920px) {
+
+    .owl-carousel .owl-dots {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 150px;
+        height: 100%;
+    }
+
     .thumb-bestsell {
         max-width: 100% !important;
         max-height: 100% !important;
@@ -30,10 +94,7 @@
 }
 
 @media (min-width: 2560px) {
-
-
 }
-
 
 * {
     font-family: Quicksand;
@@ -115,7 +176,7 @@ img {
 }
 
 .favourite-icon {
-    top: 54px;
+    position: relative;
     width: 25px;
     height: 25px;
 }
@@ -1038,9 +1099,6 @@ img {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
-.owl-carousel .item img {
-    height: 770px !important;
-}
 
 .content-carousel {
     width: 100%;
@@ -1048,7 +1106,7 @@ img {
 }
 
 .owl-carousel {
-    width: calc(100% - 190px) !important;
+    width: calc(100% - 190px);
 }
 
 .owl-carousel .owl-stage-outer {
@@ -1079,8 +1137,8 @@ img {
 
 .owl-dots button {
     width: 100%;
-    min-width: 175px !important;
-    height: 180px !important;
+    min-width: 175px;
+    height: 180px;
     margin-bottom: 30px;
     border-radius: 15px;
     outline: none;
@@ -1327,9 +1385,7 @@ img {
 }
 
 .inputQuantity {
-    margin-left: 25px;
     border-radius: 15px;
-    width: 90px;
     outline: none !important;
     text-align: center;
     border: 1px solid #2ECC71;
@@ -1555,7 +1611,7 @@ img {
     font-size: 12px;
 }
 
-.payment-icon {
+.payment-icon a{
     color: rgba(241, 196, 15, 1);
 }
 
@@ -1721,6 +1777,10 @@ canvas #c {
 
 .fpd-container {
     width: 100% !important;
+}
+
+.fpd-draggable-dialog {
+    width: 350px !important;
 }
 
 .fpd-container .fpd-secondary-bg-color, .fpd-container .fpd-btn, .fpd-modal-wrapper .fpd-btn, .fpd-switch-container.fpd-enabled .fpd-switch-toggle, .fpd-switch-container.fpd-enabled .fpd-switch-bar, .fpd-modal-product-designer.fpd-modal-overlay .fpd-done {

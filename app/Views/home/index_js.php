@@ -1,52 +1,16 @@
 <script>
+    //
 
+    $('.nonloop').owlCarousel({
+        center: true,
+        rtl: false,
+        items: 3,
+        loop: true,
+        margin: 10,
+        nav: true,
+    });
     $(function () {
-        var origin = window.location.origin;
 
-        $('.btnShare').click(function () {
-            var id = $(this).data('id');
-            var link = $(this).data('url');
-            $('#shareBlock' + id).html('');
-            $('#shareBlock' + id).cShare({
-                    spacing: 20,
-                    description: 'jQuery plugin - C Share buttons...',
-                    showButtons: ['fb', 'line', 'twitter'],
-                    data: {
-                        fb: {
-                            fa: 'fab fa-facebook-f',
-                            name: 'Fb',
-                            href: (url) => {
-                                var urla = origin + link;
-                                return `https://www.facebook.com/sharer.php?u=${urla}`
-                            },
-                            show: true
-                        },
-
-                    }
-                },
-            );
-
-        });
-
-
-        $(document).on('click', '.favourite', function () {
-            var id = $(this).data('id');
-            console.log(id);
-            $.ajax({
-                url: "/home/favourite",
-                dataType: "html",
-                data: {id: id},
-                type: "POST",
-                success: function (data) {
-                    $('#iconfavourite' + id).toggleClass('fal fas');
-                    $('#iconfavourite' + id).css("color", "red");
-                    $('.favourite-num span').html(data);
-                },
-                error: function () {
-                }
-            });
-
-        });
 
         $('.favourite2222').click(function () {
             var id = $(this).data('id');
@@ -91,23 +55,18 @@
             });
 
         });
-    })
-    ;
+    });
+    let section3 = $('input[name="section3"]:checked').val();
+    let section5 = $('input[name="section5"]:checked').val();
 
-    $('.element-c').click(function () {
-        var idtype = $(this).data('id');
-        var draw = $(this).data('draw');
-        if (draw == 'sectioncategory1') {
-            $('#sectioncategory1 .element-c').removeClass("active-type");
-        }
-        if (draw == 'sectioncategory2') {
-            $('#sectioncategory2 .element-c').removeClass("active-type");
-        }
-        $(this).addClass('active-type');
+
+    function getdataSection(draw, type) {
+        var draw = draw;
+        var type = type;
         $.ajax({
             url: "/home/loaddata",
             dataType: "json",
-            data: {type: idtype},
+            data: {type: type},
             type: "POST",
             success: function (data) {
                 if (draw == 'sectioncategory1') {
@@ -118,7 +77,7 @@
                         var path = values.thumbnail.split(".");
                         var $col = $('<div class="col-cate-2"></div>');
                         var $product = $('<div class="product-home-category"></div>');
-                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + path[0] + '375480.' + path[1] + '" class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><button class="btn-addcart"><span>add to cart</span></button></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct"><i class="far fa-share-alt"></i></div></div><div id="name-item-mini-right"><a href="/product/' + values.slug + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
+                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + path[0] + '375480.' + path[1] + '" class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><a href="/' + values.slug + '/' + values.slug_pro + '"><button class="btn-addcart"><span>add to cart</span></button></a></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct" class="dropdown btnShare" data-id="' + values.id + '" data-url="/' + values.slug + '/' + values.slug_pro + '"><i class="far fa-share-alt" id="dropdownMenuButton' + values.id + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> <div class="dropdown-menu" id="shareBlock' + values.id + '" aria-labelledby="dropdownMenuButton' + values.id + '"> </div></div></div><div id="name-item-mini-right"><a href="/' + values.slug + '/' + values.slug_pro + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
                         var $price = $('<div id="price-item-mini-right"></div>');
                         if (values.sale == 'yes') {
                             $price.append('<span class="price-old">$' + values.price + ' USD</span><span class="price">$' + values.price_sale + ' USD</span>');
@@ -149,7 +108,8 @@
                         var path = values.thumbnail.split(".");
                         var $col = $('<div class="col-cate-2"></div>');
                         var $product = $('<div class="product-home-category"></div>');
-                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + path[0] + '375480.' + path[1] + '" class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><button class="btn-addcart"><span>add to cart</span></button></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct"><i class="far fa-share-alt"></i></div></div><div id="name-item-mini-right"><a href="/product/' + values.slug + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
+                        var $line = $('<div class="thumb-product-home"><img src="/download/image?name=' + path[0] + '375480.' + path[1] + '" class="img-fluid w-100"><div id="back-hover"><div class="centerContent"><button class="btn-quickview"><span>quick view</span></button><a href="/' + values.slug + '/' + values.slug_pro + '"><button class="btn-addcart"><span>add to cart</span></button></a></div></div><div id="favourite" class="favourite" data-id="' + values.id + '"><i class="fal fa-heart" id="iconfavourite' + values.id + '"></i></div><div id="shareproduct" class="dropdown btnShare" data-id="' + values.id + '" data-url="/' + values.slug + '/' + values.slug_pro + '"><i class="far fa-share-alt" id="dropdownMenuButton' + values.id + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> <div class="dropdown-menu" id="shareBlock' + values.id + '" aria-labelledby="dropdownMenuButton' + values.id + '"> </div></div></div><div id="name-item-mini-right"><a href="/' + values.slug + '/' + values.slug_pro + '">' + values.name + '</a></div><div id="classify-item-mini-right">Personalized Shirt</div>');
+
                         var $price = $('<div id="price-item-mini-right"></div>');
                         if (values.sale == 'yes') {
                             $price.append('<span class="price-old">$' + values.price + ' USD</span><span class="price">$' + values.price_sale + ' USD</span>');
@@ -178,6 +138,22 @@
             error: function () {
             }
         });
+    }
+
+    getdataSection('sectioncategory1', section3);
+    getdataSection('sectioncategory2', section5);
+    $('.element-c').click(function () {
+        var type = $(this).data('id');
+        var draw = $(this).data('draw');
+        if (draw == 'sectioncategory1') {
+            $('#sectioncategory1 .element-c').removeClass("active-type");
+        }
+        if (draw == 'sectioncategory2') {
+            $('#sectioncategory2 .element-c').removeClass("active-type");
+        }
+        $('#section' + type).prop("checked", true);
+        $(this).addClass('active-type');
+        getdataSection(draw, type);
     });
 
 

@@ -12,7 +12,7 @@
 			$i++;
 			$i2++;
 			?>
-            <div class="col-cate-2">
+            <div class="col-cate-2" id="html<?= $val['id'] ?>">
                 <div class="item-category">
                     <div class="item-category-thumb">
                         <img src="/download/image?name=<?= $val['thumbnail'] ?>" class="img-fluid w-100">
@@ -25,7 +25,7 @@
                             </div>
 
                         </div>
-                        <div id="favourite" data-id="<?= $val['id'] ?>">
+                        <div id="favourite" class="favourite" data-id="<?= $val['id'] ?>" data-fav="1">
 							<?php
 							if (in_array($val['id'], $arrFavourite)) {
 								?>

@@ -83,7 +83,7 @@
                     <div class="item-menu"><span>FAQs</span></div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item d-flex">
                     <div class="item-menu">
                         <div class="search-icon">
                             <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
@@ -94,24 +94,21 @@
                             </svg>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item">
                     <input class="mr-sm-2" type="search" id="search-input"
                            placeholder="Search for items, brands and inspiration..." aria-label="Search">
                 </li>
+                <div id="inlinee">
+                    <li class="nav-item form-inline mr-1">
+                        <div class="favourite-icon"><img src="/logo/heart-logo.png"></div>
+                    </li>
+                    <li class="nav-item form-inline mr-1">
+                        <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
+                    </li>
+                    <li class="nav-item form-inline mr-1">
+                        <div class="cart-text"><a href="/order">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
 
-            </ul>
-            <ul class="navbar-nav ml-auto ">
-                <li class="nav-item form-inline mr-1">
-                    <div class="favourite-icon"><img src="/logo/heart-logo.png"></div>
-                </li>
-                <li class="nav-item form-inline mr-1">
-                    <div class="cart-icon"><img src="/logo/cart-logo.png"></div>
-                </li>
-                <li class="nav-item form-inline mr-1">
-                    <div class="cart-text"><a href="/order">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
-
-                </li>
+                    </li>
+                </div>
                 <li class="nav-item form-inline mr-1">
                     <div class="avatar-user"><img
                                 src="/logo/man-logo.png">

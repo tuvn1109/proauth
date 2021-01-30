@@ -119,6 +119,7 @@ class Category extends BaseController
 			$data['color'] = $colors;
 			$data['image'] = $image;
 			$data['banner'] = $banner;
+			$data['cart'] = session('cart');
 			$data['user'] = session('user');
 			$data['maybelike'] = $maybelike;
 			$data['arrFavourite'] = explode(',', get_cookie('favourite'));

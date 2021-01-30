@@ -60,24 +60,27 @@
                     </div>
                     <form action="/search">
                         <input class="mr-sm-2" type="search" id="search-input" name="texts"
-                               placeholder="Search for items, brands and inspiration..." aria-label="Search">
+                               placeholder="Search for items, brands and inspiration..." aria-label="Search"
+                               value="<?= isset($_GET['texts']) ? $_GET['texts'] : '' ?>">
                     </form>
                 </li>
 
             </ul>
+			<?php
+			//isset($arrFavourite) ? count($arrFavourite) : 0 ?>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item form-inline" style="padding-right: 33px">
                     <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
                             <div class="favourite-num">
-                                <span><?= isset($arrFavourite) ? count($arrFavourite) : 0 ?></span></div>
+                                <span></span></div>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item form-inline" style="padding-right: 9px">
-                    <div class="cart-icon"><a href="/order"><img src="/logo/cart-logo.png"></a></div>
+                    <div class="cart-icon"><a href="/cart"><img src="/logo/cart-logo.png"></a></div>
                 </li>
                 <li class="nav-item form-inline" style="padding-right: 46px">
-                    <div class="cart-text"><a href="/order">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
+                    <div class="cart-text"><a href="/cart">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
 
                 </li>
 
@@ -246,7 +249,78 @@ echo view($temp . '_js', $this->data);
         autoplayTimeout: 1000,
         autoplayHoverPause: true
     });
-    owl.trigger('play.owl.autoplay', [1000])
+    //  owl.trigger('play.owl.autoplay', [1000])
+
+
+    // count FAVOURIITE
+    $.ajax({
+        url: "/Favourite/favouriteadd",
+        dataType: "html",
+        data: {},
+        type: "POST",
+        success: function (data) {
+            $('.favourite-num span').html(data);
+
+        },
+        error: function () {
+        }
+    });
+
+    $(document).on('click', '.favourite', function () {
+        var id = $(this).data('id');
+        var checkf = $(this).data('fav');
+        console.log(checkf);
+        console.log(id);
+        $.ajax({
+            url: "/Favourite/favouriteadd",
+            dataType: "html",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                $('#iconfavourite' + id).toggleClass('fal fas');
+                $('#iconfavourite' + id).css("color", "red");
+                $('.favourite-num span').html(data);
+            },
+            error: function () {
+            }
+        });
+
+
+        if (checkf == 1) {
+            var myobj = $("#html" + id);
+            myobj.remove();
+        }
+
+    });
+
+
+    var origin = window.location.origin;
+
+    $('.btnShare').click(function () {
+        var id = $(this).data('id');
+        var link = $(this).data('url');
+        console.log(id);
+        $('#shareBlock' + id).html('');
+        $('#shareBlock' + id).cShare({
+                spacing: 20,
+                description: 'jQuery plugin - C Share buttons...',
+                showButtons: ['fb', 'line', 'twitter'],
+                data: {
+                    fb: {
+                        fa: 'fab fa-facebook-f',
+                        name: 'Fb',
+                        href: (url) => {
+                            var urla = origin + link;
+                            return `https://www.facebook.com/sharer.php?u=${urla}`
+                        },
+                        show: true
+                    },
+
+                }
+            },
+        );
+
+    });
 </script>
 </body>
 

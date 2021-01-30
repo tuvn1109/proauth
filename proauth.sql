@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 25/01/2021 17:49:03
+ Date: 30/01/2021 17:27:07
 */
 
 SET NAMES utf8mb4;
@@ -279,7 +279,7 @@ CREATE TABLE `product_color`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_color
@@ -291,6 +291,7 @@ INSERT INTO `product_color` VALUES (5, 6, 2, 'product/6/layout/font.png', 'produ
 INSERT INTO `product_color` VALUES (7, 5, 3, 'product/5/layout/nhung-mau-ao-jordan-t-shirt-cuc-chat-duoi-2-trieu-dong.jpg', 'product/5/layout/nhung-mau-ao-jordan-t-shirt-cuc-chat-duoi-2-trieu-dong-3.jpg', '2021-01-22 03:23:58', '2021-01-22 03:23:58', NULL);
 INSERT INTO `product_color` VALUES (8, 5, 4, 'product/5/layout/256228-973195-large.jpg', 'product/5/layout/a.jpg', '2021-01-22 03:23:58', '2021-01-22 03:23:58', NULL);
 INSERT INTO `product_color` VALUES (9, 13, 2, 'product/13/layout/mat-truoc.png', 'product/13/layout/mat-sau.png', '2021-01-22 03:32:54', '2021-01-22 03:32:54', NULL);
+INSERT INTO `product_color` VALUES (10, 7, 2, 'product/7/layout/tải xuống (1).jpg', 'product/7/layout/tải xuống.jpg', '2021-01-30 03:58:48', '2021-01-30 03:58:48', NULL);
 
 -- ----------------------------
 -- Table structure for product_detail
@@ -320,7 +321,7 @@ CREATE TABLE `product_size`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 71 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_size
@@ -336,12 +337,12 @@ INSERT INTO `product_size` VALUES (12, 4, 1, '2021-01-21 03:03:08', '2021-01-21 
 INSERT INTO `product_size` VALUES (13, 4, 2, '2021-01-21 03:03:08', '2021-01-21 03:03:08', NULL);
 INSERT INTO `product_size` VALUES (21, 6, 2, '2021-01-21 03:31:54', '2021-01-21 03:31:54', NULL);
 INSERT INTO `product_size` VALUES (22, 6, 3, '2021-01-21 03:31:54', '2021-01-21 03:31:54', NULL);
-INSERT INTO `product_size` VALUES (59, 5, 1, '2021-01-22 03:24:25', '2021-01-22 03:24:25', NULL);
-INSERT INTO `product_size` VALUES (60, 5, 2, '2021-01-22 03:24:25', '2021-01-22 03:24:25', NULL);
-INSERT INTO `product_size` VALUES (61, 5, 3, '2021-01-22 03:24:25', '2021-01-22 03:24:25', NULL);
-INSERT INTO `product_size` VALUES (62, 13, 1, '2021-01-22 03:32:53', '2021-01-22 03:32:53', NULL);
-INSERT INTO `product_size` VALUES (63, 13, 2, '2021-01-22 03:32:53', '2021-01-22 03:32:53', NULL);
-INSERT INTO `product_size` VALUES (64, 13, 3, '2021-01-22 03:32:53', '2021-01-22 03:32:53', NULL);
+INSERT INTO `product_size` VALUES (65, 13, 1, '2021-01-27 22:04:14', '2021-01-27 22:04:14', NULL);
+INSERT INTO `product_size` VALUES (66, 13, 2, '2021-01-27 22:04:14', '2021-01-27 22:04:14', NULL);
+INSERT INTO `product_size` VALUES (67, 13, 3, '2021-01-27 22:04:14', '2021-01-27 22:04:14', NULL);
+INSERT INTO `product_size` VALUES (68, 5, 1, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
+INSERT INTO `product_size` VALUES (69, 5, 2, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
+INSERT INTO `product_size` VALUES (70, 5, 3, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
 
 -- ----------------------------
 -- Table structure for product_tag
@@ -355,7 +356,7 @@ CREATE TABLE `product_tag`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_tag
@@ -364,13 +365,12 @@ INSERT INTO `product_tag` VALUES (1, 5, 2, '2021-01-21 02:43:33', '2021-01-21 02
 INSERT INTO `product_tag` VALUES (2, 36, 2, '2021-01-21 02:43:33', '2021-01-21 02:43:33', NULL);
 INSERT INTO `product_tag` VALUES (3, 5, 3, '2021-01-21 03:01:32', '2021-01-21 03:01:32', NULL);
 INSERT INTO `product_tag` VALUES (4, 22, 3, '2021-01-21 03:01:32', '2021-01-21 03:01:32', NULL);
-INSERT INTO `product_tag` VALUES (5, 27, 7, '2021-01-21 03:40:53', '2021-01-21 03:40:53', NULL);
-INSERT INTO `product_tag` VALUES (6, 11, 7, '2021-01-21 03:40:53', '2021-01-21 03:40:53', NULL);
-INSERT INTO `product_tag` VALUES (7, 10, 8, '2021-01-21 03:43:29', '2021-01-21 03:43:29', NULL);
-INSERT INTO `product_tag` VALUES (38, 5, 5, '2021-01-22 03:24:25', '2021-01-22 03:24:25', NULL);
-INSERT INTO `product_tag` VALUES (39, 22, 5, '2021-01-22 03:24:25', '2021-01-22 03:24:25', NULL);
-INSERT INTO `product_tag` VALUES (40, 37, 5, '2021-01-22 03:24:25', '2021-01-22 03:24:25', NULL);
-INSERT INTO `product_tag` VALUES (41, 5, 13, '2021-01-22 03:32:53', '2021-01-22 03:32:53', NULL);
+INSERT INTO `product_tag` VALUES (42, 5, 13, '2021-01-27 22:04:14', '2021-01-27 22:04:14', NULL);
+INSERT INTO `product_tag` VALUES (43, 5, 5, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
+INSERT INTO `product_tag` VALUES (44, 22, 5, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
+INSERT INTO `product_tag` VALUES (45, 37, 5, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
+INSERT INTO `product_tag` VALUES (46, 27, 7, '2021-01-30 03:58:48', '2021-01-30 03:58:48', NULL);
+INSERT INTO `product_tag` VALUES (47, 11, 7, '2021-01-30 03:58:48', '2021-01-30 03:58:48', NULL);
 
 -- ----------------------------
 -- Table structure for product_type
@@ -403,6 +403,7 @@ CREATE TABLE `products`  (
   `price_sale` decimal(10, 2) NULL DEFAULT NULL,
   `sale` enum('yes','no') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `type` int NULL DEFAULT NULL,
+  `date_end_flash` date NULL DEFAULT NULL,
   `manufactur` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `delivery` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `thumbnail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -420,15 +421,10 @@ CREATE TABLE `products`  (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (5, 'T shirt 0001', 55.00, 40.00, NULL, 4, 'United States', 'Express by 29 Jan', 'product/5/thumb/1611220977_8eeffbfebe8194a508d8.jpg', '<p><strong class=\"ql-size-large\">We design products for fan</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus</p><p><br></p><p><br></p>', 't shirt,men,tshirt 2021', 'yes', 't-shirt-0001-5', 'new', '2021-01-21 03:22:57', '2021-01-22 03:24:25', NULL);
-INSERT INTO `products` VALUES (6, 'T shirt 0002', 35.00, 30.00, NULL, 4, 'United', '3 - 5 day', 'product/6/thumb/1611221452_e6935e9b81f20d756f0a.webp', 'We design products for fan', '', 'yes', 't-shirt-0002-6', 'new', '2021-01-21 03:30:52', '2021-01-21 03:31:54', NULL);
-INSERT INTO `products` VALUES (7, 'Phone case 0001', 12.00, 10.00, NULL, 3, '', '', 'product/7/thumb/1611222053_4ea8fc9818359d3248a2.png', 'We design products for fan', 'phone case,case', 'yes', 'phone-case-0001', 'new', '2021-01-21 03:40:53', '2021-01-21 03:40:53', NULL);
-INSERT INTO `products` VALUES (8, 'Mug 0001', 25.00, 20.00, NULL, 2, 'US', '3 - 5 day', 'product/8/thumb/1611222209_701ba11e2d35efaa3fbc.jpg', 'We design products for fan', 'mug', 'yes', 'mug-0001', 'new', '2021-01-21 03:43:29', '2021-01-21 03:43:29', NULL);
-INSERT INTO `products` VALUES (9, 'Mug 0002', 23.00, 20.00, NULL, 2, '', '', 'product/9/thumb/1611222265_59d4b4335f0de1ffc1e7.jpg', 'We design products for fan', '', 'yes', 'mug-0002', 'new', '2021-01-21 03:44:25', '2021-01-21 03:44:25', NULL);
-INSERT INTO `products` VALUES (10, 'Mug 0003', 25.00, 20.00, NULL, 2, '', '', 'product/10/thumb/1611222671_364c2bd1779c6d27c8f8.jpg', 'We design products for fan', '', 'yes', 'mug-0003', 'new', '2021-01-21 03:51:11', '2021-01-21 03:51:11', NULL);
-INSERT INTO `products` VALUES (11, 'Phone case 0002', 26.00, 20.00, NULL, 3, '', '', 'product/11/thumb/1611223254_6a9befd8aec075b894f0.png', 'We design products for fan', '', 'yes', 'phone-case-0002', 'new', '2021-01-21 04:00:54', '2021-01-21 04:00:54', NULL);
-INSERT INTO `products` VALUES (12, 'Phone case 0003', 26.00, 20.00, NULL, 3, '', '', 'product/12/thumb/1611224274_944641fa1b07e7878a65.png', '<p><strong>We design products for fan</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus.</p>', '', 'yes', 'phone-case-0003-12', 'new', '2021-01-21 04:17:54', '2021-01-21 19:40:57', NULL);
-INSERT INTO `products` VALUES (13, 'T shirt test 432', 25.00, 20.00, NULL, 5, 'US', '3 - 5 day', 'product/13/thumb/1611307973_55333acc2f1c4d0a3ca2.jpg', '<p><strong style=\"color: rgb(70, 70, 70);\">Description</strong></p><p><span style=\"color: rgb(70, 70, 70);\">Detail description  from VIET NAM</span></p><p><br></p>', 't shirt', NULL, 't-shirt-test-432', 'new', '2021-01-22 03:32:53', '2021-01-22 03:32:54', NULL);
+INSERT INTO `products` VALUES (5, 'T shirt 0001', 55.00, 40.00, '', 4, '2021-01-31', 'United States', 'Express by 29 Jan', 'product/5/thumb/1611220977_8eeffbfebe8194a508d8.jpg', '<p><strong class=\"ql-size-large\">We design products for fan</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus</p><p><br></p><p><br></p>', 't shirt,men,tshirt 2021', 'yes', 't-shirt-0001-5', 'new', '2021-01-21 03:22:57', '2021-01-29 22:41:17', NULL);
+INSERT INTO `products` VALUES (6, 'T shirt 0002', 35.00, 30.00, NULL, 4, NULL, 'United', '3 - 5 day', 'product/6/thumb/1611221452_e6935e9b81f20d756f0a.webp', 'We design products for fan', '', 'yes', 't-shirt-0002-6', 'new', '2021-01-21 03:30:52', '2021-01-21 03:31:54', NULL);
+INSERT INTO `products` VALUES (7, 'Phone case 0001', 12.00, 10.00, NULL, 3, '0000-00-00', '', '', 'product/7/thumb/1611222053_4ea8fc9818359d3248a2.png', '<p>We design products for fan</p>', 'phone case,case', 'yes', 'phone-case-0001-7', 'new', '2021-01-21 03:40:53', '2021-01-30 03:58:48', NULL);
+INSERT INTO `products` VALUES (13, 'T shirt test 432', 25.00, 20.00, 'yes', 5, '2021-01-31', 'US', '3 - 5 day', 'product/13/thumb/1611307973_55333acc2f1c4d0a3ca2.jpg', '<p><strong style=\"color: rgb(70, 70, 70);\">Description</strong></p><p><span style=\"color: rgb(70, 70, 70);\">Detail description from VIET NAM</span></p><p><br></p>', 't shirt', NULL, 't-shirt-test-432-13', 'new', '2021-01-22 03:32:53', '2021-01-29 04:14:44', NULL);
 
 -- ----------------------------
 -- Table structure for properties
@@ -523,13 +519,13 @@ INSERT INTO `settings` VALUES (20, 'image5', 'banner/cover-image3.gif', 'bannera
 INSERT INTO `settings` VALUES (21, 'section4', 'on', 'homepage');
 INSERT INTO `settings` VALUES (22, 'section5', 'on', 'homepage');
 INSERT INTO `settings` VALUES (23, 'section6', 'on', 'homepage');
-INSERT INTO `settings` VALUES (24, 'section7', NULL, 'homepage');
+INSERT INTO `settings` VALUES (24, 'section7', 'on', 'homepage');
 INSERT INTO `settings` VALUES (25, 'textsell', 'SUMMER WEAR COLLECTION', 'bannerads');
-INSERT INTO `settings` VALUES (26, 'section8', NULL, 'homepage');
+INSERT INTO `settings` VALUES (26, 'section8', 'on', 'homepage');
 INSERT INTO `settings` VALUES (27, 'section9', NULL, 'homepage');
 INSERT INTO `settings` VALUES (30, 'section_category1_title', 'T-shirt', 'homepage');
 INSERT INTO `settings` VALUES (31, 'section_category2_title', 'Gift', 'homepage');
-INSERT INTO `settings` VALUES (32, 'section_category1_type', '[\"5\",\"4\"]', 'homepage');
+INSERT INTO `settings` VALUES (32, 'section_category1_type', '[\"4\",\"5\"]', 'homepage');
 INSERT INTO `settings` VALUES (33, 'section_category2_type', '[\"2\",\"3\"]', 'homepage');
 INSERT INTO `settings` VALUES (34, 'section_category1_limit', '10', 'homepage');
 INSERT INTO `settings` VALUES (35, 'section_category2_limit', '10', 'homepage');
@@ -710,6 +706,6 @@ INSERT INTO `users` VALUES (32, 'nvtu1009', '1234', '2021-01-10 21:18:01', '2021
 INSERT INTO `users` VALUES (34, 'admin', '1234', NULL, NULL, NULL, NULL, 'Admin', '0988888888', 'active', 'admin', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (35, 'longlc@gmail.com', '1234', '2021-01-13 21:33:50', '2021-01-13 21:33:50', 'longlc@gmail.com', NULL, 'trịnh hải', '0988888', 'active', 'user', 'VN', 'hn', '10000', 'hn', NULL);
 INSERT INTO `users` VALUES (36, 'tu.vit.33@facebook.com', '1234', '2021-01-13 21:34:58', '2021-01-13 21:34:58', 'tu.vit.33@facebook.com', NULL, 'nguyen tu', '0336219199', 'active', 'user', 'Việt Nam', 'hn', '10000', 'hn', NULL);
-INSERT INTO `users` VALUES (37, 'tu.vit.33@facebook.com', '1234', '2021-01-13 21:37:37', '2021-01-13 21:37:37', 'tu.vit.33@facebook.com', NULL, 'nguyen tu', '0336219199', 'active', 'user', 'Việt Nam', 'hn', '10000', 'hn', NULL);
+INSERT INTO `users` VALUES (37, 'tu.vit.33@facebook.com', '1234', '2021-01-13 21:37:37', '2021-01-27 01:19:11', 'tu.vit.33@facebook.com', NULL, 'nguyen tu', '0336219199', 'active', 'user', 'Việt Nam', 'hn', '10000', 'hn', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

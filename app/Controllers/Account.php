@@ -32,7 +32,7 @@ class Account extends BaseController
 		$modelCategory = new CategoryModel();
 		$modelOrder = new OrdersModel();
 		$ssUser = session('user');
-
+		$info = $modelUser->find($ssUser['id']);
 
 		$test = $modelOrder->listDataWhere('order_cus', $ssUser['id']);
 		$data['temp'] = 'account/order/index';
@@ -40,6 +40,7 @@ class Account extends BaseController
 		$data['menuactive'] = 'none';
 		$data['list'] = $test;
 		$data['title'] = 'Account information';
+		$data['user'] = $info;
 
 		echo view('layout_product', $data);
 

@@ -24,8 +24,6 @@
             <div class="content-carousel" id="c1">
                 <div class="owl-carousel">
 					<?php
-
-
 					foreach ($image as $image1):
 						?>
                         <div class="item"><img
@@ -56,18 +54,51 @@
 							<?php
 						} else {
 							?>
-                            <span class="pricesale">$<?= $info['price'] ?> USD</span>
+                            <span class="price">$<?= $info['price'] ?> USD</span>
 							<?php
 						}
 						?>
                     </div>
 
                 </div>
-                <div class="col-12">
-                    <div class="sale-timeout-pro">
-                        <img src="/logo/timesale.png">
-                    </div>
-                </div>
+                <style>
+
+                    .flash-sale {
+                        font-weight: 800;
+                    }
+
+                    .flash-sale #text {
+                        color: #e24b3d;
+                    }
+
+                    .flash-sale p {
+                        padding: 5px 10px;
+                    }
+
+                    #demo {
+                        color: white;
+                        background: linear-gradient(118deg, #dc2f41, rgb(236 132 35)) !important;
+                        border-radius: 30px;
+
+                    }
+                </style>
+				<?php
+				if ($info['sale'] == 'yes') {
+					if ($info['date_end_flash'] != null && $info['date_end_flash'] != '' && $info['date_end_flash'] > date('Y-m-d')) {
+						?>
+                        <div class="col-12">
+                            <input type="date" value="<?= $info['date_end_flash'] ?>" id="date_end_flash" hidden>
+                            <div class="sale-timeout-pro">
+                                <div class="flash-sale d-flex"><p id="text">F <i><i class="fal fa-bolt"></i></i> ASH
+                                        SALE
+                                    </p>
+                                    <p id="demo"></p></div>
+                            </div>
+                        </div>
+						<?php
+					}
+				}
+				?>
                 <div class="col-12">
                     <div class="express-pro">
                         <p><i class="fal fa-bell"></i> ORDER CUT OFF FOR CHRISTMAS: Nov 25</p>
@@ -101,7 +132,9 @@
 						<?php
 						foreach ($t as $t1):
 							?>
-                            <div class="tag-text">#<?= $t1 ?></div>
+                            <a href="/search?texts=<?= $t1 ?>">
+                                <div class="tag-text">#<?= $t1 ?></div>
+                            </a>
 						<?php
 						endforeach;
 						?>
@@ -163,13 +196,16 @@
 										$i++;
 
 										?>
-                                        <div class="col-1 ">
+                                        <input type="radio" name="color" value="<?= $color1['idcolor'] ?>"
+                                               id="color<?= $color1['idcolor'] ?>" <?= $i == 1 ? 'checked' : '' ?>
+                                               hidden>
+                                        <div class="col-md-1 ">
                                             <div class="item-color" data-id="<?= $color1['id'] ?>"
                                                  data-idpro="<?= $color1['product_id'] ?>"
                                                  data-idcolor="<?= $color1['idcolor'] ?>"
                                                  style="background-color: <?= $color1['code'] ?>">
                                                 <i class="far fa-check centerContent checkcl"
-                                                   style="color: #FFFFFF;font-weight: bold;display: none"
+                                                   style="color: #FFFFFF;font-weight: bold;<?= $i != 1 ? 'display: none' : '' ?>"
                                                    id="checkcl<?= $color1['idcolor'] ?>"></i>
                                             </div>
                                         </div>
@@ -187,8 +223,13 @@
                                     <div class="col-12  d-flex">
 
 										<?php
+										$isize = 0;
 										foreach ($size as $size1):
+											$isize++;
 											?>
+                                            <input type="radio" name="size" value="<?= $size1['id'] ?>"
+                                                   id="size<?= $size1['id'] ?>" hidden>
+
                                             <div class="size" data-id="<?= $size1['id'] ?>">
                                                 <span><?= $size1['value'] ?></span></div>
 										<?php
@@ -237,7 +278,33 @@
 
                     </div>
 
+                    <style>
+                        #div-addcart .bootstrap-touchspin.input-group {
+                            width: 100% !important;
+                        }
 
+                        #div-addcart .bootstrap-touchspin.input-group button {
+                            background-color: #ffffff00 !important;
+                            color: black !important;
+                            font-size: 25px;
+                        }
+
+                        #div-addcart .bootstrap-touchspin {
+                            border: 1px solid #2ECC71 !important;
+                            font-size: 25px !important;
+                            border-radius: 15px !important;
+                            outline: none !important
+                        }
+
+                        #div-addcart .bootstrap-touchspin input {
+                            font-size: 25px !important;
+                        }
+
+                        #div-addcart .bootstrap-touchspin .btn-primary:hover {
+                            box-shadow: 0 1px 1px -1px #ffffff !important;
+                        }
+
+                    </style>
                     <div id="div-addcart">
                         <div class="row">
                             <div class="col-6">
@@ -245,13 +312,26 @@
                                         data-id="<?= $info['id'] ?>">
                                     <span>ADD TO CART</span></button>
                             </div>
-                            <div class="col-4"><input type="number" class="quantity-order" value="1" min="1"
-                                                      id="quantity-order"></div>
+                            <div class="col-4"><input type="number" value="1" min="1" id="quantity-order">
+                            </div>
 
                             <div class="col-2 text-right">
-                                <div class="div-favourite-order centerContent" id="testdraw"><i class="fal fa-heart"
-                                                                                                id="iconfavourite5"></i>
+                                <div class="div-favourite-order centerContent" id="testdraw"
+                                     data-id="<?= $info['id'] ?>">
+									<?php
+									if (in_array($info['id'], $arrFavourite)) {
+										?>
+                                        <i class="fas fa-heart" style="color: red"
+                                           id="iconfavourite<?= $info['id'] ?>"></i>
+										<?php
+									} else {
+										?>
+                                        <i class="fal fa-heart" id="iconfavourite<?= $info['id'] ?>"></i>
+										<?php
+									}
+									?>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -274,11 +354,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-
+    <div class="row">
+        <div class="col-12"><span>You may also like</span></div>
+        <div class="col-12"></div>
+    </div>
 </section>
 <div id="divdesgin">
     <div id="clothing-designer"

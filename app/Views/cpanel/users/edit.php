@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="text" class="form-control" value="<?= $data['phone'] ?>"
+                                        <input type="text" class="form-control" name="phone" value="<?= $data['phone'] ?>"
                                                placeholder="Phone">
                                     </div>
                                     <div class="form-group">

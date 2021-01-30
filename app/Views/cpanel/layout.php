@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/quill.snow.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/quill.bubble.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
@@ -620,6 +621,7 @@ $user = $_SESSION['user'];
 <script src="/app-assets/vendors/js/editors/quill/katex.min.js"></script>
 <script src="/app-assets/vendors/js/editors/quill/highlight.min.js"></script>
 <script src="/app-assets/vendors/js/editors/quill/quill.min.js"></script>
+<script src="/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
 
 <!-- BEGIN: Theme JS-->
 <script src="/app-assets/js/core/app-menu.js"></script>

@@ -1,64 +1,121 @@
 <style>
-    .centerContent2 {
-        vertical-align: middle;
-        -webkit-align-items: center;
-        align-items: center;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-justify-content: center;
-        justify-content: center;
-        height: 50%;
+    #bodyy {
+        width: 100%;
+        height: 100vh;
     }
+
+    .wrapper {
+        width: 200px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .circle {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        border-radius: 50%;
+        background-color: #fff;
+        left: 15%;
+        transform-origin: 50%;
+        animation: circle .5s alternate infinite ease;
+    }
+
+    @keyframes circle {
+        0% {
+            top: 60px;
+            height: 5px;
+            border-radius: 50px 50px 25px 25px;
+            transform: scaleX(1.7);
+        }
+        40% {
+            height: 20px;
+            border-radius: 50%;
+            transform: scaleX(1);
+        }
+        100% {
+            top: 0%;
+        }
+    }
+
+    .circle:nth-child(2) {
+        left: 45%;
+        animation-delay: .2s;
+    }
+
+    .circle:nth-child(3) {
+        left: auto;
+        right: 15%;
+        animation-delay: .3s;
+    }
+
+    .shadow {
+        width: 20px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, .5);
+        position: absolute;
+        top: 62px;
+        transform-origin: 50%;
+        z-index: -1;
+        left: 15%;
+        filter: blur(1px);
+        animation: shadow .5s alternate infinite ease;
+    }
+
+    @keyframes shadow {
+        0% {
+            transform: scaleX(1.5);
+        }
+        40% {
+            transform: scaleX(1);
+            opacity: .7;
+        }
+        100% {
+            transform: scaleX(.2);
+            opacity: .4;
+        }
+    }
+
+    .shadow:nth-child(4) {
+        left: 45%;
+        animation-delay: .2s
+    }
+
+    .shadow:nth-child(5) {
+        left: auto;
+        right: 15%;
+        animation-delay: .3s;
+    }
+
+    .wrapper span {
+        position: absolute;
+        top: 75px;
+        font-family: 'Lato';
+        font-size: 20px;
+        letter-spacing: 12px;
+        color: #fff;
+        left: 15%;
+    }
+
+
+    /* footer  */
 </style>
-
-
 <div class="row">
-    <div class="col-sm-3 col-3">
-        <div id="bestsell">
-            <div class="thumb-bestsell">
-                <img src="/download/image?name=product/22/thumb/jk1.jpg" class="img-fluid w-100">
-                <div id="back-hover">
-                    <div class="centerContent2">
-                        <button class="btn-quickview"><span>quick view</span>
-                        </button>
-                    </div>
-                    <div class="centerContent2">
-                        <button class="btn-addcart" data-id="22"><span>add to cart</span>
-                        </button>
-                    </div>
-                </div>
-                <div id="favourite" class="favourite" data-id="22">
-                    <i class="fal fa-heart" id="iconfavourite22"></i>
-                </div>
-                <div id="shareproduct"><i class="far fa-share-alt"></i></div>
+    <div class="col-12">
+        <div style="background: radial-gradient(#000000, #000000);" id="bodyy">
+            <div class="wrapper">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <span>Loading</span>
             </div>
-            <div id="name-item"><a href="/t-shirt/jacket-abs-001-good-22">jacket ABS 001 GOOD</a>
-            </div>
-            <div id="classify-item">Personalized Shirt</div>
-            <div id="price-item-mini-right"><span class="pricesale">$22.00 USD</span></div>
-        </div>
-    </div>
-    <div class="col-sm-3 col-3">
-        <div id="bestsell">
-            <div class="thumb-bestsell">
-                <img src="/download/image?name=product/22/thumb/jk1.jpg" class="img-fluid w-100">
-                <div id="back-hover">
-                    <div class="centerContent">
-                        <button class="btn-quickview"><span>quick view</span>
-                        </button>
-                        <button class="btn-addcart" data-id="22"><span>add to cart</span>
-                        </button>
-                    </div>
-                </div>
-                <div id="favourite" class="favourite" data-id="22">
-                    <i class="fal fa-heart" id="iconfavourite22"></i>
-                </div>
-                <div id="shareproduct"><i class="far fa-share-alt"></i></div>
-            </div>
-            <div id="name-item"><a href="/t-shirt/jacket-abs-001-good-22">jacket ABS 001 GOOD</a>
-            </div>
-            <div id="classify-item">Personalized Shirt</div>
-            <div id="price-item-mini-right"><span class="pricesale">$22.00 USD</span></div>
         </div>
     </div>
 </div>

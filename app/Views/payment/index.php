@@ -92,12 +92,12 @@
 
                     </div>
                 </form>
-                <div class="row">
+                <div class="row" hidden>
                     <div class="col-12 title">
                         Payment Info
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" hidden>
                     <div class="col-8">
                         <div class="payment-card">
                             <div class="col-12 " style="border-bottom: 0.6px solid rgba(241, 196, 15, 0.7)">
@@ -281,20 +281,19 @@
                                         <div class="payment-item-price">
 											<?php
 											if ($val['sale'] == 'yes') {
-												$price = $val['price_sale'];
+												$price = $val['price_sale'] * $val['quantity'];
 											} else {
-												$price = $val['price'];
+												$price = $val['price'] * $val['quantity'];
 											}
 											$total += $price;
 											?>
                                             $<?= $price ?> USD
                                         </div>
-                                        <div class="payment-item-quantity">Quantity : 1</div>
+                                        <div class="payment-item-quantity">Quantity : <?= $val['quantity'] ?></div>
                                     </div>
                                     <div class="col-3 ">
                                         <div class="payment-icon centerContent">
-                                            <i class="far fa-edit"></i>&nbsp;&nbsp;
-                                            <i class="far fa-trash-alt"></i>
+                                            <a href="/cart"><i class="far fa-edit"></i></a>
                                         </div>
                                     </div>
                                 </div>

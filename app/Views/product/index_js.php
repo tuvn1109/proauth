@@ -1,12 +1,60 @@
 <script>
 
+    $('#quantity-order').TouchSpin();
+
+    function pad(d) {
+        return (d < 10) ? '0' + d.toString() : d.toString();
+    }
+
+    // Set the date we're counting down to
+    var date_end_fl = $('#date_end_flash').val();
+    var countDownDate = new Date(date_end_fl + " 00:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = pad(days) + " : " + pad(hours) + " : "
+            + pad(minutes) + " : " + pad(seconds);
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+
     var test = $('#front-de').data('parameters');
-    console.log(test);
 
-    $('#testdraw').click(function () {
-        console.log('tbao');
-
+    $('.div-favourite-order').click(function () {
         // toastr.error('Please choose size', 'Error');
+        $('#iconfavourite' + $(this).data('id')).toggleClass('fal fas');
+        $('#iconfavourite' + $(this).data('id')).css("color", "red");
+        $.ajax({
+            url: "/home/favourite",
+            dataType: "html",
+            data: {id: $(this).data('id')},
+            type: "POST",
+            success: function (data) {
+                $('#iconfavourite' + $(this).data('id')).toggleClass('fal fas');
+                $('#iconfavourite' + $(this).data('id')).css("color", "red");
+                $('.favourite-num span').html(data);
+            },
+            error: function () {
+            }
+        });
     });
 
     // OWL
@@ -112,10 +160,15 @@
         }
     };
     let arrPro = [];
-    let size = null;
-    let color = null;
+    let size = $('input[name="size"]:checked').val();
+    let color = $('input[name="color"]:checked').val();
     $('#add-to-card').click(function () {
         var id = $(this).data('id');
+        var quantity = $('#quantity-order').val();
+        if (quantity <= 0) {
+            toastr.error('Quantity min 1', 'Error');
+            return;
+        }
         if (size == null) {
             toastr.error('Please choose size', 'Error');
             return;
@@ -127,11 +180,12 @@
         yourDesigner.getViewsDataURL(function (dataURL) {
             // $.post("php/save_image.php", {base64_image: dataURL});
             $.ajax({
-                url: "/cart/index",
+                url: "/cart/addcart",
                 dataType: "json",
-                data: {front: dataURL[0], back: dataURL[1], id: id, size: size, color: color},
+                data: {front: dataURL[0], back: dataURL[1], id: id, size: size, color: color, quantity: quantity},
                 type: "POST",
                 success: function (data) {
+                    $('.cart-text a').html('Cart: ' + data);
                     toastr.success('Add to cart successfully', 'Success');
                 },
                 error: function () {
@@ -151,7 +205,9 @@
     });
 
     $('.size').click(function () {
-        size = $(this).data('id');
+        var id = $(this).data('id');
+        $("#size" + id).prop("checked", true);
+        size = id;
         $(".size").removeClass("active-size");
         $(this).addClass("active-size");
     });
@@ -159,9 +215,9 @@
         var id = $(this).data('id');
         var idcolor = $(this).data('idcolor');
         var idpro = $(this).data('idpro');
+        $("#color" + idcolor).prop("checked", true);
         $(".checkcl").css("display", "none");
         $("#checkcl" + idcolor).css("display", "");
-        color = idcolor;
         $.ajax({
             url: "/category/colorlayout",
             dataType: "json",
@@ -329,7 +385,7 @@
 
     });
     $(document).on('click', '#btn-canel-modal', function () {
-        $('.fpd-modal-overlay').css('display', 'none');
+        $('.fpd-icon-close').click();
     });
 
 

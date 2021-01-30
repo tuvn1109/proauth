@@ -76,12 +76,14 @@
                             <div class="centerContent">
                                 <button class="btn-quickview"><span>quick view</span>
                                 </button>
+                                                                    <a href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>">
+
                                 <button class="btn-addcart"><span>add to cart</span>
-                                </button>
+                                </button></a>
                             </div>
 
                         </div>
-                        <div id="favourite" data-id="<?= $val['id'] ?>">
+                        <div id="favourite" class="favourite" data-id="<?= $val['id'] ?>">
 							<?php
 							if (in_array($val['id'], $arrFavourite)) {
 								?>
@@ -95,7 +97,18 @@
 							}
 							?>
                         </div>
-                        <div id="shareproduct"><i class="far fa-share-alt"></i></div>
+                        <div id="shareproduct" class="dropdown btnShare"
+                             data-id="<?= $val['id'] ?>"
+                             data-url="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><i
+                                    class="far fa-share-alt"
+                                    id="dropdownMenuButton<?= $val['id'] ?>"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"></i>
+                            <div class="dropdown-menu" id="shareBlock<?= $val['id'] ?>"
+                                 aria-labelledby="dropdownMenuButton<?= $val['id'] ?>">
+                            </div>
+                        </div>
                     </div>
                     <div id="name-item-mini-right"><a
                                 href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a></div>

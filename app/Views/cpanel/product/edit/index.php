@@ -118,6 +118,14 @@
                                        value="<?= $info['tag'] ?>">
                             </fieldset>
                         </div>
+
+                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                            <fieldset class="form-group">
+                                <label>Flash sale</label>
+                                <input type="date" class="form-control" id="date_end_flash" name="date_end_flash"
+                                       value="<?= $info['date_end_flash'] ?>">
+                            </fieldset>
+                        </div>
                     </div>
                     <!--<div class="row">
 
