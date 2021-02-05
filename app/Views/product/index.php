@@ -356,11 +356,80 @@
             </div>
         </div>
     </div>
+    <style>
+        #contentReview:focus {
+            border-color: black !important;
+        }
 
-    <div class="row">
-        <div class="col-12"><span>You may also like</span></div>
-        <div class="col-12"></div>
+        .div-review {
+            border-radius: 8px;
+            padding: 15px 30px;
+            border: 1px solid #DDD;
+            background-color: #FFFFFF;
+        }
+
+        .review_name {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .review_star {
+            color: #E67E22;
+        }
+
+        .review_content {
+            font-size: 15px;
+        }
+
+        .btn-review {
+
+        }
+    </style>
+    <div class="row mt-2">
+        <div class="col-12"><span style="font-weight: bold; font-size: 25px">Review</span></div>
+
+        <div class="col-12 mb-1">
+            <div class="div-review">
+                <div class='starrr'></div>
+                <textarea class="form-control mt-1" id="contentReview" rows="3"
+                          placeholder="Your comments about the product"></textarea>
+
+                <button type="button" class="btn-review mt-1" data-id="<?= $info['id'] ?>">Review</button>
+            </div>
+        </div>
     </div>
+    <div class="row mt-2" id="divreview">
+		<?php
+		if (isset($feelback)) {
+			foreach ($feelback as $val):
+				?>
+                <div class="col-12 mb-1">
+                    <div class="div-review">
+                        <div class="review_name"><?= $val['fullname'] ?></div>
+                        <div class="review_meta d-flex">
+                            <div class="review_star">
+                                <div class="star-feelback">
+									<?php
+									for ($i = 0; $i < $val['rate']; $i++) {
+										?>
+                                        <i class="fas fa-star"></i>
+										<?php
+									}
+									?>
+                                </div>
+                            </div>
+                            <div class="review_date ml-1"><?= $val['created_at'] ?></div>
+                        </div>
+                        <div class="review_content"><?= $val['content'] ?></div>
+                    </div>
+                </div>
+			<?php
+			endforeach;
+		}
+		?>
+    </div>
+
+
 </section>
 <div id="divdesgin">
     <div id="clothing-designer"

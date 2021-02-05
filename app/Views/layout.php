@@ -40,85 +40,87 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-sm fixed-top  navbar  navbar-light">
-    <div class="container-fluid">
-        <a class="navbar-branch logo" href="/">
-            <img src="/logo/life-logo.png">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto ">
-                <li class="nav-item form-inline my-2 my-lg-0">
-                    <div class="search-icon">
-                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
-                             fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
-                            <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65" style="border: 2px solid #9A9999"></line>
-                        </svg>
-                    </div>
-                    <form action="/search">
-                        <input class="mr-sm-2" type="search" id="search-input" name="texts"
-                               placeholder="Search for items, brands and inspiration..." aria-label="Search"
-                               value="<?= isset($_GET['texts']) ? $_GET['texts'] : '' ?>">
-                    </form>
-                </li>
+<nav class="navbar navbar-expand-lg fixed-top  navbar  navbar-light">
+    <a class="navbar-branch logo" href="/">
+        <img src="/logo/life-logo.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto ">
+            <li class="nav-item form-inline my-2 my-lg-0">
+                <div class="search-icon">
+                    <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                        <circle cx="11" cy="11" r="8" style="border: 2px solid #9A9999"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" style="border: 2px solid #9A9999"></line>
+                    </svg>
+                </div>
+                <form action="/search">
+                    <input class="mr-sm-2" type="search" id="search-input" name="texts"
+                           placeholder="Search for items, brands and inspiration..." aria-label="Search"
+                           value="<?= isset($_GET['texts']) ? $_GET['texts'] : '' ?>">
+                </form>
+            </li>
 
-            </ul>
-			<?php
-			//isset($arrFavourite) ? count($arrFavourite) : 0 ?>
-            <ul class="navbar-nav ml-auto ">
-                <li class="nav-item form-inline" style="padding-right: 33px">
-                    <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
-                            <div class="favourite-num">
-                                <span></span></div>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item form-inline" style="padding-right: 9px">
-                    <div class="cart-icon"><a href="/cart"><img src="/logo/cart-logo.png"></a></div>
-                </li>
-                <li class="nav-item form-inline" style="padding-right: 46px">
-                    <div class="cart-text"><a href="/cart">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
 
-                </li>
+            <li class="nav-item form-inline menudesktop">
+                <div class="favourite-icon"><a href="/favourite"><img src="/logo/heart-logo.png">
+                        <div class="favourite-num">
+                            <span></span></div>
+                    </a>
+                </div>
 
-                <li class="nav-item form-inline " style="padding-right: 17px">
-					<?php
-					if (isset($user)) {
-					if ($user) {
+                <div class="cart-icon ml-1"><a href="/cart"><img src="/logo/cart-logo.png"></a></div>
+                <div class="cart-text "><a href="/cart">Cart: <?= isset($cart) ? count($cart) : 0 ?></a></div>
+            </li>
+
+            <div id="menutest">
+				<?php
+				foreach ($menu as $val):
 					?>
-                    <a href="/account">
-                        <div class="avatar-user" style="padding-right: 17px"><img
-                                    src="/logo/man-logo.png">
+                    <li class="nav-item form-inline mt-1">
+                        <div class="text-menu"><a href="/<?= $val['slug'] ?>"><span><?= $val['value'] ?></span></a>
                         </div>
-                    </a> <a href="/account">
-                        <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?>
-                    </a>&nbsp;&nbsp;&nbsp;
-                    <a href="/auth/logout" style="color: #000000"><i class="fad fa-sign-out-alt"></i></a>
-        </div>
-		<?php
-		} else {
-			?>
-			<?php
-		}
-		} else {
-			?>
-            <div class="btn-signinup"><a href="/auth">Sign In</a> | <a href="/auth/signup">Sign Up</a></div>
-			<?php
-		}
-		?>
-        </li>
+                    </li>
+				<?php
+				endforeach;
+				?>
+            </div>
+            <li class="nav-item form-inline" style="padding-right: 17px">
+				<?php
+				if (isset($user)) {
+					if ($user) {
+						?>
+                        <a href="/account">
+                            <div class="avatar-user" style="padding-right: 17px"><img
+                                        src="/logo/man-logo.png">
+                            </div>
+                        </a> <a href="/account">
+                            <div class="name-user"><span>Hello,</span>&nbsp;<?= $user['fullname'] ?>    </div>
+
+                        </a>&nbsp;&nbsp;&nbsp;
+                        <a href="/auth/logout" style="color: #000000"><i class="fad fa-sign-out-alt"></i></a>
+						<?php
+					} else {
+
+					}
+				} else {
+					?>
+                    <div class="btn-signinup"><a href="/auth">Sign In</a> | <a href="/auth/signup">Sign Up</a></div>
+					<?php
+				}
+				?>
+            </li>
         </ul>
 
     </div>
-    </div>
 </nav>
 
-<div class="space-navbar ">
+<div class="space-navbar">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2 col-lg-2" id="explore">
             <section class="main-menu ">
                 <div class="title-menu">Explore</div>
                 <div class="details-menu">
@@ -165,7 +167,7 @@
             </section>
 
         </div>
-        <div class="col-md-10">
+        <div class="col-md-12 col-lg-10">
 			<?= view($temp, $this->data) ?>
         </div>
     </div>
@@ -235,6 +237,7 @@
 <script src="/owlcarousel/owl.carousel.min.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <script src="/assets/plugins/share/jquery.c-share.js"></script>
+<script src="/assets/plugins/star/starrr.js"></script>
 <?php
 echo view($temp . '_js', $this->data);
 ?>
@@ -266,6 +269,21 @@ echo view($temp . '_js', $this->data);
         }
     });
 
+
+    // count CART
+    $.ajax({
+        url: "/cart/listcart",
+        dataType: "html",
+        data: {},
+        type: "POST",
+        success: function (data) {
+            var number = JSON.parse(data).length;
+            $('.cart-text a').html('Cart: ' + number);
+        },
+        error: function () {
+        }
+    });
+
     $(document).on('click', '.favourite', function () {
         var id = $(this).data('id');
         var checkf = $(this).data('fav');
@@ -277,8 +295,8 @@ echo view($temp . '_js', $this->data);
             data: {id: id},
             type: "POST",
             success: function (data) {
-                $('#iconfavourite' + id).toggleClass('fal fas');
-                $('#iconfavourite' + id).css("color", "red");
+                $('.iconfavourite' + id).toggleClass('fal fas');
+                $('.iconfavourite' + id).css("color", "red");
                 $('.favourite-num span').html(data);
             },
             error: function () {
@@ -296,12 +314,13 @@ echo view($temp . '_js', $this->data);
 
     var origin = window.location.origin;
 
-    $('.btnShare').click(function () {
+
+    $('body').delegate('.btnShare', 'click', function () {
         var id = $(this).data('id');
         var link = $(this).data('url');
-        console.log(id);
-        $('#shareBlock' + id).html('');
-        $('#shareBlock' + id).cShare({
+        console.log(this);
+        $('.shareBlock' + id).html('');
+        $('.shareBlock' + id).cShare({
                 spacing: 20,
                 description: 'jQuery plugin - C Share buttons...',
                 showButtons: ['fb', 'line', 'twitter'],

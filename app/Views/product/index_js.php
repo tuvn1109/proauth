@@ -1,41 +1,92 @@
 <script>
 
+    var star = 0;
     $('#quantity-order').TouchSpin();
+    $('.starrr').starrr({
+        max: 5,
+        change: function (e, value) {
+            star = value;
+        }
+    });
+
 
     function pad(d) {
         return (d < 10) ? '0' + d.toString() : d.toString();
     }
 
+
+    //
+    $('.btn-review').click(function () {
+        var content = $('#contentReview').val();
+        if (star <= 0) {
+            toastr.error('Please choose a star rating', 'Error');
+            return;
+        }
+        if (content == '' || content == null) {
+            toastr.error('Evaluation content cannot be empty', 'Error');
+            return;
+        }
+        var id = $(this).data('id');
+        $.ajax({
+            url: "/category/addreview",
+            dataType: "json",
+            data: {id: id, content: content, star: star},
+            type: "POST",
+            success: function (data) {
+                if (data.stt == true) {
+                    $('#contentReview').val('');
+                    toastr.success(data.msg, 'Success');
+                    var starhtml = ('');
+                    for (var i = 1; i <= star; i++) {
+                        starhtml += '<i class="fas fa-star"></i>';
+                    }
+                    var $element = $('<div class="col-12 mb-1"><div class="div-review"><div class="review_name">' + data.data.name + '</div><div class="review_meta d-flex"><div class="review_star"><div class="star-feelback">' + starhtml + '</div></div><div class="review_date ml-1"></div></div><div class="review_content">' + content + '</div></div></div>');
+                    $('#divreview').prepend($element);
+                } else {
+                    toastr.error(data.msg, 'Error');
+
+
+                }
+            },
+            error: function () {
+            }
+        });
+
+
+    });
+
+
     // Set the date we're counting down to
     var date_end_fl = $('#date_end_flash').val();
-    var countDownDate = new Date(date_end_fl + " 00:00:00").getTime();
+    if (date_end_fl) {
+        var countDownDate = new Date(date_end_fl + " 00:00:00").getTime();
 
-    // Update the count down every 1 second
-    var x = setInterval(function () {
+        // Update the count down every 1 second
+        var x = setInterval(function () {
 
-        // Get today's date and time
-        var now = new Date().getTime();
+            // Get today's date and time
+            var now = new Date().getTime();
 
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
 
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = pad(days) + " : " + pad(hours) + " : "
-            + pad(minutes) + " : " + pad(seconds);
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = pad(days) + " : " + pad(hours) + " : "
+                + pad(minutes) + " : " + pad(seconds);
 
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
-
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    }
     var test = $('#front-de').data('parameters');
 
     $('.div-favourite-order').click(function () {

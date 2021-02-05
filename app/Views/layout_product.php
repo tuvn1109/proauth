@@ -220,9 +220,11 @@
         </div>
     </div>
 </div>
+
 <script src="/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
 <script src="/owlcarousel/owl.carousel.min.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="/assets/plugins/star/starrr.js"></script>
 
 <?php
 echo view($temp . '_js', $this->data);

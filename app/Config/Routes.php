@@ -44,6 +44,11 @@ $routes->get('/cpanel/product/create', 'Cpanel/product::create');
 $routes->get('/cpanel/product/edit/(:any)', 'Cpanel/product::edit');
 $routes->get('/cpanel/product/(:any)', 'Cpanel/product::loaddata');
 
+$routes->get('/cpanel/feelback', 'Cpanel/feelback::index');
+$routes->get('/cpanel/feelback/(:any)', 'Cpanel/feelback::loaddata');
+
+
+
 $routes->get('/cpanel/properties', 'Cpanel/properties::index');
 $routes->get('/cpanel/properties/(:any)', 'Cpanel/properties::loaddata');
 

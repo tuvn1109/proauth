@@ -1,6 +1,9 @@
 <?php namespace App\Controllers;
 
 
+use App\Models\OrdersDetailModel;
+use App\Models\OrdersModel;
+use App\Models\ProductFeelbackModel;
 use App\Models\PropertiesDetailModel;
 use App\Models\PropertiesModel;
 use App\Models\CategoryModel;
@@ -85,6 +88,7 @@ class Category extends BaseController
 			$modelProductSize = new ProductSizeModel();
 			$modelProductColor = new ProductColorModel();
 			$modelCategory = new CategoryModel();
+			$modelFeelback = new ProductFeelbackModel();
 			$modelColor = new ColorModel();
 			$modelSize = new SizeModel();
 			$uri = current_url(true);
@@ -100,11 +104,10 @@ class Category extends BaseController
 			$builder->where('product_id', $idPro);
 			$colors = $builder->get()->getResultArray();
 
-
+			$feelback = $modelFeelback->getListAll(0, 0, ['product_id' => $idPro]);
 			//$query = $modelProductColor->select('(SELECT product_color.id as id,code as code LEFT JOIN colors ON colors.id = product_color.color_id FROM product_color WHERE product_id = "' . $idPro . '"', FALSE)->findAll();
 
 			//$colors = $modelProductColor->join('colors', 'colors.id = product_color.color_id', 'left')->where('product_id', $idPro)->findAll();
-
 
 			$image = directory_map(WRITEPATH . 'uploads/product/' . $idPro . '/image/' . $colors[0]['idcolor']);
 
@@ -119,6 +122,7 @@ class Category extends BaseController
 			$data['color'] = $colors;
 			$data['image'] = $image;
 			$data['banner'] = $banner;
+			$data['feelback'] = $feelback;
 			$data['cart'] = session('cart');
 			$data['user'] = session('user');
 			$data['maybelike'] = $maybelike;
@@ -152,6 +156,63 @@ class Category extends BaseController
 
 		echo json_encode($colors);
 
+	}
+
+	public function addreview()
+	{
+
+		$modelFeelback = new ProductFeelbackModel();
+		$modelOrder = new OrdersDetailModel();
+		$id = $this->request->getPost('id');
+		$star = $this->request->getPost('star');
+		$content = $this->request->getPost('content');
+
+
+		if (session('user')) {
+			$idCus = session('user')['id'];
+			// check order
+			$check = $modelOrder->infoOrder($idCus, $id);
+			if ($check) {
+
+				$data = [
+					'product_id' => $id,
+					'customer_id' => $idCus,
+					'content' => $content,
+					'rate' => $star,
+				];
+				$modelFeelback->insert($data);
+
+				$return = [
+					'code' => 'fetch_user_success',
+					'msg' => 'Thank you for rating our products',
+					'stt' => true,
+					'data' => [
+						'name' => session('user')['fullname'],
+					]
+				];
+			} else {
+				$return = [
+					'code' => 'fetch_user_success',
+					'msg' => 'You cannot rate products that are not yet owned',
+					'stt' => false,
+					'data' => []
+				];
+
+			}
+
+
+		} else {
+			$return = [
+				'code' => 'fetch_user_success',
+				'msg' => 'Please log in to rate products',
+				'stt' => false,
+				'data' => []
+			];
+
+		}
+		//echo json_encode($colors);
+
+		echo json_encode($return);
 	}
 	//--------------------------------------------------------------------
 

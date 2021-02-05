@@ -39,7 +39,18 @@
 							}
 							?>
                         </div>
-                        <div id="shareproduct"><i class="far fa-share-alt"></i></div>
+                         <div id="shareproduct" class="dropdown btnShare"
+                             data-id="<?= $val['id'] ?>"
+                             data-url="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><i
+                                    class="far fa-share-alt"
+                                    id="dropdownMenuButton<?= $val['id'] ?>"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"></i>
+                            <div class="dropdown-menu" id="shareBlock<?= $val['id'] ?>"
+                                 aria-labelledby="dropdownMenuButton<?= $val['id'] ?>">
+                            </div>
+                        </div>
                     </div>
                     <div id="name-item-mini-right"><a
                                 href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a></div>

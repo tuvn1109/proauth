@@ -4,7 +4,7 @@
 
 <section class="main-body">
     <div class="row">
-        <div class="col-6 d-flex justify-content-start">
+        <div class="col-12 d-flex justify-content-start">
             <div class="title-body">
 				<?php
 				if (isset($list) and $list) {
@@ -13,7 +13,7 @@
 				}
 				?></div>
         </div>
-        <div class="col-6 d-flex justify-content-end">
+        <div class="col-6 d-flex justify-content-end" hidden>
 
         </div>
 
@@ -49,7 +49,7 @@
                                 </div>
 
                             </div>
-                            <div id="favourite" data-id="<?= $val['id'] ?>">
+                            <div id="favourite" class="favourite" data-id="<?= $val['id'] ?>">
 								<?php
 								if (in_array($val['id'], $arrFavourite)) {
 									?>
@@ -63,7 +63,18 @@
 								}
 								?>
                             </div>
-                            <div id="shareproduct"><i class="far fa-share-alt"></i></div>
+                            <div id="shareproduct" class="dropdown btnShare"
+                             data-id="<?= $val['id'] ?>"
+                             data-url="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><i
+                                    class="far fa-share-alt"
+                                    id="dropdownMenuButton<?= $val['id'] ?>"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"></i>
+                            <div class="dropdown-menu" id="shareBlock<?= $val['id'] ?>"
+                                 aria-labelledby="dropdownMenuButton<?= $val['id'] ?>">
+                            </div>
+                        </div>
                         </div>
                         <div id="name-item-mini-right"><a
                                     href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>"><?= $val['name'] ?></a></div>
@@ -110,7 +121,7 @@
 		}
 		?>
 		<?php
-		if (isset($list) AND !$list) {
+		if (isset($list) and !$list) {
 			?>
             <div class="col lg-12 text-center"><span
                         style="font-size:35px;font-weight: 500;font-family: Century Gothic;color: #000000;">We could not find anything for "<?= $textSearch ?>"</span>

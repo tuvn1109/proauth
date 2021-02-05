@@ -4,10 +4,11 @@
 
 <section class="main-body">
     <div class="row">
-        <div class="col-6 d-flex justify-content-start">
+        <div class="col-12 d-flex justify-content-start">
             <div class="title-body"><span><?= $infoCate['value'] ?></span></div>
         </div>
-        <div class="col-6 d-flex justify-content-end">
+
+        <div class="col-6 d-flex justify-content-end" hidden>
 			<?php
 
 			if (isset($sort) and count($sort) > 0) {
@@ -68,7 +69,7 @@
 			$getSize = explode('.', $val['thumbnail']);
 			$path = $getSize[0] . '375480.' . $getSize[1];
 			?>
-            <div class="col-cate-2">
+            <div class="col-cate-2 col-xs-6 col-md-4">
                 <div class="item-category">
                     <div class="item-category-thumb">
                         <img src="/download/image?name=<?= $path ?>" class="img-fluid w-100">
@@ -76,8 +77,7 @@
                             <div class="centerContent">
                                 <button class="btn-quickview"><span>quick view</span>
                                 </button>
-                                                                    <a href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>">
-
+                                <a href="/<?= $val['slug'] ?>/<?= $val['slug_pro'] ?>">
                                 <button class="btn-addcart"><span>add to cart</span>
                                 </button></a>
                             </div>
@@ -141,13 +141,6 @@
 					?>
                 </div>
             </div>
-			<?php
-			if ($i == 5) {
-				?>
-                <div class="col-12" style="margin-bottom: 50px"></div>
-				<?php
-				$i = 0;
-			} ?>
 			<?php
 			if ($i2 == 10) {
 				?>

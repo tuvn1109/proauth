@@ -58,11 +58,15 @@
 }
 
 @media (min-width: 992px) {
-
+    .navbar {
+        padding-right: 15px !important;
+        padding-left: 15px !important;;
+    }
 
 }
 
 @media (min-width: 1200px) {
+
 }
 
 @media (min-width: 1920px) {
@@ -671,7 +675,7 @@ img {
 
 .navbar {
     height: 70px;
-    padding: 0px 75px 0px 75px !important;
+    padding: 0px 75px 0px 75px;
     box-shadow: 0px 2px 8px 0px #000000 13, 52%;
 }
 
@@ -1611,7 +1615,7 @@ img {
     font-size: 12px;
 }
 
-.payment-icon a{
+.payment-icon a {
     color: rgba(241, 196, 15, 1);
 }
 
@@ -1623,7 +1627,7 @@ img {
 .payment-card {
     border: 0.6px solid rgba(241, 196, 15, 0.7);
     border-radius: 15px;
-
+    cursor: pointer;
 
 }
 
@@ -1633,12 +1637,15 @@ img {
 
 .active-address {
     border: 0.6px solid rgba(241, 196, 15, 0.7);
+    background-color: #ffffff !important;
+    color: rgb(241 196 15) !important;
 }
 
 .div_address {
     cursor: pointer;
     box-sizing: border-box;
     border-radius: 15px;
+    background-color: #F8F4F4;
 }
 
 .checked_method {
@@ -1650,6 +1657,7 @@ img {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.13);
     border-radius: 15px;
     padding: 20px;
+    cursor: pointer;
 }
 
 .method_ship .name {
@@ -1821,4 +1829,16 @@ canvas #c {
 
 #description .ql-editor {
     padding: 0;
+}
+
+.starrr {
+    display: inline-block;
+}
+
+.starrr a {
+    font-size: 16px;
+    padding: 0 1px;
+    cursor: pointer;
+    color: #E67E22;
+    text-decoration: none;
 }

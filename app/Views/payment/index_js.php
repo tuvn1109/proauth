@@ -5,24 +5,36 @@
 
 
     //$("#radiomethod").is(":checked")
-    var shipping_method, gender = null;
+    var gender = $('input[name="radiogender"]:checked').val();
+    var shipping_method = $('input[name="radiomethod"]:checked').val();
     var type_ship_address = 'old';
-    var idaddress = '';
+    var idaddress = $('input[name="radioaddress"]:checked').val();
     $(function () {
 
         $("input[name='radiomethod']").click(function () {
             let dataId = $(this).data("id");
-            shipping_method = dataId;
             $('.method_ship').removeClass("checked_method");
             $('#method' + dataId).addClass('checked_method');
 
         });
+        $(".payment-card").click(function () {
+            let dataId = $(this).data("id");
+            $("#radiopaymethod" + dataId).prop("checked", true);
+
+
+        });
+        $(".method_ship ").click(function () {
+            let dataId = $(this).data("id");
+            $('.method_ship').removeClass("checked_method");
+            $('#method' + dataId).addClass('checked_method');
+            $("#radiomethod" + dataId).prop("checked", true);
+        });
         $(".div_address").click(function () {
-            let type = $(this).data("type");
-            let id = $(this).data("id");
-            idaddress = id;
-            console.log(idaddress);
-            if (type == 'new') {
+            let dataId = $(this).data("id");
+            $("#radioaddress" + dataId).prop("checked", true);
+            let value = $('input[name="radioaddress"]:checked').val();
+            idaddress = value;
+            if (value == 'new') {
                 $('#div_addressnew').css('display', 'flex');
                 type_ship_address = 'new';
             } else {
@@ -129,29 +141,30 @@
             toastr.error('Enter Address', 'Error');
             return;
         }
+        if (idaddress == 'new') {
+            console.log('idaddress:', idaddress)
 
-        if (type_ship_address == 'new') {
             var countrynew = $('#country_new').val();
             var citynew = $('#city_new').val();
             var postalcodenew = $('#postalcode_new').val();
             var addressnew = $('#address_new').val();
 
-            if (country == '') {
+            if (countrynew == '') {
                 $('#country_new').focus();
                 toastr.error('Enter Country', 'Error');
                 return;
             }
-            if (city == '') {
+            if (citynew == '') {
                 $('#city_new').focus();
                 toastr.error('Enter City', 'Error');
                 return;
             }
-            if (postalcode == '') {
+            if (postalcodenew == '') {
                 $('#postalcode_new').focus();
                 toastr.error('Enter Postalcode', 'Error');
                 return;
             }
-            if (address == '') {
+            if (addressnew == '') {
                 $('#address_new').focus();
                 toastr.error('Enter Address', 'Error');
                 return;
@@ -160,53 +173,77 @@
         if (idaddress == '') {
             idaddress = 1;
         }
+        var radiopaymethod = $('input[name="radiopaymethod"]:checked').val()
+
         formData.append('gender', gender);
-        formData.append('shipping_method', shipping_method);
+        formData.append('shipping_method', $('input[name="radiomethod"]:checked').val());
         formData.append('type_ship_address', type_ship_address);
-        formData.append('idaddress', idaddress);
+        formData.append('idaddress', $('input[name="radioaddress"]:checked').val());
         formData.append('country_new', countrynew);
         formData.append('city_new', citynew);
         formData.append('postalcode_new', postalcodenew);
         formData.append('address_new', addressnew);
+        formData.append('radiopaymethod', radiopaymethod);
 
-        paypal.Buttons({
-            createOrder: function (data, actions) {
-                // This function sets up the details of the transaction, including the amount and line item details.
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {value: amount}
-                    }],
-                });
-            },
-            onApprove: function (data, actions) {
-                // This function captures the funds from the transaction.
-                return actions.order.capture().then(function (details) {
-                    // This function shows a transaction success message to your buyer.
-                  //  alert('Transaction completed by ' + details.payer.name.given_name);
-                    console.log(details);
-                    if (details.status == "COMPLETED") {
-                        $.ajax({
-                            type: 'post',
-                            url: '/cpanel/orders/insert',
-                            data: formData,
-                            async: false,
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            success: function (data) {
-                                $('#order').html('');
-                                $('#order').html('<div class="row"><div class="col-12"><div class="jumbotron"><h1 class="text-center display-3">Thank You!</h1><h2 class="text-center">YOUR ORDER HAS BEEN RECEIVED</h2><p class="text-center">Your order # is: ' + data + '</p><p class="text-center">You will receive an order confirmation email with details of your order and a link to track your process.</p><center><div class="btn-group" style="margin-top:50px;"><a href="/" class="btn btn-lg btn-warning"  style="color: #FFFFFF">CONTINUE</a></div></center></div></div></div>');
-                                //makeSAlert(data,5000);
-                                //$("#catlist").load(location.href + " #catlist");
-                                //$("#noti").html(data);
-                                //window.setTimeout(function(){location.reload()},1000);
-                            }
-                        }); //End Ajax
-                    }
-                });
-            }
-        }).render('#divpaypal');
 
+        if (radiopaymethod == 1) {
+            paypal.Buttons({
+                createOrder: function (data, actions) {
+                    // This function sets up the details of the transaction, including the amount and line item details.
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {value: amount}
+                        }],
+                    });
+                },
+                onApprove: function (data, actions) {
+                    // This function captures the funds from the transaction.
+                    return actions.order.capture().then(function (details) {
+                        // This function shows a transaction success message to your buyer.
+                        //  alert('Transaction completed by ' + details.payer.name.given_name);
+                        console.log(details);
+                        if (details.status == "COMPLETED") {
+                            $.ajax({
+                                type: 'post',
+                                url: '/cpanel/orders/insert',
+                                data: formData,
+                                async: false,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (data) {
+                                    $('#order').html('');
+                                    $('#order').html('<div class="row"><div class="col-12"><div class="jumbotron"><h1 class="text-center display-3">Thank You!</h1><h2 class="text-center">YOUR ORDER HAS BEEN RECEIVED</h2><p class="text-center">Your order # is: ' + data + '</p><p class="text-center">You will receive an order confirmation email with details of your order and a link to track your process.</p><center><div class="btn-group" style="margin-top:50px;"><a href="/" class="btn btn-lg btn-warning"  style="color: #FFFFFF">CONTINUE</a></div></center></div></div></div>');
+                                    //makeSAlert(data,5000);
+                                    //$("#catlist").load(location.href + " #catlist");
+                                    //$("#noti").html(data);
+                                    //window.setTimeout(function(){location.reload()},1000);
+                                }
+                            }); //End Ajax
+                        }
+                    });
+                }
+            }).render('#divpaypal');
+        } else {
+            $.ajax({
+                type: 'post',
+                url: '/cpanel/orders/insert',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    $('#order').html('');
+                    $('#order').html('<div class="row"><div class="col-12"><div class="jumbotron"><h1 class="text-center display-3">Thank You!</h1><h2 class="text-center">YOUR ORDER HAS BEEN RECEIVED</h2><p class="text-center">Your order # is: ' + data + '</p><p class="text-center">You will receive an order confirmation email with details of your order and a link to track your process.</p><center><div class="btn-group" style="margin-top:50px;"><a href="/" class="btn btn-lg btn-warning"  style="color: #FFFFFF">CONTINUE</a></div></center></div></div></div>');
+                    //makeSAlert(data,5000);
+                    //$("#catlist").load(location.href + " #catlist");
+                    //$("#noti").html(data);
+                    //window.setTimeout(function(){location.reload()},1000);
+                }
+            }); //End Ajax
+
+        }
 
     });
     $(".div-gender").click(function () {

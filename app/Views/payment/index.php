@@ -92,40 +92,61 @@
 
                     </div>
                 </form>
-                <div class="row" hidden>
+                <div class="row">
                     <div class="col-12 title">
-                        Payment Info
+                        Payment Method
                     </div>
+                    <!--   <div class="col-8">
+						  <div class="payment-card">
+							  <div class="col-12 " style="border-bottom: 0.6px solid rgba(241, 196, 15, 0.7)">
+								  <div class="row p-1">
+									  <div class="col-6 "><input type="radio" name="radio" checked=""> Card</div>
+									  <div class="col-6 text-right"><img src="/logo/card-logo.png"></div>
+								  </div>
+							  </div>
+							  <div class="col-12 p-1 ">
+								  <div class="row p-1">
+									  <div class="divcard col-12 d-flex">
+										  <img src="/logo/card-logo-1.png" class="mr-1">
+										  <input type="tel" name="cardnumber" class="cardnumber border-0 outline-none"
+												 placeholder="Card Number">
+										  <input type="tel" name="cardmmyy" class="cardmmyy border-0 outline-none"
+												 placeholder="MM / YY" maxlength="4">
+										  <input type="tel" name="cardcvv" class="cardcvv border-0 outline-none"
+												 placeholder="CVV" maxlength="3">
+									  </div>
+								  </div>
+							  </div>
+							  <div class="col-12 " style="border-top: 0.6px solid rgba(241, 196, 15, 0.7)">
+								  <div class="row p-1">
+									  <div class="col-6 "><input type="radio" name="radio" checked=""> Paypal</div>
+									  <div class="col-6 text-right"><img src="/logo/paypal-logo.png"></div>
+								  </div>
+							  </div>
+						  </div>-->
                 </div>
-                <div class="row" hidden>
+
+                <div class="row">
                     <div class="col-8">
-                        <div class="payment-card">
-                            <div class="col-12 " style="border-bottom: 0.6px solid rgba(241, 196, 15, 0.7)">
-                                <div class="row p-1">
-                                    <div class="col-6 "><input type="radio" name="radio" checked=""> Card</div>
-                                    <div class="col-6 text-right"><img src="/logo/card-logo.png"></div>
-                                </div>
-                            </div>
-                            <div class="col-12 p-1 ">
-                                <div class="row p-1">
-                                    <div class="divcard col-12 d-flex">
-                                        <img src="/logo/card-logo-1.png" class="mr-1">
-                                        <input type="tel" name="cardnumber" class="cardnumber border-0 outline-none"
-                                               placeholder="Card Number">
-                                        <input type="tel" name="cardmmyy" class="cardmmyy border-0 outline-none"
-                                               placeholder="MM / YY" maxlength="4">
-                                        <input type="tel" name="cardcvv" class="cardcvv border-0 outline-none"
-                                               placeholder="CVV" maxlength="3">
+						<?php
+						if (isset($listPayMethod)) {
+
+						    $i = 0;
+							foreach ($listPayMethod as $val):
+                                $i++;
+								?>
+                                <div class="payment-card mt-1" data-id="<?= $val['id'] ?>">
+                                    <div class="col-12">
+                                        <div class="row p-1">
+                                            <div class="col-6 "><input type="radio" name="radiopaymethod"  id="radiopaymethod<?= $val['id'] ?>"  <?= $i == 1 ? 'checked' : '' ?> value="<?= $val['id'] ?>"> <?= $val['name'] ?></div>
+                                            <div class="col-6 text-right"><img src="<?= $val['logo'] ?>" style="width: 35%"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 " style="border-top: 0.6px solid rgba(241, 196, 15, 0.7)">
-                                <div class="row p-1">
-                                    <div class="col-6 "><input type="radio" name="radio" checked=""> Paypal</div>
-                                    <div class="col-6 text-right"><img src="/logo/paypal-logo.png"></div>
-                                </div>
-                            </div>
-                        </div>
+							<?php
+							endforeach;
+						}
+						?>
                     </div>
 
                 </div>
@@ -142,6 +163,18 @@
 
                     <div class="col-12 d-flex">
 						<?php
+						if (!isset($user)) {
+							?>
+                            <div class="div_address active-address" data-id="0"
+                                 style="margin-right: 60px" data-type="old">
+                                <div style="padding: 20px;text-align: center">
+                                    <span>Same as Billing Address</span>
+                                </div>
+                                <input type="radio" name="radioaddress" id="radioaddress0" value="0" checked hidden>
+                            </div>
+							<?php
+						}
+
 						if (isset($user)) {
 							if (isset($shipping_add)) {
 								$i = 0;
@@ -155,16 +188,23 @@
                                             <span>Same as Billing Address</span><br><span><?= $shipping_add1['city'] ?>, <?= $shipping_add1['country'] ?><br>
 <?= $shipping_add1['address'] ?>, <?= $shipping_add1['postalcode'] ?></span>
                                         </div>
+                                        <input type="radio" name="radioaddress"
+                                               id="radioaddress<?= $shipping_add1['id'] ?>"
+                                               value="<?= $shipping_add1['id'] ?>" <?= $i == 1 ? 'checked' : '' ?>
+                                               hidden>
+
                                     </div>
 								<?php
 								endforeach;
 							}
 						}
 						?>
-                        <div class="div_address" style="background-color: #F8F4F4" data-type="new">
+                        <div class="div_address" data-type="new" data-id="new">
                             <div style="padding: 20px;text-align: center">
                                 <span style="font-weight: 600">Register New</span><br><span>Change your Address</span>
                             </div>
+                            <input type="radio" name="radioaddress" id="radioaddressnew" value="new" hidden>
+
                         </div>
 
                     </div>
@@ -221,16 +261,18 @@
 						foreach ($listShippingMethod as $val):
 							$i++;
 							?>
+                            <div class=""></div>
                             <div class="col-1 mt-2">
                                 <div class="centerContent">
-                                    <input type="radio" name="radiomethod" id="radiomethod"
+                                    <input type="radio" name="radiomethod" id="radiomethod<?= $val['id'] ?>"
                                            class="radio_shipping " <?= $i == 1 ? 'checked' : '' ?>
-                                           style="width: 20px;height: 20px" data-id="<?= $val['id'] ?>">
+                                           style="width: 20px;height: 20px" data-id="<?= $val['id'] ?>"
+                                           value="<?= $val['id'] ?>">
                                 </div>
                             </div>
                             <div class="col-5 mt-2">
-                                <div class="method_ship <?= $i == 1 ? 'checked_method' : '' ?>" name="method"
-                                     id="method<?= $val['id'] ?>">
+                                <div class="method_ship <?= $i == 1 ? 'checked_method' : '' ?>"
+                                     data-id="<?= $val['id'] ?>" id="method<?= $val['id'] ?>">
                                     <div class="row">
                                         <div class="col-3 ">
                                             <div class="image centerContent">

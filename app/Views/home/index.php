@@ -3,8 +3,9 @@ if ($setting['section1'] == 'on') {
 	?>
     <section class="main-body">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="title-body"><img src="/logo/bestselling-logo.png"><span>Best Selling</span></div>
+            <div class="col-lg-12">
+                <div class="title-body"><img
+                            src="/logo/bestselling-logo.png">&nbsp;&nbsp;&nbsp;&nbsp;<span>Best Selling</span></div>
             </div>
         </div>
         <div class="row bestsell-item animate__animated animate__fadeIn animate__slow">
@@ -35,17 +36,19 @@ if ($setting['section1'] == 'on') {
 										<?php
 										if (in_array($besttshirt1['id'], $arrFavourite)) {
 											?>
-                                            <i class="fas fa-heart" style="color: red"
+                                            <i class="fas fa-heart iconfavourite<?= $besttshirt1['id'] ?>"
+                                               style="color: red"
                                                id="iconfavourite<?= $besttshirt1['id'] ?>"></i>
 											<?php
 										} else {
 											?>
-                                            <i class="fal fa-heart" id="iconfavourite<?= $besttshirt1['id'] ?>"></i>
+                                            <i class="fal fa-heart iconfavourite<?= $besttshirt1['id'] ?>"
+                                               id="iconfavourite<?= $besttshirt1['id'] ?>"></i>
 											<?php
 										}
 										?>
                                     </div>
-                                    <div id="shareproduct" class="dropdown btnShare"
+                                    <div id="shareproduct" class="btnShare dropdown"
                                          data-id="<?= $besttshirt1['id'] ?>"
                                          data-url="/<?= $besttshirt1['slug'] ?>/<?= $besttshirt1['slug_pro'] ?>"><i
                                                 class="far fa-share-alt"
@@ -53,7 +56,8 @@ if ($setting['section1'] == 'on') {
                                                 data-toggle="dropdown"
                                                 aria-haspopup="true"
                                                 aria-expanded="false"></i>
-                                        <div class="dropdown-menu" id="shareBlock<?= $besttshirt1['id'] ?>"
+                                        <div class="dropdown-menu shareBlock<?= $besttshirt1['id'] ?>"
+                                             id="shareBlock<?= $besttshirt1['id'] ?>"
                                              aria-labelledby="dropdownMenuButton<?= $besttshirt1['id'] ?>">
                                         </div>
                                     </div>
@@ -125,25 +129,26 @@ if ($setting['section1'] == 'on') {
 										<?php
 										if (in_array($bestmug1['id'], $arrFavourite)) {
 											?>
-                                            <i class="fas fa-heart" style="color: red"
+                                            <i class="fas fa-heart iconfavourite<?= $bestmug1['id'] ?>"
+                                               style="color: red"
                                                id="iconfavourite<?= $bestmug1['id'] ?>"></i>
 											<?php
 										} else {
 											?>
-                                            <i class="fal fa-heart" id="iconfavourite<?= $bestmug1['id'] ?>"></i>
+                                            <i class="fal fa-heart iconfavourite<?= $bestmug1['id'] ?>"
+                                               id="iconfavourite<?= $bestmug1['id'] ?>"></i>
 											<?php
 										}
 										?>
                                     </div>
-                                    <div id="shareproduct" class="dropdown btnShare"
-                                         data-id="<?= $bestmug1['id'] ?>"
-                                         data-url="/<?= $bestmug1['slug'] ?>/<?= $bestmug1['slug_pro'] ?>"><i
-                                                class="far fa-share-alt"
-                                                id="dropdownMenuButton<?= $bestmug1['id'] ?>"
-                                                data-toggle="dropdown"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"></i>
-                                        <div class="dropdown-menu" id="shareBlock<?= $bestmug1['id'] ?>"
+                                    <div id="shareproduct" class="btnShare dropdown" data-id="<?= $bestmug1['id'] ?>"
+                                         data-url="/<?= $bestmug1['slug'] ?>/<?= $bestmug1['slug_pro'] ?>">
+                                        <i class="far fa-share-alt" id="dropdownMenuButton<?= $bestmug1['id'] ?>"
+                                           data-toggle="dropdown"
+                                           aria-haspopup="true"
+                                           aria-expanded="false"></i>
+                                        <div class="dropdown-menu shareBlock<?= $bestmug1['id'] ?>"
+                                             id="shareBlock<?= $bestmug1['id'] ?>"
                                              aria-labelledby="dropdownMenuButton<?= $bestmug1['id'] ?>">
                                         </div>
                                     </div>
@@ -237,17 +242,19 @@ if ($setting['section1'] == 'on') {
 										<?php
 										if (in_array($bestcase1['id'], $arrFavourite)) {
 											?>
-                                            <i class="fas fa-heart" style="color: red"
+                                            <i class="fas fa-heart iconfavourite<?= $bestcase1['id'] ?>"
+                                               style="color: red"
                                                id="iconfavourite<?= $bestcase1['id'] ?>"></i>
 											<?php
 										} else {
 											?>
-                                            <i class="fal fa-heart" id="iconfavourite<?= $bestcase1['id'] ?>"></i>
+                                            <i class="fal fa-heart iconfavourite<?= $bestcase1['id'] ?>"
+                                               id="iconfavourite<?= $bestcase1['id'] ?>"></i>
 											<?php
 										}
 										?>
                                     </div>
-                                    <div id="shareproduct" class="dropdown btnShare"
+                                    <div id="shareproduct" class="btnShare dropdown"
                                          data-id="<?= $bestcase1['id'] ?>"
                                          data-url="/<?= $bestcase1['slug'] ?>/<?= $bestcase1['slug_pro'] ?>"><i
                                                 class="far fa-share-alt"
@@ -255,7 +262,8 @@ if ($setting['section1'] == 'on') {
                                                 data-toggle="dropdown"
                                                 aria-haspopup="true"
                                                 aria-expanded="false"></i>
-                                        <div class="dropdown-menu" id="shareBlock<?= $bestcase1['id'] ?>"
+                                        <div class="dropdown-menu shareBlock<?= $bestcase1['id'] ?>"
+                                             id="shareBlock<?= $bestcase1['id'] ?>"
                                              aria-labelledby="dropdownMenuButton<?= $bestcase1['id'] ?>">
                                         </div>
                                     </div>
@@ -365,101 +373,110 @@ if ($setting['section3'] == 'on') {
         </div>
 
         <div class="row" style="margin-top: 50px" id="drawsectioncategory1">
-<!--			--><?php
-//			$i = 0;
-//			foreach ($sectionCate1 as $val) {
-//				$i++;
-//				$getSize = explode('.', $val['thumbnail']);
-//				$path = $getSize[0] . '375480.' . $getSize[1];
-//				?>
-<!---->
-<!--                <div class="col-cate-2">-->
-<!--                    <div class="product-home-category">-->
-<!--                        <div class="thumb-product-home">-->
-<!--                            <img src="/download/image?name=--><?//= $path ?><!--" class="img-fluid w-100">-->
-<!--                            <div id="back-hover">-->
-<!--                                <div class="centerContent">-->
-<!--                                    <button class="btn-quickview"><span>quick view</span>-->
-<!--                                    </button>-->
-<!--                                    <a href="/--><?//= $val['slug'] ?><!--/--><?//= $val['slug_pro'] ?><!--">-->
-<!--                                        <button class="btn-addcart" data-id="--><?//= $val['id'] ?><!--"><span>add to cart</span>-->
-<!--                                        </button>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!---->
-<!--                            </div>-->
-<!--                            <div id="favourite" class="favourite" data-id="--><?//= $val['id'] ?><!--">-->
-<!--								--><?php
-//								if (in_array($val['id'], $arrFavourite)) {
-//									?>
-<!--                                    <i class="fas fa-heart" style="color: red"-->
-<!--                                       id="iconfavourite--><?//= $val['id'] ?><!--"></i>-->
-<!--									--><?php
-//								} else {
-//									?>
-<!--                                    <i class="fal fa-heart" id="iconfavourite--><?//= $val['id'] ?><!--"></i>-->
-<!--									--><?php
-//								}
-//								?>
-<!--                            </div>-->
-<!--                            <div id="shareproduct" class="dropdown btnShare"-->
-<!--                                 data-id="--><?//= $val['id'] ?><!--"-->
-<!--                                 data-url="/--><?//= $val['slug'] ?><!--/--><?//= $val['slug_pro'] ?><!--"><i-->
-<!--                                        class="far fa-share-alt"-->
-<!--                                        id="dropdownMenuButton--><?//= $val['id'] ?><!--"-->
-<!--                                        data-toggle="dropdown"-->
-<!--                                        aria-haspopup="true"-->
-<!--                                        aria-expanded="false"></i>-->
-<!--                                <div class="dropdown-menu" id="shareBlock--><?//= $val['id'] ?><!--"-->
-<!--                                     aria-labelledby="dropdownMenuButton--><?//= $val['id'] ?><!--">-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!---->
-<!--                        </div>-->
-<!--                        <div id="name-item-mini-right"><a-->
-<!--                                    href="/--><?//= $val['slug'] ?><!--/--><?//= $val['slug_pro'] ?><!--">--><?//= $val['name'] ?><!--</a>-->
-<!--                        </div>-->
-<!--                        <div id="classify-item-mini-right">Personalized Shirt</div>-->
-<!--                        <div id="price-item-mini-right">-->
-<!--							--><?php
-//							if ($val['sale'] == 'yes'){
-//								?>
-<!--                                <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);-->
-<!--">$--><?//= $val['price'] ?><!-- USD</span> <span class="price">$--><?//= $val['price_sale'] ?><!-- USD</span>-->
-<!--								--><?php
-//							}else{
-//							?>
-<!--                            <span class="pricesale">$--><?//= $val['price'] ?><!-- USD-->
-<!--                        --><?php
-//                        }
-//                        ?>
-<!--                        </div>-->
-<!--						--><?php
-//						if ($val['status'] == 'new') {
-//							?>
-<!--                            <div id="ellipse-new-item"><span>NEW</span></div>-->
-<!---->
-<!--							--><?php
-//						} elseif ($val['status'] == 'sale') {
-//							?>
-<!--                            <div id="ellipse-sale-item">-->
-<!--                                <span>---><?//= 100 - ($val['price_sale'] / $val['price'] * 100) ?><!--%</span></div>-->
-<!--							--><?php
-//						}
-//						?>
-<!--                    </div>-->
-<!--                </div>-->
-<!--				--><?php
-//				if ($i == 5) {
-//					?>
-<!--                    <div class="col-12" style="margin-top: 50px"></div>-->
-<!--					--><?php
-//				}
-//				?>
-<!---->
-<!--				--><?php
-//			}
-//			?>
+            <!--			--><?php
+			//			$i = 0;
+			//			foreach ($sectionCate1 as $val) {
+			//				$i++;
+			//				$getSize = explode('.', $val['thumbnail']);
+			//				$path = $getSize[0] . '375480.' . $getSize[1];
+			//				?>
+            <!---->
+            <!--                <div class="col-cate-2">-->
+            <!--                    <div class="product-home-category">-->
+            <!--                        <div class="thumb-product-home">-->
+            <!--                            <img src="/download/image?name=-->
+			<?//= $path ?><!--" class="img-fluid w-100">-->
+            <!--                            <div id="back-hover">-->
+            <!--                                <div class="centerContent">-->
+            <!--                                    <button class="btn-quickview"><span>quick view</span>-->
+            <!--                                    </button>-->
+            <!--                                    <a href="/--><?//= $val['slug'] ?><!--/-->
+			<?//= $val['slug_pro'] ?><!--">-->
+            <!--                                        <button class="btn-addcart" data-id="-->
+			<?//= $val['id'] ?><!--"><span>add to cart</span>-->
+            <!--                                        </button>-->
+            <!--                                    </a>-->
+            <!--                                </div>-->
+            <!---->
+            <!--                            </div>-->
+            <!--                            <div id="favourite" class="favourite" data-id="-->
+			<?//= $val['id'] ?><!--">-->
+            <!--								--><?php
+			//								if (in_array($val['id'], $arrFavourite)) {
+			//									?>
+            <!--                                    <i class="fas fa-heart" style="color: red"-->
+            <!--                                       id="iconfavourite--><?//= $val['id'] ?><!--"></i>-->
+            <!--									--><?php
+			//								} else {
+			//									?>
+            <!--                                    <i class="fal fa-heart" id="iconfavourite-->
+			<?//= $val['id'] ?><!--"></i>-->
+            <!--									--><?php
+			//								}
+			//								?>
+            <!--                            </div>-->
+            <!--                            <div id="shareproduct" class="dropdown  btnShare"-->
+            <!--                                 data-id="--><?//= $val['id'] ?><!--"-->
+            <!--                                 data-url="/--><?//= $val['slug'] ?><!--/-->
+			<?//= $val['slug_pro'] ?><!--"><i-->
+            <!--                                        class="far fa-share-alt"-->
+            <!--                                        id="dropdownMenuButton--><?//= $val['id'] ?><!--"-->
+            <!--                                        data-toggle="dropdown"-->
+            <!--                                        aria-haspopup="true"-->
+            <!--                                        aria-expanded="false"></i>-->
+            <!--                                <div class="dropdown-menu" id="shareBlock--><?//= $val['id'] ?><!--"-->
+            <!--                                     aria-labelledby="dropdownMenuButton--><?//= $val['id'] ?><!--">-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!---->
+            <!--                        </div>-->
+            <!--                        <div id="name-item-mini-right"><a-->
+            <!--                                    href="/--><?//= $val['slug'] ?><!--/-->
+			<?//= $val['slug_pro'] ?><!--">--><?//= $val['name'] ?><!--</a>-->
+            <!--                        </div>-->
+            <!--                        <div id="classify-item-mini-right">Personalized Shirt</div>-->
+            <!--                        <div id="price-item-mini-right">-->
+            <!--							--><?php
+			//							if ($val['sale'] == 'yes'){
+			//								?>
+            <!--                                <span class="pricesale" style="text-decoration-line: line-through;margin-right: 15px;color: rgba(102, 101, 101, 0.78);-->
+            <!--">$--><?//= $val['price'] ?><!-- USD</span> <span class="price">$-->
+			<?//= $val['price_sale'] ?><!-- USD</span>-->
+            <!--								--><?php
+			//							}else{
+			//							?>
+            <!--                            <span class="pricesale">$--><?//= $val['price'] ?><!-- USD-->
+            <!--                        --><?php
+			//                        }
+			//                        ?>
+            <!--                        </div>-->
+            <!--						--><?php
+			//						if ($val['status'] == 'new') {
+			//							?>
+            <!--                            <div id="ellipse-new-item"><span>NEW</span></div>-->
+            <!---->
+            <!--							--><?php
+			//						} elseif ($val['status'] == 'sale') {
+			//							?>
+            <!--                            <div id="ellipse-sale-item">-->
+            <!--                                <span>--->
+			<?//= 100 - ($val['price_sale'] / $val['price'] * 100) ?><!--%</span></div>-->
+            <!--							--><?php
+			//						}
+			//						?>
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--				--><?php
+			//				if ($i == 5) {
+			//					?>
+            <!--                    <div class="col-12" style="margin-top: 50px"></div>-->
+            <!--					--><?php
+			//				}
+			//				?>
+            <!---->
+            <!--				--><?php
+			//			}
+			//			?>
 
         </div>
         <div class="row">
@@ -525,97 +542,106 @@ if ($setting['section5'] == 'on') {
 
 
         <div class="row" style="margin-top: 50px" id="drawsectioncategory2">
-<!--			--><?php
-//			$i = 0;
-//			foreach ($sectionCate2 as $val) {
-//				$i++;
-//				$getSize = explode('.', $val['thumbnail']);
-//				$path = $getSize[0] . '375480.' . $getSize[1];
-//				?>
-<!--                <div class="col-cate-2">-->
-<!--                    <div class="product-home-category">-->
-<!--                        <div class="thumb-product-home">-->
-<!--                            <img src="/download/image?name=--><?//= $path ?><!--" class="img-fluid w-100">-->
-<!--                            <div id="back-hover">-->
-<!--                                <div class="centerContent">-->
-<!--                                    <button class="btn-quickview"><span>quick view</span>-->
-<!--                                    </button>-->
-<!--                                    <a href="/--><?//= $val['slug'] ?><!--/--><?//= $val['slug_pro'] ?><!--">-->
-<!--                                        <button class="btn-addcart" data-id="--><?//= $val['id'] ?><!--"><span>add to cart</span>-->
-<!--                                        </button>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div id="favourite" class="favourite" data-id="--><?//= $val['id'] ?><!--">-->
-<!--								--><?php
-//								if (in_array($val['id'], $arrFavourite)) {
-//									?>
-<!--                                    <i class="fas fa-heart" style="color: red"-->
-<!--                                       id="iconfavourite--><?//= $val['id'] ?><!--"></i>-->
-<!--									--><?php
-//								} else {
-//									?>
-<!--                                    <i class="fal fa-heart" id="iconfavourite--><?//= $val['id'] ?><!--"></i>-->
-<!--									--><?php
-//								}
-//								?>
-<!--                            </div>-->
-<!--                            <div id="shareproduct" class="dropdown btnShare"-->
-<!--                                 data-id="--><?//= $val['id'] ?><!--"-->
-<!--                                 data-url="/--><?//= $val['slug'] ?><!--/--><?//= $val['slug_pro'] ?><!--"><i-->
-<!--                                        class="far fa-share-alt"-->
-<!--                                        id="dropdownMenuButton--><?//= $val['id'] ?><!--"-->
-<!--                                        data-toggle="dropdown"-->
-<!--                                        aria-haspopup="true"-->
-<!--                                        aria-expanded="false"></i>-->
-<!--                                <div class="dropdown-menu" id="shareBlock--><?//= $val['id'] ?><!--"-->
-<!--                                     aria-labelledby="dropdownMenuButton--><?//= $val['id'] ?><!--">-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div id="name-item-mini-right"><a-->
-<!--                                    href="/--><?//= $val['slug'] ?><!--/--><?//= $val['slug_pro'] ?><!--">--><?//= $val['name'] ?><!--</a></div>-->
-<!--                        <div id="classify-item-mini-right">Personalized Shirt</div>-->
-<!--                        <div id="price-item-mini-right">-->
-<!--							--><?php
-//							if ($val['sale'] == 'yes'){
-//								?>
-<!--                                <span class="price-old">$--><?//= $val['price'] ?><!-- USD</span> <span-->
-<!--                                        class="price">$--><?//= $val['price_sale'] ?><!-- USD</span>-->
-<!--								--><?php
-//							}else{
-//							?>
-<!--                            <span class="price">$--><?//= $val['price'] ?><!-- USD-->
-<!--                        --><?php
-//                        }
-//                        ?>
-<!--                        </div>-->
-<!--						--><?php
-//						if ($val['status'] == 'new') {
-//							?>
-<!--                            <div id="ellipse-new-item"><span>NEW</span></div>-->
-<!---->
-<!--							--><?php
-//						} elseif ($val['status'] == 'sale') {
-//							?>
-<!--                            <div id="ellipse-sale-item">-->
-<!--                                <span>---><?//= 100 - ($val['price_sale'] / $val['price'] * 100) ?><!--%</span>-->
-<!--                            </div>-->
-<!--							--><?php
-//						}
-//						?>
-<!--                    </div>-->
-<!--                </div>-->
-<!--				--><?php
-//				if ($i == 5) {
-//					?>
-<!--                    <div class="col-12" style="margin-top: 50px"></div>-->
-<!--					--><?php
-//				}
-//				?>
-<!--				--><?php
-//			}
-//			?>
+            <!--			--><?php
+			//			$i = 0;
+			//			foreach ($sectionCate2 as $val) {
+			//				$i++;
+			//				$getSize = explode('.', $val['thumbnail']);
+			//				$path = $getSize[0] . '375480.' . $getSize[1];
+			//				?>
+            <!--                <div class="col-cate-2">-->
+            <!--                    <div class="product-home-category">-->
+            <!--                        <div class="thumb-product-home">-->
+            <!--                            <img src="/download/image?name=-->
+			<?//= $path ?><!--" class="img-fluid w-100">-->
+            <!--                            <div id="back-hover">-->
+            <!--                                <div class="centerContent">-->
+            <!--                                    <button class="btn-quickview"><span>quick view</span>-->
+            <!--                                    </button>-->
+            <!--                                    <a href="/--><?//= $val['slug'] ?><!--/-->
+			<?//= $val['slug_pro'] ?><!--">-->
+            <!--                                        <button class="btn-addcart" data-id="-->
+			<?//= $val['id'] ?><!--"><span>add to cart</span>-->
+            <!--                                        </button>-->
+            <!--                                    </a>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                            <div id="favourite" class="favourite" data-id="-->
+			<?//= $val['id'] ?><!--">-->
+            <!--								--><?php
+			//								if (in_array($val['id'], $arrFavourite)) {
+			//									?>
+            <!--                                    <i class="fas fa-heart" style="color: red"-->
+            <!--                                       id="iconfavourite--><?//= $val['id'] ?><!--"></i>-->
+            <!--									--><?php
+			//								} else {
+			//									?>
+            <!--                                    <i class="fal fa-heart" id="iconfavourite-->
+			<?//= $val['id'] ?><!--"></i>-->
+            <!--									--><?php
+			//								}
+			//								?>
+            <!--                            </div>-->
+            <!--                            <div id="shareproduct" class="dropdown  btnShare"-->
+            <!--                                 data-id="--><?//= $val['id'] ?><!--"-->
+            <!--                                 data-url="/--><?//= $val['slug'] ?><!--/-->
+			<?//= $val['slug_pro'] ?><!--"><i-->
+            <!--                                        class="far fa-share-alt"-->
+            <!--                                        id="dropdownMenuButton--><?//= $val['id'] ?><!--"-->
+            <!--                                        data-toggle="dropdown"-->
+            <!--                                        aria-haspopup="true"-->
+            <!--                                        aria-expanded="false"></i>-->
+            <!--                                <div class="dropdown-menu" id="shareBlock--><?//= $val['id'] ?><!--"-->
+            <!--                                     aria-labelledby="dropdownMenuButton--><?//= $val['id'] ?><!--">-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div id="name-item-mini-right"><a-->
+            <!--                                    href="/--><?//= $val['slug'] ?><!--/-->
+			<?//= $val['slug_pro'] ?><!--">--><?//= $val['name'] ?><!--</a></div>-->
+            <!--                        <div id="classify-item-mini-right">Personalized Shirt</div>-->
+            <!--                        <div id="price-item-mini-right">-->
+            <!--							--><?php
+			//							if ($val['sale'] == 'yes'){
+			//								?>
+            <!--                                <span class="price-old">$-->
+			<?//= $val['price'] ?><!-- USD</span> <span-->
+            <!--                                        class="price">$--><?//= $val['price_sale'] ?><!-- USD</span>-->
+            <!--								--><?php
+			//							}else{
+			//							?>
+            <!--                            <span class="price">$--><?//= $val['price'] ?><!-- USD-->
+            <!--                        --><?php
+			//                        }
+			//                        ?>
+            <!--                        </div>-->
+            <!--						--><?php
+			//						if ($val['status'] == 'new') {
+			//							?>
+            <!--                            <div id="ellipse-new-item"><span>NEW</span></div>-->
+            <!---->
+            <!--							--><?php
+			//						} elseif ($val['status'] == 'sale') {
+			//							?>
+            <!--                            <div id="ellipse-sale-item">-->
+            <!--                                <span>--->
+			<?//= 100 - ($val['price_sale'] / $val['price'] * 100) ?><!--%</span>-->
+            <!--                            </div>-->
+            <!--							--><?php
+			//						}
+			//						?>
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--				--><?php
+			//				if ($i == 5) {
+			//					?>
+            <!--                    <div class="col-12" style="margin-top: 50px"></div>-->
+            <!--					--><?php
+			//				}
+			//				?>
+            <!--				--><?php
+			//			}
+			//			?>
 
         </div>
 
@@ -758,19 +784,32 @@ if ($setting['section7'] == 'on') {
             </div>
             <div class="col-12">
                 <div class="nonloop  owl-carousel">
-                    <div class="feelback-owl justify-content-center">
-                        <div class="star-feelback"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <div class="text-feelback ">Arrived fast and beautifully boxed. They even let me
-                            model on their site :)
-                        </div>
-                        <div class="image-feelback d-flex justify-content-center"><img
-                                    src="https://nld.mediacdn.vn/thumb_w/540/2019/8/3/photo-1-15648212499661517922266.jpg"
-                            ></div>
-                        <div class="name-feelback">Disney</div>
-                        <div class="address-feelback">Los Angeles</div>
-                    </div>
-
+					<?php
+					if (isset($feelback)) {
+						foreach ($feelback as $val):
+							?>
+                            <div class="feelback-owl justify-content-center">
+                                <div class="star-feelback">
+                                    <?php
+									for ($i = 0; $i < $val['rate']; $i++) {
+										?>
+                                        <i class="fas fa-star"></i>
+										<?php
+									}
+									?>
+                                </div>
+                                <div class="text-feelback "><?= $val['content'] ?>
+                                </div>
+                                <div class="image-feelback d-flex justify-content-center"><img
+                                            src="https://nld.mediacdn.vn/thumb_w/540/2019/8/3/photo-1-15648212499661517922266.jpg"
+                                    ></div>
+                                <div class="name-feelback"><?= $val['fullname'] ?></div>
+                                <div class="address-feelback"><?= $val['country'] ?></div>
+                            </div>
+						<?php
+						endforeach;
+					}
+					?>
                 </div>
             </div>
         </div>

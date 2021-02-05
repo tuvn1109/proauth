@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\ProductFeelbackModel;
 use App\Models\ProductModel;
 use App\Models\SettingsModel;
 use App\Models\UsersModel;
@@ -14,6 +15,7 @@ class Home extends BaseController
 		$modelSetting = new SettingsModel();
 		$modelCategory = new CategoryModel();
 		$modelUser = new UsersModel();
+		$modelFeelback = new ProductFeelbackModel();
 		$settings = $modelSetting->where('type', 'homepage')->findAll();
 		$settings = array_column($settings, 'value', 'filed');
 		$menu = $modelCategory->where('parent', '0')->findAll();
@@ -38,6 +40,8 @@ class Home extends BaseController
 		$bestSellMug = $modelProduct->getBestSelling(2, 3);
 		$bestSellCase = $modelProduct->getBestSelling(3, 3);
 
+		$feelback = $modelFeelback->getListAll(0, 0, ['onsite' => 'yes']);
+
 		// INFO USER
 		//$infoUser =
 
@@ -57,6 +61,7 @@ class Home extends BaseController
 		$data['besttshirt'] = $bestSellTshirt;
 		$data['bestmug'] = $bestSellMug;
 		$data['bestcase'] = $bestSellCase;
+		$data['feelback'] = $feelback;
 		$data['sectionCate1'] = $sectionCate1;
 		$data['sectionCate2'] = $sectionCate2;
 		$data['sectionCateType1'] = $sectionCateType1;

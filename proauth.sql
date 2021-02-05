@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 30/01/2021 17:27:07
+ Date: 05/02/2021 17:32:35
 */
 
 SET NAMES utf8mb4;
@@ -160,30 +160,32 @@ CREATE TABLE `orders`  (
   `order_price` decimal(10, 2) NULL DEFAULT NULL,
   `order_status` enum('New','Transport','Done') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `order_payment` enum('Done','Wait for pay') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `order_payment_method` int NULL DEFAULT NULL,
   `order_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `order_shipping` int NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES (12, '11202101125808', 11, '2021-01-12 03:58:08', 30.00, 'New', NULL, 'Viet NamHa Noi10000100 dich vong hau', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (13, '11202101121342', 11, '2021-01-12 04:13:42', 30.00, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 1, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (14, '37202101133737', 37, '2021-01-13 21:37:37', 50.00, 'New', NULL, 'Việt Nam&nbsp;hn&nbsp;10000&nbsp;hn', 1, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (15, '11202101141315', 11, '2021-01-14 02:13:15', NULL, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 1, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (16, '11202101144436', 11, '2021-01-14 02:44:36', 90.00, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 1, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (17, '11202101141626', 11, '2021-01-14 03:16:26', NULL, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (18, '11202101143339', 11, '2021-01-14 03:33:39', NULL, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (19, '11202101143514', 11, '2021-01-14 03:35:14', NULL, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (20, '11202101143614', 11, '2021-01-14 03:36:14', 60.00, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (21, '11202101143747', 11, '2021-01-14 03:37:47', 60.00, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (22, '11202101143855', 11, '2021-01-14 03:38:55', 60.00, 'New', NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (23, '11202101171313', 11, '2021-01-17 22:13:13', 4220.00, 'New', NULL, '&nbsp;&nbsp;&nbsp;', 2, NULL, NULL, NULL);
-INSERT INTO `orders` VALUES (24, '11202101172436', 11, '2021-01-17 22:24:36', 4220.00, 'New', NULL, 'Việt Nam&nbsp;hn&nbsp;100000&nbsp;số 77 cầu giấy', 3, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (12, '11202101125808', 11, '2021-01-12 03:58:08', 30.00, 'New', NULL, NULL, 'Viet NamHa Noi10000100 dich vong hau', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (13, '11202101121342', 11, '2021-01-12 04:13:42', 30.00, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 1, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (14, '37202101133737', 37, '2021-01-13 21:37:37', 50.00, 'New', NULL, NULL, 'Việt Nam&nbsp;hn&nbsp;10000&nbsp;hn', 1, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (15, '11202101141315', 11, '2021-01-14 02:13:15', NULL, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 1, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (16, '11202101144436', 11, '2021-01-14 02:44:36', 90.00, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 1, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (17, '11202101141626', 11, '2021-01-14 03:16:26', NULL, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (18, '11202101143339', 11, '2021-01-14 03:33:39', NULL, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (19, '11202101143514', 11, '2021-01-14 03:35:14', NULL, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (20, '11202101143614', 11, '2021-01-14 03:36:14', 60.00, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (21, '11202101143747', 11, '2021-01-14 03:37:47', 60.00, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (22, '11202101143855', 11, '2021-01-14 03:38:55', 60.00, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (23, '11202101171313', 11, '2021-01-17 22:13:13', 4220.00, 'New', NULL, NULL, '&nbsp;&nbsp;&nbsp;', 2, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (24, '11202101172436', 11, '2021-01-17 22:24:36', 4220.00, 'New', NULL, NULL, 'Việt Nam&nbsp;hn&nbsp;100000&nbsp;số 77 cầu giấy', 3, NULL, NULL, NULL);
+INSERT INTO `orders` VALUES (25, '11202102010253', 11, '2021-02-01 03:02:53', 75.00, 'New', NULL, NULL, 'Viet Nam&nbsp;Ha Noi&nbsp;10000&nbsp;100 dich vong hau', 2, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for orders_detail
@@ -202,7 +204,7 @@ CREATE TABLE `orders_detail`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders_detail
@@ -240,6 +242,8 @@ INSERT INTO `orders_detail` VALUES (31, 23, 2, 2, '/order/23/front1.png', '/orde
 INSERT INTO `orders_detail` VALUES (32, 23, 2, 2, '/order/23/front2.png', '/order/23/back2.png', 4200.00, 61, '2021-01-17 22:13:13', '2021-01-17 22:13:13', NULL);
 INSERT INTO `orders_detail` VALUES (33, 24, 3, 2, '/order/24/front1.png', '/order/24/back1.png', 4200.00, 61, '2021-01-17 22:24:36', '2021-01-17 22:24:36', NULL);
 INSERT INTO `orders_detail` VALUES (34, 24, 3, 2, '/order/24/front2.png', '/order/24/back2.png', 20.00, 57, '2021-01-17 22:24:36', '2021-01-17 22:24:36', NULL);
+INSERT INTO `orders_detail` VALUES (35, 25, 2, 3, '/order/25/front1.png', '/order/25/back1.png', 55.00, 5, '2021-02-01 03:02:53', '2021-02-01 03:02:53', NULL);
+INSERT INTO `orders_detail` VALUES (36, 25, 3, 2, '/order/25/front2.png', '/order/25/back2.png', 20.00, 13, '2021-02-01 03:02:53', '2021-02-01 03:02:53', NULL);
 
 -- ----------------------------
 -- Table structure for pages
@@ -266,6 +270,26 @@ INSERT INTO `pages` VALUES (3, 'Help Center', 'help-center', 'on', 'on', '', '<h
 INSERT INTO `pages` VALUES (4, 'About', NULL, 'on', 'on', '', '<p>TEST ABOUT</p>', '2021-01-16 03:19:39', '2021-01-16 03:19:39', NULL);
 
 -- ----------------------------
+-- Table structure for payment_method
+-- ----------------------------
+DROP TABLE IF EXISTS `payment_method`;
+CREATE TABLE `payment_method`  (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of payment_method
+-- ----------------------------
+INSERT INTO `payment_method` VALUES (1, 'Paypal', '/logo/paypal-logo.png', NULL, NULL, NULL);
+INSERT INTO `payment_method` VALUES (2, 'COD', '/logo/cod-logo.jpg', NULL, NULL, NULL);
+
+-- ----------------------------
 -- Table structure for product_color
 -- ----------------------------
 DROP TABLE IF EXISTS `product_color`;
@@ -279,7 +303,7 @@ CREATE TABLE `product_color`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_color
@@ -292,6 +316,14 @@ INSERT INTO `product_color` VALUES (7, 5, 3, 'product/5/layout/nhung-mau-ao-jord
 INSERT INTO `product_color` VALUES (8, 5, 4, 'product/5/layout/256228-973195-large.jpg', 'product/5/layout/a.jpg', '2021-01-22 03:23:58', '2021-01-22 03:23:58', NULL);
 INSERT INTO `product_color` VALUES (9, 13, 2, 'product/13/layout/mat-truoc.png', 'product/13/layout/mat-sau.png', '2021-01-22 03:32:54', '2021-01-22 03:32:54', NULL);
 INSERT INTO `product_color` VALUES (10, 7, 2, 'product/7/layout/tải xuống (1).jpg', 'product/7/layout/tải xuống.jpg', '2021-01-30 03:58:48', '2021-01-30 03:58:48', NULL);
+INSERT INTO `product_color` VALUES (11, 14, 2, 'product/14/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png', '/logo/noimg.jpg', '2021-01-31 21:52:01', '2021-01-31 21:52:01', NULL);
+INSERT INTO `product_color` VALUES (12, 15, 2, 'product/15/layout/tải xuống.jpg', '/logo/noimg.jpg', '2021-01-31 21:53:42', '2021-01-31 21:53:42', NULL);
+INSERT INTO `product_color` VALUES (13, 16, 2, 'product/16/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png', 'product/16/layout/premium-mobile-phone-screen-mockup-template_53876-65714.jpg', '2021-01-31 21:55:16', '2021-01-31 21:55:16', NULL);
+INSERT INTO `product_color` VALUES (14, 17, 2, 'product/17/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png', 'product/17/layout/images.jpg', '2021-01-31 21:58:35', '2021-01-31 21:58:35', NULL);
+INSERT INTO `product_color` VALUES (15, 18, 2, 'product/18/layout/GDKHcPhWd__tSNSBFDEOXBRS-bs07XhwfQ.png', 'product/18/layout/Skinnydip_London_AW19_Phone_Case_Blue_Butterfly__2_900x900.jpg', '2021-01-31 21:59:22', '2021-01-31 21:59:22', NULL);
+INSERT INTO `product_color` VALUES (16, 19, 2, 'product/19/layout/photo_mug_large4.jpg', 'product/19/layout/prod_en-IN_{FFB121CB-9B41-4C95-8374-D9D3CCF34138}_v=1cdd325c096afc2f72c8e0934cd7c002.jpg', '2021-02-02 01:06:38', '2021-02-02 01:06:38', NULL);
+INSERT INTO `product_color` VALUES (17, 20, 2, 'product/20/layout/6406056695448.jpg', 'product/20/layout/muglay.jpg', '2021-02-02 01:07:21', '2021-02-02 01:07:21', NULL);
+INSERT INTO `product_color` VALUES (18, 21, 2, 'product/21/layout/3a877117d3f6474c939a21dae64c8287.jpg', 'product/21/layout/Harris_Lake_and_Mountains_Grande_Mug_740x_96995855-cc50-4214-b53a-e9d22dba6f0f_medium.jpg', '2021-02-02 01:09:03', '2021-02-02 01:09:03', NULL);
 
 -- ----------------------------
 -- Table structure for product_detail
@@ -310,6 +342,31 @@ CREATE TABLE `product_detail`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for product_feelback
+-- ----------------------------
+DROP TABLE IF EXISTS `product_feelback`;
+CREATE TABLE `product_feelback`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NULL DEFAULT NULL,
+  `customer_id` int NULL DEFAULT NULL,
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `rate` int NULL DEFAULT NULL,
+  `onsite` enum('yes') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of product_feelback
+-- ----------------------------
+INSERT INTO `product_feelback` VALUES (1, 5, 11, 'I feel soooo good :x', 4, 'yes', '2021-02-03 15:08:04', '2021-02-03 02:34:49', NULL);
+INSERT INTO `product_feelback` VALUES (2, 5, 12, 'Very god <3 i love this store', 5, 'yes', '2021-02-04 15:21:10', NULL, NULL);
+INSERT INTO `product_feelback` VALUES (19, 5, 11, 'ggggggggg ', 4, NULL, '2021-02-05 02:44:04', '2021-02-05 02:44:04', NULL);
+INSERT INTO `product_feelback` VALUES (20, 5, 11, 'ưwww', 3, NULL, '2021-02-05 02:45:13', '2021-02-05 02:45:13', NULL);
+
+-- ----------------------------
 -- Table structure for product_size
 -- ----------------------------
 DROP TABLE IF EXISTS `product_size`;
@@ -321,7 +378,7 @@ CREATE TABLE `product_size`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 71 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_size
@@ -343,6 +400,14 @@ INSERT INTO `product_size` VALUES (67, 13, 3, '2021-01-27 22:04:14', '2021-01-27
 INSERT INTO `product_size` VALUES (68, 5, 1, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
 INSERT INTO `product_size` VALUES (69, 5, 2, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
 INSERT INTO `product_size` VALUES (70, 5, 3, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
+INSERT INTO `product_size` VALUES (72, 14, 2, '2021-01-31 21:52:15', '2021-01-31 21:52:15', NULL);
+INSERT INTO `product_size` VALUES (73, 15, 2, '2021-01-31 21:53:42', '2021-01-31 21:53:42', NULL);
+INSERT INTO `product_size` VALUES (75, 16, 1, '2021-01-31 21:57:13', '2021-01-31 21:57:13', NULL);
+INSERT INTO `product_size` VALUES (76, 17, 2, '2021-01-31 21:58:34', '2021-01-31 21:58:34', NULL);
+INSERT INTO `product_size` VALUES (77, 18, 2, '2021-01-31 21:59:22', '2021-01-31 21:59:22', NULL);
+INSERT INTO `product_size` VALUES (78, 19, 1, '2021-02-02 01:06:38', '2021-02-02 01:06:38', NULL);
+INSERT INTO `product_size` VALUES (79, 20, 2, '2021-02-02 01:07:21', '2021-02-02 01:07:21', NULL);
+INSERT INTO `product_size` VALUES (80, 21, 1, '2021-02-02 01:09:02', '2021-02-02 01:09:02', NULL);
 
 -- ----------------------------
 -- Table structure for product_tag
@@ -356,7 +421,7 @@ CREATE TABLE `product_tag`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 53 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_tag
@@ -371,6 +436,9 @@ INSERT INTO `product_tag` VALUES (44, 22, 5, '2021-01-27 22:10:58', '2021-01-27 
 INSERT INTO `product_tag` VALUES (45, 37, 5, '2021-01-27 22:10:58', '2021-01-27 22:10:58', NULL);
 INSERT INTO `product_tag` VALUES (46, 27, 7, '2021-01-30 03:58:48', '2021-01-30 03:58:48', NULL);
 INSERT INTO `product_tag` VALUES (47, 11, 7, '2021-01-30 03:58:48', '2021-01-30 03:58:48', NULL);
+INSERT INTO `product_tag` VALUES (48, 24, 15, '2021-01-31 21:53:42', '2021-01-31 21:53:42', NULL);
+INSERT INTO `product_tag` VALUES (51, 27, 16, '2021-01-31 21:57:13', '2021-01-31 21:57:13', NULL);
+INSERT INTO `product_tag` VALUES (52, 27, 18, '2021-01-31 21:59:22', '2021-01-31 21:59:22', NULL);
 
 -- ----------------------------
 -- Table structure for product_type
@@ -416,15 +484,23 @@ CREATE TABLE `products`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
 INSERT INTO `products` VALUES (5, 'T shirt 0001', 55.00, 40.00, '', 4, '2021-01-31', 'United States', 'Express by 29 Jan', 'product/5/thumb/1611220977_8eeffbfebe8194a508d8.jpg', '<p><strong class=\"ql-size-large\">We design products for fan</strong></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus</p><p><br></p><p><br></p>', 't shirt,men,tshirt 2021', 'yes', 't-shirt-0001-5', 'new', '2021-01-21 03:22:57', '2021-01-29 22:41:17', NULL);
 INSERT INTO `products` VALUES (6, 'T shirt 0002', 35.00, 30.00, NULL, 4, NULL, 'United', '3 - 5 day', 'product/6/thumb/1611221452_e6935e9b81f20d756f0a.webp', 'We design products for fan', '', 'yes', 't-shirt-0002-6', 'new', '2021-01-21 03:30:52', '2021-01-21 03:31:54', NULL);
-INSERT INTO `products` VALUES (7, 'Phone case 0001', 12.00, 10.00, NULL, 3, '0000-00-00', '', '', 'product/7/thumb/1611222053_4ea8fc9818359d3248a2.png', '<p>We design products for fan</p>', 'phone case,case', 'yes', 'phone-case-0001-7', 'new', '2021-01-21 03:40:53', '2021-01-30 03:58:48', NULL);
+INSERT INTO `products` VALUES (7, 'Phone case 0001', 12.00, 10.00, NULL, 3, '0000-00-00', '', '', 'product/7/thumb/1611222053_4ea8fc9818359d3248a2.png', '<p>We design products for fan</p>', 'phone case,case', 'yes', 'phone-case-0001-7', 'new', '2021-01-21 03:40:53', '2021-02-02 01:04:47', NULL);
 INSERT INTO `products` VALUES (13, 'T shirt test 432', 25.00, 20.00, 'yes', 5, '2021-01-31', 'US', '3 - 5 day', 'product/13/thumb/1611307973_55333acc2f1c4d0a3ca2.jpg', '<p><strong style=\"color: rgb(70, 70, 70);\">Description</strong></p><p><span style=\"color: rgb(70, 70, 70);\">Detail description from VIET NAM</span></p><p><br></p>', 't shirt', NULL, 't-shirt-test-432-13', 'new', '2021-01-22 03:32:53', '2021-01-29 04:14:44', NULL);
+INSERT INTO `products` VALUES (14, 'Phone case 2', 20.00, 15.00, NULL, 3, '0000-00-00', '', '', 'product/14/thumb/1612151521_c242d8fe2209a36a187d.jpg', '<p><br></p>', '', NULL, 'phone-case-2-14', 'new', '2021-01-31 21:52:01', '2021-01-31 21:52:15', NULL);
+INSERT INTO `products` VALUES (15, 'Phone case 003', 30.00, 25.00, NULL, 3, NULL, '', '', 'product/15/thumb/1612151622_24685a1a0c3c47f5c407.png', '<p><br></p>', 'phone', NULL, 'phone-case-003', 'new', '2021-01-31 21:53:42', '2021-01-31 21:53:42', NULL);
+INSERT INTO `products` VALUES (16, 'Phone case 0004', 35.00, 30.00, NULL, 3, '0000-00-00', 'US', '', 'product/16/thumb/1612151716_a4f073a99987510d07a0.png', '<p><br></p>', 'Phone case', 'yes', 'phone-case-0004-16', 'new', '2021-01-31 21:55:16', '2021-02-02 01:04:45', NULL);
+INSERT INTO `products` VALUES (17, 'Phone case 0005', 55.00, 50.00, NULL, 3, NULL, '', '', 'product/17/thumb/1612151914_cc854fd6e49ef2f1a5d8.png', '<p><br></p>', '', NULL, 'phone-case-0005', 'new', '2021-01-31 21:58:34', '2021-01-31 21:58:35', NULL);
+INSERT INTO `products` VALUES (18, 'Phone case 0006', 25.00, 20.00, NULL, 3, NULL, '', '', 'product/18/thumb/1612151962_76d407382beb22aef2cb.jpg', '<p><br></p>', 'Phone case', 'yes', 'phone-case-0006', 'new', '2021-01-31 21:59:22', '2021-02-02 01:04:43', NULL);
+INSERT INTO `products` VALUES (19, 'Mug 1', 35.00, 30.00, NULL, 2, NULL, '', '', 'product/19/thumb/1612249598_5543b8dc82ae647b1152.jpg', '<p><br></p>', '', 'yes', 'mug-1', 'new', '2021-02-02 01:06:38', '2021-02-02 01:06:38', NULL);
+INSERT INTO `products` VALUES (20, 'Mug 2', 26.00, 23.00, NULL, 2, NULL, '', '', 'product/20/thumb/1612249641_3e279bbdab947d8ef9a5.jpg', '<p><br></p>', '', 'yes', 'mug-2', 'new', '2021-02-02 01:07:21', '2021-02-02 01:07:21', NULL);
+INSERT INTO `products` VALUES (21, 'Mug 3', 33.00, 25.00, NULL, 2, NULL, '', '', 'product/21/thumb/1612249742_5843edb53cc701770f85.jpeg', '<p><br></p>', '', 'yes', 'mug-3', 'new', '2021-02-02 01:09:02', '2021-02-03 01:16:18', NULL);
 
 -- ----------------------------
 -- Table structure for properties
@@ -689,7 +765,7 @@ INSERT INTO `users` VALUES (0, 'active', 'active', '0000-00-00 00:00:00', '0000-
 INSERT INTO `users` VALUES (3, 'trandan', '1234', NULL, NULL, 'trandan@gmail.com', NULL, 'Trần dần', NULL, 'blocked', 'admin', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (9, 'ga2425524ff', '123', NULL, NULL, 'tu.vit.33@facebook.com', 'tus', 'TÚ', NULL, 'active', 'admin', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (11, 'nvtu1009@gmail.com', '1234', NULL, '2021-01-17 21:42:44', 'nvtu1009@gmail.com', NULL, 'NVTU', '0979797979', 'active', 'admin', 'Viet Name', 'Ha noi', '10000', '100 dich vong hau ', 'female');
-INSERT INTO `users` VALUES (12, 'longth', '123', NULL, NULL, 'long@gmail.com', NULL, 'Trịnh hải long', NULL, 'active', 'user', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (12, 'longth', '123', NULL, NULL, 'long@gmail.com', NULL, 'Trịnh hải long', NULL, 'active', 'user', 'US', NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (13, 'user1', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (14, 'user2', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `users` VALUES (15, 'user3', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

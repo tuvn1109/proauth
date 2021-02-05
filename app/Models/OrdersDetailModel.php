@@ -20,8 +20,6 @@ class OrdersDetailModel extends Model
 	protected $selectFields = ['*'];
 
 
-
-
 	function listData($orderID)
 	{
 		$this->select('*,sizes.id as size_id,colors.id as color_id,colors.value as color,sizes.value as size,');
@@ -32,6 +30,18 @@ class OrdersDetailModel extends Model
 		return $this->get()->getResultArray();
 		//return $this->getCompiledSelect();
 	}
+
+
+	function infoOrder($idcus, $idpro)
+	{
+		$this->select('*');
+		$this->join('orders', 'orders.id = orders_detail.order_id', 'left');
+		$this->where('product_id', $idpro);
+		$this->where('order_cus', $idcus);
+		//$this->paginate($perpage, 'gr1', $page);
+		return $this->get()->getResult('array');
+	}
+
 }
 
 ?>

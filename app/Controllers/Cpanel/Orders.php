@@ -77,6 +77,7 @@ class Orders extends CpanelController
 		$ship = $this->request->getPost('shipping_method');
 		$type_ship = $this->request->getPost('type_ship_address');
 		$address = $this->request->getPost('address');
+		$paymethod = $this->request->getPost('radiopaymethod');
 		$test = session('cart');
 		$user = session('user');
 
@@ -145,6 +146,7 @@ class Orders extends CpanelController
 			'order_date' => date('Y-m-d H:i:s'),
 			'order_shipping' => $ship,
 			'order_address' => $addresTexT,
+			'order_payment_method' => $paymethod,
 			//'order_date' => date(),
 		];
 		$idOrder = $orderMD->insert($dataOrder);
