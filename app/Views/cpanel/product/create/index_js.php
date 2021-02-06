@@ -224,6 +224,7 @@
             formData.append('fileImgPro[]', values);
         });
 
+
         formData.append('thumbnail', thumbnail[0]);
         formData.append('jsoncolor', JSON.stringify(jsoncolor));
 

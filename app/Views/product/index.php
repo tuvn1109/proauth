@@ -381,20 +381,47 @@
             font-size: 15px;
         }
 
-        .btn-review {
-
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
         }
+
+        .upload-btn-wrapper .btn {
+            border: 1px solid gray;
+            color: gray;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #preview img {
+            margin-right: 15px;
+        }
+
     </style>
     <div class="row mt-2">
         <div class="col-12"><span style="font-weight: bold; font-size: 25px">Review</span></div>
 
         <div class="col-12 mb-1">
             <div class="div-review">
-                <div class='starrr'></div>
-                <textarea class="form-control mt-1" id="contentReview" rows="3"
-                          placeholder="Your comments about the product"></textarea>
+                <form id="frrw" action="">
+                    <div class='starrr'></div>
+                    <textarea class="form-control mt-1" id="contentReview" rows="3"
+                              placeholder="Your comments about the product" name="content"></textarea>
+                    <div class="upload-btn-wrapper mt-1">
+                        <button type="button" class="btn"><i class="far fa-plus"></i> Photo review</button>
+                    </div>
+                    <input type="file" name="photoreview" id="photoreview" multiple maxlength="3" hidden/>
 
-                <button type="button" class="btn-review mt-1" data-id="<?= $info['id'] ?>">Review</button>
+                    <div id="preview">
+                    </div>
+                    <div>
+                        <button type="button" class="btn-review mt-1" data-id="<?= $info['id'] ?>">Review</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

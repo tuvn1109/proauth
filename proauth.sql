@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 05/02/2021 17:32:35
+ Date: 06/02/2021 17:49:31
 */
 
 SET NAMES utf8mb4;
@@ -356,15 +356,30 @@ CREATE TABLE `product_feelback`  (
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product_feelback
 -- ----------------------------
 INSERT INTO `product_feelback` VALUES (1, 5, 11, 'I feel soooo good :x', 4, 'yes', '2021-02-03 15:08:04', '2021-02-03 02:34:49', NULL);
 INSERT INTO `product_feelback` VALUES (2, 5, 12, 'Very god <3 i love this store', 5, 'yes', '2021-02-04 15:21:10', NULL, NULL);
-INSERT INTO `product_feelback` VALUES (19, 5, 11, 'ggggggggg ', 4, NULL, '2021-02-05 02:44:04', '2021-02-05 02:44:04', NULL);
-INSERT INTO `product_feelback` VALUES (20, 5, 11, 'ưwww', 3, NULL, '2021-02-05 02:45:13', '2021-02-05 02:45:13', NULL);
+INSERT INTO `product_feelback` VALUES (19, 5, 11, 'ggggggggg ', 4, 'yes', '2021-02-05 02:44:04', '2021-02-06 03:14:28', NULL);
+INSERT INTO `product_feelback` VALUES (20, 5, 11, 'ưwww', 3, 'yes', '2021-02-05 02:45:13', '2021-02-06 03:14:28', NULL);
+INSERT INTO `product_feelback` VALUES (21, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:14:16', '2021-02-06 04:14:16', NULL);
+INSERT INTO `product_feelback` VALUES (22, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:17:00', '2021-02-06 04:17:00', NULL);
+INSERT INTO `product_feelback` VALUES (23, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:17:31', '2021-02-06 04:17:31', NULL);
+INSERT INTO `product_feelback` VALUES (24, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:18:37', '2021-02-06 04:18:37', NULL);
+INSERT INTO `product_feelback` VALUES (25, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:19:34', '2021-02-06 04:19:34', NULL);
+INSERT INTO `product_feelback` VALUES (26, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:20:31', '2021-02-06 04:20:31', NULL);
+INSERT INTO `product_feelback` VALUES (27, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:20:41', '2021-02-06 04:20:41', NULL);
+INSERT INTO `product_feelback` VALUES (28, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:24:55', '2021-02-06 04:24:55', NULL);
+INSERT INTO `product_feelback` VALUES (29, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:25:03', '2021-02-06 04:25:03', NULL);
+INSERT INTO `product_feelback` VALUES (30, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:25:20', '2021-02-06 04:25:20', NULL);
+INSERT INTO `product_feelback` VALUES (31, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:25:47', '2021-02-06 04:25:47', NULL);
+INSERT INTO `product_feelback` VALUES (32, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:25:57', '2021-02-06 04:25:57', NULL);
+INSERT INTO `product_feelback` VALUES (33, 5, 11, '1231 23 123', 4, NULL, '2021-02-06 04:26:31', '2021-02-06 04:26:31', NULL);
+INSERT INTO `product_feelback` VALUES (34, 5, 11, 'tu tesst ', 5, NULL, '2021-02-06 04:26:58', '2021-02-06 04:26:58', NULL);
+INSERT INTO `product_feelback` VALUES (35, 5, 11, '123 1231 2312312 3123 ', 5, NULL, '2021-02-06 04:27:41', '2021-02-06 04:27:41', NULL);
 
 -- ----------------------------
 -- Table structure for product_size

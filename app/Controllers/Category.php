@@ -166,6 +166,8 @@ class Category extends BaseController
 		$id = $this->request->getPost('id');
 		$star = $this->request->getPost('star');
 		$content = $this->request->getPost('content');
+		$files = $this->request->getFiles();
+		$photo = $files['photorw'];
 
 
 		if (session('user')) {
@@ -181,6 +183,23 @@ class Category extends BaseController
 					'rate' => $star,
 				];
 				$modelFeelback->insert($data);
+
+
+				foreach ($photo as $val):
+					if ($val->isValid() && !$val->hasMoved()) {
+						$newName = $val->getRandomName();
+						// $val->getName($newName);
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/review')) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/review', 0777, TRUE);
+						}
+
+						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus)) {
+							mkdir(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus, 0777, TRUE);
+						}
+						$val->move(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus, $newName);
+					}
+				endforeach;
+
 
 				$return = [
 					'code' => 'fetch_user_success',
