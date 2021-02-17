@@ -1,5 +1,6 @@
 <script>
     var fullEditor = new Quill('#full-container .editor', {
+        placeholder: 'Compose an epic...',
         bounds: '#full-container .editor',
         modules: {
             'formula': true,
@@ -42,7 +43,7 @@
                 ['clean']
             ],
         },
-        theme: 'snow'
+        theme: 'snow',
     });
 
     $('#btn-submit').on('click', function () {

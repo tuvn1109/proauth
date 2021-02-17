@@ -14,17 +14,17 @@
         return (d < 10) ? '0' + d.toString() : d.toString();
     }
 
-    var arrimg = [];
+    var arrimgreview = [];
 
     function previewFiles() {
+        arrimgreview = [];
         var preview = document.querySelector('#preview');
         var files = document.querySelector('input[type=file]').files;
         $('#preview').empty();
 
         function readAndPreview(file) {
             /// check lenght
-            arrimg.push(file);
-            if (parseInt(files.length) > 3) {
+            if (parseInt(files.length) > 30) {
                 alert("You can only upload a maximum of 2 files");
                 return;
             }
@@ -38,6 +38,7 @@
                     image.title = file.name;
                     image.src = this.result;
                     preview.appendChild(image);
+                    arrimgreview.push(this.result);
                 }, false);
 
                 reader.readAsDataURL(file);
@@ -48,16 +49,16 @@
         if (files) {
             [].forEach.call(files, readAndPreview);
         }
-
     }
 
-    $('.upload-btn-wrapper').click(function () {
+    $('.upload-btn-wrapper').on('click', '#addphoto', function () {
         $('#photoreview').click();
 
     });
 
     $('#photoreview').change(function () {
         previewFiles()
+
     });
 
     $('.btn-review').click(function () {
@@ -79,13 +80,8 @@
 
         $.each(photorw, function (keys, values) {
             formData.append('photorw[]', values);
-
         });
-        $.each(arrimg, function (key, value) {
 
-        });
-        console.log(arrimg);
-        return;
         $.ajax({
             type: 'post',
             url: '/category/addreview',
@@ -98,12 +94,23 @@
             success: function (data) {
                 if (data.stt == true) {
                     $('#contentReview').val('');
+                    $('#preview').html('');
                     toastr.success(data.msg, 'Success');
+                    var d = new Date();
+                    var date = d.getFullYear() + '-' + pad(d.getMonth()) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+
                     var starhtml = ('');
                     for (var i = 1; i <= star; i++) {
                         starhtml += '<i class="fas fa-star"></i>';
                     }
-                    var $element = $('<div class="col-12 mb-1"><div class="div-review"><div class="review_name">' + data.data.name + '</div><div class="review_meta d-flex"><div class="review_star"><div class="star-feelback">' + starhtml + '</div></div><div class="review_date ml-1"></div></div><div class="review_content">' + content + '</div></div></div>');
+
+                    var imgreview = ('');
+                    $.each(arrimgreview, function (keys, values) {
+                        imgreview += '<img height="100" src="' + values + '">';
+                    });
+
+
+                    var $element = $('<div class="col-12 mb-1"><div class="div-review"><div class="review_name">' + data.data.name + '</div><div class="review_meta d-flex"><div class="review_star"><div class="star-feelback">' + starhtml + '</div></div><div class="review_date ml-1">' + date + '</div></div><div class="review_content">' + content + '</div><div id="preview">' + imgreview + '</div></div></div>');
                     $('#divreview').prepend($element);
                 } else {
                     toastr.error(data.msg, 'Error');

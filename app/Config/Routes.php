@@ -89,6 +89,7 @@ $routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$
 
 $routes->get('/testlayout', 'Testlayout::index');
 $routes->get('/order', 'Order::index');
+$routes->get('/trackorder', 'Trackorder::index');
 $routes->get('/cart', 'Cart::index');
 $routes->get('/search', 'Search::index');
 $routes->get('/search/(:any)', 'Search::search/$1');

@@ -38,8 +38,10 @@
         <div class="col-md-5 col-12">
             <div class="row">
                 <div class="col-12">
-                    <div class="link-pro">Home&nbsp;&nbsp;>&nbsp;&nbsp;<?= $menuactive ?>
-                        &nbsp;&nbsp;>&nbsp;&nbsp;<?= $info['slug_pro'] ?></div>
+                    <div class="link-pro"><a href="/">Home</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a
+                                href="/search?texts=<?= $menuactive ?>"><?= $menuactive ?></a>
+                        &nbsp;&nbsp;>&nbsp;&nbsp;<a
+                                href="/search?texts=<?= $info['slug_pro'] ?>"><?= $info['slug_pro'] ?></a></div>
                 </div>
                 <div class="col-12">
                     <div class="title-pro"><span><?= $info['name'] ?></span></div>
@@ -412,14 +414,16 @@
                     <textarea class="form-control mt-1" id="contentReview" rows="3"
                               placeholder="Your comments about the product" name="content"></textarea>
                     <div class="upload-btn-wrapper mt-1">
-                        <button type="button" class="btn"><i class="far fa-plus"></i> Photo review</button>
+                        <button type="button" class="btn" id="addphoto"><i class="far fa-plus"
+                                                                           style="font-size: 14px"></i> <i
+                                    class="fal fa-image"></i></button>
+                        <button type="button" class="btn btn-review" data-id="<?= $info['id'] ?>">Review</button>
                     </div>
-                    <input type="file" name="photoreview" id="photoreview" multiple maxlength="3" hidden/>
+                    <input type="file" name="photoreview" id="photoreview" multiple hidden/>
 
                     <div id="preview">
                     </div>
                     <div>
-                        <button type="button" class="btn-review mt-1" data-id="<?= $info['id'] ?>">Review</button>
                     </div>
                 </form>
             </div>
@@ -427,8 +431,15 @@
     </div>
     <div class="row mt-2" id="divreview">
 		<?php
+
 		if (isset($feelback)) {
 			foreach ($feelback as $val):
+				$Y = date("Y", strtotime($val['created_at']));
+				$M = date("m", strtotime($val['created_at']));
+				$D = date("d", strtotime($val['created_at']));
+				$H = date("H", strtotime($val['created_at']));
+				$I = date("i", strtotime($val['created_at']));
+				$date = $Y . $M . $D . $H . $I;
 				?>
                 <div class="col-12 mb-1">
                     <div class="div-review">
@@ -445,9 +456,24 @@
 									?>
                                 </div>
                             </div>
-                            <div class="review_date ml-1"><?= $val['created_at'] ?></div>
+                            <div class="review_date ml-1"><?= date("Y-m-d H:i", strtotime($val['created_at'])); ?></div>
                         </div>
                         <div class="review_content"><?= $val['content'] ?></div>
+                        <div id="preview">
+
+							<?php
+							if (isset($photoRV[$val['customer_id']][$date])) {
+								$arr = $photoRV[$val['customer_id']][$date];
+								foreach ($arr as $nameimg) {
+									?>
+                                    <img height="100"
+                                         src="/download/image?name=product/<?= $val['product_id'] ?>/review/<?= $val['customer_id'] ?>/<?= $date ?>/<?= $nameimg ?>">
+									<?php
+								}
+							}
+
+							?>
+                        </div>
                     </div>
                 </div>
 			<?php

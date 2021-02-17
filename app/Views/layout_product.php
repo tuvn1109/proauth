@@ -82,15 +82,20 @@
 				<?php
 				endforeach;
 				?>
-                <li class="nav-item  mr-1">
-                    <div class="item-menu"><span>Sale Off</span></div>
+                <li class="nav-item  mr-1"><a href="#">
+                        <div class="item-menu"><span>Sale Off</span></div>
+                    </a>
 
                 </li>
                 <li class="nav-item  mr-1">
-                    <div class="item-menu"><span>Track Order</span></div>
+                    <a href="/trackorder">
+                        <div class="item-menu <?= $menuactive == 'trackorder' ? 'active-menu' : '' ?>">
+                            <span>Track Order</span></div>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <div class="item-menu"><span>FAQs</span></div>
+                <li class="nav-item"><a href="#">
+                        <div class="item-menu"><span>FAQs</span></div>
+                    </a>
                 </li>
 
                 <li class="nav-item">

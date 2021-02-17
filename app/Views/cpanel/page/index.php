@@ -10,6 +10,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Slug</th>
                     <th>Layout</th>
                     <th>Action</th>
                 </tr>

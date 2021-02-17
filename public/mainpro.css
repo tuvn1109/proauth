@@ -910,10 +910,11 @@ img {
     letter-spacing: 0px;
 }
 
-.link-pro {
+.link-pro a{
     font-family: Quicksand;
     line-height: 25px;
     font-weight: 500;
+    color: #70716f;
 }
 
 #div-choose {

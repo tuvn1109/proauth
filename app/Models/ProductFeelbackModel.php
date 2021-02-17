@@ -24,7 +24,7 @@ class ProductFeelbackModel extends Model
 	{
 		//$limit = '' ;
 		//$query = $this->select('id');
-		$this->select('*,product_feelback.id as id,products.id as product_id,products.name as product_name,users.id as customer_id');
+		$this->select('*,product_feelback.id as id,products.id as product_id,products.name as product_name,users.id as customer_id,product_feelback.created_at as created_at,');
 		$this->join('products', 'products.id = product_feelback.product_id', 'left');
 		$this->join('users', 'users.id = product_feelback.customer_id', 'left');
 		$this->orderBy('product_feelback.id', 'DESC');

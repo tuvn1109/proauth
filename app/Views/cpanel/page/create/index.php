@@ -17,8 +17,11 @@
                         </div>
                         <div class="col-xl-3 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
-                                <label>Lay</label>
-                                <input type="text" class="form-control" id="layout" name="layout" placeholder="layout">
+                                <label for="basicSelect">Layout</label>
+                                <select class="form-control" id="layout" name="layout">
+                                    <option value="1">Vertical Menu</option>
+                                    <option value="2">Horizontal Menu</option>
+                                </select>
                             </fieldset>
                         </div>
                         <div class="col-xl-3 col-md-6 col-12 mb-1">

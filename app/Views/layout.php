@@ -245,12 +245,23 @@ echo view($temp . '_js', $this->data);
 <script>
     var owl = $('.owl-carousel');
     owl.owlCarousel({
-        items: 7,
         loop: true,
         margin: 10,
         autoplay: true,
         autoplayTimeout: 1000,
-        autoplayHoverPause: true
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 3,
+            },
+            600: {
+                items: 5,
+                nav: false
+            },
+            1000: {
+                items: 7,
+            },
+        }
     });
     //  owl.trigger('play.owl.autoplay', [1000])
 

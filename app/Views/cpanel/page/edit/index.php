@@ -15,10 +15,19 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="<?= $info['name'] ?>">
                             </fieldset>
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                        <div class="col-xl-3 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
-                                <label>Lay</label>
-                                <input type="text" class="form-control" id="layout" name="layout" placeholder="layout" value="<?= $info['layout'] ?>">
+                                <label for="basicSelect">Layout</label>
+                                <select class="form-control" id="layout" name="layout">
+                                    <option value="1" <?= $info['layout'] == 1 ? 'selected' : '' ?>>Vertical Menu</option>
+                                    <option value="2" <?= $info['layout'] == 2 ? 'selected' : '' ?>>Horizontal Menu</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-12 mb-1">
+                            <fieldset class="form-group">
+                                <label>Slug</label>
+                                <input type="text" class="form-control" id="slug" name="slug" placeholder="help-center" value="<?= $info['slug'] ?>">
                             </fieldset>
                         </div>
                         <div class="col-xl-2 col-md-6 col-12 mb-1">

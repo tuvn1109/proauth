@@ -81,7 +81,17 @@ class Category extends BaseController
 		$maybelike = $modelProduct->join('categories', 'categories.id = products.type', 'left')->where('type', $id)->findAll(6, 0);
 
 		$cateImage = directory_map('./images-pro');
+		$photoRV = directory_map(WRITEPATH . 'uploads/product/' . $idPro . '/review/', FALSE, TRUE);
 
+		$arrPT = [];
+		foreach ($photoRV as $key => $val) {
+			$rep = substr($key, 0, -1);
+
+			foreach ($val as $key2 => $val2) {
+				$key2 = substr($key2, 0, -1);
+				$arrPT[$rep][$key2] = $val2;
+			}
+		}
 
 		if ($infoCate && $infoPro) {
 			$modelProduct = new ProductModel();
@@ -123,6 +133,7 @@ class Category extends BaseController
 			$data['image'] = $image;
 			$data['banner'] = $banner;
 			$data['feelback'] = $feelback;
+			$data['photoRV'] = $arrPT;
 			$data['cart'] = session('cart');
 			$data['user'] = session('user');
 			$data['maybelike'] = $maybelike;
@@ -167,8 +178,9 @@ class Category extends BaseController
 		$star = $this->request->getPost('star');
 		$content = $this->request->getPost('content');
 		$files = $this->request->getFiles();
-		$photo = $files['photorw'];
-
+		if (isset($files['photorw'])) {
+			$photo = $files['photorw'];
+		}
 
 		if (session('user')) {
 			$idCus = session('user')['id'];
@@ -184,22 +196,25 @@ class Category extends BaseController
 				];
 				$modelFeelback->insert($data);
 
+				if ($photo) {
+					foreach ($photo as $val):
+						if ($val->isValid() && !$val->hasMoved()) {
+							$newName = $val->getRandomName();
+							$explodeName = explode(".", $newName);
+							$nameAuth = $explodeName[0] . '.' . $explodeName[1];
 
-				foreach ($photo as $val):
-					if ($val->isValid() && !$val->hasMoved()) {
-						$newName = $val->getRandomName();
-						// $val->getName($newName);
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/review')) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id . '/review', 0777, TRUE);
+							// $val->getName($newName);
+							if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/review')) {
+								mkdir(WRITEPATH . 'uploads/product/' . $id . '/review', 0777, TRUE);
+							}
+
+							if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus . '/' . date('YmdHi'))) {
+								mkdir(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus . '/' . date('YmdHi'), 0777, TRUE);
+							}
+							$val->move(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus . '/' . date('YmdHi'), $nameAuth);
 						}
-
-						if (!is_dir(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus)) {
-							mkdir(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus, 0777, TRUE);
-						}
-						$val->move(WRITEPATH . 'uploads/product/' . $id . '/review/' . $idCus, $newName);
-					}
-				endforeach;
-
+					endforeach;
+				}
 
 				$return = [
 					'code' => 'fetch_user_success',

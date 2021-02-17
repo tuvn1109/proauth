@@ -14,8 +14,16 @@
         "columns": [
             {"data": "id"},
             {"data": "name"},
-            {"data": "layout"},
+            {"data": "slug"},
             {
+                "data": "", render: function (data, type, row) {
+                    var menu = 'Vertical Menu';
+                    if (row.layout == 2) {
+                        menu = 'Horizontal Menu';
+                    }
+                    return menu;
+                }
+            }, {
                 "data": "", render: function (data, type, row) {
                     return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light edit" data-id="' + row.id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.id + '"><i class="feather icon-trash"></i></button>';
                 }

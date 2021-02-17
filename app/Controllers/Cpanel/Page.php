@@ -90,6 +90,7 @@ class Page extends CpanelController
 		$menu = $this->request->getPost('menu');
 		$shows = $this->request->getPost('shows');
 		$content = $this->request->getPost('content');
+		$slug = $this->request->getPost('slug');
 		$id = $this->request->getPost('id');
 
 		$data = [
@@ -97,6 +98,7 @@ class Page extends CpanelController
 			'layout' => $layout,
 			'menu' => $menu,
 			'shows' => $shows,
+			'slug' => $slug,
 			'content' => $content,
 		];
 
