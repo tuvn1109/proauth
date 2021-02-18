@@ -3,13 +3,13 @@
         $('#trackod').click(function () {
             $('#drawtrack').empty();
             var code = $('#input-trackod').val();
-            var mail = $('#input-mail').val();
+            var email = $('#input-mail').val();
             if (code == '' || code == null) {
                 toastr.error('Please enter your order code', 'Error');
                 $('#input-trackod').focus();
                 return;
             }
-            if (mail == '' || mail == null) {
+            if (email == '' || email == null) {
                 toastr.error('Please enter your order email', 'Error');
                 $('#input-mail').focus();
                 return;
@@ -17,7 +17,7 @@
             $.ajax({
                 url: "trackorder/track",
                 dataType: "json",
-                data: {code: code},
+                data: {code: code, email: email},
                 type: "POST",
                 success: function (data) {
                     if (data.stt == true) {
@@ -26,7 +26,6 @@
                         $.each(data.details, function (key, value) {
                             alldetail += '<tr><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_front + '" class="w-100"></td><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_back + '" class="w-100"></td><td style="text-align: center">' + value.size + '</td><td style="text-align: center">' + value.color + '</td><td style="text-align: center">' + value.order_detail_price + '</td></tr>';
                         });
-
 
                         $('#drawtrack').append('<div class="col-12"><table class="table table-bordered table-striped table-hover text-center"><thead><tr><th>Front</th><th>Back</th><th>Size</th><th>Color</th><th>Price</th></tr></thead><tbody>' + alldetail + '</tbody><tfoot></tfoot></table></div>')
 

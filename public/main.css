@@ -33,6 +33,7 @@
 
     }
 
+
     .space-navbar {
         padding-left: 15px !important;
         padding-right: 15px !important;
@@ -48,6 +49,10 @@
     .navbar {
         padding-left: 15px !important;
         padding-right: 15px !important;;
+    }
+
+    .divsignin {
+        margin-top: 1rem !important
     }
 
     .navbar-nav {
@@ -1241,6 +1246,9 @@ img {
     top: 30%;
     left: 24%;
     width: 55%;
+
+    /*left: 10%;*/
+    /*width: 80%;*/
 }
 
 .btn-addcart {
@@ -1264,7 +1272,7 @@ img {
     border-radius: 15px;
     top: 0;
     left: 0;
-    display: block;
+    display: block !important;
     z-index: 1;
 }
 

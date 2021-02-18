@@ -88,7 +88,7 @@
 				endforeach;
 				?>
             </div>
-            <li class="nav-item form-inline" style="padding-right: 17px">
+            <li class="nav-item form-inline divsignin" >
 				<?php
 				if (isset($user)) {
 					if ($user) {

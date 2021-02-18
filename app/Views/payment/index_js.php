@@ -68,7 +68,7 @@
         var coupon = $('#coupon').val();
 
         $.ajax({
-            url: "/cpanel/coupon/usecoupon",
+            url: "/cart/usecoupon",
             dataType: "json",
             data: {coupon: coupon},
             type: "POST",
@@ -205,7 +205,7 @@
                         if (details.status == "COMPLETED") {
                             $.ajax({
                                 type: 'post',
-                                url: '/cpanel/orders/insert',
+                                url: '/cart/insert',
                                 data: formData,
                                 async: false,
                                 cache: false,
@@ -227,7 +227,7 @@
         } else {
             $.ajax({
                 type: 'post',
-                url: '/cpanel/orders/insert',
+                url: '/cart/insert',
                 data: formData,
                 async: false,
                 cache: false,

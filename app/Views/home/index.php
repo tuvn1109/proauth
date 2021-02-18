@@ -22,7 +22,7 @@ if ($setting['section1'] == 'on') {
                                 <div class="thumb-bestsell">
                                     <img src="/download/image?name=<?= $path ?>"
                                          class="img-fluid w-100">
-                                    <div id="back-hover">
+                                    <div id="back-hover" class="d-none">
                                         <div class="centerContent">
                                             <button class="btn-quickview top-40"><span>quick view</span>
                                             </button>
@@ -790,7 +790,7 @@ if ($setting['section7'] == 'on') {
 							?>
                             <div class="feelback-owl justify-content-center">
                                 <div class="star-feelback">
-                                    <?php
+									<?php
 									for ($i = 0; $i < $val['rate']; $i++) {
 										?>
                                         <i class="fas fa-star"></i>

@@ -48,7 +48,6 @@ $routes->get('/cpanel/feelback', 'Cpanel/feelback::index');
 $routes->get('/cpanel/feelback/(:any)', 'Cpanel/feelback::loaddata');
 
 
-
 $routes->get('/cpanel/properties', 'Cpanel/properties::index');
 $routes->get('/cpanel/properties/(:any)', 'Cpanel/properties::loaddata');
 
@@ -76,7 +75,8 @@ $routes->get('/cpanel/shippingmethod', 'Cpanel/shippingmethod::index');
 $routes->get('/cpanel/shippingmethod/(:any)', 'Cpanel/shippingmethod::loaddata');
 
 $routes->get('/cpanel/users', 'Cpanel/users::index');
-$routes->get('/cpanel/users/(:any)', 'Cpanel/users::edit');
+$routes->get('/cpanel/users/edit/(:any)', 'Cpanel/users::edit');
+$routes->get('/cpanel/users/(:any)', 'Cpanel/users::loaddata');
 
 $routes->get('/cpanel/email', 'Cpanel/email::index');
 $routes->get('/cpanel/settings/home', 'Cpanel/settings::home');

@@ -24,11 +24,14 @@ class Trackorder extends BaseController
 		$order = new OrdersModel();
 		$details = new OrdersDetailModel();
 		$code = $this->request->getPost('code');
-		$info = $order->where('order_code', $code)->first();
+		$email = $this->request->getPost('email');
+		$info = $order->info(['order_code' => $code,'email' => $email]);
+
 		if ($info) {
 			$data['stt'] = true;
 			$data['info'] = $info;
-			$data['details'] = $details->listData($info['id']);
+			$data['details'] = $details->listData($info['order_id']);
+
 		} else {
 			$data['stt'] = false;
 		}

@@ -1,40 +1,4 @@
 <style>
-    #divlistcart .bootstrap-touchspin.input-group {
-        width: 100% !important;
-    }
-
-    #divlistcart input {
-        background-color: #ffffff00 !important;
-    }
-
-    #divlistcart .bootstrap-touchspin {
-        margin-left: 25px !important;
-    }
-
-    #divlistcart .bootstrap-touchspin.input-group button {
-        background-color: #ffffff00 !important;
-        color: black !important;
-        font-size: 15px;
-        box-shadow: 0 1px 1px -1px #ffffff !important;
-    }
-
-    #divlistcart .bootstrap-touchspin {
-        border: 1px solid #2ECC71 !important;
-        font-size: 15px !important;
-        border-radius: 15px !important;
-        outline: none !important
-    }
-
-    #divlistcart .bootstrap-touchspin input {
-        font-size: 15px !important;
-    }
-
-    #divlistcart .bootstrap-touchspin.input-group .form-control {
-
-    {
-        background-color: #FFFFFF !important
-    ;
-    }
 
 
     #divlistcart .btn {
@@ -90,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="quantity d-flex"><span>Quantity:</span> <input type="number"
+                                        <div class="quantity"><span>Quantity:</span> <input type="number"
                                                                                                    class="inputQuantity"
                                                                                                    id="quantity-order"
                                                                                                    value="<?= $val['quantity'] ?>"

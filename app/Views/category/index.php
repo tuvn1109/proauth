@@ -8,7 +8,7 @@
             <div class="title-body"><span><?= $infoCate['value'] ?></span></div>
         </div>
 
-        <div class="col-6 d-flex justify-content-end" hidden>
+        <div class="col-6 " style="display: none">
 			<?php
 
 			if (isset($sort) and count($sort) > 0) {
@@ -87,12 +87,12 @@
 							<?php
 							if (in_array($val['id'], $arrFavourite)) {
 								?>
-                                <i class="fas fa-heart" style="color: red"
+                                <i class="fas fa-heart iconfavourite<?= $val['id'] ?>" style="color: red"
                                    id="iconfavourite<?= $val['id'] ?>"></i>
 								<?php
 							} else {
 								?>
-                                <i class="fal fa-heart" id="iconfavourite<?= $val['id'] ?>"></i>
+                                <i class="fal fa-heart iconfavourite<?= $val['id'] ?>" id="iconfavourite<?= $val['id'] ?>"></i>
 								<?php
 							}
 							?>

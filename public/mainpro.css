@@ -62,7 +62,16 @@
         padding-right: 15px !important;
         padding-left: 15px !important;;
     }
+}
 
+@media (max-width: 992px) {
+    .order-div {
+        padding: 20px !important;
+    }
+
+    #divlistcart .bootstrap-touchspin {
+        margin-left: 0px !important;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -910,7 +919,7 @@ img {
     letter-spacing: 0px;
 }
 
-.link-pro a{
+.link-pro a {
     font-family: Quicksand;
     line-height: 25px;
     font-weight: 500;
@@ -1842,4 +1851,40 @@ canvas #c {
     cursor: pointer;
     color: #E67E22;
     text-decoration: none;
+}
+
+#divlistcart .bootstrap-touchspin.input-group {
+    width: 100% !important;
+}
+
+#divlistcart input {
+    background-color: #ffffff00 !important;
+}
+
+#divlistcart .bootstrap-touchspin {
+    margin-left: 25px;
+}
+
+#divlistcart .bootstrap-touchspin.input-group button {
+    background-color: #ffffff00 !important;
+    color: black !important;
+    font-size: 15px;
+    width: 25px;
+    padding: 0;
+    box-shadow: 0 1px 1px -1px #ffffff !important;
+}
+
+#divlistcart .bootstrap-touchspin {
+    border: 1px solid #2ECC71 !important;
+    font-size: 15px !important;
+    border-radius: 15px !important;
+    outline: none !important
+}
+
+#divlistcart .bootstrap-touchspin input {
+    font-size: 15px ;
+}
+
+#divlistcart .bootstrap-touchspin.input-group .form-control {
+    background-color: #FFFFFF !important;
 }
