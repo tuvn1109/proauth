@@ -1,9 +1,14 @@
+<style>
+    .ql-editor{
+        min-height: 150px;
+    }
+</style>
 <div class="row">
 
     <div class="col-12">
         <div class="card card-custom">
             <div class="card-header">
-                <h3>Update Product</h3>
+                <h3><?= isset($type) ? $type : '' ?> Product</h3>
             </div>
             <!--begin::Body-->
             <div class="card-body card-dashboard">
@@ -13,7 +18,7 @@
                             <fieldset class="form-group">
                                 <label>Name</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name"
-                                       value="<?= $info['name'] ?>">
+                                       value="<?= isset($info['name']) ? $info['name'] : '' ?>">
                             </fieldset>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -24,7 +29,7 @@
 									foreach ($listcategory as $category1):
 										?>
                                         <option value="<?= $category1['id'] ?>"
-											<?= $info['type'] == $category1['id'] ? "selected" : "" ?>>
+											<?= isset($info['type']) && $info['type'] == $category1['id'] ? "selected" : "" ?>>
 											<?= $category1['value'] ?></option>
 									<?php
 									endforeach;
@@ -42,12 +47,14 @@
 									<?php
 									foreach ($listsize as $size1):
 										?>
-                                        <option value="<?= $size1['id'] ?>" <?php foreach ($sizes as $sizes1):
-											if ($size1['id'] == $sizes1['size_id']) {
-												echo 'selected';
-											}
-
-										endforeach;
+                                        <option value="<?= $size1['id'] ?>" <?php
+										if (isset($sizes)) {
+											foreach ($sizes as $sizes1):
+												if ($size1['id'] == $sizes1['size_id']) {
+													echo 'selected';
+												}
+											endforeach;
+										}
 										?>><?= $size1['value'] ?> </option>
 
 									<?php
@@ -61,14 +68,15 @@
                             <fieldset class="form-group">
                                 <label>Price $</label>
                                 <input type="text" class="form-control" id="price" name="price" placeholder="..."
-                                       value="<?= $info['price'] ?>">
+                                       value="<?= isset($info['price']) ? $info['price'] : '' ?>">
                             </fieldset>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                             <fieldset class="form-group">
                                 <label>Price sale $</label>
                                 <input type="text" class="form-control" id="price_sale" name="price_sale"
-                                       placeholder="..." value="<?= $info['price_sale'] ?>">
+                                       placeholder="..."
+                                       value="<?= isset($info['price_sale']) ? $info['price_sale'] : '' ?>">
                             </fieldset>
                         </div>
 
@@ -76,7 +84,7 @@
                             <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
                                 <p class="mb-0">Sale</p>
                                 <input type="checkbox" class="custom-control-input" id="salestatus"
-                                       name="salestatus" <?= $info['sale'] == 'yes' ? 'checked' : ''; ?>>
+                                       name="salestatus" <?= isset($info['sale']) && $info['sale'] == 'yes' ? 'checked' : ''; ?>>
                                 <label class="custom-control-label" for="salestatus">
                                     <span class="switch-icon-left"><i class="feather icon-check"></i></span>
                                     <span class="switch-icon-right"><i class="feather icon-x"></i></span>
@@ -87,7 +95,7 @@
                             <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
                                 <p class="mb-0">Bestselling</p>
                                 <input type="checkbox" class="custom-control-input" id="bestselling"
-                                       name="bestselling" <?= $info['bestselling'] == 'yes' ? 'checked' : ''; ?>>
+                                       name="bestselling" <?= isset($info['bestselling']) && $info['bestselling'] == 'yes' ? 'checked' : ''; ?>>
                                 <label class="custom-control-label" for="bestselling">
                                     <span class="switch-icon-left"><i class="feather icon-check"></i></span>
                                     <span class="switch-icon-right"><i class="feather icon-x"></i></span>
@@ -98,7 +106,8 @@
                             <fieldset class="form-group">
                                 <label>Manufactur</label>
                                 <input type="text" class="form-control" id="manufactur" name="manufactur"
-                                       placeholder="Ex: United States" value="<?= $info['manufactur'] ?>">
+                                       placeholder="Ex: United States"
+                                       value="<?= isset($info['manufactur']) ? $info['manufactur'] : '' ?>">
                             </fieldset>
                         </div>
 
@@ -107,7 +116,8 @@
                             <fieldset class="form-group">
                                 <label>Delivery</label>
                                 <input type="text" class="form-control" id="delivery" name="delivery"
-                                       placeholder="delivery" value="<?= $info['delivery'] ?>">
+                                       placeholder="delivery"
+                                       value="<?= isset($info['delivery']) ? $info['delivery'] : '' ?>">
                             </fieldset>
                         </div>
 
@@ -115,7 +125,7 @@
                             <fieldset class="form-group">
                                 <label>Tag</label>
                                 <input type="text" class="form-control" id="tags" name="tags" placeholder="#Tag"
-                                       value="<?= $info['tag'] ?>">
+                                       value="<?= isset($info['tag']) ? $info['tag'] : '' ?>">
                             </fieldset>
                         </div>
 
@@ -123,7 +133,7 @@
                             <fieldset class="form-group">
                                 <label>Flash sale</label>
                                 <input type="date" class="form-control" id="date_end_flash" name="date_end_flash"
-                                       value="<?= $info['date_end_flash'] ?>">
+                                       value="<?= isset($info['date_end_flash']) ? $info['date_end_flash'] : '' ?>">
                             </fieldset>
                         </div>
                     </div>
@@ -152,7 +162,7 @@
                             <fieldset class="form-group">
                                 <label for="label-textarea">Description</label>
                                 <div id="full-container">
-                                    <div class="editor"><?= $info['description'] ?></div>
+                                    <div class="editor"><?= isset($info['description']) ? $info['description'] : '' ?></div>
                                 </div>
                             </fieldset>
                         </div>
@@ -273,11 +283,12 @@
                     <div class="col-12">
 						<?php
 						$arrT = [];
-						foreach ($layout as $layout1):
-							$layout1['images'] = $imageshow[$layout1['color_id']];
-							$arrT[] = $layout1;
-						endforeach;
-
+						if (isset($layout)) {
+							foreach ($layout as $layout1):
+								$layout1['images'] = $imageshow[$layout1['color_id']];
+								$arrT[] = $layout1;
+							endforeach;
+						}
 
 						?>
                         <input type="text" value='<?= json_encode($arrT) ?>' id="jsoncolor" hidden>
@@ -299,9 +310,12 @@
         <div class="card card-custom">
             <div class="card-footer">
                 <div class="col-12 text-center">
+
                     <button type="button" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"
-                            id="btn-submit">Update
+                            id="btn-submit"><?= isset($type) ? $type : ''
+						?>
                     </button>
+
                 </div>
             </div>
         </div>

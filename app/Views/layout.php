@@ -26,6 +26,8 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/katex.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/editors/quill/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/toastr.css">
+
     <!-- END: Page CSS-->
     <script src="/app-assets/vendors/js/vendors.min.js"></script>
     <script src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
@@ -36,6 +38,7 @@
     <!-- END: Custom CSS-->
     <link rel="stylesheet" href="/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/owlcarousel/assets/owl.theme.default.min.css">
+
     <link href="/main.css" rel='stylesheet'>
 
 </head>
@@ -88,7 +91,7 @@
 				endforeach;
 				?>
             </div>
-            <li class="nav-item form-inline divsignin" >
+            <li class="nav-item form-inline divsignin">
 				<?php
 				if (isset($user)) {
 					if ($user) {
@@ -108,7 +111,11 @@
 					}
 				} else {
 					?>
-                    <div class="btn-signinup"><a href="/auth">Sign In</a> | <a href="/auth/signup">Sign Up</a></div>
+                    <div class="btn-signinup"><a href="javascript:void(0)" data-toggle="modal"
+                                                 data-target="#signinModel">Sign In</a> | <a href="javascript:void(0)"
+                                                                                             data-toggle="modal"
+                                                                                             data-target="#signupModel">Sign
+                            Up</a></div>
 					<?php
 				}
 				?>
@@ -234,124 +241,144 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="signinModel" tabindex="-1" role="dialog" aria-labelledby="signinModel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sign In</h5>
+            </div>
+            <div class="modal-body">
+                <form id="kt_login_signin_form">
+                    <fieldset
+                            class="form-label-group form-group position-relative has-icon-left">
+                        <input type="text" class="form-control" id="username"
+                               name="username"
+                               placeholder="Username" required>
+                        <div class="form-control-position">
+                            <i class="fal fa-user"></i>
+                        </div>
+                        <label for="user-name">Username</label>
+                    </fieldset>
+
+                    <fieldset class="form-label-group position-relative has-icon-left">
+                        <input type="password" class="form-control" id="password"
+                               name="password"
+                               placeholder="Password" required>
+                        <div class="form-control-position">
+                            <i class="fal fa-lock-alt"></i>
+                        </div>
+                        <label for="user-password">Password</label>
+                    </fieldset>
+                    <div class="form-group d-flex justify-content-between align-items-center">
+                        <div class="text-left">
+                            <fieldset class="checkbox">
+                                <div class="vs-checkbox-con vs-checkbox-primary">
+                                    <input type="checkbox">
+                                    <span class="vs-checkbox">
+                                                                        <span class="vs-checkbox--check">
+                                                                            <i class="vs-icon feather icon-check"></i>
+                                                                        </span>
+                                                                    </span>
+                                    <span class="">Remember me</span>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="text-right"><a href="auth-forgot-password.html"
+                                                   class="card-link">Forgot Password?</a>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)"
+                       class="btn btn-outline-primary float-left btn-inline" id="signup_bk">Register</a>
+                    <button type="submit" class="btn btn-primary float-right btn-inline"
+                            id="kt_login_signin_submit">
+                        SIGN IN
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="signupModel" tabindex="-1" role="dialog" aria-labelledby="signupModel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">SIGN UP</h5>
+            </div>
+            <div class="modal-body">
+                <form id="kt_login_signup_form">
+                    <div class="form-label-group">
+                        <input type="text" id="fullname" name="fullname"
+                               class="form-control"
+                               placeholder="Full Name" required>
+                        <label for="inputName">Name</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="phone" name="phone"
+                               class="form-control"
+                               placeholder="Phone" required>
+                        <label for="inputName">Phone</label>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input type="email" id="email" name="email" class="form-control"
+                               placeholder="Email" required>
+                        <label for="inputEmail">Email</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="password" id="password" name="password"
+                               class="form-control"
+                               placeholder="Password" required>
+                        <label for="inputPassword">Password</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="password" id="cpassword" name="cpassword"
+                               class="form-control"
+                               placeholder="Confirm Password" required>
+                        <label for="inputConfPassword">Confirm Password</label>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <fieldset class="checkbox">
+                                <div class="vs-checkbox-con vs-checkbox-primary">
+                                    <input type="checkbox" checked>
+                                    <span class="vs-checkbox">
+                                                                        <span class="vs-checkbox--check">
+                                                                            <i class="vs-icon feather icon-check"></i>
+                                                                        </span>
+                                                                    </span>
+                                    <span class=""> I accept the terms & conditions.</span>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)"
+                       class="btn btn-outline-primary float-left btn-inline mb-50" id="signin_bk">Login</a>
+                    <button type="submit" id="kt_login_signup_submit"
+                            class="btn btn-primary float-right btn-inline mb-50">
+                        Register
+                    </button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="/owlcarousel/owl.carousel.min.js"></script>
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <script src="/assets/plugins/share/jquery.c-share.js"></script>
 <script src="/assets/plugins/star/starrr.js"></script>
 <?php
 echo view($temp . '_js', $this->data);
+echo view('layout_js', $this->data);
 ?>
 
-<script>
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 1000,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 3,
-            },
-            600: {
-                items: 5,
-                nav: false
-            },
-            1000: {
-                items: 7,
-            },
-        }
-    });
-    //  owl.trigger('play.owl.autoplay', [1000])
-
-
-    // count FAVOURIITE
-    $.ajax({
-        url: "/Favourite/favouriteadd",
-        dataType: "html",
-        data: {},
-        type: "POST",
-        success: function (data) {
-            $('.favourite-num span').html(data);
-
-        },
-        error: function () {
-        }
-    });
-
-
-    // count CART
-    $.ajax({
-        url: "/cart/listcart",
-        dataType: "html",
-        data: {},
-        type: "POST",
-        success: function (data) {
-            var number = JSON.parse(data).length;
-            $('.cart-text a').html('Cart: ' + number);
-        },
-        error: function () {
-        }
-    });
-
-    $(document).on('click', '.favourite', function () {
-        var id = $(this).data('id');
-        var checkf = $(this).data('fav');
-        console.log(checkf);
-        console.log(id);
-        $.ajax({
-            url: "/Favourite/favouriteadd",
-            dataType: "html",
-            data: {id: id},
-            type: "POST",
-            success: function (data) {
-                $('.iconfavourite' + id).toggleClass('fal fas');
-                $('.iconfavourite' + id).css("color", "red");
-                $('.favourite-num span').html(data);
-            },
-            error: function () {
-            }
-        });
-
-
-        if (checkf == 1) {
-            var myobj = $("#html" + id);
-            myobj.remove();
-        }
-
-    });
-
-
-    var origin = window.location.origin;
-
-
-    $('body').delegate('.btnShare', 'click', function () {
-        var id = $(this).data('id');
-        var link = $(this).data('url');
-        console.log(this);
-        $('.shareBlock' + id).html('');
-        $('.shareBlock' + id).cShare({
-                spacing: 20,
-                description: 'jQuery plugin - C Share buttons...',
-                showButtons: ['fb', 'line', 'twitter'],
-                data: {
-                    fb: {
-                        fa: 'fab fa-facebook-f',
-                        name: 'Fb',
-                        href: (url) => {
-                            var urla = origin + link;
-                            return `https://www.facebook.com/sharer.php?u=${urla}`
-                        },
-                        show: true
-                    },
-
-                }
-            },
-        );
-
-    });
-</script>
 </body>
 
 </html>

@@ -60,6 +60,22 @@ class Orders extends CpanelController
 
 	}
 
+	public function loadstatus()
+	{
+
+		$a = ['value' => 'New', 'text' => 'New'];
+		$b = ['value' => 'Receive', 'text' => 'Receive'];
+		$c = ['value' => 'Transport', 'text' => 'Transport'];
+		$d = ['value' => 'Done', 'text' => 'Done'];
+		$data[] = $a;
+		$data[] = $b;
+		$data[] = $c;
+		$data[] = $d;
+
+		echo json_encode($data);
+
+	}
+
 	public function insert()
 	{
 		helper('filesystem');
@@ -213,16 +229,13 @@ class Orders extends CpanelController
 		$orderMD = new OrdersModel();
 		$orderDetailMD = new OrdersDetailModel();
 		$customerMD = new CustomerModel();
-		$id = $this->request->getPost('id');
-
-		$orderMD->join('customers', 'customers.customer_id = orders.order_cus', 'left');
-		$infoOD = $orderMD->find($id);
-
-		$details = $orderDetailMD->listData($id);
-
-		$data['infoOD'] = $infoOD;
-		$data['details'] = $details;
-		echo json_encode($data);
+		$id = $this->request->getPost('pk');
+		$value = $this->request->getPost('value');
+		$data = [
+			'order_status' => $value,
+		];
+		$orderMD->update($id, $data);
+		echo json_encode(1);
 
 	}
 

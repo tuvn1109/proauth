@@ -18,7 +18,6 @@
                         <th>Sale</th>
                         <th>Bestsell</th>
                         <th>Type</th>
-                        <th>Description</th>
                         <th>Created_at</th>
                         <th>Action</th>
                     </tr>

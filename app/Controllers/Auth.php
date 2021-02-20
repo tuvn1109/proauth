@@ -706,7 +706,7 @@ class Auth extends BaseController
 		$phone = $this->request->getPost('phone');
 
 
-		if ($fullname  && $password && $email && $phone) {
+		if ($fullname && $password && $email && $phone) {
 			$checkUser = $model->getUserByName($email);
 
 			if ($checkUser) {
@@ -733,6 +733,8 @@ class Auth extends BaseController
 					'username' => $email,
 					'email' => $email,
 					'phone' => $phone,
+					'role' => 'user',
+
 				];
 				session()->set(['user' => $dataSS]);
 

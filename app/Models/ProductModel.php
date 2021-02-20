@@ -89,7 +89,7 @@ class ProductModel extends Model
 	{
 		//$limit = '' ;
 		//$query = $this->select('id');
-		$this->select('*,categories.id as cate_id,products.id as id');
+		$this->select('*,categories.id as cate_id,products.id as id,products.created_at as created_at');
 		$this->join('categories', 'categories.id = products.type', 'left');
 		$this->orderBy('products.id', 'DESC');
 		$this->limit($limit, $page);

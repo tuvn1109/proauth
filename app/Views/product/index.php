@@ -406,28 +406,37 @@
     </style>
     <div class="row mt-2">
         <div class="col-12"><span style="font-weight: bold; font-size: 25px">Review</span></div>
+		<?php
+		if (isset($user) and $user) {
+			?>
+            <div class="col-12 mb-1">
+                <div class="div-review">
 
-        <div class="col-12 mb-1">
-            <div class="div-review">
-                <form id="frrw" action="">
-                    <div class='starrr'></div>
-                    <textarea class="form-control mt-1" id="contentReview" rows="3"
-                              placeholder="Your comments about the product" name="content"></textarea>
-                    <div class="upload-btn-wrapper mt-1">
-                        <button type="button" class="btn" id="addphoto"><i class="far fa-plus"
-                                                                           style="font-size: 14px"></i> <i
-                                    class="fal fa-image"></i></button>
-                        <button type="button" class="btn btn-review" data-id="<?= $info['id'] ?>">Review</button>
-                    </div>
-                    <input type="file" name="photoreview" id="photoreview" multiple hidden/>
 
-                    <div id="preview">
-                    </div>
-                    <div>
-                    </div>
-                </form>
+                    <form id="frrw" action="">
+                        <div class='starrr'></div>
+                        <textarea class="form-control mt-1" id="contentReview" rows="3"
+                                  placeholder="Your comments about the product" name="content"></textarea>
+                        <div class="upload-btn-wrapper mt-1">
+                            <button type="button" class="btn" id="addphoto"><i class="far fa-plus"
+                                                                               style="font-size: 14px"></i> <i
+                                        class="fal fa-image"></i></button>
+                            <button type="button" class="btn btn-review" data-id="<?= $info['id'] ?>">Review</button>
+                        </div>
+                        <input type="file" name="photoreview" id="photoreview" multiple hidden/>
+
+                        <div id="preview">
+                        </div>
+                        <div>
+                        </div>
+                    </form>
+
+
+                </div>
             </div>
-        </div>
+			<?php
+		}
+		?>
     </div>
     <div class="row mt-2" id="divreview">
 		<?php

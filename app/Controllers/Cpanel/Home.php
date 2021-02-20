@@ -15,7 +15,7 @@ class Home extends CpanelController
 		if (isset($user) AND $user['role'] == 'admin') {
 			echo view('cpanel/layout', $data);
 		} else {
-			return redirect()->to('/');
+			return redirect()->to('/error');
 		}
 
 	}

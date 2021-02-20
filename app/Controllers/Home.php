@@ -4,6 +4,7 @@ use App\Models\CategoryModel;
 use App\Models\ProductFeelbackModel;
 use App\Models\ProductModel;
 use App\Models\SettingsModel;
+use App\Models\SubscribesModel;
 use App\Models\UsersModel;
 
 class Home extends BaseController
@@ -165,6 +166,23 @@ class Home extends BaseController
 		$data['temp'] = 'about';
 		$data['title'] = 'About Us';
 		echo view('layout', $data);
+
+	}
+
+
+	public function subscribes()
+	{
+		$model = new SubscribesModel();
+		$email = $this->request->getPost('email');
+
+		$check = $model->where('email', $email)->first();
+		if (!$check) {
+			$data = [
+				'email' => $email,
+			];
+			$model->insert($data);
+		}
+		echo json_encode(1);
 
 	}
 

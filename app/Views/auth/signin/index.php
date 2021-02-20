@@ -180,9 +180,7 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                toastr.options = {
-                    "positionClass": "toast-bottom-right",
-                }
+
                 if (data.stt == true) {
                     toastr.success(data.msg, 'Success');
                     window.setTimeout(function () {

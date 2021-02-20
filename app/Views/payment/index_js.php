@@ -80,7 +80,10 @@
                     $('#totalamount').html('$' + data.data.afterDiscount);
 
                     amount = data.data.afterDiscount;
-                    $("#btn_place_order").click();
+                    $('#coupon').prop('disabled', true);
+                    $('#btn-cancel-coupon').show();
+
+                    // $("#btn_place_order").click();
 
                 } else {
                     toastr.error(data.msg, 'Error');
@@ -91,6 +94,30 @@
             }
         });
     });
+
+
+    $('#btn-cancel-coupon').click(function () {
+        $('#coupon').val('');
+        $('#coupon').prop('disabled', false);
+        $.ajax({
+            url: "/cart/usecoupon",
+            dataType: "json",
+            data: {coupon: 'cancel'},
+            type: "POST",
+            success: function (data) {
+                $('#amount').val(data.data.afterDiscount);
+                $('#discount_code #discount').html('$' + data.data.discount);
+                $('#totalamount').html('$' + data.data.afterDiscount);
+                $('#btn-cancel-coupon').hide();
+
+
+            },
+            error: function () {
+            }
+        });
+    });
+
+
     $("#btn_place_order").click(function () {
         $('#divpaypal').html('');
 

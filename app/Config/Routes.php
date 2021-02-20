@@ -32,11 +32,13 @@ $routes->get('/', 'Home::index');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/auth/signup', 'Auth::signup');
 $routes->get('/auth/logout', 'Auth::logout');
+$routes->get('/auth/resetpass/(:any)', 'Auth::resetpass');
 
 
 $routes->get('/cpanel', 'Cpanel/Home::index');
 
 $routes->get('/cpanel/orders', 'Cpanel/orders::index');
+$routes->get('/cpanel/orders/loadstatus', 'Cpanel/orders::loadstatus');
 $routes->get('/cpanel/orders/(:any)', 'Cpanel/orders::loaddata');
 
 $routes->get('/cpanel/product', 'Cpanel/product::index');

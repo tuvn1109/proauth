@@ -131,15 +131,19 @@
 						<?php
 						if (isset($listPayMethod)) {
 
-						    $i = 0;
+							$i = 0;
 							foreach ($listPayMethod as $val):
-                                $i++;
+								$i++;
 								?>
                                 <div class="payment-card mt-1" data-id="<?= $val['id'] ?>">
                                     <div class="col-12">
                                         <div class="row p-1">
-                                            <div class="col-6 "><input type="radio" name="radiopaymethod"  id="radiopaymethod<?= $val['id'] ?>"  <?= $i == 1 ? 'checked' : '' ?> value="<?= $val['id'] ?>"> <?= $val['name'] ?></div>
-                                            <div class="col-6 text-right"><img src="<?= $val['logo'] ?>" style="width: 35%"></div>
+                                            <div class="col-6 "><input type="radio" name="radiopaymethod"
+                                                                       id="radiopaymethod<?= $val['id'] ?>" <?= $i == 1 ? 'checked' : '' ?>
+                                                                       value="<?= $val['id'] ?>"> <?= $val['name'] ?>
+                                            </div>
+                                            <div class="col-6 text-right"><img src="<?= $val['logo'] ?>"
+                                                                               style="width: 35%"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -379,8 +383,12 @@
                     <div class="col-12">
                         <div class="coupon_order">
                             <div class="row">
-                                <div class="col-8"><input type="text" placeholder="COUPON CODE" id="coupon"
+                                <div class="col-6"><input type="text" placeholder="COUPON CODE" id="coupon"
                                                           name="coupon">
+                                </div>
+                                <div class="col-2">
+                                    <button type="button"  id="btn-cancel-coupon" style="display: none" class="w-100 btn-cancel-coupon" title="Cancel the discount code"><i
+                                                class="far fa-ban"></i></button>
                                 </div>
                                 <div class="col-4 text-right">
                                     <button type="button" class="w-100" id="btn-add-coupon">APPLY</button>

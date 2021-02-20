@@ -160,19 +160,33 @@ class Cart extends BaseController
 		$cart = session('cart');
 
 		$total = 0;
+		foreach ($cart as $val):
+			if ($val['sale'] == 'yes') {
+				$price = $val['price_sale'];
+			} else {
+				$price = $val['price'];
+			}
+			$total += $price;
+		endforeach;
+
+
+		if ($coupon == 'cancel') {
+			$return = [
+				'code' => 'coupou_cancel',
+				'msg' => 'Successfully',
+				'stt' => true,
+				'data' => ['discount' => 0, 'afterDiscount' => $total]
+			];
+
+			echo json_encode($return);
+			return;
+		}
 
 
 		$today = date('Y-m-d');
 		if ($info) {
 			if ($info['expiration_date'] >= $today) {
-				foreach ($cart as $val):
-					if ($val['sale'] == 'yes') {
-						$price = $val['price_sale'];
-					} else {
-						$price = $val['price'];
-					}
-					$total += $price;
-				endforeach;
+
 
 				$discount = $total * $info['discount'] / 100;
 				$af_Discount = $total - $discount;
@@ -202,7 +216,7 @@ class Cart extends BaseController
 	}
 
 
-		public function insert()
+	public function insert()
 	{
 		helper('filesystem');
 		$orderMD = new OrdersModel();

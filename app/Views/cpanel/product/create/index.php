@@ -21,7 +21,7 @@
                                 <label>Type</label>
                                 <select class="form-control" id="type" name="type">
 									<?php
-									foreach ($category as $category1):
+									foreach ($listcategory as $category1):
 										?>
                                         <option value="<?= $category1['id'] ?>"><?= $category1['value'] ?></option>
 									<?php
@@ -38,7 +38,7 @@
                                         name="size[]" data-select2-id="default-select-multi" tabindex="-1"
                                         aria-hidden="true">
 									<?php
-									foreach ($size as $size1):
+									foreach ($listsize as $size1):
 										?>
                                         <option value="<?= $size1['id'] ?>"><?= $size1['value'] ?>
                                         </option>
@@ -109,26 +109,26 @@
                             </fieldset>
                         </div>
                     </div>
-                   <!-- <div class="row">
+                    <!-- <div class="row">
 
-                        <div class="col-xl-4 col-md-6 col-12 mb-1">
-                            <fieldset class="form-group">
-                                <label>Description</label>
-                                <input type="text" class="form-control" id="description" name="description"
-                                       placeholder="We design products for fan">
-                            </fieldset>
-                        </div>
+						 <div class="col-xl-4 col-md-6 col-12 mb-1">
+							 <fieldset class="form-group">
+								 <label>Description</label>
+								 <input type="text" class="form-control" id="description" name="description"
+										placeholder="We design products for fan">
+							 </fieldset>
+						 </div>
 
-                        <div class="col-xl-8 col-md-6 col-12 mb-1">
-                            <fieldset class="form-group">
-                                <label for="label-textarea">Detail description</label>
-                                <textarea class="form-control" id="description_detail" name="description_detail"
-                                          rows="3"
-                                          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus."></textarea>
-                            </fieldset>
-                        </div>
+						 <div class="col-xl-8 col-md-6 col-12 mb-1">
+							 <fieldset class="form-group">
+								 <label for="label-textarea">Detail description</label>
+								 <textarea class="form-control" id="description_detail" name="description_detail"
+										   rows="3"
+										   placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Dolor sit amet consectetur adipiscing elit ut aliquam purus."></textarea>
+							 </fieldset>
+						 </div>
 
-                    </div>-->
+					 </div>-->
                     <div class="row">
 
                         <div class="col-12">
@@ -163,23 +163,14 @@
             <!--begin::Body-->
             <div class="card-body card-dashboard" style="padding: 37px;">
 
-                <div id="thumbnail">
-                    <div id="previews">
-                        <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload ( min 345x500 )
+
+                <div class="row text-center">
+                    <div class="col-sm-12 dropzone" id="thumbnail_panel">
+                        <div class="dz-message" data-dz-message><small class="text-muted">Drop image Here To Upload (
+                                min 345x500 )
+                                image here</small>
                         </div>
                     </div>
-                </div>
-
-
-                <div id="tpl" style="display:none">
-                    <div class="dz-preview dz-file-preview">
-                        <div class="dz-thumb">
-
-                            <img class="img-fluid w-100" data-dz-thumbnail/>
-                        </div>
-                        <div class="dz-trash"><span data-dz-remove></span></div>
-                    </div>
-
                 </div>
 
             </div>

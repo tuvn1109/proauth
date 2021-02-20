@@ -51,14 +51,15 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/tour/tour.css">
-    <link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/file-uploaders/dropzone.css">
-
+<link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/forms/form-file-uploader.min.css">
     <!-- END: Page CSS-->
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css"/>
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/plugins/tagify/tagify.css">
+    <link rel="stylesheet" type="text/css"
+          href="/assets/plugins/editable/bootstrap4-editable/css/bootstrap-editable.css">
     <!-- END: Custom CSS-->
 
 </head>
@@ -382,17 +383,10 @@ $user = $_SESSION['user'];
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title"
-                                                                                              data-i18n="Dashboard">Dashboard</span></a>
-                <ul class="menu-content">
-                    <li class="<?= $menu == 'home' ? 'active ' : '' ?>"><a href="/cpanel"><i
-                                    class="feather icon-circle"></i><span
-                                    class="menu-item" data-i18n="Analytics">Analytics</span></a>
-                    </li>
-                </ul>
+
+            <li class="<?= $menu == 'home' ? 'active ' : '' ?> nav-item"><a href="/cpanel"><i
+                            class="feather icon-home"></i><span class="menu-title">Dashboard</span></a>
             </li>
-
-
             <li class="<?= $menu == 'orders' ? 'active ' : '' ?> nav-item"><a href="/cpanel/orders"><i
                             class="feather icon-clipboard"></i><span class="menu-title">Order management</span></a>
             </li>
@@ -425,19 +419,10 @@ $user = $_SESSION['user'];
                             class="fas fa-truck"></i><span class="menu-title">Shipping method</span></a>
             </li>
 
-            <li class=" navigation-header"><span>Apps</span>
-            </li>
-
-            <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                                                                                     data-i18n="User">Users</span></a>
-                <ul class="menu-content">
-                    <li class="<?= $menu == 'users' ? 'active ' : '' ?>"><a href="/cpanel/users"><i
-                                    class="feather icon-circle"></i><span class="menu-item"
-                                                                          data-i18n="List">List</span></a>
-                    </li>
-                </ul>
-            </li>
             <li class=" navigation-header"><span>Settings</span>
+            </li>
+            <li class="<?= $menu == 'users' ? 'active ' : '' ?> nav-item"><a href="/cpanel/users"><i
+                            class="feather icon-user"></i><span class="menu-title">Users</span></a>
             </li>
             <li class="<?= $menu == 'page' ? 'active ' : '' ?> nav-item"><a href="/cpanel/page"><i
                             class="far fa-pager"></i><span class="menu-title">Page</span></a>
@@ -521,7 +506,7 @@ $user = $_SESSION['user'];
 <script src="/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <script src="/app-assets/js/scripts/forms/select/form-select2.js"></script>
 <script src="/assets/plugins/tagify/jQuery.tagify.min.js"></script>
-
+<script src="/assets/plugins/editable/bootstrap4-editable/js/bootstrap-editable.min.js"></script>
 <!-- END: Page JS-->
 <?php
 echo view($temp . '_js', $this->data);

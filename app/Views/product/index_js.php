@@ -1,5 +1,5 @@
 <script>
-
+    toastr.options.positionClass = 'toast-bottom-right';
     var star = 0;
     $('#quantity-order').TouchSpin();
     $('.starrr').starrr({

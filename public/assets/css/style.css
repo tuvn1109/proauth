@@ -101,3 +101,30 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     justify-content: center;
     height: 100%;
 }
+
+
+
+
+
+
+.dropzone {
+    border: none;
+    background: none;
+}
+
+#thumbnail_panel .dz-progress {
+    display: none;
+}
+
+#thumbnail_panel .dz-image {
+    width: 100%;
+    height: auto;
+}
+
+.dropzone .dz-preview .dz-image img {
+    width: 100% !important;
+}
+
+#thumbnail_panel .dz-message:before {
+    background: none;
+}

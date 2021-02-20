@@ -12,10 +12,10 @@
                     <th>Customer</th>
                     <th>Date</th>
                     <th>Total price</th>
-                    <th>Status</th>
                     <th>Payment status</th>
                     <th>Shipping address</th>
                     <th>Shipping method</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </thead>

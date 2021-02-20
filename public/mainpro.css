@@ -1515,7 +1515,10 @@ img {
     outline: none !important;
     border: none;
 }
-
+.coupon_order .btn-cancel-coupon {
+    background: rgb(255 0 0 / 20%) !important;
+    color: #cc2e2e !important;
+}
 .coupon_order input {
     border: 0.9px solid rgba(46, 204, 113, 0.3);
     box-sizing: border-box;
@@ -1882,9 +1885,10 @@ canvas #c {
 }
 
 #divlistcart .bootstrap-touchspin input {
-    font-size: 15px ;
+    font-size: 15px;
 }
 
 #divlistcart .bootstrap-touchspin.input-group .form-control {
     background-color: #FFFFFF !important;
 }
+

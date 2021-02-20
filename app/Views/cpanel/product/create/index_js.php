@@ -22,20 +22,77 @@
 
     var minHeight = 500;
     var minWidth = 345;
+    let thumbnailUpload = null;
+
     Dropzone.autoDiscover = false;
-    var myDropzone = new Dropzone("div#previews", {
+    $(function () {
+        thumbnailUpload = new Dropzone('#thumbnail_panel',
+            {
+                url: '#',
+                maxFiles: 1,
+                uploadMultiple: false,
+                acceptedFiles: "image/jpeg,image/png",
+                thumbnailWidth: 300,
+                thumbnailHeight: 300,
+                autoProcessQueue: false,
+                addRemoveLinks: true,
+                accept: function (file, done) {
+                    var reader = new FileReader();
+                    reader.onload = (function (entry) {
+                        var image = new Image();
+                        image.src = entry.target.result;
+                        image.onload = function () {
+                            if (this.width < minWidth || this.height < minHeight) {
+                                return done({
+                                    'error': 'Please select a image with minimum size is 915(w) x 530(h)',
+                                    'msg': 'Your select image is ' + this.width + ' x ' + this.height
+                                });
+                            }
+                        };
+                    });
+
+                    reader.readAsDataURL(file);
+                    done();
+                },
+                init: function () {
+                    this.on("maxfilesexceeded", function (file) {
+                        this.removeFile(file);
+                        Swal.fire('Feature image not allow more than 1 image', '', 'error');
+                    });
+                    this.on("addedfile", async function (file) {
+                        thumbnailImage = file;
+                    });
+                    this.on("error", function (file, errorMessage) {
+                        this.removeFile(file);
+                        console.log(errorMessage);
+                        if (typeof errorMessage.error !== "undefined") {
+                            Swal.fire(errorMessage.error, errorMessage.msg, 'error');
+                        } else {
+                            Swal.fire(errorMessage, '', 'error');
+                        }
+
+                    });
+
+                },
+
+            });
+    });
+
+/*
+
+    var myDropzone = new Dropzone("div#previewxxxs", {
         paramName: "file", // The name that will be used to transfer the file
         maxFiles: 1,
         url: '#',
         uploadMultiple: false,
-        acceptedFiles: 'image/*',
+        acceptedFiles: 'image/!*',
         autoProcessQueue: false,
         addRemoveLinks: true,
         dictRemoveFile: " Trash",
         thumbnailWidth: null,
         thumbnailHeight: null,
-        previewTemplate: document.querySelector('#tpl').innerHTML,
-        previewsContainer: "#previews", // Define the container to display the previews
+      //  previewTemplate: document.querySelector('#tpl').innerHTML,
+      //  previewsContainer: "#previews", // Define the container to display the previews
         init: function () {
             this.on("success", function (file, responseText) {
                 console.log(file);
@@ -62,6 +119,7 @@
             });
         }
     });
+*/
 
 
     var myDropzone2 = new Dropzone("div#mydropzone", {

@@ -36,9 +36,10 @@ class Product extends CpanelController
 		$data['title'] = 'Create product';
 		$data['menu'] = 'createproduct';
 		$data['listProperties'] = $modelProperties->findAll();
-		$data['category'] = $modelCategory->findAll();
+		$data['listcategory'] = $modelCategory->findAll();
 		$data['color'] = $modelColor->findAll();
-		$data['size'] = $modelSize->findAll();
+		$data['listsize'] = $modelSize->findAll();
+		$data['type'] = 'Create';
 		echo view('cpanel/layout', $data);
 	}
 
@@ -433,6 +434,8 @@ class Product extends CpanelController
 		$data['listcategory'] = $modelCategory->findAll();
 		$data['color'] = $modelColor->findAll();
 		$data['listsize'] = $modelSize->findAll();
+		$data['type'] = 'Update';
+
 		echo view('cpanel/layout', $data);
 	}
 
@@ -470,7 +473,6 @@ class Product extends CpanelController
 		$size = $this->request->getPost('size');
 		$arrDelete = \json_decode($this->request->getPost('arrDelete'), true);
 		$arrDeleteColor = \json_decode($this->request->getPost('arrdeletecolor'), true);
-
 
 
 		if ($arrDeleteColor) {

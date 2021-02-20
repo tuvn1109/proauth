@@ -17,10 +17,17 @@
             {"data": "fullname"},
             {"data": "order_date"},
             {"data": "order_price"},
-            {"data": "order_status"},
             {"data": "order_payment"},
             {"data": "order_address"},
             {"data": "name"},
+            //    {"data": "order_status"},
+            {
+                "data": "order_status", //
+                render: function (data, type, row) {
+                    if (row.order_status == null) row.order_status = '';
+                    return '<a href="#" class="fastEdit" data-type="select" data-pk="' + row.order_id + '" data-url="/cpanel/orders/update/' + row.order_id + '" data-title="Select status">' + row.order_status + '</a>';
+                }
+            },
             {
                 "data": "", render: function (data, type, row) {
                     return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateOrder" data-id="' + row.order_id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.order_id + '"><i class="feather icon-trash"></i></button>';
@@ -29,6 +36,11 @@
         ],
         "order": [[0, "desc"]],
         "drawCallback": function () {
+            $('.fastEdit').editable({
+                emptytext: 'empty',
+                source: "/cpanel/orders/loadstatus"
+            });
+
             $('.updateOrder').on('click', function () {
                 let dataId = $(this).data("id");
                 $.ajax({
@@ -39,7 +51,7 @@
                     success: function (data) {
                         console.log(data);
                         $("#drawdetail").html('');
-                        var i = 0 ;
+                        var i = 0;
                         $.each(data.details, function (key, value) {
                             i++;
                             console.log(value.id);

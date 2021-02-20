@@ -233,21 +233,8 @@
 
 <?php
 echo view($temp . '_js', $this->data);
-?>
-<script>
-    // count FAVOURIITE
-    $.ajax({
-        url: "/Favourite/favouriteadd",
-        dataType: "html",
-        data: {},
-        type: "POST",
-        success: function (data) {
-            $('.favourite-num span').html(data);
+echo view('layout_js', $this->data);
 
-        },
-        error: function () {
-        }
-    });
-</script>
+?>
 </body>
 </html>

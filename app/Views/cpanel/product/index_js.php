@@ -42,7 +42,6 @@
 
             },
             {"data": "value"},
-            {"data": "description"},
             {"data": "created_at"},
             {
                 "data": "", render: function (data, type, row) {
