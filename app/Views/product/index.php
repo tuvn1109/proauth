@@ -499,9 +499,7 @@
         <div class="fpd-product" title="Shirt Front" id="data-thumb-front"
              data-thumbnail="/download/<?= $color[0]['layout'] ?>">
             <img src="/download/<?= $color[0]['layout'] ?>" id="front-de" title="Base"
-                 data-parameters='{"left": 450, "top": 300, "width":300,"height":400, "colors": "#d59211", "price": 20, "colorLinkGroup": "Base","removable":"true"}'/>
-
-
+                 data-parameters='{"left": 450, "top": 300, "width":300,"height":400,  "colorLinkGroup": "Base","resizable": true}'/>
             <div class="fpd-product" title="Shirt Back" id="data-thumb-back"
                  data-thumbnail="/download/<?= $color[0]['back'] ?>">
                 <img src="/download/<?= $color[0]['back'] ?>" id="back-de" title="Base"

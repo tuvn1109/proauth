@@ -31,14 +31,108 @@
     var url = window.location.href;
     var segments = url.split('/');
     var id = segments[6];
-
+    var minHeight = 500;
+    var minWidth = 345;
     Dropzone.autoDiscover = false;
+    let myDropzone = null;
+    $(function () {
+        var myDropzone = new Dropzone("#thumbnail_panel", {
+            url: '#',
+            maxFiles: 1,
+            uploadMultiple: false,
+            acceptedFiles: "image/jpeg,image/png",
+            thumbnailWidth: 300,
+            thumbnailHeight: 300,
+            autoProcessQueue: false,
+            addRemoveLinks: true,
+            accept: function (file, done) {
+                var reader = new FileReader();
+                reader.onload = (function (entry) {
+                    var image = new Image();
+                    image.src = entry.target.result;
+                    image.onload = function () {
+                        if (this.width < minWidth || this.height < minHeight) {
+                            return done({
+                                'error': 'Please select a image with minimum size is 345(w) x 500(h)',
+                                'msg': 'Your select image is ' + this.width + ' x ' + this.height
+                            });
+                        }
+                    };
+                });
+
+                reader.readAsDataURL(file);
+                done();
+            },
+            init: function () {
+                this.on("maxfilesexceeded", function (file) {
+                    this.removeFile(file);
+                    Swal.fire('Feature image not allow more than 1 image', '', 'error');
+                });
+                this.on("addedfile", async function (file) {
+                    //thumbnailImage = file;
+                    thumbnail.push(file);
+
+                });
+                this.on("removedfile", function (file) {
+                    $.each(arrFiles, function (keys, values) {
+                        if (typeof values !== "undefined" && values.name == file.name) {
+                            thumbnail.splice(keys, 1);
+                        }
+                    });
+                });
+                this.on("error", function (file, errorMessage) {
+                    this.removeFile(file);
+                    console.log(errorMessage);
+                    if (typeof errorMessage.error !== "undefined") {
+                        Swal.fire(errorMessage.error, errorMessage.msg, 'error');
+                    } else {
+                        Swal.fire(errorMessage, '', 'error');
+                    }
+
+                });
+
+            },
+
+        });
+
+
+        $.ajax({
+            url: "/cpanel/product/loadimage",
+            data: {
+                id: id
+            },
+            dataType: "json",
+            type: "POST",
+            success: function (data) {
+                var mockFile = {
+                    name: data['thumb'][0],
+                    size: 12345
+                };
+                var urll = origin + '/download/image?name=product/' + id + '/thumb/' + data['thumb'][0];
+                myDropzone.options.addedfile.call(myDropzone, mockFile);
+                myDropzone.options.thumbnail.call(myDropzone, mockFile, urll);
+                return;
+                $.each(data.image, function (keys, values) {
+                    var mockFile = {
+                        name: values,
+                        size: 12345
+                    };
+                    var urll = origin + '/download/image?name=product/' + id + '/image/' + values;
+                    myDropzone2.options.addedfile.call(myDropzone2, mockFile);
+                    myDropzone2.options.thumbnail.call(myDropzone2, mockFile, urll);
+                });
+
+            }
+        });
+    });
+
+    /*
     var myDropzone = new Dropzone("div#previews", {
         paramName: "file", // The name that will be used to transfer the file
         maxFiles: 1,
         url: '#',
         uploadMultiple: false,
-        acceptedFiles: 'image/*',
+        acceptedFiles: 'image/!*',
         autoProcessQueue: false,
         addRemoveLinks: true,
         dictRemoveFile: " Trash",
@@ -62,8 +156,8 @@
         }
     });
 
-
-    var myDropzone2 = new Dropzone("div#mydropzone", {
+*/
+    var myDropzone2 = new Dropzone("#imageproduct", {
         paramName: "file", // The name that will be used to transfer the file
         maxFiles: 3,
         url: '#',
@@ -153,34 +247,7 @@
         objDZ.emit("resetFiles");
     }
 
-    $.ajax({
-        url: "/cpanel/product/loadimage",
-        data: {
-            id: id
-        },
-        dataType: "json",
-        type: "POST",
-        success: function (data) {
-            var mockFile = {
-                name: data['thumb'][0],
-                size: 12345
-            };
-            var urll = origin + '/download/image?name=product/' + id + '/thumb/' + data['thumb'][0];
-            myDropzone.options.addedfile.call(myDropzone, mockFile);
-            myDropzone.options.thumbnail.call(myDropzone, mockFile, urll);
-            return;
-            $.each(data.image, function (keys, values) {
-                var mockFile = {
-                    name: values,
-                    size: 12345
-                };
-                var urll = origin + '/download/image?name=product/' + id + '/image/' + values;
-                myDropzone2.options.addedfile.call(myDropzone2, mockFile);
-                myDropzone2.options.thumbnail.call(myDropzone2, mockFile, urll);
-            });
 
-        }
-    });
     $('#div-btn-add-color').on('click', '#btn-edit-color', function () {
         //  myDropzone2.removeAllFiles(true);
         //  console.log('tess');

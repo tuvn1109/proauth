@@ -158,6 +158,8 @@ class Product extends CpanelController
 		$tags = $this->request->getPost('tags');
 		$sale = $this->request->getPost('salestatus');
 		$bestsell = $this->request->getPost('bestselling');
+				$date_end_flash = $this->request->getPost('date_end_flash');
+
 		if ($sale == 'on') {
 			$sale = 'yes';
 		}
@@ -201,6 +203,8 @@ class Product extends CpanelController
 			//'description_detail' => $description_detail,
 			'slug_pro' => $slug,
 			'status' => 'new',
+			'date_end_flash' => $date_end_flash,
+
 		];
 		$id = $modelProduct->insert($dataInsert);
 

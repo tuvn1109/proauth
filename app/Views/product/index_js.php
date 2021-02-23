@@ -278,9 +278,9 @@
 
     // END OWL
     let pluginOpts = {
-        templatesDirectory: '/assets/plugins/fancy/html/',
+       templatesDirectory: '/assets/plugins/fancy/html/',
         toolbarPlacement: 'inside-top',
-        uiTheme: 'doyle',
+        editorMode: false,
         modalMode: '#modalButton',
         fonts: [
             {name: 'Helvetica'},
@@ -290,10 +290,6 @@
             {name: 'Lobster', url: 'google'}
         ],
         customTextParameters: {
-            autoCenter: true,
-            autoSelect: true,
-        },
-        elementParameters: {
             colors: false,
             removable: true,
             resizable: true,

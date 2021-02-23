@@ -200,6 +200,9 @@
                     <div class="col-12">
                         <span class="title">Photos from customers</span>
                     </div>
+                      <div class="col-12 d-flex justify-content-center" id="photo">
+
+                    </div>
                 </div>
             </section>
             <section id="footer">

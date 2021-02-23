@@ -20,7 +20,7 @@ class ProductFeelbackModel extends Model
 	protected $selectFields = ['*'];
 
 
-	public function getListAll($limit = 0, $page = 0, $where = [])
+	public function getListAll($limit = 0, $page = 0, $where = [], $gr = '')
 	{
 		//$limit = '' ;
 		//$query = $this->select('id');
@@ -35,6 +35,9 @@ class ProductFeelbackModel extends Model
 		}
 		if ($limit != 0 && $page != 0) {
 			$this->limit($limit, $page);
+		}
+		if ($gr) {
+			$this->groupBy($gr);
 		}
 		//$this->paginate($limit, 'gr1', $page);
 		//return $this->getCompiledSelect();

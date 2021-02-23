@@ -107,12 +107,16 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 
 
 
-.dropzone {
+#thumbnail_panel {
     border: none;
     background: none;
 }
 
 #thumbnail_panel .dz-progress {
+    display: none;
+}
+
+#imageproduct .dz-progress {
     display: none;
 }
 

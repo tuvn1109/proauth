@@ -239,6 +239,25 @@ class Orders extends CpanelController
 
 	}
 
+	public function view()
+	{
+		$orderMD = new OrdersModel();
+		$orderDetailMD = new OrdersDetailModel();
+		$customerMD = new CustomerModel();
+		$id = $this->request->getPost('id');
+		$list = $orderDetailMD->listData($id);
+		echo json_encode($list);
+
+	}
+
+	public function count()
+	{
+		$orderMD = new OrdersModel();
+		$count = $orderMD->countOrder(['order_status' => 'New']);
+		echo json_encode($count);
+
+	}
+
 	public function delete()
 	{
 		$model = new OrdersModel();

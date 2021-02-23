@@ -1175,7 +1175,7 @@ img {
     display: none;
 }
 
-/* OWl START*/
+/* OWl END*/
 
 .product-home-category {
     position: relative;
@@ -1781,11 +1781,13 @@ canvas #c {
 /*radio*/
 .fpd-modal-overlay.fpd-fullscreen > .fpd-modal-wrapper {
     width: 50% !important;
-    height: 83% !important;
+    height: auto !important;
     top: 50px !important;
     overflow: hidden !important;
 }
-
+.fpd-shadow-2{
+    box-shadow: none !important;
+}
 .fpd-modal-product-designer.fpd-modal-overlay > .fpd-modal-wrapper {
     padding: 0px !important;
     text-align: center;

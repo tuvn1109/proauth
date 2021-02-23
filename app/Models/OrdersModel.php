@@ -54,6 +54,18 @@ class OrdersModel extends Model
 		//return $this->getCompiledSelect();
 	}
 
+/// list w where
+
+	function listWhere($where = [])
+	{
+		$this->select('*');
+		foreach ($where as $key => $val) {
+			$this->where($key, $val);
+		}
+		return $this->get()->getResultArray();
+
+	}
+
 // new
 	function info($where = [])
 	{
@@ -67,6 +79,15 @@ class OrdersModel extends Model
 		return $this->get()->getRowArray();
 	}
 
+	function countOrder($where = [])
+	{
+		$this->select('*');
+		foreach ($where as $key => $val) {
+			$this->where($key, $val);
+		}
+		//$this->paginate($perpage, 'gr1', $page);
+		return $this->countAllResults();
+	}
 }
 
 ?>

@@ -108,6 +108,12 @@
                                 <input type="text" class="form-control" id="tags" name="tags" placeholder="#Tag">
                             </fieldset>
                         </div>
+                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                            <fieldset class="form-group">
+                                <label>Flash sale</label>
+                                <input type="date" class="form-control" id="date_end_flash" name="date_end_flash" value="">
+                            </fieldset>
+                        </div>
                     </div>
                     <!-- <div class="row">
 
@@ -162,8 +168,6 @@
             </div>
             <!--begin::Body-->
             <div class="card-body card-dashboard" style="padding: 37px;">
-
-
                 <div class="row text-center">
                     <div class="col-sm-12 dropzone" id="thumbnail_panel">
                         <div class="dz-message" data-dz-message><small class="text-muted">Drop image Here To Upload (
@@ -172,7 +176,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <!--end::Body-->
         </div>
@@ -238,9 +241,10 @@
 
 
                     <div class="col-8">
-                        <div class="dropzone dropzone-area" id="mydropzone">
-                            <div class="dz-message">Drop Files Here To Upload
+                        <div class="dropzone" id="imageproduct">
+                            <div class="dz-message" data-dz-message><small class="text-muted">Drop Files Here To Upload</small>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-12">

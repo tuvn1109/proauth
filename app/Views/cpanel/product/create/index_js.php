@@ -23,6 +23,7 @@
     var minHeight = 500;
     var minWidth = 345;
     let thumbnailUpload = null;
+    let imgproduct = null;
 
     Dropzone.autoDiscover = false;
     $(function () {
@@ -44,7 +45,7 @@
                         image.onload = function () {
                             if (this.width < minWidth || this.height < minHeight) {
                                 return done({
-                                    'error': 'Please select a image with minimum size is 915(w) x 530(h)',
+                                    'error': 'Please select a image with minimum size is 345(w) x 500(h)',
                                     'msg': 'Your select image is ' + this.width + ' x ' + this.height
                                 });
                             }
@@ -60,7 +61,9 @@
                         Swal.fire('Feature image not allow more than 1 image', '', 'error');
                     });
                     this.on("addedfile", async function (file) {
-                        thumbnailImage = file;
+                        //thumbnailImage = file;
+                        						thumbnail.push(file);
+
                     });
                     this.on("error", function (file, errorMessage) {
                         this.removeFile(file);
@@ -76,78 +79,108 @@
                 },
 
             });
+
+
+        imgproduct = new Dropzone('#imageproduct',
+            {
+                url: '#',
+                maxFiles: 3,
+                uploadMultiple: false,
+                acceptedFiles: "image/jpeg,image/png",
+                thumbnailWidth: 300,
+                thumbnailHeight: 300,
+                autoProcessQueue: false,
+                addRemoveLinks: true,
+                init: function () {
+                    this.on("maxfilesexceeded", function (file) {
+                        this.removeFile(file);
+                        Swal.fire('Feature image not allow more than 1 image', '', 'error');
+                    });
+                    this.on("addedfile", async function (file) {
+                        arrImgpro.push(file);
+                    });
+                    this.on("removedfile", function (file) {
+                        $.each(arrImgpro, function (keys, values) {
+                            if (typeof values !== "undefined" && values.name == file.name) {
+                                arrImgpro.splice(keys, 1);
+                            }
+                        });
+                    });
+                },
+
+            });
     });
+    /*
+		var myDropzone2 = new Dropzone("div#mydropzone", {
+			paramName: "file", // The name that will be used to transfer the file
+			maxFiles: 3,
+			url: '#',
+			uploadMultiple: false,
+			acceptedFiles: 'image/!*',
+			autoProcessQueue: false,
+			addRemoveLinks: true,
+			dictRemoveFile: " Trash",
+			thumbnailWidth: null,
+			thumbnailHeight: null,
+			init: function () {
 
-/*
+				this.on("addedfile", function (file) {
+					arrImgpro.push(file);
+					console.log(arrImgpro);
+				});
+				this.on("removedfile", function (file) {
+					$.each(arrImgpro, function (keys, values) {
+						if (typeof values !== "undefined" && values.name == file.name) {
+							arrImgpro.splice(keys, 1);
+						}
+					});
+				});
+			}
+		});*/
+    /*
 
-    var myDropzone = new Dropzone("div#previewxxxs", {
-        paramName: "file", // The name that will be used to transfer the file
-        maxFiles: 1,
-        url: '#',
-        uploadMultiple: false,
-        acceptedFiles: 'image/!*',
-        autoProcessQueue: false,
-        addRemoveLinks: true,
-        dictRemoveFile: " Trash",
-        thumbnailWidth: null,
-        thumbnailHeight: null,
-      //  previewTemplate: document.querySelector('#tpl').innerHTML,
-      //  previewsContainer: "#previews", // Define the container to display the previews
-        init: function () {
-            this.on("success", function (file, responseText) {
-                console.log(file);
-            });
-
-
-            this.on("thumbnail", function (file) {
-                if (file.height < minHeight || file.width < minWidth) {
-                    this.files[0].previewElement.remove();
-                    Swal.fire('Image size must be greater than or equal to 345x500', '', 'error');
-                } else {
-                    thumbnail.push(file);
-                }
-            });
-            this.on("addedfile", function (file) {
-
-            });
-            this.on("removedfile", function (file) {
-                $.each(arrFiles, function (keys, values) {
-                    if (typeof values !== "undefined" && values.name == file.name) {
-                        thumbnail.splice(keys, 1);
-                    }
-                });
-            });
-        }
-    });
-*/
+		var myDropzone = new Dropzone("div#previewxxxs", {
+			paramName: "file", // The name that will be used to transfer the file
+			maxFiles: 1,
+			url: '#',
+			uploadMultiple: false,
+			acceptedFiles: 'image/!*',
+			autoProcessQueue: false,
+			addRemoveLinks: true,
+			dictRemoveFile: " Trash",
+			thumbnailWidth: null,
+			thumbnailHeight: null,
+		  //  previewTemplate: document.querySelector('#tpl').innerHTML,
+		  //  previewsContainer: "#previews", // Define the container to display the previews
+			init: function () {
+				this.on("success", function (file, responseText) {
+					console.log(file);
+				});
 
 
-    var myDropzone2 = new Dropzone("div#mydropzone", {
-        paramName: "file", // The name that will be used to transfer the file
-        maxFiles: 3,
-        url: '#',
-        uploadMultiple: false,
-        acceptedFiles: 'image/*',
-        autoProcessQueue: false,
-        addRemoveLinks: true,
-        dictRemoveFile: " Trash",
-        thumbnailWidth: null,
-        thumbnailHeight: null,
-        init: function () {
+				this.on("thumbnail", function (file) {
+					if (file.height < minHeight || file.width < minWidth) {
+						this.files[0].previewElement.remove();
+						Swal.fire('Image size must be greater than or equal to 345x500', '', 'error');
+					} else {
+						thumbnail.push(file);
+					}
+				});
+				this.on("addedfile", function (file) {
 
-            this.on("addedfile", function (file) {
-                arrImgpro.push(file);
-                console.log(arrImgpro);
-            });
-            this.on("removedfile", function (file) {
-                $.each(arrImgpro, function (keys, values) {
-                    if (typeof values !== "undefined" && values.name == file.name) {
-                        arrImgpro.splice(keys, 1);
-                    }
-                });
-            });
-        }
-    });
+				});
+				this.on("removedfile", function (file) {
+					$.each(arrFiles, function (keys, values) {
+						if (typeof values !== "undefined" && values.name == file.name) {
+							thumbnail.splice(keys, 1);
+						}
+					});
+				});
+			}
+		});
+	*/
+
+
 
 
     // EDITOR
@@ -337,7 +370,7 @@
         arrDataF.push(oj);
         drawTableColor();
         // console.log(arrDataF)
-        myDropzone2.removeAllFiles(true);
+        imgproduct.removeAllFiles(true);
     });
 
 

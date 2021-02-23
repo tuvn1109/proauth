@@ -8,6 +8,20 @@
     toastr.options.positionClass = 'toast-bottom-right';
 
 
+    // GET FEELBACK
+    $.ajax({
+        url: "/home/photofeelback",
+        dataType: "json",
+        data: {},
+        type: "POST",
+        success: function (data) {
+
+        },
+        error: function () {
+        }
+    });
+
+
     $('#kt_login_signin_submit').on('click', function (e) {
         e.preventDefault();
         var formData = new FormData($('#kt_login_signin_form')[0]);
@@ -100,6 +114,27 @@
 
     var owl = $('.owl-carousel');
     owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 3,
+            },
+            600: {
+                items: 5,
+                nav: false
+            },
+            1000: {
+                items: 7,
+            },
+        }
+    });
+
+    var owl2 = $('.owl-carousel-cus');
+    owl2.owlCarousel({
         loop: true,
         margin: 10,
         autoplay: true,

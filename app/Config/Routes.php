@@ -49,6 +49,9 @@ $routes->get('/cpanel/product/(:any)', 'Cpanel/product::loaddata');
 $routes->get('/cpanel/feelback', 'Cpanel/feelback::index');
 $routes->get('/cpanel/feelback/(:any)', 'Cpanel/feelback::loaddata');
 
+$routes->get('/cpanel/subscribes', 'Cpanel/subscribes::index');
+$routes->get('/cpanel/subscribes/(:any)', 'Cpanel/subscribes::loaddata');
+
 
 $routes->get('/cpanel/properties', 'Cpanel/properties::index');
 $routes->get('/cpanel/properties/(:any)', 'Cpanel/properties::loaddata');

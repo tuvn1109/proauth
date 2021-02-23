@@ -186,6 +186,43 @@ class Home extends BaseController
 
 	}
 
+
+	public function photofeelback()
+	{
+		helper(['filesystem', 'cookie']);
+
+		$model = new SubscribesModel();
+		$modelFeelback = new ProductFeelbackModel();
+
+		$email = $this->request->getPost('email');
+		$feelback = $modelFeelback->getListAll(0, 0, ['onsite' => 'yes'], 'product_feelback.product_id');
+
+		$arrPT = [];
+		foreach ($feelback as $feelback1):
+			$idPro = $feelback1['product_id'];
+			$photoRV = directory_map(WRITEPATH . 'uploads/product/' . $idPro . '/review/', FALSE, TRUE);
+
+			foreach ($photoRV as $key => $val) {
+				$rep = substr($key, 0, -1);
+
+				foreach ($val as $key2 => $val2) {
+					$key2 = substr($key2, 0, -1);
+					$arrPT[$rep][$key2] = $val2;
+				}
+			}
+
+		endforeach;
+		echo "<pre>";
+		print_r($arrPT);
+		echo "</pre>";
+
+		exit;
+
+
+		echo json_encode(1);
+
+	}
+
 	//--------------------------------------------------------------------
 
 }

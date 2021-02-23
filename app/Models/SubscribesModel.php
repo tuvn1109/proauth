@@ -19,7 +19,17 @@ class SubscribesModel extends Model
 	protected $skipValidation = false;
 	protected $selectFields = ['*'];
 
+/// list w where
 
+	function listWhere($where = [])
+	{
+		$this->select('*');
+		foreach ($where as $key => $val) {
+			$this->where($key, $val);
+		}
+		return $this->get()->getResultArray();
+
+	}
 }
 
 ?>

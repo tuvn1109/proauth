@@ -1,5 +1,5 @@
 <style>
-    .ql-editor{
+    .ql-editor {
         min-height: 150px;
     }
 </style>
@@ -186,26 +186,12 @@
             </div>
             <!--begin::Body-->
             <div class="card-body card-dashboard" style="padding: 37px;">
-
-                <div id="thumbnail">
-                    <div id="previews">
+                <div class="row text-center">
+                    <div class="col-sm-12 dropzone" id="thumbnail_panel">
                         <div class="dz-message-thumb" data-dz-message>Drop image Here To Upload (240x270)
                         </div>
                     </div>
                 </div>
-
-
-                <div id="tpl" style="display:none">
-                    <div class="dz-preview dz-file-preview">
-                        <div class="dz-thumb">
-
-                            <img class="img-fluid w-100" data-dz-thumbnail/>
-                        </div>
-                        <div class="dz-trash"><span data-dz-remove></span></div>
-                    </div>
-
-                </div>
-
             </div>
             <!--end::Body-->
         </div>
@@ -275,8 +261,8 @@
 
 
                     <div class="col-8">
-                        <div class="dropzone dropzone-area" id="mydropzone">
-                            <div class="dz-message">Drop Files Here To Upload
+                        <div class="dropzone" id="imageproduct">
+                            <div class="dz-message"><small class="text-muted">Drop Files Here To Upload</small>
                             </div>
                         </div>
                     </div>

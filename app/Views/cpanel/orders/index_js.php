@@ -30,7 +30,7 @@
             },
             {
                 "data": "", render: function (data, type, row) {
-                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateOrder" data-id="' + row.order_id + '"><i class="feather icon-edit"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.order_id + '"><i class="feather icon-trash"></i></button>';
+                    return '<button type="button" class="btn btn-icon btn-primary mr-1 waves-effect waves-light updateOrder" data-id="' + row.order_id + '"><i class="fal fa-eye"></i></button><button type="button" class="btn btn-icon btn-danger mr-1 waves-effect waves-light delCat" data-id="' + row.order_id + '"><i class="feather icon-trash"></i></button>';
                 }
             },
         ],
@@ -39,12 +39,11 @@
             $('.fastEdit').editable({
                 emptytext: 'empty',
                 source: "/cpanel/orders/loadstatus"
-            });
-
+            },countOd());
             $('.updateOrder').on('click', function () {
                 let dataId = $(this).data("id");
                 $.ajax({
-                    url: "/cpanel/orders/update",
+                    url: "/cpanel/orders/view",
                     dataType: "json",
                     data: {id: dataId},
                     type: "POST",
@@ -52,7 +51,7 @@
                         console.log(data);
                         $("#drawdetail").html('');
                         var i = 0;
-                        $.each(data.details, function (key, value) {
+                        $.each(data, function (key, value) {
                             i++;
                             console.log(value.id);
                             $("#drawdetail").append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_front + '" class="w-100"></td><td style="text-align: center"><img src="/download/image?name=' + value.order_detail_image_back + '" class="w-100"></td><td style="text-align: center">' + value.size + '</td><td style="text-align: center">' + value.color + '</td><td style="text-align: center">' + value.order_detail_price + '</td></tr>')
