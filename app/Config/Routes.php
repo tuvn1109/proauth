@@ -37,56 +37,56 @@ $routes->get('/auth/resetpass/(:any)', 'Auth::resetpass');
 
 $routes->get('/cpanel', 'Cpanel/Home::index');
 
-$routes->get('/cpanel/orders', 'Cpanel/orders::index');
-$routes->get('/cpanel/orders/loadstatus', 'Cpanel/orders::loadstatus');
-$routes->get('/cpanel/orders/(:any)', 'Cpanel/orders::loaddata');
+$routes->get('/cpanel/orders', 'Cpanel/Orders::index');
+$routes->get('/cpanel/orders/loadstatus', 'Cpanel/Orders::loadstatus');
+$routes->get('/cpanel/orders/(:any)', 'Cpanel/Orders::loaddata');
 
-$routes->get('/cpanel/product', 'Cpanel/product::index');
-$routes->get('/cpanel/product/create', 'Cpanel/product::create');
-$routes->get('/cpanel/product/edit/(:any)', 'Cpanel/product::edit');
-$routes->get('/cpanel/product/(:any)', 'Cpanel/product::loaddata');
+$routes->get('/cpanel/product', 'Cpanel/Product::index');
+$routes->get('/cpanel/product/create', 'Cpanel/Product::create');
+$routes->get('/cpanel/product/edit/(:any)', 'Cpanel/Product::edit');
+$routes->get('/cpanel/product/(:any)', 'Cpanel/Product::loaddata');
 
-$routes->get('/cpanel/feelback', 'Cpanel/feelback::index');
-$routes->get('/cpanel/feelback/(:any)', 'Cpanel/feelback::loaddata');
+$routes->get('/cpanel/feelback', 'Cpanel/Feelback::index');
+$routes->get('/cpanel/feelback/(:any)', 'Cpanel/Feelback::loaddata');
 
-$routes->get('/cpanel/subscribes', 'Cpanel/subscribes::index');
-$routes->get('/cpanel/subscribes/(:any)', 'Cpanel/subscribes::loaddata');
-
-
-$routes->get('/cpanel/properties', 'Cpanel/properties::index');
-$routes->get('/cpanel/properties/(:any)', 'Cpanel/properties::loaddata');
-
-$routes->get('/cpanel/category', 'Cpanel/category::index');
-$routes->get('/cpanel/category/(:any)', 'Cpanel/category::loaddata');
-
-$routes->get('/cpanel/size', 'Cpanel/size::index');
-$routes->get('/cpanel/size/(:any)', 'Cpanel/size::loaddata');
+$routes->get('/cpanel/subscribes', 'Cpanel/Subscribes::index');
+$routes->get('/cpanel/subscribes/(:any)', 'Cpanel/Subscribes::loaddata');
 
 
-$routes->get('/cpanel/color', 'Cpanel/color::index');
-$routes->get('/cpanel/color/(:any)', 'Cpanel/color::loaddata');
+$routes->get('/cpanel/properties', 'Cpanel/Properties::index');
+$routes->get('/cpanel/properties/(:any)', 'Cpanel/Properties::loaddata');
 
-$routes->get('/cpanel/coupon', 'Cpanel/coupon::index');
-$routes->get('/cpanel/coupon/(:any)', 'Cpanel/coupon::loaddata');
+$routes->get('/cpanel/category', 'Cpanel/Category::index');
+$routes->get('/cpanel/category/(:any)', 'Cpanel/Category::loaddata');
 
-$routes->get('/cpanel/page', 'Cpanel/page::index');
-$routes->get('/cpanel/page/create', 'Cpanel/page::create');
-$routes->get('/cpanel/page/edit/(:any)', 'Cpanel/page::edit');
-
-$routes->get('/cpanel/page/(:any)', 'Cpanel/page::loaddata');
+$routes->get('/cpanel/size', 'Cpanel/Size::index');
+$routes->get('/cpanel/size/(:any)', 'Cpanel/Size::loaddata');
 
 
-$routes->get('/cpanel/shippingmethod', 'Cpanel/shippingmethod::index');
-$routes->get('/cpanel/shippingmethod/(:any)', 'Cpanel/shippingmethod::loaddata');
+$routes->get('/cpanel/color', 'Cpanel/Color::index');
+$routes->get('/cpanel/color/(:any)', 'Cpanel/Color::loaddata');
 
-$routes->get('/cpanel/users', 'Cpanel/users::index');
-$routes->get('/cpanel/users/edit/(:any)', 'Cpanel/users::edit');
-$routes->get('/cpanel/users/(:any)', 'Cpanel/users::loaddata');
+$routes->get('/cpanel/coupon', 'Cpanel/Coupon::index');
+$routes->get('/cpanel/coupon/(:any)', 'Cpanel/Coupon::loaddata');
 
-$routes->get('/cpanel/email', 'Cpanel/email::index');
-$routes->get('/cpanel/settings/home', 'Cpanel/settings::home');
-$routes->get('/cpanel/settings/banner', 'Cpanel/settings::banner');
-$routes->get('/cpanel/settings/email', 'Cpanel/settings::email');
+$routes->get('/cpanel/page', 'Cpanel/Page::index');
+$routes->get('/cpanel/page/create', 'Cpanel/Page::create');
+$routes->get('/cpanel/page/edit/(:any)', 'Cpanel/Page::edit');
+
+$routes->get('/cpanel/page/(:any)', 'Cpanel/Page::loaddata');
+
+
+$routes->get('/cpanel/shippingmethod', 'Cpanel/Shippingmethod::index');
+$routes->get('/cpanel/shippingmethod/(:any)', 'Cpanel/Shippingmethod::loaddata');
+
+$routes->get('/cpanel/users', 'Cpanel/Users::index');
+$routes->get('/cpanel/users/edit/(:any)', 'Cpanel/Users::edit');
+$routes->get('/cpanel/users/(:any)', 'Cpanel/Users::loaddata');
+
+$routes->get('/cpanel/email', 'Cpanel/Email::index');
+$routes->get('/cpanel/settings/home', 'Cpanel/Settings::home');
+$routes->get('/cpanel/settings/banner', 'Cpanel/Settings::banner');
+$routes->get('/cpanel/settings/email', 'Cpanel/Settings::email');
 
 $routes->get('/download/image', 'Download::image');
 $routes->get('/download/(:any)/(:any)/(:any)/(:any)', 'Download::product/$1/$2/$3/$4');
